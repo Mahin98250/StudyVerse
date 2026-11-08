@@ -1,4 +1,4 @@
-export type CurriculumStatus='board'|'formative'|'project';
+export type CurriculumStatus='board'|'formative'|'periodic'|'project';
 export interface CurriculumItem{id:string;subjectId:string;group:string;title:string;description:string;status:CurriculumStatus;marks?:number}
 export const SOURCES:Record<string,{label:string;url:string;note:string}>={
  mathematics:{label:'CBSE Mathematics · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Maths_SecP1X_2026-27.pdf',note:'Subject codes 041 and 241. Unit structure and topics follow the official curriculum.'},
@@ -41,7 +41,7 @@ add('science','V · Natural Resources · 5 marks','sci-environment','Our Environ
 add('social-science','History · 20 marks','sst-europe','The Rise of Nationalism in Europe','French Revolution, nation-states, social movements and nationalism.','board',20),
 add('social-science','History · 20 marks','sst-india','Nationalism in India','Nationalist movements, Gandhian strategies, Khilafat and Non-Cooperation.','board',20),
 add('social-science','History · board + project','sst-world','The Making of a Global World','Board scope: pre-modern world through conquest, disease and trade; later sections link to project work.','board'),
-add('social-science','History · periodic assessment','sst-industry','The Age of Industrialisation','Industrialisation and effects on colonies; periodic assessment only.','formative'),
+add('social-science','History · periodic assessment','sst-industry','The Age of Industrialisation','Industrialisation and effects on colonies; periodic assessment only.','periodic'),
 add('social-science','History · 20 marks','sst-print','Print Culture and the Modern World','Development of print from East Asia to Europe and India; social and cultural impact.','board',20),
 add('social-science','Geography · 20 marks','sst-resource','Resources and Development','Resource planning, sustainable use, land resources and development.','board',20),
 add('social-science','Geography · 20 marks','sst-forest','Forest and Wildlife Resources','Biodiversity, conservation, forest use and sustainable development.','board',20),
