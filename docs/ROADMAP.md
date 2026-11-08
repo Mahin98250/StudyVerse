@@ -46,15 +46,17 @@ Regression, accessibility, mobile and privacy review.
 - [ ] Run CI and fix any regressions before merging.
 
 
-## Phase 03 — Academic Content Engine (first slice)
-- [x] Add original, syllabus-bounded Mathematics study guides for Real Numbers, Polynomials and Pair of Linear Equations in Two Variables.
-- [x] Include concept explanations, learning goals, worked examples and key-fact reference cards.
-- [x] Add chapter quizzes with answer checking and explanations.
-- [x] Save chapter completion, attempt count, best score, last score and personal notes in the existing IndexedDB learning-record store.
-- [x] Preserve the chapter practice summary when Learning Hub completion/bookmark/note records are updated.
-- [x] Link supported curriculum topics to their study guides and expose the guides from Practice Centre.
-- [ ] Expand chapter coverage across the remaining Mathematics units and verified subjects.
-- [ ] Add short-answer/numeric question types, question difficulty tags and a dedicated mock-exam workflow.
-- [ ] Add unit tests for quiz scoring, progress persistence and old-backup compatibility.
+## Phase 03 — Academic Content Engine (Mathematics release 1)
+- [x] Publish original study guides for all 15 topics in the current Class X Mathematics curriculum list: Real Numbers, Polynomials, Pair of Linear Equations, Quadratic Equations, Arithmetic Progressions, Coordinate Geometry, Triangles, Circles, Introduction to Trigonometry, Trigonometric Identities, Heights and Distances, Areas Related to Circles, Surface Areas and Volumes, Statistics and Probability.
+- [x] Include learning goals, clear concept explanations, worked examples and quick-reference facts.
+- [x] Add 4 answer-checked MCQs with explanations per guide (60 questions in this initial bank).
+- [x] Keep the chapter scope/source visible and distinguish syllabus limits such as the allowed central angles and heights-and-distances angle range.
+- [x] Save completion, quiz attempts, best/last score and personal notes in existing IndexedDB learning records.
+- [x] Surface chapter guides and saved quiz scores in the Learning Hub; surface quiz attempts on the dashboard.
+- [x] Keep existing backup format compatible: new practice summaries are optional and validated when present.
+- [ ] Expand the initial question bank with short-answer, numeric-response and competency/case-based questions.
+- [ ] Add difficulty tags, shuffled question selection and a dedicated timed mock-exam workflow.
+- [ ] Add automated tests for every question key, scoring, progress persistence and backup compatibility.
+- [ ] Create content for verified Science, Social Science, English and Gujarati chapters from their exact 2026–27 curriculum documents and school-specific book choices.
 
-Content rule: curriculum boundaries come from the linked CBSE 2026–27 Class X syllabus. Lesson explanations and examples are original StudyVerse teaching material, not copied textbook pages. Do not label unverified school-specific subject choices as official.
+Content rule: syllabus boundaries come from the linked official CBSE 2026–27 Class X Mathematics curriculum. Lesson explanations, worked examples and questions are original StudyVerse teaching material, not copied textbook pages. Do not label unverified school-specific subject choices as official.
