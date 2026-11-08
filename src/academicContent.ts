@@ -2965,6 +2965,520 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: scienceSource,
     sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit V'
   }
+,
+  {
+    id: 'carbon-and-its-compounds',
+    curriculumItemId: 'sci-carbon',
+    subjectId: 'science',
+    title: 'Carbon and Its Compounds',
+    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    estimatedMinutes: 45,
+    syllabusScope: 'Covalent bonding and properties; versatility of carbon; saturated and unsaturated hydrocarbons; homologous series; naming alkanes, alkenes, alkynes and functional groups (halogens, alcohols, ketones, aldehydes); combustion, oxidation, addition and substitution; properties/uses of ethanol, ethanoic acid, soaps and detergents. This topic is formative only.',
+    overview: 'Carbon forms a huge variety of compounds because it makes four covalent bonds and can join to itself in long chains and rings. Learning the patterns of bonding and naming makes these compounds easier to understand.',
+    learningGoals: [
+      'Explain why carbon forms covalent bonds and many compounds.',
+      'Distinguish saturated and unsaturated hydrocarbons.',
+      'Recognise a homologous series and common functional groups.',
+      'Describe important reactions and everyday uses of ethanol, ethanoic acid, soaps and detergents.'
+    ],
+    sections: [
+      {
+        id: 'carbon-bonding',
+        title: '1. Covalent bonding and the versatility of carbon',
+        explanation: 'Carbon has four electrons in its outermost shell. Losing or gaining four electrons is energetically difficult, so carbon usually shares electrons to form covalent bonds. Carbon shows catenation (bonding with other carbon atoms) and tetravalency (forming four covalent bonds), allowing chains, branches and rings.',
+        keyPoints: [
+          'Covalent bonds form by sharing electron pairs.',
+          'Tetravalency means carbon forms four covalent bonds.',
+          'Catenation is the ability of carbon atoms to bond with one another.',
+          'Covalent compounds generally have relatively low melting/boiling points and do not conduct electricity well.'
+        ]
+      },
+      {
+        id: 'hydrocarbons',
+        title: '2. Hydrocarbons and homologous series',
+        explanation: 'Hydrocarbons contain only carbon and hydrogen. Saturated hydrocarbons have only single carbon-carbon bonds (alkanes). Unsaturated hydrocarbons contain at least one double bond (alkenes) or triple bond (alkynes). A homologous series is a family with the same functional group and general formula, in which successive members differ by a –CH₂– unit.',
+        keyPoints: [
+          'Alkanes: single bonds; general formula CₙH₂ₙ₊₂ for open-chain members.',
+          'Alkenes: at least one double bond; general formula CₙH₂ₙ for one open-chain double bond.',
+          'Alkynes: at least one triple bond; general formula CₙH₂ₙ₋₂ for one open-chain triple bond.',
+          'Successive members of a homologous series differ by –CH₂– and by 14 u in molecular mass.'
+        ]
+      },
+      {
+        id: 'nomenclature-functional-groups',
+        title: '3. Naming compounds and functional groups',
+        explanation: 'The prefix tells the number of carbon atoms in the main chain: meth-, eth-, prop-, but-, pent- and so on. The ending indicates the family: -ane for an alkane, -ene for an alkene and -yne for an alkyne. Functional groups include halogens (–Cl, –Br), alcohol (–OH), aldehyde (–CHO) and ketone (>C=O).',
+        keyPoints: [
+          'Methane: CH₄; ethane: C₂H₆; ethene: C₂H₄; ethyne: C₂H₂.',
+          'An alcohol contains the –OH functional group.',
+          'An aldehyde has a terminal –CHO group.',
+          'A ketone has a carbonyl group within the carbon chain.'
+        ]
+      },
+      {
+        id: 'carbon-reactions',
+        title: '4. Reactions and useful compounds',
+        explanation: 'Combustion of carbon compounds in sufficient oxygen forms carbon dioxide and water and releases energy. Oxidation can convert ethanol to ethanoic acid using suitable oxidising agents. Unsaturated hydrocarbons can undergo addition reactions; alkanes commonly undergo substitution reactions with halogens in sunlight. Ethanol is used as a solvent and fuel; ethanoic acid is the acid in vinegar. Soaps form scum in hard water, while detergents work better in hard water.',
+        keyPoints: [
+          'Complete combustion produces carbon dioxide and water.',
+          'Addition reactions occur at carbon-carbon double or triple bonds.',
+          'Substitution replaces an atom or group in a molecule, often in alkanes.',
+          'Soap molecules form micelles that help remove oily dirt.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'carbon-example-1',
+        title: 'Example 1 · Saturated or unsaturated?',
+        question: 'Classify ethane (C₂H₆) and ethene (C₂H₄).',
+        steps: [
+          'Ethane has a single carbon-carbon bond only.',
+          'A hydrocarbon with only single carbon-carbon bonds is saturated.',
+          'Ethene has a carbon-carbon double bond, so it is unsaturated.'
+        ],
+        answer: 'Ethane is saturated; ethene is unsaturated.'
+      },
+      {
+        id: 'carbon-example-2',
+        title: 'Example 2 · Identify a functional group',
+        question: 'Which functional group is present in ethanol, C₂H₅OH?',
+        steps: [
+          'Look for the characteristic group in the formula.',
+          'The –OH group is called the hydroxyl group.',
+          'Compounds containing this group are alcohols.'
+        ],
+        answer: 'The alcohol (–OH) functional group.'
+      },
+      {
+        id: 'carbon-example-3',
+        title: 'Example 3 · Homologous series',
+        question: 'What is the next alkane after propane (C₃H₈)?',
+        steps: [
+          'Successive members of a homologous series differ by –CH₂–.',
+          'Add one carbon and two hydrogen atoms to C₃H₈.',
+          'The next formula is C₄H₁₀.'
+        ],
+        answer: 'Butane, C₄H₁₀.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Tetravalency', detail: 'Carbon generally forms four covalent bonds.' },
+      { title: 'Catenation', detail: 'Carbon bonds with other carbon atoms to form chains and rings.' },
+      { title: 'Homologous series', detail: 'Successive members differ by –CH₂–.' },
+      { title: 'Ethanol', detail: 'An alcohol containing the –OH group.' }
+    ],
+    questions: [
+      {
+        id: 'sci-carbon-q1',
+        prompt: 'Why does carbon form covalent bonds in most of its compounds?',
+        choices: [{ id: 'a', text: 'It always loses four electrons easily' }, { id: 'b', text: 'It shares electrons to complete its outer shell' }, { id: 'c', text: 'It has no valence electrons' }, { id: 'd', text: 'It forms only ionic bonds' }],
+        answer: 'b',
+        explanation: 'Carbon generally shares electrons rather than losing or gaining four electrons, forming covalent bonds.'
+      },
+      {
+        id: 'sci-carbon-q2',
+        prompt: 'Which compound is unsaturated?',
+        choices: [{ id: 'a', text: 'Ethane' }, { id: 'b', text: 'Propane' }, { id: 'c', text: 'Ethene' }, { id: 'd', text: 'Methane' }],
+        answer: 'c',
+        explanation: 'Ethene contains a carbon-carbon double bond.'
+      },
+      {
+        id: 'sci-carbon-q3',
+        prompt: 'What is the difference between successive members of a homologous series?',
+        choices: [{ id: 'a', text: '–CH₂–' }, { id: 'b', text: '–OH' }, { id: 'c', text: '–COOH' }, { id: 'd', text: 'One oxygen atom' }],
+        answer: 'a',
+        explanation: 'Successive members differ by one –CH₂– unit.'
+      },
+      {
+        id: 'sci-carbon-q4',
+        prompt: 'Why do detergents generally work better than soaps in hard water?',
+        choices: [{ id: 'a', text: 'Detergents form insoluble scum more easily' }, { id: 'b', text: 'Detergents do not form the same insoluble calcium and magnesium salts' }, { id: 'c', text: 'Detergents contain no carbon' }, { id: 'd', text: 'Detergents cannot dissolve in water' }],
+        answer: 'b',
+        explanation: 'Soap forms insoluble salts with calcium and magnesium ions in hard water; many detergents do not.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+  },
+  {
+    id: 'heredity',
+    curriculumItemId: 'sci-heredity',
+    subjectId: 'science',
+    title: 'Heredity',
+    chapterLabel: 'World of Living · Unit II · Formative only',
+    estimatedMinutes: 35,
+    syllabusScope: 'Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination. This topic is not assessed in the year-end examination; it may support portfolio/formative work.',
+    overview: 'Heredity is the passing of traits from parents to offspring. Genes carry information, and the combination of genes inherited by an offspring helps explain similarities and variation within a family.',
+    learningGoals: [
+      'Distinguish inherited traits from acquired traits.',
+      'Describe genes, chromosomes and alleles at an introductory level.',
+      'Use a simple monohybrid cross to explain Mendel’s observations.',
+      'Explain the basic XX–XY pattern of human sex determination.'
+    ],
+    sections: [
+      {
+        id: 'heredity-basics',
+        title: '1. Traits, genes and chromosomes',
+        explanation: 'A trait is a characteristic, such as seed shape or a blood group. Genes are segments of DNA that influence traits and are located on chromosomes. For many genes, an individual receives one allele from each biological parent. Different alleles can contribute to variation.',
+        keyPoints: [
+          'DNA stores inherited biological information.',
+          'Genes are parts of DNA located on chromosomes.',
+          'Alleles are alternative forms of a gene.',
+          'An acquired change during life is not automatically inherited by offspring.'
+        ]
+      },
+      {
+        id: 'mendel',
+        title: '2. Mendel and inheritance patterns',
+        explanation: 'Gregor Mendel studied inheritance in pea plants. In a simple monohybrid cross, if a pure tall plant (TT) is crossed with a pure dwarf plant (tt), the F₁ offspring are Tt and tall when T is dominant. Crossing two F₁ plants (Tt × Tt) gives genotypes TT, Tt, Tt and tt, producing a 3:1 dominant-to-recessive phenotype ratio under this simplified model.',
+        keyPoints: [
+          'Dominant alleles can show their effect in a heterozygous pair.',
+          'A recessive trait appears in this simple model when both alleles are recessive.',
+          'The F₂ genotypic ratio in Tt × Tt is 1:2:1.',
+          'The F₂ phenotypic ratio is 3:1 when complete dominance applies.'
+        ]
+      },
+      {
+        id: 'sex-determination',
+        title: '3. Human sex determination',
+        explanation: 'In the simplified human XX–XY system, most females have XX sex chromosomes and most males have XY. An egg normally carries an X chromosome. A sperm carries either X or Y, so fertilisation can form XX or XY. This is a simplified classroom model; biological sex development is more varied than this single chromosome pattern.',
+        keyPoints: [
+          'The egg normally contributes an X chromosome.',
+          'An X-bearing sperm can produce an XX combination; a Y-bearing sperm can produce an XY combination.',
+          'The probability is approximately 1:1 for XX and XY in this simple model.',
+          'Do not blame or stigmatise a parent for a child’s sex.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'heredity-example-1',
+        title: 'Example 1 · Monohybrid cross',
+        question: 'Cross Tt × Tt, where T is dominant for tallness and t is recessive for dwarfness. What offspring genotypes are possible?',
+        steps: [
+          'Each parent can produce gametes T and t.',
+          'Combine them: TT, Tt, Tt and tt.',
+          'Count the genotypes: one TT, two Tt and one tt.'
+        ],
+        answer: 'Genotypic ratio = 1 TT : 2 Tt : 1 tt.'
+      },
+      {
+        id: 'heredity-example-2',
+        title: 'Example 2 · Phenotype ratio',
+        question: 'Using Tt × Tt, what is the expected tall-to-dwarf phenotype ratio under complete dominance?',
+        steps: [
+          'TT is tall and both Tt offspring are also tall because T is dominant.',
+          'Only tt is dwarf.',
+          'There are three tall combinations and one dwarf combination.'
+        ],
+        answer: '3 tall : 1 dwarf.'
+      },
+      {
+        id: 'heredity-example-3',
+        title: 'Example 3 · Sex chromosomes',
+        question: 'In the simple human XX–XY model, which parent can contribute either an X or a Y chromosome?',
+        steps: [
+          'An egg normally carries an X chromosome.',
+          'Sperm can carry either X or Y in the simplified model.',
+          'Therefore the sperm contribution determines whether the combination is XX or XY.'
+        ],
+        answer: 'The sperm-producing parent.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Gene', detail: 'A segment of DNA associated with an inherited characteristic.' },
+      { title: 'Alleles', detail: 'Alternative forms of a gene.' },
+      { title: 'F₂ phenotype ratio', detail: '3:1 for the simple Tt × Tt complete-dominance example.' },
+      { title: 'Human chromosomes', detail: 'The introductory model uses XX and XY combinations.' }
+    ],
+    questions: [
+      {
+        id: 'sci-heredity-q1',
+        prompt: 'What is a gene?',
+        choices: [{ id: 'a', text: 'A segment of DNA associated with a trait' }, { id: 'b', text: 'A type of blood cell' }, { id: 'c', text: 'A complete organ' }, { id: 'd', text: 'A food molecule' }],
+        answer: 'a',
+        explanation: 'A gene is a segment of DNA that carries information associated with an inherited characteristic.'
+      },
+      {
+        id: 'sci-heredity-q2',
+        prompt: 'In Tt × Tt, what is the genotype ratio?',
+        choices: [{ id: 'a', text: '3:1' }, { id: 'b', text: '1:2:1' }, { id: 'c', text: '1:1' }, { id: 'd', text: '2:1' }],
+        answer: 'b',
+        explanation: 'The four combinations are TT, Tt, Tt and tt, giving a 1:2:1 genotypic ratio.'
+      },
+      {
+        id: 'sci-heredity-q3',
+        prompt: 'Which genotype expresses the recessive trait in the simple complete-dominance model?',
+        choices: [{ id: 'a', text: 'TT' }, { id: 'b', text: 'Tt' }, { id: 'c', text: 'tt' }, { id: 'd', text: 'Both TT and Tt' }],
+        answer: 'c',
+        explanation: 'The recessive phenotype appears when both alleles are recessive (tt).'
+      },
+      {
+        id: 'sci-heredity-q4',
+        prompt: 'In the simplified human XX–XY model, which gamete can carry a Y chromosome?',
+        choices: [{ id: 'a', text: 'Egg' }, { id: 'b', text: 'Sperm' }, { id: 'c', text: 'Both egg and sperm equally' }, { id: 'd', text: 'Neither' }],
+        answer: 'b',
+        explanation: 'An egg normally carries X, while sperm can carry either X or Y in the simplified model.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit II'
+  },
+  {
+    id: 'evolution',
+    curriculumItemId: 'sci-evolution',
+    subjectId: 'science',
+    title: 'Evolution',
+    chapterLabel: 'World of Living · Unit II · Formative only',
+    estimatedMinutes: 35,
+    syllabusScope: 'Acquired and inherited traits, speciation, evolution and classification, tracing evolutionary relationships, fossils, evolution by stages and human evolution. This topic is formative only.',
+    overview: 'Evolution describes changes in inherited characteristics of populations over generations. Variation, inheritance and natural selection help explain how populations change and how new species may arise.',
+    learningGoals: [
+      'Distinguish acquired and inherited variations.',
+      'Explain natural selection using a simple example.',
+      'Describe fossils as evidence about past life.',
+      'Recognise how classification and evolutionary relationships are connected.'
+    ],
+    sections: [
+      {
+        id: 'variation',
+        title: '1. Acquired and inherited traits',
+        explanation: 'Inherited variations are passed from parents to offspring through genetic material. Acquired traits develop during an organism’s lifetime, such as a scar or muscles strengthened by exercise, and generally do not change the DNA in reproductive cells. Such changes are therefore not normally inherited.',
+        keyPoints: [
+          'Inherited variations can be passed to offspring.',
+          'Acquired characteristics are developed during life and are not normally inherited.',
+          'Sexual reproduction and DNA-copying changes generate variation.'
+        ]
+      },
+      {
+        id: 'natural-selection',
+        title: '2. Natural selection',
+        explanation: 'Individuals in a population vary. Some inherited variations can help organisms survive and reproduce in a particular environment. Those traits may become more common over generations because individuals carrying them leave more offspring. Natural selection acts on existing inherited variation; organisms do not consciously develop a trait because they need it.',
+        keyPoints: [
+          'Variation exists within populations.',
+          'The environment influences which variations affect survival and reproduction.',
+          'A helpful inherited trait can become more common across generations.',
+          'Natural selection changes populations over time, not an individual organism during its lifetime.'
+        ]
+      },
+      {
+        id: 'speciation-classification',
+        title: '3. Speciation and classification',
+        explanation: 'Speciation is the formation of new species. When populations become separated and gene flow is reduced, they may accumulate different variations over many generations. If reproductive isolation develops, they may become separate species. Classification groups organisms using shared characteristics and helps scientists study relationships.',
+        keyPoints: [
+          'Geographical or reproductive isolation can reduce gene flow.',
+          'Different environments and variation can lead populations along different evolutionary paths.',
+          'Classification uses similarities and differences to organise organisms.'
+        ]
+      },
+      {
+        id: 'fossils-human-evolution',
+        title: '4. Fossils and tracing evolutionary relationships',
+        explanation: 'Fossils are preserved remains, impressions or traces of ancient organisms. They provide evidence about organisms that lived in the past and the order in which forms appeared in rock layers. Comparative anatomy and other evidence can help trace relationships. Human evolution is a branching process, not a simple ladder from one modern species to another.',
+        keyPoints: [
+          'Fossils provide evidence about past life and changes over time.',
+          'Deeper rock layers often contain older fossils, though geological processes can disturb layers.',
+          'Evolutionary relationships are better represented as branching trees than as a ladder of progress.',
+          'Modern humans and other living primates share common ancestors.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'evolution-example-1',
+        title: 'Example 1 · Acquired or inherited?',
+        question: 'A person develops a scar after an injury. Is the scar generally inherited by their children?',
+        steps: [
+          'The scar develops during the person’s lifetime.',
+          'It does not normally alter the DNA in reproductive cells.',
+          'Therefore it is an acquired characteristic, not normally passed to offspring.'
+        ],
+        answer: 'No. A scar is an acquired trait and is not normally inherited.'
+      },
+      {
+        id: 'evolution-example-2',
+        title: 'Example 2 · Natural selection',
+        question: 'In a population of insects, darker insects are harder for predators to see on dark tree bark. What may happen over many generations?',
+        steps: [
+          'There is variation in colour within the population.',
+          'Darker insects may survive and reproduce more often in this environment.',
+          'If the colour difference is inherited, the dark-colour trait may become more common over generations.'
+        ],
+        answer: 'The inherited dark-colour trait may increase in frequency in that environment.'
+      },
+      {
+        id: 'evolution-example-3',
+        title: 'Example 3 · Fossil evidence',
+        question: 'What can fossils tell scientists about the history of life?',
+        steps: [
+          'Fossils preserve evidence of past organisms or their activity.',
+          'Their positions in rock layers help establish a relative sequence through time.',
+          'Comparing fossils can reveal changes and relationships among organisms.'
+        ],
+        answer: 'Fossils provide evidence about past life and evolutionary change.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Inherited variation', detail: 'Variation that can be passed from parents to offspring.' },
+      { title: 'Natural selection', detail: 'Inherited traits linked to greater reproductive success can become more common.' },
+      { title: 'Speciation', detail: 'Formation of new species, often following long-term population separation.' },
+      { title: 'Fossil', detail: 'Preserved remains, impressions or traces of ancient life.' }
+    ],
+    questions: [
+      {
+        id: 'sci-evolution-q1',
+        prompt: 'Which is generally an acquired trait?',
+        choices: [{ id: 'a', text: 'A scar from an injury' }, { id: 'b', text: 'A gene variant inherited from a parent' }, { id: 'c', text: 'A chromosome inherited at fertilisation' }, { id: 'd', text: 'An inherited blood group allele' }],
+        answer: 'a',
+        explanation: 'A scar forms during an individual’s lifetime and is not normally inherited through reproductive-cell DNA.'
+      },
+      {
+        id: 'sci-evolution-q2',
+        prompt: 'Natural selection acts most directly on which level?',
+        choices: [{ id: 'a', text: 'Inherited variation among individuals in a population' }, { id: 'b', text: 'A wish of an individual organism' }, { id: 'c', text: 'A single organism deciding to evolve' }, { id: 'd', text: 'Only fossils' }],
+        answer: 'a',
+        explanation: 'Natural selection is linked to differences in survival and reproduction associated with inherited variation.'
+      },
+      {
+        id: 'sci-evolution-q3',
+        prompt: 'What is speciation?',
+        choices: [{ id: 'a', text: 'Formation of a new species' }, { id: 'b', text: 'Formation of a single cell' }, { id: 'c', text: 'Loss of all variation' }, { id: 'd', text: 'A type of acquired injury' }],
+        answer: 'a',
+        explanation: 'Speciation is the process by which new species arise.'
+      },
+      {
+        id: 'sci-evolution-q4',
+        prompt: 'What are fossils?',
+        choices: [{ id: 'a', text: 'Only living organisms' }, { id: 'b', text: 'Preserved remains, impressions or traces of ancient organisms' }, { id: 'c', text: 'Artificial models only' }, { id: 'd', text: 'Modern genetic tests' }],
+        answer: 'b',
+        explanation: 'Fossils preserve physical or trace evidence of organisms that lived in the past.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit II'
+  },
+  {
+    id: 'motor-electromagnetic-induction-generator',
+    curriculumItemId: 'sci-motor',
+    subjectId: 'science',
+    title: 'Motor, Electromagnetic Induction and Generator',
+    chapterLabel: 'Effects of Current · Unit IV · Formative only',
+    estimatedMinutes: 35,
+    syllabusScope: 'Electric motor, electromagnetic induction and electric generator. These topics are included for formative learning but not assessed in the year-end examination.',
+    overview: 'Electricity and magnetism are connected. A current can produce motion in a magnetic field, and a changing magnetic field can induce an electric current.',
+    learningGoals: [
+      'Explain the basic working idea of a simple electric motor.',
+      'Describe electromagnetic induction.',
+      'Distinguish an electric motor from an electric generator.',
+      'Identify the energy conversion in each device.'
+    ],
+    sections: [
+      {
+        id: 'motor',
+        title: '1. Electric motor',
+        explanation: 'A simple DC motor uses the force on a current-carrying coil placed in a magnetic field. The forces on opposite sides of the coil act in opposite directions and create a turning effect. A split-ring commutator reverses the current in the coil every half-turn so that the coil continues rotating in the same direction.',
+        keyPoints: [
+          'An electric motor converts electrical energy into mechanical energy.',
+          'The magnetic field and current interact to produce a force.',
+          'A split-ring commutator reverses current every half-turn in a simple DC motor.'
+        ]
+      },
+      {
+        id: 'induction',
+        title: '2. Electromagnetic induction',
+        explanation: 'Electromagnetic induction is the production of an induced potential difference (and current in a closed circuit) when the magnetic field linked with a conductor or coil changes. This can happen by moving a magnet relative to a coil or moving the coil in a magnetic field.',
+        keyPoints: [
+          'Relative motion between a magnet and coil can change magnetic flux.',
+          'A changing magnetic field can induce a potential difference.',
+          'The direction of induced current depends on the direction of change and motion.'
+        ]
+      },
+      {
+        id: 'generator',
+        title: '3. Electric generator',
+        explanation: 'An electric generator uses electromagnetic induction. When a coil rotates in a magnetic field, the magnetic flux through it changes and an induced current is produced. A generator converts mechanical energy into electrical energy. The output may be alternating current or direct current depending on the construction.',
+        keyPoints: [
+          'A generator converts mechanical energy into electrical energy.',
+          'A simple AC generator uses slip rings.',
+          'A DC generator uses a split-ring commutator.',
+          'A motor and a generator perform opposite energy-conversion roles.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'motor-example-1',
+        title: 'Example 1 · Identify the device',
+        question: 'A device uses electrical energy to rotate a fan. Which principle is used?',
+        steps: [
+          'The input is electrical energy.',
+          'The output is mechanical rotation.',
+          'A motor uses the force on a current-carrying conductor in a magnetic field.'
+        ],
+        answer: 'An electric motor.'
+      },
+      {
+        id: 'motor-example-2',
+        title: 'Example 2 · Induced current',
+        question: 'A bar magnet is moved towards a coil connected to a galvanometer. Why may the galvanometer deflect?',
+        steps: [
+          'Moving the magnet changes the magnetic field linked with the coil.',
+          'The changing magnetic field induces a potential difference.',
+          'Because the circuit is closed, an induced current flows and the galvanometer deflects.'
+        ],
+        answer: 'Electromagnetic induction produces an induced current.'
+      },
+      {
+        id: 'motor-example-3',
+        title: 'Example 3 · Motor or generator?',
+        question: 'Which device converts mechanical energy into electrical energy?',
+        steps: [
+          'A motor converts electrical energy to mechanical energy.',
+          'A generator uses mechanical motion to induce electrical energy.'
+        ],
+        answer: 'An electric generator.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Motor', detail: 'Electrical energy → mechanical energy.' },
+      { title: 'Induction', detail: 'Changing magnetic flux can induce a potential difference.' },
+      { title: 'Generator', detail: 'Mechanical energy → electrical energy.' },
+      { title: 'Commutator', detail: 'A split ring reverses coil current every half-turn in a simple DC motor.' }
+    ],
+    questions: [
+      {
+        id: 'sci-motor-q1',
+        prompt: 'What is the main energy conversion in an electric motor?',
+        choices: [{ id: 'a', text: 'Electrical to mechanical' }, { id: 'b', text: 'Mechanical to electrical' }, { id: 'c', text: 'Chemical to nuclear' }, { id: 'd', text: 'Heat to chemical' }],
+        answer: 'a',
+        explanation: 'A motor converts electrical energy into mechanical movement.'
+      },
+      {
+        id: 'sci-motor-q2',
+        prompt: 'What is electromagnetic induction?',
+        choices: [{ id: 'a', text: 'Production of an induced potential difference due to changing magnetic flux' }, { id: 'b', text: 'Heating a resistor only' }, { id: 'c', text: 'Reflection of light' }, { id: 'd', text: 'Charging an object by friction only' }],
+        answer: 'a',
+        explanation: 'A changing magnetic field linked with a conductor can induce a potential difference.'
+      },
+      {
+        id: 'sci-motor-q3',
+        prompt: 'What is the main energy conversion in an electric generator?',
+        choices: [{ id: 'a', text: 'Electrical to mechanical' }, { id: 'b', text: 'Mechanical to electrical' }, { id: 'c', text: 'Light to sound' }, { id: 'd', text: 'Chemical to heat only' }],
+        answer: 'b',
+        explanation: 'A generator converts mechanical energy into electrical energy by electromagnetic induction.'
+      },
+      {
+        id: 'sci-motor-q4',
+        prompt: 'Which component reverses the current in a simple DC motor every half-turn?',
+        choices: [{ id: 'a', text: 'Slip rings' }, { id: 'b', text: 'Split-ring commutator' }, { id: 'c', text: 'Fuse' }, { id: 'd', text: 'Resistor' }],
+        answer: 'b',
+        explanation: 'The split-ring commutator reverses the current every half-turn so the coil keeps turning in the same direction.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit IV'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -2989,7 +3503,11 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'sci-reproduction': 'reproduction',
   'sci-light': 'light-reflection-and-refraction',
   'sci-electric': 'electricity-and-magnetic-effects',
-  'sci-environment': 'our-environment'
+  'sci-environment': 'our-environment',
+  'sci-carbon': 'carbon-and-its-compounds',
+  'sci-heredity': 'heredity',
+  'sci-evolution': 'evolution',
+  'sci-motor': 'motor-electromagnetic-induction-generator'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
