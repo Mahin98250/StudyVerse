@@ -136,6 +136,42 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
           'Both p and q are divisible by 2. That contradicts the lowest-terms assumption.'
         ],
         answer: 'The numerator and denominator are both even, so the fraction was not in lowest terms.'
+      },
+      {
+        id: 'example-sqrt3',
+        title: 'Example 4 · Prove √3 is irrational',
+        question: 'Use contradiction to prove that √3 cannot be written as a fraction.',
+        steps: [
+          'Assume √3 = a/b, where a and b are coprime integers and b ≠ 0.',
+          'Squaring gives a² = 3b². Therefore 3 divides a², so the prime 3 divides a.',
+          'Write a = 3k. Substitution gives 9k² = 3b², or b² = 3k². Thus 3 also divides b.',
+          'Both a and b are divisible by 3, contradicting that they are coprime.'
+        ],
+        answer: '√3 is irrational.'
+      },
+      {
+        id: 'example-sqrt5',
+        title: 'Example 5 · Prove √5 is irrational',
+        question: 'Apply the same contradiction structure to √5.',
+        steps: [
+          'Assume √5 = a/b in lowest terms, with integers a and b and b ≠ 0.',
+          'Squaring gives a² = 5b². Since 5 divides a² and 5 is prime, 5 divides a.',
+          'Write a = 5k. Then 25k² = 5b², so b² = 5k². Hence 5 divides b.',
+          'The numerator and denominator share a factor 5, contradicting lowest terms.'
+        ],
+        answer: '√5 is irrational.'
+      },
+      {
+        id: 'example-linear-irrational',
+        title: 'Example 6 · Prove 3 + 2√5 is irrational',
+        question: 'Show that 3 + 2√5 is irrational using the result for √5.',
+        steps: [
+          'Assume 3 + 2√5 is rational. Call this rational number r.',
+          'Rearrange: 2√5 = r − 3.',
+          'Divide by 2: √5 = (r − 3)/2.',
+          'A difference and quotient of rational numbers (with non-zero divisor) is rational, so this would make √5 rational. That contradicts the previous proof.'
+        ],
+        answer: '3 + 2√5 is irrational.'
       }
     ],
     keyFacts: [
