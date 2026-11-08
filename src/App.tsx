@@ -1,6 +1,6 @@
 import {useEffect,useState,type ReactNode,type CSSProperties} from 'react'
 import {NavLink,Outlet,Route,Routes,useLocation,Link} from 'react-router-dom'
-import {Activity,BookOpen,CalendarDays,ChartNoAxesCombined,ChevronRight,Clock3,GraduationCap,LayoutDashboard,Menu,NotebookPen,Settings,Sparkles,Target,X,ArrowRight,ArrowUpRight,Timer,Flame,TrendingUp,Search,ClipboardCheck,Brain,Download,Upload,Database,ShieldCheck,Play,Pause,RotateCcw,Check} from 'lucide-react'
+import {Activity,BookOpen,CalendarDays,ChartNoAxesCombined,ChevronRight,Clock3,GraduationCap,LayoutDashboard,Menu,NotebookPen,Settings,Sparkles,Target,X,ArrowRight,Timer,Flame,TrendingUp,ClipboardCheck,Brain,Download,Upload,Database,ShieldCheck,Play,Pause,RotateCcw,Check} from 'lucide-react'
 import {db,exportBackup,importBackup,formatDuration,makeId,type Subject,type StudySession} from './core'
 import LearningHub from './LearningHub'
 const nav=[{to:'/',label:'Overview',icon:LayoutDashboard,end:true},{to:'/learn',label:'My learning',icon:BookOpen},{to:'/practice',label:'Practice & exams',icon:NotebookPen},{to:'/revision',label:'Smart revision',icon:Sparkles},{to:'/planner',label:'Study planner',icon:CalendarDays},{to:'/focus',label:'Focus mode',icon:Clock3},{to:'/analytics',label:'Analytics',icon:ChartNoAxesCombined}]
