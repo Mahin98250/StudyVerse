@@ -36,3 +36,7 @@
 .learn-empty h2{font-family:Manrope!important;color:#465345!important}
 .learn-empty p{color:#879184!important}
 @media(max-width:760px){.learn-title-row{padding:17px!important}.learn-item{padding:13px!important}}
+
+
+/* Chapter study entry point */
+.learn-study-link{display:inline-flex;align-items:center;gap:7px;width:max-content;margin-top:10px;padding:8px 10px;background:#d8ff3e;color:#172016;font-size:8px;font-weight:800;letter-spacing:.15px}.learn-study-link:hover{background:#c7ed37}.learn-study-link svg:last-child{margin-left:3px}@media(max-width:760px){.learn-study-link{padding:8px 9px}}
