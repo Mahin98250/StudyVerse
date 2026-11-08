@@ -1125,6 +1125,385 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: mathematicsSource,
     sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 5'
   }
+,
+  {
+    id: 'introduction-to-trigonometry',
+    curriculumItemId: 'math-trig',
+    subjectId: 'mathematics',
+    title: 'Introduction to Trigonometry',
+    chapterLabel: 'Trigonometry · Unit V',
+    estimatedMinutes: 40,
+    syllabusScope: 'Trigonometric ratios of an acute angle, existence of ratios at 0° and 90°, standard values at 30°, 45° and 60°, and relationships between ratios.',
+    overview: 'Trigonometry connects angles with side lengths in a right-angled triangle. Once you know the basic ratios, you can describe an unknown side or angle using a simple relationship.',
+    learningGoals: [
+      'Identify the opposite, adjacent and hypotenuse sides for a chosen angle.',
+      'Define the six trigonometric ratios.',
+      'Recall standard values at 0°, 30°, 45°, 60° and 90°.',
+      'Use relationships between the trigonometric ratios.'
+    ],
+    sections: [
+      {
+        id: 'trig-sides',
+        title: '1. Name the sides relative to an angle',
+        explanation: 'In a right-angled triangle, the hypotenuse is always opposite the 90° angle and is the longest side. For a chosen acute angle θ, the opposite side lies across from θ and the adjacent side is next to θ but is not the hypotenuse. These names depend on which acute angle you choose.',
+        keyPoints: [
+          'Hypotenuse: opposite the right angle.',
+          'Opposite: across from the angle θ.',
+          'Adjacent: next to θ, excluding the hypotenuse.'
+        ]
+      },
+      {
+        id: 'trig-ratios',
+        title: '2. The six trigonometric ratios',
+        explanation: 'For an acute angle θ: sin θ = opposite/hypotenuse; cos θ = adjacent/hypotenuse; tan θ = opposite/adjacent. Their reciprocals are cosec θ = hypotenuse/opposite, sec θ = hypotenuse/adjacent and cot θ = adjacent/opposite.',
+        keyPoints: [
+          'Remember sin = P/H, cos = B/H and tan = P/B.',
+          'cosec θ = 1/sin θ, sec θ = 1/cos θ and cot θ = 1/tan θ.',
+          'tan θ = sin θ/cos θ whenever cos θ is not zero.'
+        ]
+      },
+      {
+        id: 'trig-standard-values',
+        title: '3. Standard-angle values',
+        explanation: 'The standard angles 30°, 45° and 60° have exact ratio values. At the endpoints, sin 0° = 0 and cos 0° = 1; sin 90° = 1 and cos 90° = 0. A ratio with zero in its denominator is undefined, so tan 90°, sec 90°, cosec 0° and cot 0° are undefined.',
+        keyPoints: [
+          'sin 30° = 1/2, cos 30° = √3/2, tan 30° = 1/√3.',
+          'sin 45° = cos 45° = 1/√2 and tan 45° = 1.',
+          'sin 60° = √3/2, cos 60° = 1/2, tan 60° = √3.',
+          'Do not write a numerical value for a ratio whose denominator is zero.'
+        ]
+      },
+      {
+        id: 'trig-relations',
+        title: '4. Relationships between ratios',
+        explanation: 'The reciprocal pairs are sin/cosec, cos/sec and tan/cot. Also tan θ = sin θ/cos θ. These relationships let you move between different trigonometric ratios without returning to the triangle every time.',
+        keyPoints: [
+          'sin θ × cosec θ = 1.',
+          'cos θ × sec θ = 1.',
+          'tan θ × cot θ = 1.',
+          'tan θ = sin θ/cos θ.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'trig-example-1',
+        title: 'Example 1 · Find ratios from sides',
+        question: 'In a right triangle, relative to angle θ, the opposite side is 3 cm, adjacent side is 4 cm and hypotenuse is 5 cm. Find sin θ, cos θ and tan θ.',
+        steps: [
+          'sin θ = opposite/hypotenuse = 3/5.',
+          'cos θ = adjacent/hypotenuse = 4/5.',
+          'tan θ = opposite/adjacent = 3/4.'
+        ],
+        answer: 'sin θ = 3/5, cos θ = 4/5 and tan θ = 3/4.'
+      },
+      {
+        id: 'trig-example-2',
+        title: 'Example 2 · Standard angle',
+        question: 'Evaluate sin 60° + cos 60°.',
+        steps: [
+          'Recall sin 60° = √3/2.',
+          'Recall cos 60° = 1/2.',
+          'Add the values with the same denominator.'
+        ],
+        answer: '(√3 + 1)/2.'
+      },
+      {
+        id: 'trig-example-3',
+        title: 'Example 3 · Use a ratio relationship',
+        question: 'If sin θ = 3/5 and θ is acute, find cos θ.',
+        steps: [
+          'Use sin² θ + cos² θ = 1.',
+          'cos² θ = 1 − (3/5)² = 1 − 9/25 = 16/25.',
+          'cos θ = ±4/5, but θ is acute, so cosine is positive.'
+        ],
+        answer: 'cos θ = 4/5.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Sine', detail: 'sin θ = perpendicular / hypotenuse.' },
+      { title: 'Cosine', detail: 'cos θ = base / hypotenuse.' },
+      { title: 'Tangent', detail: 'tan θ = perpendicular / base.' },
+      { title: 'Standard values', detail: 'Know the exact sin, cos and tan values for 30°, 45° and 60°.' }
+    ],
+    questions: [
+      {
+        id: 'trig-q1',
+        prompt: 'Which side is always the longest side of a right-angled triangle?',
+        choices: [{ id: 'a', text: 'Opposite side' }, { id: 'b', text: 'Adjacent side' }, { id: 'c', text: 'Hypotenuse' }, { id: 'd', text: 'Base angle' }],
+        answer: 'c',
+        explanation: 'The hypotenuse is opposite the right angle and is always the longest side.'
+      },
+      {
+        id: 'trig-q2',
+        prompt: 'What is sin 30°?',
+        choices: [{ id: 'a', text: '1/2' }, { id: 'b', text: '√3/2' }, { id: 'c', text: '1' }, { id: 'd', text: '0' }],
+        answer: 'a',
+        explanation: 'The standard value of sin 30° is 1/2.'
+      },
+      {
+        id: 'trig-q3',
+        prompt: 'What is tan 45°?',
+        choices: [{ id: 'a', text: '0' }, { id: 'b', text: '1/√3' }, { id: 'c', text: '1' }, { id: 'd', text: '√3' }],
+        answer: 'c',
+        explanation: 'At 45°, opposite and adjacent sides are equal, so tan 45° = 1.'
+      },
+      {
+        id: 'trig-q4',
+        prompt: 'Which ratio is undefined at 90°?',
+        choices: [{ id: 'a', text: 'sin 90°' }, { id: 'b', text: 'cos 90°' }, { id: 'c', text: 'tan 90°' }, { id: 'd', text: 'cosec 90°' }],
+        answer: 'c',
+        explanation: 'tan θ = sin θ/cos θ. Since cos 90° = 0, tan 90° is undefined.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 5'
+  },
+  {
+    id: 'trigonometric-identities',
+    curriculumItemId: 'math-ident',
+    subjectId: 'mathematics',
+    title: 'Trigonometric Identities',
+    chapterLabel: 'Trigonometry · Unit V',
+    estimatedMinutes: 25,
+    syllabusScope: 'Proof and applications of sin²θ + cos²θ = 1; simple identities only.',
+    overview: 'An identity is an equation that is true for every angle for which both sides are defined. The key identity connects sine and cosine and can simplify many expressions.',
+    learningGoals: [
+      'State the fundamental trigonometric identity.',
+      'Explain why the identity follows from Pythagoras.',
+      'Use the identity to find one ratio when the other is known.',
+      'Simplify simple expressions using the identity.'
+    ],
+    sections: [
+      {
+        id: 'identity-meaning',
+        title: '1. What is an identity?',
+        explanation: 'An identity is a relationship that is true for every allowed value of the angle, not just one selected angle. In Class X, the central identity is sin²θ + cos²θ = 1. The square means the ratio is multiplied by itself: sin²θ means (sin θ)².',
+        keyPoints: [
+          'sin²θ is not the same as sin(θ²).',
+          'The identity is valid for angles where the ratios are defined.',
+          'Use brackets carefully when substituting a negative or fractional value.'
+        ]
+      },
+      {
+        id: 'identity-proof',
+        title: '2. Why the identity is true',
+        explanation: 'In a right triangle, let the perpendicular, base and hypotenuse be P, B and H. By Pythagoras, P² + B² = H². Divide every term by H²: P²/H² + B²/H² = 1. Since P/H = sin θ and B/H = cos θ, this becomes sin²θ + cos²θ = 1.',
+        keyPoints: [
+          'Start with the Pythagoras theorem.',
+          'Divide every term by the square of the hypotenuse.',
+          'Replace P/H with sin θ and B/H with cos θ.'
+        ]
+      },
+      {
+        id: 'identity-use',
+        title: '3. Apply the identity',
+        explanation: 'If one of sine or cosine is known, rearrange the identity to find the square of the other. For an acute angle both sine and cosine are positive, so choose the positive square root. For example, if sin θ = 3/5, then cos²θ = 1 − 9/25 = 16/25 and cos θ = 4/5.',
+        keyPoints: [
+          'cos²θ = 1 − sin²θ.',
+          'sin²θ = 1 − cos²θ.',
+          'For an acute angle, sin θ and cos θ are positive.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'identity-example-1',
+        title: 'Example 1 · Find cosine',
+        question: 'If sin θ = 5/13 and θ is acute, find cos θ.',
+        steps: [
+          'Use sin²θ + cos²θ = 1.',
+          'cos²θ = 1 − 25/169 = 144/169.',
+          'Take the positive square root because θ is acute.'
+        ],
+        answer: 'cos θ = 12/13.'
+      },
+      {
+        id: 'identity-example-2',
+        title: 'Example 2 · Find sine',
+        question: 'If cos θ = 8/17 and θ is acute, find sin θ.',
+        steps: [
+          'Use sin²θ = 1 − cos²θ.',
+          'sin²θ = 1 − 64/289 = 225/289.',
+          'Take the positive square root because θ is acute.'
+        ],
+        answer: 'sin θ = 15/17.'
+      },
+      {
+        id: 'identity-example-3',
+        title: 'Example 3 · Simplify',
+        question: 'Simplify (1 − cos²θ)/sin²θ, where sin θ ≠ 0.',
+        steps: [
+          'From sin²θ + cos²θ = 1, rearrange to 1 − cos²θ = sin²θ.',
+          'Substitute into the numerator.',
+          'The expression becomes sin²θ/sin²θ.'
+        ],
+        answer: '1.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Main identity', detail: 'sin²θ + cos²θ = 1.' },
+      { title: 'Rearranged', detail: 'sin²θ = 1 − cos²θ.' },
+      { title: 'Rearranged', detail: 'cos²θ = 1 − sin²θ.' },
+      { title: 'Proof idea', detail: 'Divide P² + B² = H² by H².' }
+    ],
+    questions: [
+      {
+        id: 'identity-q1',
+        prompt: 'Which is the fundamental trigonometric identity in this syllabus?',
+        choices: [{ id: 'a', text: 'sin θ + cos θ = 1' }, { id: 'b', text: 'sin²θ + cos²θ = 1' }, { id: 'c', text: 'tan θ + cot θ = 1' }, { id: 'd', text: 'sin θ × cos θ = 1' }],
+        answer: 'b',
+        explanation: 'The identity is sin²θ + cos²θ = 1.'
+      },
+      {
+        id: 'identity-q2',
+        prompt: 'If sin θ = 3/5 and θ is acute, what is cos θ?',
+        choices: [{ id: 'a', text: '3/5' }, { id: 'b', text: '5/3' }, { id: 'c', text: '4/5' }, { id: 'd', text: '1/5' }],
+        answer: 'c',
+        explanation: 'cos²θ = 1 − 9/25 = 16/25, and the positive root is 4/5.'
+      },
+      {
+        id: 'identity-q3',
+        prompt: 'Which theorem gives the geometric starting point for proving sin²θ + cos²θ = 1?',
+        choices: [{ id: 'a', text: 'Basic Proportionality Theorem' }, { id: 'b', text: 'Pythagoras theorem' }, { id: 'c', text: 'Tangent-radius theorem' }, { id: 'd', text: 'Angle sum property only' }],
+        answer: 'b',
+        explanation: 'The proof begins with P² + B² = H² for the right triangle.'
+      },
+      {
+        id: 'identity-q4',
+        prompt: 'Simplify (1 − sin²θ)/cos²θ, where cos θ ≠ 0.',
+        choices: [{ id: 'a', text: '0' }, { id: 'b', text: '1' }, { id: 'c', text: 'sin θ' }, { id: 'd', text: 'cos θ' }],
+        answer: 'b',
+        explanation: 'Since 1 − sin²θ = cos²θ, the expression is cos²θ/cos²θ = 1.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 5'
+  },
+  {
+    id: 'heights-and-distances',
+    curriculumItemId: 'math-height',
+    subjectId: 'mathematics',
+    title: 'Heights and Distances',
+    chapterLabel: 'Trigonometry · Unit V',
+    estimatedMinutes: 30,
+    syllabusScope: 'Angle of elevation and depression; simple problems using 30°, 45° and 60°; no problem should involve more than two right triangles.',
+    overview: 'Trigonometry can measure a height or distance without directly reaching the object. Draw a right triangle, label the angle and choose the ratio that connects the known and unknown sides.',
+    learningGoals: [
+      'Understand angle of elevation and angle of depression.',
+      'Draw and label a right-triangle model from a word problem.',
+      'Choose sine, cosine or tangent based on the known sides.',
+      'Solve simple height-and-distance problems using 30°, 45° and 60°.'
+    ],
+    sections: [
+      {
+        id: 'elevation-depression',
+        title: '1. Elevation and depression',
+        explanation: 'The angle of elevation is the angle between the horizontal line through the observer and the line of sight when looking upward. The angle of depression is measured downward from the horizontal line through the observer. When the horizontal lines are parallel, the angle of depression equals the corresponding angle of elevation at the other point.',
+        keyPoints: [
+          'Draw the horizontal through the observer before marking the angle.',
+          'The line of sight is the sloping side of the triangle.',
+          'Do not confuse the angle with the vertical side of the triangle.'
+        ]
+      },
+      {
+        id: 'choose-ratio',
+        title: '2. Choose the right ratio',
+        explanation: 'After drawing the right triangle, identify the angle θ and label the opposite, adjacent and hypotenuse sides. Use tan θ = opposite/adjacent when the height and horizontal distance are involved. Use sine or cosine when the hypotenuse is part of the known or unknown information.',
+        keyPoints: [
+          'Height is often the side opposite the angle of elevation.',
+          'Horizontal distance is often adjacent to the angle.',
+          'Write the ratio before substituting numerical values.'
+        ]
+      },
+      {
+        id: 'model-check',
+        title: '3. Build and check the model',
+        explanation: 'Translate the words into a diagram, mark the right angle, and write the known lengths. Solve the equation, then check that the answer has a sensible unit and is positive. If the observer or object is above ground level, account for that extra height separately.',
+        keyPoints: [
+          'Use only the angles allowed by the current syllabus: 30°, 45° and 60°.',
+          'The question should not require more than two right triangles.',
+          'Keep lengths in consistent units throughout the calculation.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'height-example-1',
+        title: 'Example 1 · Find a tower height',
+        question: 'A student stands 20 m from the foot of a vertical tower. The angle of elevation to its top is 60°. Find the tower height, assuming eye level is at ground level.',
+        steps: [
+          'Let the tower height be h. The opposite side is h and the adjacent side is 20 m.',
+          'Use tan 60° = h/20.',
+          'Since tan 60° = √3, h/20 = √3.',
+          'Multiply by 20.'
+        ],
+        answer: 'The tower height is 20√3 m.'
+      },
+      {
+        id: 'height-example-2',
+        title: 'Example 2 · A 45° angle',
+        question: 'A tree casts a horizontal distance of 12 m from its foot to an observer. The angle of elevation to its top is 45°. Find its height.',
+        steps: [
+          'Let the tree height be h. Opposite = h and adjacent = 12 m.',
+          'Use tan 45° = h/12.',
+          'Since tan 45° = 1, h/12 = 1.',
+          'Therefore h = 12 m.'
+        ],
+        answer: 'The tree height is 12 m.'
+      },
+      {
+        id: 'height-example-3',
+        title: 'Example 3 · Angle of depression',
+        question: 'From the top of a 30 m building, the angle of depression to a point on level ground is 30°. Find the horizontal distance from the building to the point.',
+        steps: [
+          'The angle of depression equals the angle of elevation from the ground point, so the triangle angle is 30°.',
+          'The opposite side is 30 m and the adjacent side is the horizontal distance d.',
+          'Use tan 30° = 30/d, so 1/√3 = 30/d.',
+          'Cross-multiply to get d = 30√3 m.'
+        ],
+        answer: 'The horizontal distance is 30√3 m.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Elevation', detail: 'Angle measured upward from the observer’s horizontal line.' },
+      { title: 'Depression', detail: 'Angle measured downward from the observer’s horizontal line.' },
+      { title: 'Useful ratio', detail: 'tan θ = height / horizontal distance.' },
+      { title: 'Allowed angles', detail: '30°, 45° and 60°.' }
+    ],
+    questions: [
+      {
+        id: 'height-q1',
+        prompt: 'The angle of elevation is measured from which line?',
+        choices: [{ id: 'a', text: 'The vertical line' }, { id: 'b', text: 'The horizontal line through the observer' }, { id: 'c', text: 'The ground only' }, { id: 'd', text: 'The hypotenuse' }],
+        answer: 'b',
+        explanation: 'Elevation is measured upward from the observer’s horizontal line of sight.'
+      },
+      {
+        id: 'height-q2',
+        prompt: 'A tower is 10 m high and the observer is 10 m from its foot at ground level. What is the angle of elevation?',
+        choices: [{ id: 'a', text: '30°' }, { id: 'b', text: '45°' }, { id: 'c', text: '60°' }, { id: 'd', text: '90°' }],
+        answer: 'b',
+        explanation: 'tan θ = 10/10 = 1, so θ = 45°.'
+      },
+      {
+        id: 'height-q3',
+        prompt: 'Which trigonometric ratio connects the opposite height and adjacent horizontal distance?',
+        choices: [{ id: 'a', text: 'sin θ' }, { id: 'b', text: 'cos θ' }, { id: 'c', text: 'tan θ' }, { id: 'd', text: 'cosec θ' }],
+        answer: 'c',
+        explanation: 'tan θ = opposite/adjacent, which is height divided by horizontal distance.'
+      },
+      {
+        id: 'height-q4',
+        prompt: 'Which angles are specified for simple heights-and-distances problems in the syllabus?',
+        choices: [{ id: 'a', text: '15°, 30°, 45°' }, { id: 'b', text: '30°, 45°, 60°' }, { id: 'c', text: '45°, 60°, 90°' }, { id: 'd', text: 'Any angle' }],
+        answer: 'b',
+        explanation: 'The syllabus limits the angles of elevation/depression to 30°, 45° and 60°.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 5'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -1135,7 +1514,10 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'math-ap': 'arithmetic-progressions',
   'math-coord': 'coordinate-geometry',
   'math-tri': 'triangles',
-  'math-circle': 'circles'
+  'math-circle': 'circles',
+  'math-trig': 'introduction-to-trigonometry',
+  'math-ident': 'trigonometric-identities',
+  'math-height': 'heights-and-distances'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
