@@ -729,8 +729,8 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
         id: 'ap-q3',
         prompt: 'For an AP with a = 2, d = 3 and n = 5, what is the sum of the first five terms?',
         choices: [{ id: 'a', text: '25' }, { id: 'b', text: '35' }, { id: 'c', text: '40' }, { id: 'd', text: '45' }],
-        answer: 'b',
-        explanation: 'S₅ = 5/2 [2(2) + 4(3)] = 5/2 × 16 = 40. Wait: the correct answer is 40.'
+        answer: 'c',
+        explanation: 'S₅ = 5/2 [2(2) + 4(3)] = 5/2 × 16 = 40, so option C is correct.'
       },
       {
         id: 'ap-q4',
@@ -748,7 +748,9 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'math-real': 'real-numbers',
   'math-poly': 'polynomials',
-  'math-linear': 'pair-of-linear-equations'
+  'math-linear': 'pair-of-linear-equations',
+  'math-quad': 'quadratic-equations',
+  'math-ap': 'arithmetic-progressions'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
