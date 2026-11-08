@@ -3,6 +3,7 @@ export type Color='blue'|'violet'|'green'|'amber'|'rose'|'cyan'
 export interface Subject{id:string;name:string;shortName:string;description:string;color:Color;order:number;active:boolean}
 export interface StudySession{id:string;subjectId:string|null;startedAt:string;endedAt:string;durationSeconds:number}
 export interface Profile{id:'default';displayName:string;academicSession:string;dailyGoalMinutes:number}
+export interface LearningRecord{id:string;itemId:string;completed:boolean;bookmarked:boolean;note:string;updatedAt:string}
 export interface Backup{application:'StudyVerse';backupVersion:1;exportedAt:string;data:{subjects:Subject[];studySessions:StudySession[];profile?:Profile}}
 export const DEFAULT_SUBJECTS:Subject[]=[
 {id:'mathematics',name:'Mathematics',shortName:'Maths',description:'Build confidence with concepts and problem solving.',color:'blue',order:1,active:true},
@@ -12,8 +13,8 @@ export const DEFAULT_SUBJECTS:Subject[]=[
 {id:'gujarati',name:'Gujarati',shortName:'Gujarati',description:'Practise language, grammar and literature.',color:'rose',order:5,active:true},
 {id:'information-technology',name:'Information Technology',shortName:'IT',description:'Learn digital skills and practical concepts.',color:'cyan',order:6,active:true}]
 class StudyDB extends Dexie{
- subjects!:EntityTable<Subject,'id'>;studySessions!:EntityTable<StudySession,'id'>;profiles!:EntityTable<Profile,'id'>
- constructor(){super('StudyVerse');this.version(1).stores({subjects:'id,name,order,active',studySessions:'id,subjectId,startedAt',profiles:'id'})}
+ subjects!:EntityTable<Subject,'id'>;studySessions!:EntityTable<StudySession,'id'>;profiles!:EntityTable<Profile,'id'>;learningRecords!:EntityTable<LearningRecord,'id'>
+ constructor(){super('StudyVerse');this.version(1).stores({subjects:'id,name,order,active',studySessions:'id,subjectId,startedAt',profiles:'id'});this.version(2).stores({subjects:'id,name,order,active',studySessions:'id,subjectId,startedAt',profiles:'id',learningRecords:'id,itemId,completed,bookmarked,updatedAt'})}
 }
 export const db=new StudyDB()
 export async function initialiseDatabase(){await db.transaction('rw',db.subjects,db.profiles,async()=>{if(await db.subjects.count()===0)await db.subjects.bulkAdd(DEFAULT_SUBJECTS);if(!(await db.profiles.get('default')))await db.profiles.add({id:'default',displayName:'Student',academicSession:'2026–27',dailyGoalMinutes:120})})}
