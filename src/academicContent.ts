@@ -40,6 +40,7 @@ export interface AcademicChapter {
 }
 
 const mathematicsSource = 'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Maths_SecP1X_2026-27.pdf'
+const scienceSource = 'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf'
 
 export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
   {
@@ -2019,6 +2020,951 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: mathematicsSource,
     sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 7'
   }
+,
+  {
+    id: 'chemical-reactions-and-equations',
+    curriculumItemId: 'sci-reaction',
+    subjectId: 'science',
+    title: 'Chemical Reactions and Equations',
+    chapterLabel: 'Chemical Substances · Unit I · Board scope',
+    estimatedMinutes: 40,
+    syllabusScope: 'Chemical reactions and equations; balancing; combination, decomposition, displacement, double displacement and precipitation; endothermic/exothermic reactions; oxidation and reduction.',
+    overview: 'A chemical reaction changes the starting substances into new substances. Chemical equations give a compact way to describe these changes, while balancing ensures that the number of each type of atom is conserved.',
+    learningGoals: [
+      'Recognise common signs that a chemical reaction may have occurred.',
+      'Write word equations and balance simple chemical equations.',
+      'Classify the main reaction types.',
+      'Explain oxidation, reduction and energy changes in reactions.'
+    ],
+    sections: [
+      {
+        id: 'chemical-change',
+        title: '1. What happens in a chemical reaction?',
+        explanation: 'In a chemical reaction, atoms are rearranged as old bonds break and new bonds form. The substances present at the start are reactants; the new substances formed are products. Possible observations include a colour change, gas formation, a precipitate, or a temperature change. A single observation should be interpreted carefully because it is not always proof by itself.',
+        keyPoints: [
+          'Reactants are written on the left; products on the right.',
+          'A precipitate is an insoluble solid formed in a solution.',
+          'Atoms are rearranged; they are not created or destroyed in an ordinary chemical reaction.'
+        ]
+      },
+      {
+        id: 'balanced-equations',
+        title: '2. Writing and balancing equations',
+        explanation: 'A chemical equation is balanced when the number of atoms of every element is the same on both sides. This follows the law of conservation of mass. Change the coefficients in front of formulae to balance an equation; do not change the small numbers inside a chemical formula, because that would change the substance.',
+        keyPoints: [
+          'Count atoms of each element on both sides.',
+          'Use coefficients to balance the equation.',
+          'Reduce coefficients to the smallest whole-number ratio when possible.',
+          'Add state symbols or reaction conditions when the question asks for them.'
+        ]
+      },
+      {
+        id: 'reaction-types',
+        title: '3. Common reaction types',
+        explanation: 'Combination: two or more reactants form one product. Decomposition: one compound breaks into simpler substances, often with heat, light or electricity. Displacement: a more reactive element replaces a less reactive element from a compound. Double displacement: ions exchange partners; a precipitation reaction forms an insoluble solid.',
+        keyPoints: [
+          'Combination: A + B → AB.',
+          'Decomposition: AB → A + B.',
+          'Displacement: A + BC → AC + B, when A is more reactive than B.',
+          'Double displacement: AB + CD → AD + CB.'
+        ]
+      },
+      {
+        id: 'energy-redox',
+        title: '4. Energy change, oxidation and reduction',
+        explanation: 'An exothermic reaction releases energy to the surroundings, often warming them. An endothermic reaction absorbs energy. Oxidation can be described as the addition of oxygen or removal of hydrogen; reduction is the removal of oxygen or addition of hydrogen. In a redox reaction, oxidation and reduction occur together.',
+        keyPoints: [
+          'Respiration and combustion are familiar exothermic processes.',
+          'A reaction that requires a continuous energy input may be endothermic.',
+          'Oxidation and reduction are paired processes in a redox reaction.',
+          'Copper oxide + hydrogen → copper + water: copper oxide is reduced and hydrogen is oxidised.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'chem-example-1',
+        title: 'Example 1 · Balance an equation',
+        question: 'Balance: Mg + O₂ → MgO.',
+        steps: [
+          'There are two oxygen atoms on the left but one on the right.',
+          'Put coefficient 2 before MgO: Mg + O₂ → 2MgO.',
+          'Now there are two magnesium atoms on the right, so put coefficient 2 before Mg.',
+          'Check: two Mg atoms and two O atoms appear on each side.'
+        ],
+        answer: '2Mg + O₂ → 2MgO.'
+      },
+      {
+        id: 'chem-example-2',
+        title: 'Example 2 · Identify the reaction type',
+        question: 'Iron is placed in copper sulphate solution: Fe + CuSO₄ → FeSO₄ + Cu. Classify the reaction.',
+        steps: [
+          'Iron is more reactive than copper.',
+          'Iron replaces copper in copper sulphate.',
+          'One element replaces another element from a compound.'
+        ],
+        answer: 'Displacement reaction.'
+      },
+      {
+        id: 'chem-example-3',
+        title: 'Example 3 · Precipitation reaction',
+        question: 'Aqueous sodium sulphate reacts with barium chloride. Write the balanced equation and name the precipitate.',
+        steps: [
+          'The ions exchange partners to form barium sulphate and sodium chloride.',
+          'Write Na₂SO₄ + BaCl₂ → BaSO₄ + NaCl.',
+          'Balance sodium and chlorine by putting coefficient 2 before NaCl.',
+          'Barium sulphate is insoluble in water and forms the precipitate.'
+        ],
+        answer: 'Na₂SO₄ + BaCl₂ → BaSO₄↓ + 2NaCl; the precipitate is barium sulphate.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Conservation of mass', detail: 'Total mass of reactants equals total mass of products in a closed system.' },
+      { title: 'Combination', detail: 'Two or more reactants form one product.' },
+      { title: 'Decomposition', detail: 'One compound breaks into simpler products.' },
+      { title: 'Redox', detail: 'Oxidation and reduction occur together.' }
+    ],
+    questions: [
+      {
+        id: 'sci-reaction-q1',
+        prompt: 'What should you change when balancing a chemical equation?',
+        choices: [{ id: 'a', text: 'Subscripts inside formulae' }, { id: 'b', text: 'The element symbols' }, { id: 'c', text: 'Coefficients in front of formulae' }, { id: 'd', text: 'The identities of products' }],
+        answer: 'c',
+        explanation: 'Coefficients change the number of particles while keeping the chemical identity of each substance unchanged.'
+      },
+      {
+        id: 'sci-reaction-q2',
+        prompt: 'Which reaction type is represented by CaO + H₂O → Ca(OH)₂?',
+        choices: [{ id: 'a', text: 'Combination' }, { id: 'b', text: 'Decomposition' }, { id: 'c', text: 'Displacement' }, { id: 'd', text: 'Double displacement' }],
+        answer: 'a',
+        explanation: 'Two reactants combine to form one product, calcium hydroxide.'
+      },
+      {
+        id: 'sci-reaction-q3',
+        prompt: 'In Fe + CuSO₄ → FeSO₄ + Cu, which substance is displaced?',
+        choices: [{ id: 'a', text: 'Iron' }, { id: 'b', text: 'Copper' }, { id: 'c', text: 'Sulphate' }, { id: 'd', text: 'Oxygen' }],
+        answer: 'b',
+        explanation: 'Iron replaces copper from copper sulphate, so copper is displaced.'
+      },
+      {
+        id: 'sci-reaction-q4',
+        prompt: 'In a redox reaction, what happens?',
+        choices: [{ id: 'a', text: 'Only oxidation occurs' }, { id: 'b', text: 'Only reduction occurs' }, { id: 'c', text: 'Oxidation and reduction occur together' }, { id: 'd', text: 'No atoms are rearranged' }],
+        answer: 'c',
+        explanation: 'Oxidation and reduction are paired changes in the same overall redox reaction.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit I'
+  },
+  {
+    id: 'life-processes',
+    curriculumItemId: 'sci-life',
+    subjectId: 'science',
+    title: 'Life Processes',
+    chapterLabel: 'World of Living · Unit II · Board scope',
+    estimatedMinutes: 45,
+    syllabusScope: 'Basic concepts of nutrition, respiration, transport and excretion in plants and animals.',
+    overview: 'Living organisms need energy and materials, and they need ways to move substances around and remove wastes. Nutrition, respiration, transport and excretion are the life processes that keep an organism functioning.',
+    learningGoals: [
+      'Compare autotrophic and heterotrophic nutrition.',
+      'Describe photosynthesis and the path of food through the human digestive system.',
+      'Compare aerobic and anaerobic respiration.',
+      'Explain transport and excretion in plants and humans.'
+    ],
+    sections: [
+      {
+        id: 'nutrition',
+        title: '1. Nutrition',
+        explanation: 'Autotrophs make their own food from simple inorganic substances. In photosynthesis, green plants use light energy absorbed by chlorophyll to convert carbon dioxide and water into glucose, releasing oxygen. Heterotrophs obtain food from other organisms. Human digestion breaks large food molecules into smaller soluble molecules that can be absorbed.',
+        keyPoints: [
+          'Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (in the presence of light and chlorophyll).',
+          'Salivary amylase begins starch digestion in the mouth.',
+          'Most absorption of digested food occurs in the small intestine.',
+          'The large intestine absorbs water from undigested material.'
+        ]
+      },
+      {
+        id: 'respiration',
+        title: '2. Respiration',
+        explanation: 'Cellular respiration releases energy from food. Aerobic respiration uses oxygen and releases more energy; it mainly takes place in mitochondria. When oxygen is insufficient, some cells can release energy anaerobically. In yeast, anaerobic respiration produces ethanol and carbon dioxide; in human muscles it may produce lactic acid.',
+        keyPoints: [
+          'Aerobic respiration: glucose + oxygen → carbon dioxide + water + energy.',
+          'Yeast can respire anaerobically to form ethanol and carbon dioxide.',
+          'Muscle cells may form lactic acid when oxygen supply is insufficient during intense activity.',
+          'Breathing brings air into the lungs; cellular respiration occurs inside cells.'
+        ]
+      },
+      {
+        id: 'transport',
+        title: '3. Transport',
+        explanation: 'In plants, xylem carries water and minerals mainly from roots to other parts, while phloem transports food made in leaves to growing or storage regions. In humans, the heart pumps blood through blood vessels. Blood transports oxygen, nutrients, hormones and wastes.',
+        keyPoints: [
+          'Xylem transports water and dissolved minerals.',
+          'Phloem transports prepared food; movement can occur in different directions as needed.',
+          'The human heart has four chambers that help keep oxygen-rich and oxygen-poor blood separated.',
+          'Blood vessels include arteries, veins and capillaries.'
+        ]
+      },
+      {
+        id: 'excretion',
+        title: '4. Excretion',
+        explanation: 'Excretion removes metabolic waste products. In humans, kidneys filter blood and form urine. The nephron is the functional unit of a kidney: filtration occurs in the glomerulus, followed by selective reabsorption and secretion along the tubule. Plants remove or store wastes in different ways, including diffusion, shedding leaves and storing substances in vacuoles.',
+        keyPoints: [
+          'Kidneys filter blood and help regulate water and salt balance.',
+          'Urine travels from kidneys through ureters to the urinary bladder and then leaves through the urethra.',
+          'Plants do not have a single specialised excretory organ like human kidneys.',
+          'Dialysis can help remove wastes when kidneys are unable to function adequately.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'life-example-1',
+        title: 'Example 1 · Photosynthesis equation',
+        question: 'Name the raw materials and products in photosynthesis.',
+        steps: [
+          'Plants take in carbon dioxide from the air and water from the soil.',
+          'Light energy is absorbed by chlorophyll.',
+          'Glucose is formed and oxygen is released.'
+        ],
+        answer: 'Raw materials: carbon dioxide and water. Products: glucose and oxygen.'
+      },
+      {
+        id: 'life-example-2',
+        title: 'Example 2 · Xylem or phloem?',
+        question: 'A plant transports dissolved sugars from a leaf to a growing root. Which tissue does this?',
+        steps: [
+          'The material being transported is food made during photosynthesis.',
+          'Food transport is carried out by phloem.',
+          'Xylem is responsible mainly for water and mineral transport.'
+        ],
+        answer: 'Phloem.'
+      },
+      {
+        id: 'life-example-3',
+        title: 'Example 3 · Nephron function',
+        question: 'Why is selective reabsorption needed in a nephron?',
+        steps: [
+          'Filtration allows water and small dissolved substances to enter the nephron tubule.',
+          'Useful substances such as glucose, required salts and much of the water must be returned to the blood.',
+          'The remaining fluid becomes urine and carries waste away.'
+        ],
+        answer: 'Selective reabsorption returns useful substances to the blood and helps regulate the body’s water and salt balance.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Photosynthesis', detail: 'Uses light energy to make glucose from carbon dioxide and water.' },
+      { title: 'Aerobic respiration', detail: 'Uses oxygen and releases energy from glucose.' },
+      { title: 'Xylem', detail: 'Carries water and minerals in plants.' },
+      { title: 'Nephron', detail: 'Functional unit of a kidney.' }
+    ],
+    questions: [
+      {
+        id: 'sci-life-q1',
+        prompt: 'Which pigment absorbs light energy for photosynthesis?',
+        choices: [{ id: 'a', text: 'Haemoglobin' }, { id: 'b', text: 'Chlorophyll' }, { id: 'c', text: 'Insulin' }, { id: 'd', text: 'Melanin' }],
+        answer: 'b',
+        explanation: 'Chlorophyll in chloroplasts absorbs light energy used in photosynthesis.'
+      },
+      {
+        id: 'sci-life-q2',
+        prompt: 'Which plant tissue transports prepared food?',
+        choices: [{ id: 'a', text: 'Xylem' }, { id: 'b', text: 'Phloem' }, { id: 'c', text: 'Epidermis' }, { id: 'd', text: 'Stomata' }],
+        answer: 'b',
+        explanation: 'Phloem transports sugars and other prepared food around the plant.'
+      },
+      {
+        id: 'sci-life-q3',
+        prompt: 'Where does most absorption of digested food occur in humans?',
+        choices: [{ id: 'a', text: 'Stomach' }, { id: 'b', text: 'Large intestine' }, { id: 'c', text: 'Small intestine' }, { id: 'd', text: 'Oesophagus' }],
+        answer: 'c',
+        explanation: 'The small intestine has villi that provide a large surface area for absorption.'
+      },
+      {
+        id: 'sci-life-q4',
+        prompt: 'What is the functional unit of the kidney?',
+        choices: [{ id: 'a', text: 'Neuron' }, { id: 'b', text: 'Alveolus' }, { id: 'c', text: 'Nephron' }, { id: 'd', text: 'Villus' }],
+        answer: 'c',
+        explanation: 'A nephron carries out filtration and the processes that form urine.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit II'
+  },
+  {
+    id: 'control-and-coordination',
+    curriculumItemId: 'sci-control',
+    subjectId: 'science',
+    title: 'Control and Coordination',
+    chapterLabel: 'World of Living · Unit II · Board scope',
+    estimatedMinutes: 40,
+    syllabusScope: 'Tropic movements in plants, introduction to plant hormones, nervous system in animals, voluntary/involuntary/reflex actions and animal hormones.',
+    overview: 'Organisms respond to changes around them. Plants use growth responses and chemical signals, while animals coordinate fast responses through nerves and longer-lasting regulation through hormones.',
+    learningGoals: [
+      'Explain tropic movements in plants.',
+      'Identify the roles of auxin and other plant hormones.',
+      'Describe a neuron and a reflex arc.',
+      'Distinguish voluntary, involuntary and reflex actions, and explain animal hormones.'
+    ],
+    sections: [
+      {
+        id: 'plant-tropisms',
+        title: '1. Tropic movements in plants',
+        explanation: 'A tropic movement is a directional growth response to a stimulus. Shoots generally grow towards light (positive phototropism), roots generally grow towards gravity (positive geotropism), and roots often grow towards water (positive hydrotropism). Tendrils can coil around a support in response to touch (thigmotropism).',
+        keyPoints: [
+          'Phototropism: response to light.',
+          'Geotropism: response to gravity.',
+          'Hydrotropism: response to water.',
+          'Thigmotropism: response to touch.'
+        ]
+      },
+      {
+        id: 'plant-hormones',
+        title: '2. Plant hormones',
+        explanation: 'Plant hormones coordinate growth and responses. Auxin can promote cell elongation and helps explain how a shoot bends towards light. Gibberellins promote stem growth, cytokinins promote cell division, and abscisic acid can inhibit growth and promote responses such as stomatal closure during water stress.',
+        keyPoints: [
+          'Auxin is associated with cell elongation and phototropic bending.',
+          'Gibberellins promote stem growth.',
+          'Cytokinins promote cell division.',
+          'Abscisic acid is generally associated with growth inhibition and stress responses.'
+        ]
+      },
+      {
+        id: 'nervous-system',
+        title: '3. Neurons and the nervous system',
+        explanation: 'A neuron is a specialised cell that carries nerve impulses. Dendrites receive information, the cell body contains the nucleus, and the axon carries impulses away. At a synapse, chemical messengers help pass the signal to another neuron or an effector. The nervous system coordinates responses using electrical impulses along neurons.',
+        keyPoints: [
+          'Receptors detect stimuli.',
+          'Sensory neurons carry information towards the central nervous system.',
+          'Motor neurons carry instructions to effectors such as muscles or glands.',
+          'A synapse is the junction between two neurons or a neuron and another cell.'
+        ]
+      },
+      {
+        id: 'reflex-hormones',
+        title: '4. Reflexes and chemical coordination',
+        explanation: 'A reflex action is a quick, automatic response that helps protect the body. A reflex arc often passes from receptor to sensory neuron, through the spinal cord, along a motor neuron and to an effector. Hormones are chemical messengers carried in blood; they usually act more slowly than nerve impulses but can have longer-lasting effects.',
+        keyPoints: [
+          'Voluntary actions are under conscious control.',
+          'Involuntary actions occur without conscious control.',
+          'Reflex actions are rapid, automatic responses.',
+          'Insulin helps regulate blood glucose; adrenaline prepares the body for emergency responses.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'control-example-1',
+        title: 'Example 1 · Directional growth',
+        question: 'A potted plant is kept near a window. Its shoot bends towards the window. Name the response.',
+        steps: [
+          'The shoot is responding to the direction of light.',
+          'Growth towards the light is positive phototropism.',
+          'Auxin redistribution helps cells on one side elongate more than the other.'
+        ],
+        answer: 'Positive phototropism.'
+      },
+      {
+        id: 'control-example-2',
+        title: 'Example 2 · Reflex arc',
+        question: 'Why can a person withdraw a hand quickly after touching a hot object?',
+        steps: [
+          'Receptors in the skin detect the harmful heat stimulus.',
+          'A sensory neuron carries the impulse to the spinal cord.',
+          'A motor neuron sends a signal to muscles in the arm.',
+          'The muscles contract and withdraw the hand; the brain is informed as well.'
+        ],
+        answer: 'A protective reflex action coordinated through a reflex arc.'
+      },
+      {
+        id: 'control-example-3',
+        title: 'Example 3 · Nerve or hormone?',
+        question: 'A sudden increase in heart rate during an emergency involves which hormone?',
+        steps: [
+          'The body is preparing for a rapid emergency response.',
+          'The adrenal glands release adrenaline into the blood.',
+          'Adrenaline increases heart rate and prepares the body for action.'
+        ],
+        answer: 'Adrenaline.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Phototropism', detail: 'Directional growth response to light.' },
+      { title: 'Auxin', detail: 'Plant hormone associated with cell elongation.' },
+      { title: 'Reflex arc', detail: 'Receptor → sensory neuron → CNS → motor neuron → effector.' },
+      { title: 'Insulin', detail: 'Helps regulate blood glucose.' }
+    ],
+    questions: [
+      {
+        id: 'sci-control-q1',
+        prompt: 'A shoot bends towards light. Which response is this?',
+        choices: [{ id: 'a', text: 'Geotropism' }, { id: 'b', text: 'Phototropism' }, { id: 'c', text: 'Hydrotropism' }, { id: 'd', text: 'Thigmotropism' }],
+        answer: 'b',
+        explanation: 'Phototropism is directional growth in response to light.'
+      },
+      {
+        id: 'sci-control-q2',
+        prompt: 'Which part of a neuron usually receives signals from other neurons?',
+        choices: [{ id: 'a', text: 'Dendrites' }, { id: 'b', text: 'Axon terminal only' }, { id: 'c', text: 'Myelin only' }, { id: 'd', text: 'Nucleus only' }],
+        answer: 'a',
+        explanation: 'Dendrites receive signals and carry them towards the cell body.'
+      },
+      {
+        id: 'sci-control-q3',
+        prompt: 'Which is a rapid, automatic response to a stimulus?',
+        choices: [{ id: 'a', text: 'Voluntary action' }, { id: 'b', text: 'Reflex action' }, { id: 'c', text: 'Learned calculation' }, { id: 'd', text: 'Long-term growth' }],
+        answer: 'b',
+        explanation: 'A reflex action is a quick, automatic response that often protects the body.'
+      },
+      {
+        id: 'sci-control-q4',
+        prompt: 'Which hormone helps regulate blood glucose?',
+        choices: [{ id: 'a', text: 'Auxin' }, { id: 'b', text: 'Adrenaline' }, { id: 'c', text: 'Insulin' }, { id: 'd', text: 'Gibberellin' }],
+        answer: 'c',
+        explanation: 'Insulin helps lower blood glucose by supporting uptake and storage of glucose.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit II'
+  },
+  {
+    id: 'reproduction',
+    curriculumItemId: 'sci-reproduction',
+    subjectId: 'science',
+    title: 'How Do Organisms Reproduce?',
+    chapterLabel: 'World of Living · Unit II · Board scope',
+    estimatedMinutes: 45,
+    syllabusScope: 'Asexual and sexual reproduction in plants and animals; reproductive health, family planning, safe sex and HIV/AIDS awareness.',
+    overview: 'Reproduction allows living organisms to produce offspring. Asexual reproduction uses one parent and usually produces genetically similar offspring, while sexual reproduction combines genetic material from two gametes.',
+    learningGoals: [
+      'Compare asexual and sexual reproduction.',
+      'Describe common asexual methods and sexual reproduction in flowering plants.',
+      'Outline the basic human reproductive processes.',
+      'Explain the purpose of reproductive health and informed prevention.'
+    ],
+    sections: [
+      {
+        id: 'asexual',
+        title: '1. Asexual reproduction',
+        explanation: 'Asexual reproduction involves a single parent and no fusion of gametes. Common methods include fission, budding, fragmentation, spore formation and vegetative propagation. It can be fast, but offspring are usually genetically very similar to the parent, apart from mutations.',
+        keyPoints: [
+          'Binary fission: one cell divides into two daughter cells, as in Amoeba.',
+          'Budding: a small outgrowth develops and may separate, as in yeast or Hydra.',
+          'Spore formation helps organisms such as Rhizopus reproduce and disperse.',
+          'Vegetative propagation uses roots, stems or leaves to form new plants.'
+        ]
+      },
+      {
+        id: 'sexual-plants',
+        title: '2. Sexual reproduction in flowering plants',
+        explanation: 'The stamen is the male reproductive part of a flower and produces pollen. The carpel contains the stigma, style and ovary. Pollination transfers pollen to the stigma. A pollen tube grows towards the ovule, where the male gamete fuses with the female gamete during fertilisation. The ovule develops into a seed and the ovary develops into a fruit.',
+        keyPoints: [
+          'Pollination is the transfer of pollen from anther to stigma.',
+          'Fertilisation is the fusion of male and female gametes.',
+          'The ovule develops into a seed; the ovary develops into a fruit.'
+        ]
+      },
+      {
+        id: 'human-reproduction',
+        title: '3. Human reproduction',
+        explanation: 'In humans, the testes produce sperm and the ovaries produce ova. Fertilisation usually occurs in the oviduct. The resulting zygote divides and may implant in the uterus, where the embryo develops. Reproductive systems also produce hormones that regulate reproductive functions.',
+        keyPoints: [
+          'Testes produce sperm and testosterone.',
+          'Ovaries produce ova and hormones including oestrogen and progesterone.',
+          'The uterus is where the embryo implants and develops during pregnancy.',
+          'The placenta enables exchange of materials between maternal and foetal blood without normally mixing the two blood supplies.'
+        ]
+      },
+      {
+        id: 'reproductive-health',
+        title: '4. Reproductive health and prevention',
+        explanation: 'Reproductive health includes physical, emotional and social well-being related to reproduction. Family-planning methods include barrier methods, hormonal methods and intrauterine devices; permanent methods are also available. Condoms can reduce the risk of many sexually transmitted infections, including HIV, as well as pregnancy. HIV is transmitted through specific body fluids and routes, not through casual contact such as sharing food or hugging.',
+        keyPoints: [
+          'Barrier methods can help prevent both pregnancy and transmission of some infections.',
+          'HIV is not spread by ordinary social contact, sharing utensils or mosquito bites.',
+          'Accurate information, voluntary decisions and access to healthcare are important parts of reproductive health.',
+          'Never use stigma or blame when discussing a person living with HIV.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'repro-example-1',
+        title: 'Example 1 · Identify the method',
+        question: 'A small bud grows on a Hydra and later separates as a new individual. Name the method.',
+        steps: [
+          'Only one parent organism is involved.',
+          'A small outgrowth develops on the parent body.',
+          'The outgrowth grows and may detach.'
+        ],
+        answer: 'Budding.'
+      },
+      {
+        id: 'repro-example-2',
+        title: 'Example 2 · Pollination and fertilisation',
+        question: 'A pollen grain lands on the stigma. What must happen before a seed can form?',
+        steps: [
+          'The pollen grain germinates and forms a pollen tube.',
+          'The male gamete travels through the tube towards the ovule.',
+          'The male gamete fuses with the female gamete in fertilisation.',
+          'The fertilised ovule develops into a seed.'
+        ],
+        answer: 'Fertilisation must occur after the pollen tube reaches the ovule.'
+      },
+      {
+        id: 'repro-example-3',
+        title: 'Example 3 · HIV transmission',
+        question: 'Can HIV spread through sharing a meal or hugging a person living with HIV?',
+        steps: [
+          'HIV is not transmitted through ordinary casual contact.',
+          'Sharing food, hugging and using the same toilet do not spread HIV.',
+          'Transmission requires specific routes, such as certain body-fluid exposures.'
+        ],
+        answer: 'No. Sharing a meal or hugging does not transmit HIV.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Asexual reproduction', detail: 'One parent; no fusion of gametes.' },
+      { title: 'Pollination', detail: 'Transfer of pollen from anther to stigma.' },
+      { title: 'Fertilisation', detail: 'Fusion of male and female gametes.' },
+      { title: 'HIV', detail: 'Not spread by casual contact such as hugging or sharing food.' }
+    ],
+    questions: [
+      {
+        id: 'sci-reproduction-q1',
+        prompt: 'Which method of reproduction is shown by a bud forming on Hydra?',
+        choices: [{ id: 'a', text: 'Binary fission' }, { id: 'b', text: 'Budding' }, { id: 'c', text: 'Spore formation' }, { id: 'd', text: 'Fragmentation' }],
+        answer: 'b',
+        explanation: 'Hydra can reproduce asexually by forming a bud that grows and may detach.'
+      },
+      {
+        id: 'sci-reproduction-q2',
+        prompt: 'What is pollination?',
+        choices: [{ id: 'a', text: 'Fusion of gametes' }, { id: 'b', text: 'Formation of a seed' }, { id: 'c', text: 'Transfer of pollen from anther to stigma' }, { id: 'd', text: 'Growth of a fruit' }],
+        answer: 'c',
+        explanation: 'Pollination is pollen transfer; it occurs before fertilisation.'
+      },
+      {
+        id: 'sci-reproduction-q3',
+        prompt: 'Where does fertilisation usually occur in humans?',
+        choices: [{ id: 'a', text: 'Oviduct' }, { id: 'b', text: 'Uterus wall' }, { id: 'c', text: 'Ovary surface' }, { id: 'd', text: 'Urinary bladder' }],
+        answer: 'a',
+        explanation: 'In humans, fertilisation usually takes place in the oviduct (fallopian tube).'
+      },
+      {
+        id: 'sci-reproduction-q4',
+        prompt: 'Which statement about HIV is correct?',
+        choices: [{ id: 'a', text: 'It spreads by hugging' }, { id: 'b', text: 'It spreads by sharing a meal' }, { id: 'c', text: 'It spreads through casual contact' }, { id: 'd', text: 'It is not spread by casual contact such as hugging or sharing food' }],
+        answer: 'd',
+        explanation: 'HIV is not spread through casual social contact. Education should avoid stigma and misinformation.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit II'
+  },
+  {
+    id: 'light-reflection-and-refraction',
+    curriculumItemId: 'sci-light',
+    subjectId: 'science',
+    title: 'Light: Reflection and Refraction',
+    chapterLabel: 'Natural Phenomena · Unit III · Board scope',
+    estimatedMinutes: 50,
+    syllabusScope: 'Reflection by curved mirrors; spherical mirror terms, mirror formula and magnification; refraction, refractive index, spherical lenses, lens formula, magnification and power; human eye, defects and corrections; prism, dispersion and scattering.',
+    overview: 'Mirrors reflect light and lenses refract it. Ray diagrams and sign conventions help predict where an image forms, while the human eye uses a lens to focus light on the retina.',
+    learningGoals: [
+      'Identify the principal terms for spherical mirrors and lenses.',
+      'Use the mirror and lens formulae with the Cartesian sign convention.',
+      'Calculate magnification and power of a lens.',
+      'Explain common defects of vision and basic dispersion/scattering.'
+    ],
+    sections: [
+      {
+        id: 'curved-mirrors',
+        title: '1. Spherical mirrors',
+        explanation: 'A concave mirror has its reflecting surface curved inwards; a convex mirror curves outwards. The pole P is the centre of the reflecting surface, the centre of curvature C is the centre of the sphere, and the principal focus F is where rays parallel to the principal axis meet or appear to diverge from after reflection. The focal length is the distance PF and for a spherical mirror f = R/2.',
+        keyPoints: [
+          'Concave mirrors can form real or virtual images depending on object position.',
+          'Convex mirrors form virtual, erect and diminished images for real objects.',
+          'Use the Cartesian sign convention consistently in numerical problems.'
+        ]
+      },
+      {
+        id: 'mirror-formula',
+        title: '2. Mirror formula and magnification',
+        explanation: 'With the Cartesian sign convention, the mirror formula is 1/f = 1/v + 1/u, where u is object distance, v is image distance and f is focal length. Mirror magnification is m = hᵢ/hₒ = −v/u. The sign of magnification helps describe image orientation; a negative value indicates an inverted image.',
+        keyPoints: [
+          'Distances are measured from the pole along the principal axis.',
+          'For a real object placed in front of a mirror, u is negative in the Cartesian convention.',
+          'Substitute signed values; do not replace them with absolute values midway.'
+        ]
+      },
+      {
+        id: 'refraction-lenses',
+        title: '3. Refraction and lenses',
+        explanation: 'Refraction is the change in direction of light when it passes between transparent media because its speed changes. A convex lens is converging; a concave lens is diverging. For a thin lens, 1/f = 1/v − 1/u and magnification m = hᵢ/hₒ = v/u, using the Cartesian sign convention. Refractive index n = c/vₘ, where c is the speed of light in vacuum and vₘ is its speed in the medium.',
+        keyPoints: [
+          'A ray entering a denser medium obliquely bends towards the normal; entering a rarer medium it bends away from the normal.',
+          'A convex lens can form real or virtual images depending on object position.',
+          'A concave lens forms a virtual, erect and diminished image for a real object.'
+        ]
+      },
+      {
+        id: 'eye-dispersion',
+        title: '4. Human eye, prism and dispersion',
+        explanation: 'The eye lens focuses light on the retina. Myopia (near-sightedness) is corrected using a concave lens; hypermetropia (far-sightedness) is corrected using a convex lens. A prism can disperse white light into its component colours because different wavelengths refract by different amounts. Scattering depends on wavelength; shorter wavelengths are scattered more strongly by small particles.',
+        keyPoints: [
+          'Myopia: distant objects appear blurred; corrected with a concave lens.',
+          'Hypermetropia: nearby objects appear blurred; corrected with a convex lens.',
+          'Power of a lens P = 1/f when f is in metres; unit is dioptre (D).',
+          'Dispersion separates white light into its constituent colours.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'light-example-1',
+        title: 'Example 1 · Mirror focal length',
+        question: 'A spherical mirror has radius of curvature 30 cm. Find its focal length.',
+        steps: [
+          'For a spherical mirror, f = R/2.',
+          'Substitute R = 30 cm.',
+          'f = 30/2 = 15 cm.',
+          'The sign of f depends on whether the mirror is concave or convex; the magnitude is 15 cm.'
+        ],
+        answer: 'Focal-length magnitude = 15 cm.'
+      },
+      {
+        id: 'light-example-2',
+        title: 'Example 2 · Power of a lens',
+        question: 'A convex lens has focal length +0.5 m. Find its power.',
+        steps: [
+          'Use P = 1/f when focal length is in metres.',
+          'Substitute f = +0.5 m.',
+          'P = 1/0.5 = +2.'
+        ],
+        answer: 'Power = +2 D.'
+      },
+      {
+        id: 'light-example-3',
+        title: 'Example 3 · Correct a vision defect',
+        question: 'A student can see nearby objects clearly but distant objects look blurred. Which lens is used for correction?',
+        steps: [
+          'The defect is myopia (near-sightedness).',
+          'A concave lens diverges incoming light before it enters the eye.',
+          'This helps the eye focus the image on the retina.'
+        ],
+        answer: 'A concave lens.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Mirror formula', detail: '1/f = 1/v + 1/u.' },
+      { title: 'Lens formula', detail: '1/f = 1/v − 1/u.' },
+      { title: 'Lens power', detail: 'P = 1/f (f in metres); unit dioptre.' },
+      { title: 'Myopia', detail: 'Corrected by a concave lens.' }
+    ],
+    questions: [
+      {
+        id: 'sci-light-q1',
+        prompt: 'What is the focal length of a spherical mirror with radius of curvature 40 cm?',
+        choices: [{ id: 'a', text: '10 cm' }, { id: 'b', text: '20 cm' }, { id: 'c', text: '40 cm' }, { id: 'd', text: '80 cm' }],
+        answer: 'b',
+        explanation: 'For a spherical mirror, f = R/2 = 40/2 = 20 cm.'
+      },
+      {
+        id: 'sci-light-q2',
+        prompt: 'Which lens is used to correct myopia?',
+        choices: [{ id: 'a', text: 'Convex lens' }, { id: 'b', text: 'Concave lens' }, { id: 'c', text: 'Cylindrical mirror' }, { id: 'd', text: 'Plane glass' }],
+        answer: 'b',
+        explanation: 'A concave lens diverges incoming rays and helps focus distant objects on the retina.'
+      },
+      {
+        id: 'sci-light-q3',
+        prompt: 'What is the SI-derived unit of lens power?',
+        choices: [{ id: 'a', text: 'Metre' }, { id: 'b', text: 'Watt' }, { id: 'c', text: 'Dioptre' }, { id: 'd', text: 'Newton' }],
+        answer: 'c',
+        explanation: 'Power is measured in dioptres, equivalent to inverse metres.'
+      },
+      {
+        id: 'sci-light-q4',
+        prompt: 'Which formula is used for a thin lens under the Cartesian sign convention?',
+        choices: [{ id: 'a', text: '1/f = 1/v + 1/u' }, { id: 'b', text: '1/f = 1/v − 1/u' }, { id: 'c', text: 'f = R/2 for every lens' }, { id: 'd', text: 'P = f' }],
+        answer: 'b',
+        explanation: 'The thin-lens formula is 1/f = 1/v − 1/u using the stated Cartesian sign convention.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit III'
+  },
+  {
+    id: 'electricity-and-magnetic-effects',
+    curriculumItemId: 'sci-electric',
+    subjectId: 'science',
+    title: 'Electricity and Magnetic Effects of Current',
+    chapterLabel: 'Effects of Current · Unit IV · Board scope',
+    estimatedMinutes: 50,
+    syllabusScope: 'Current, potential difference, Ohm’s law, resistance/resistivity, series and parallel combinations, heating effect, electrical power, magnetic fields, force on a current-carrying conductor, Fleming’s Left Hand Rule, AC/DC and domestic circuits. Motor, electromagnetic induction and generator are formative-only in this syllabus.',
+    overview: 'Electric circuits allow charges to move and transfer energy. The same current can also create magnetic fields, linking electricity and magnetism in everyday devices and household wiring.',
+    learningGoals: [
+      'Use current, potential difference and resistance in circuit calculations.',
+      'Apply Ohm’s law and compare series and parallel combinations.',
+      'Calculate electrical heating and power.',
+      'Describe magnetic fields around conductors and basic domestic-circuit safety.'
+    ],
+    sections: [
+      {
+        id: 'electric-current',
+        title: '1. Current, potential difference and Ohm’s law',
+        explanation: 'Electric current is the rate of flow of charge: I = Q/t. Potential difference is the work done per unit charge: V = W/Q. Ohm’s law states that, at constant physical conditions, current through a conductor is directly proportional to the potential difference across it: V = IR.',
+        keyPoints: [
+          'Current I is measured in amperes (A).',
+          'Potential difference V is measured in volts (V).',
+          'Resistance R is measured in ohms (Ω).',
+          'The V–I graph for an ohmic conductor is a straight line through the origin.'
+        ]
+      },
+      {
+        id: 'resistance-combinations',
+        title: '2. Resistance and circuit combinations',
+        explanation: 'Resistance depends on the material, length, cross-sectional area and temperature of a conductor. For a uniform wire, R = ρl/A. In series, the same current passes through each resistor and Rₛ = R₁ + R₂ + …. In parallel, each resistor has the same potential difference and 1/Rₚ = 1/R₁ + 1/R₂ + ….',
+        keyPoints: [
+          'Longer wire → greater resistance, all else equal.',
+          'Larger cross-sectional area → lower resistance, all else equal.',
+          'Equivalent resistance in series is greater than any individual resistance.',
+          'Equivalent resistance in parallel is less than the smallest branch resistance.'
+        ]
+      },
+      {
+        id: 'heating-power',
+        title: '3. Heating effect and electrical power',
+        explanation: 'When current flows through a resistance, electrical energy is converted to heat. Joule’s law gives H = I²Rt. Electrical power is the rate of energy transfer: P = VI. Using Ohm’s law, P = I²R = V²/R. Electrical energy consumed is power multiplied by time.',
+        keyPoints: [
+          'H = I²Rt, where time is measured in seconds for energy in joules.',
+          'P = VI = I²R = V²/R.',
+          'Commercial electrical energy is often measured in kilowatt-hours (kWh).',
+          '1 kWh = 3.6 × 10⁶ joules.'
+        ]
+      },
+      {
+        id: 'magnetic-effects',
+        title: '4. Magnetic effects and household circuits',
+        explanation: 'A current-carrying conductor produces a magnetic field. The right-hand thumb rule gives the direction of the magnetic field around a straight conductor. A current-carrying conductor in a magnetic field can experience a force; Fleming’s Left Hand Rule gives its direction. Household appliances are connected in parallel so each receives the supply voltage and can operate independently. A fuse or circuit breaker protects against excessive current.',
+        keyPoints: [
+          'Magnetic field lines around a straight current-carrying wire are concentric circles.',
+          'Fleming’s Left Hand Rule relates magnetic field, current and force directions.',
+          'Live and neutral wires provide the supply path; earthing provides a safety path for leakage current.',
+          'The formative-only motor, electromagnetic induction and generator content is not treated here as year-end board scope.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'electric-example-1',
+        title: 'Example 1 · Ohm’s law',
+        question: 'A 6 Ω resistor is connected across a 12 V battery. Find the current.',
+        steps: [
+          'Use V = IR.',
+          'Rearrange: I = V/R.',
+          'Substitute: I = 12/6.'
+        ],
+        answer: 'I = 2 A.'
+      },
+      {
+        id: 'electric-example-2',
+        title: 'Example 2 · Parallel resistance',
+        question: 'Two resistors of 6 Ω and 3 Ω are connected in parallel. Find the equivalent resistance.',
+        steps: [
+          'Use 1/Rₚ = 1/R₁ + 1/R₂.',
+          '1/Rₚ = 1/6 + 1/3 = 1/6 + 2/6 = 3/6.',
+          'So 1/Rₚ = 1/2.'
+        ],
+        answer: 'Rₚ = 2 Ω.'
+      },
+      {
+        id: 'electric-example-3',
+        title: 'Example 3 · Electrical power',
+        question: 'An appliance uses 2 A current at 220 V. Find its power.',
+        steps: [
+          'Use P = VI.',
+          'Substitute V = 220 V and I = 2 A.',
+          'P = 220 × 2.'
+        ],
+        answer: 'P = 440 W.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Ohm’s law', detail: 'V = IR at constant physical conditions.' },
+      { title: 'Series', detail: 'Rₛ = R₁ + R₂ + ….' },
+      { title: 'Parallel', detail: '1/Rₚ = 1/R₁ + 1/R₂ + ….' },
+      { title: 'Power', detail: 'P = VI = I²R = V²/R.' }
+    ],
+    questions: [
+      {
+        id: 'sci-electric-q1',
+        prompt: 'A 4 Ω resistor is connected to a 12 V source. What current flows?',
+        choices: [{ id: 'a', text: '2 A' }, { id: 'b', text: '3 A' }, { id: 'c', text: '4 A' }, { id: 'd', text: '48 A' }],
+        answer: 'b',
+        explanation: 'Ohm’s law gives I = V/R = 12/4 = 3 A.'
+      },
+      {
+        id: 'sci-electric-q2',
+        prompt: 'What is the equivalent resistance of 2 Ω and 3 Ω resistors connected in series?',
+        choices: [{ id: 'a', text: '1.2 Ω' }, { id: 'b', text: '2.5 Ω' }, { id: 'c', text: '5 Ω' }, { id: 'd', text: '6 Ω' }],
+        answer: 'c',
+        explanation: 'Series resistances add: 2 + 3 = 5 Ω.'
+      },
+      {
+        id: 'sci-electric-q3',
+        prompt: 'Which rule gives the direction of force on a current-carrying conductor in a magnetic field?',
+        choices: [{ id: 'a', text: 'Fleming’s Left Hand Rule' }, { id: 'b', text: 'Right-hand thumb rule only' }, { id: 'c', text: 'Law of reflection' }, { id: 'd', text: 'Snell’s law' }],
+        answer: 'a',
+        explanation: 'Fleming’s Left Hand Rule relates the direction of magnetic field, current and force.'
+      },
+      {
+        id: 'sci-electric-q4',
+        prompt: 'Why are household appliances generally connected in parallel?',
+        choices: [{ id: 'a', text: 'Each gets a different supply voltage' }, { id: 'b', text: 'They all must switch on together' }, { id: 'c', text: 'Each receives the supply voltage and can operate independently' }, { id: 'd', text: 'The total resistance is always larger' }],
+        answer: 'c',
+        explanation: 'Parallel connection gives each appliance the same supply potential difference and independent operation.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit IV'
+  },
+  {
+    id: 'our-environment',
+    curriculumItemId: 'sci-environment',
+    subjectId: 'science',
+    title: 'Our Environment',
+    chapterLabel: 'Natural Resources · Unit V · Board scope',
+    estimatedMinutes: 25,
+    syllabusScope: 'Ecosystem, environmental problems, ozone depletion, waste production and solutions, and biodegradable/non-biodegradable substances.',
+    overview: 'An ecosystem connects living organisms with their physical surroundings. Materials and energy move through it, and human activities can disrupt these connections when waste and pollution are not managed responsibly.',
+    learningGoals: [
+      'Identify biotic and abiotic parts of an ecosystem.',
+      'Explain food chains and the roles of producers, consumers and decomposers.',
+      'Distinguish biodegradable from non-biodegradable waste.',
+      'Describe ozone depletion and practical waste-management solutions.'
+    ],
+    sections: [
+      {
+        id: 'ecosystem',
+        title: '1. Ecosystems and food chains',
+        explanation: 'An ecosystem includes living components (plants, animals and microorganisms) and non-living components (air, water, soil, light and temperature). Producers make food, consumers obtain energy by eating other organisms, and decomposers break down dead matter and return nutrients to the environment. A food chain shows one pathway of feeding relationships.',
+        keyPoints: [
+          'Producers form the starting point of most food chains.',
+          'Consumers depend directly or indirectly on producers.',
+          'Decomposers recycle nutrients from dead organisms and wastes.',
+          'Energy flows through trophic levels; it is not recycled in the same way as matter.'
+        ]
+      },
+      {
+        id: 'waste',
+        title: '2. Biodegradable and non-biodegradable waste',
+        explanation: 'Biodegradable substances can be broken down by microorganisms under suitable conditions. Non-biodegradable substances do not break down easily and may persist or accumulate in the environment. Waste reduction, reuse, recycling, composting and safe disposal reduce the burden on ecosystems.',
+        keyPoints: [
+          'Food scraps and paper are generally biodegradable.',
+          'Many plastics persist for long periods and require careful management.',
+          'Segregating wet and dry waste makes treatment and recycling easier.',
+          'Reduce and reuse before recycling when possible.'
+        ]
+      },
+      {
+        id: 'ozone',
+        title: '3. Ozone depletion and environmental problems',
+        explanation: 'The ozone layer in the stratosphere absorbs much of the Sun’s harmful ultraviolet radiation. Certain ozone-depleting substances, historically including chlorofluorocarbons (CFCs), release reactive chlorine compounds that break down ozone. Environmental problems also include air and water pollution, excessive waste and damage to habitats.',
+        keyPoints: [
+          'Stratospheric ozone protects life by absorbing much harmful UV radiation.',
+          'CFCs can contribute to ozone depletion.',
+          'Ozone depletion increases the amount of harmful UV radiation reaching Earth’s surface.',
+          'International controls on ozone-depleting substances support recovery of the ozone layer.'
+        ]
+      },
+      {
+        id: 'solutions',
+        title: '4. Practical solutions',
+        explanation: 'Preventing waste is usually better than managing it after it is created. Choose durable products, avoid unnecessary single-use packaging, segregate waste, compost suitable organic material and send recyclable materials to appropriate collection systems. Community action and responsible industry practices are both needed.',
+        keyPoints: [
+          'Follow reduce, reuse and recycle.',
+          'Composting returns nutrients from suitable organic waste to the soil.',
+          'Do not burn mixed waste; it can release harmful pollutants.',
+          'Protect local water bodies and habitats by preventing dumping.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'environment-example-1',
+        title: 'Example 1 · Food chain',
+        question: 'In grass → grasshopper → frog → snake, identify the producer and the primary consumer.',
+        steps: [
+          'Grass makes its own food by photosynthesis, so it is the producer.',
+          'The grasshopper eats grass.',
+          'The first organism that eats the producer is the primary consumer.'
+        ],
+        answer: 'Producer: grass. Primary consumer: grasshopper.'
+      },
+      {
+        id: 'environment-example-2',
+        title: 'Example 2 · Waste classification',
+        question: 'Classify a banana peel and a plastic bottle as biodegradable or non-biodegradable.',
+        steps: [
+          'A banana peel can be broken down by microorganisms under suitable conditions.',
+          'A plastic bottle persists for a long time and does not biodegrade easily.'
+        ],
+        answer: 'Banana peel: biodegradable. Plastic bottle: non-biodegradable.'
+      },
+      {
+        id: 'environment-example-3',
+        title: 'Example 3 · Ozone protection',
+        question: 'Why is the ozone layer important for living organisms?',
+        steps: [
+          'The ozone layer is present in the stratosphere.',
+          'It absorbs much of the Sun’s harmful ultraviolet radiation.',
+          'Less harmful UV radiation reaches the surface when the ozone layer is protected.'
+        ],
+        answer: 'It protects life by absorbing much harmful ultraviolet radiation.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Producer', detail: 'Makes its own food, usually using sunlight.' },
+      { title: 'Decomposer', detail: 'Breaks down dead matter and recycles nutrients.' },
+      { title: 'Biodegradable', detail: 'Can be broken down by microorganisms under suitable conditions.' },
+      { title: 'Ozone layer', detail: 'Absorbs much of the Sun’s harmful ultraviolet radiation.' }
+    ],
+    questions: [
+      {
+        id: 'sci-environment-q1',
+        prompt: 'Which organisms break down dead organic matter and recycle nutrients?',
+        choices: [{ id: 'a', text: 'Producers' }, { id: 'b', text: 'Decomposers' }, { id: 'c', text: 'Only herbivores' }, { id: 'd', text: 'Abiotic factors' }],
+        answer: 'b',
+        explanation: 'Decomposers such as bacteria and fungi break down dead matter and return nutrients to the environment.'
+      },
+      {
+        id: 'sci-environment-q2',
+        prompt: 'Which material is generally biodegradable?',
+        choices: [{ id: 'a', text: 'Banana peel' }, { id: 'b', text: 'Glass bottle' }, { id: 'c', text: 'Plastic wrapper' }, { id: 'd', text: 'Aluminium can' }],
+        answer: 'a',
+        explanation: 'A banana peel is organic matter that microorganisms can break down under suitable conditions.'
+      },
+      {
+        id: 'sci-environment-q3',
+        prompt: 'What does the stratospheric ozone layer absorb?',
+        choices: [{ id: 'a', text: 'All visible light' }, { id: 'b', text: 'Much harmful ultraviolet radiation' }, { id: 'c', text: 'All sound waves' }, { id: 'd', text: 'Only infrared radiation' }],
+        answer: 'b',
+        explanation: 'Ozone absorbs much of the Sun’s harmful ultraviolet radiation.'
+      },
+      {
+        id: 'sci-environment-q4',
+        prompt: 'Which action follows the waste hierarchy most closely?',
+        choices: [{ id: 'a', text: 'Buy disposable items for every use' }, { id: 'b', text: 'Burn mixed waste' }, { id: 'c', text: 'Reduce and reuse before recycling' }, { id: 'd', text: 'Dump waste into a water body' }],
+        answer: 'c',
+        explanation: 'Reducing consumption and reusing items prevent waste before recycling is needed.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit V'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -2036,7 +2982,14 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'math-area': 'areas-related-to-circles',
   'math-volume': 'surface-areas-and-volumes',
   'math-stats': 'statistics',
-  'math-prob': 'probability'
+  'math-prob': 'probability',
+  'sci-reaction': 'chemical-reactions-and-equations',
+  'sci-life': 'life-processes',
+  'sci-control': 'control-and-coordination',
+  'sci-reproduction': 'reproduction',
+  'sci-light': 'light-reflection-and-refraction',
+  'sci-electric': 'electricity-and-magnetic-effects',
+  'sci-environment': 'our-environment'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
