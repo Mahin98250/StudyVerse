@@ -743,6 +743,131 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: mathematicsSource,
     sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 4'
   }
+,
+  {
+    id: 'coordinate-geometry',
+    curriculumItemId: 'math-coord',
+    subjectId: 'mathematics',
+    title: 'Coordinate Geometry',
+    chapterLabel: 'Coordinate Geometry · Unit III',
+    estimatedMinutes: 30,
+    syllabusScope: 'Review of coordinate geometry, the distance formula and the section formula for internal division.',
+    overview: 'Coordinates turn geometry into algebra. You can calculate the distance between two points and locate a point that divides a line segment in a given ratio.',
+    learningGoals: [
+      'Read and identify coordinates on the Cartesian plane.',
+      'Use the distance formula between two points.',
+      'Use the section formula for internal division.',
+      'Recognise the midpoint formula as a special case of the section formula.'
+    ],
+    sections: [
+      {
+        id: 'coordinate-plane',
+        title: '1. Points on the Cartesian plane',
+        explanation: 'A point is written as an ordered pair (x, y). The x-coordinate tells the horizontal position and the y-coordinate tells the vertical position. The origin is (0, 0). Always keep the order x first, y second.',
+        keyPoints: [
+          'The horizontal axis is the x-axis and the vertical axis is the y-axis.',
+          'The origin is where both axes meet.',
+          'Changing the order of coordinates usually changes the point: (2, 5) is not the same as (5, 2).'
+        ]
+      },
+      {
+        id: 'distance-formula',
+        title: '2. Distance formula',
+        explanation: 'For A(x₁, y₁) and B(x₂, y₂), the horizontal difference is x₂ − x₁ and the vertical difference is y₂ − y₁. These are the perpendicular sides of a right triangle. By Pythagoras, AB = √[(x₂ − x₁)² + (y₂ − y₁)²].',
+        keyPoints: [
+          'Subtract corresponding coordinates in the same order.',
+          'Square both differences before adding them.',
+          'The final distance is non-negative.'
+        ]
+      },
+      {
+        id: 'section-formula',
+        title: '3. Section formula for internal division',
+        explanation: 'If P divides the line segment joining A(x₁, y₁) and B(x₂, y₂) internally in the ratio m:n, meaning AP:PB = m:n, then P has coordinates ((mx₂ + nx₁)/(m+n), (my₂ + ny₁)/(m+n)). The weights are opposite the endpoints: m multiplies B and n multiplies A.',
+        keyPoints: [
+          'Write the ratio in the same order as the question: AP:PB = m:n.',
+          'Use m+n as the denominator in both coordinates.',
+          'For the midpoint, m:n = 1:1, so average the x-coordinates and average the y-coordinates.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'coord-example-1',
+        title: 'Example 1 · Distance between points',
+        question: 'Find the distance between A(−1, 2) and B(5, 10).',
+        steps: [
+          'Use AB = √[(x₂ − x₁)² + (y₂ − y₁)²].',
+          'Substitute: AB = √[(5 − (−1))² + (10 − 2)²].',
+          'AB = √[6² + 8²] = √[36 + 64].',
+          'AB = √100 = 10.'
+        ],
+        answer: 'The distance AB is 10 units.'
+      },
+      {
+        id: 'coord-example-2',
+        title: 'Example 2 · Internal section',
+        question: 'Find the point P dividing A(2, 3) and B(8, 9) in the ratio 1:2 internally.',
+        steps: [
+          'Here x₁ = 2, y₁ = 3, x₂ = 8, y₂ = 9, m = 1 and n = 2.',
+          'x-coordinate = (1 × 8 + 2 × 2)/(1 + 2) = 12/3 = 4.',
+          'y-coordinate = (1 × 9 + 2 × 3)/(1 + 2) = 15/3 = 5.',
+          'Combine the coordinates in x,y order.'
+        ],
+        answer: 'P = (4, 5).'
+      },
+      {
+        id: 'coord-example-3',
+        title: 'Example 3 · Midpoint',
+        question: 'Find the midpoint of the segment joining (−2, 4) and (6, 8).',
+        steps: [
+          'A midpoint divides a segment in the ratio 1:1.',
+          'Average the x-coordinates: (−2 + 6)/2 = 2.',
+          'Average the y-coordinates: (4 + 8)/2 = 6.',
+          'Write the result as an ordered pair.'
+        ],
+        answer: 'The midpoint is (2, 6).'
+      }
+    ],
+    keyFacts: [
+      { title: 'Distance formula', detail: '√[(x₂ − x₁)² + (y₂ − y₁)²].' },
+      { title: 'Section formula', detail: '((mx₂ + nx₁)/(m+n), (my₂ + ny₁)/(m+n)).' },
+      { title: 'Internal ratio', detail: 'AP:PB = m:n.' },
+      { title: 'Midpoint', detail: '((x₁ + x₂)/2, (y₁ + y₂)/2).' }
+    ],
+    questions: [
+      {
+        id: 'coord-q1',
+        prompt: 'What is the distance between (0, 0) and (3, 4)?',
+        choices: [{ id: 'a', text: '4 units' }, { id: 'b', text: '5 units' }, { id: 'c', text: '6 units' }, { id: 'd', text: '7 units' }],
+        answer: 'b',
+        explanation: 'Distance = √[(3−0)² + (4−0)²] = √(9+16) = √25 = 5.'
+      },
+      {
+        id: 'coord-q2',
+        prompt: 'A point divides AB internally in the ratio 1:1. What special point is it?',
+        choices: [{ id: 'a', text: 'Origin' }, { id: 'b', text: 'Focus' }, { id: 'c', text: 'Midpoint' }, { id: 'd', text: 'Vertex' }],
+        answer: 'c',
+        explanation: 'A 1:1 division means the distances from the point to both endpoints are equal, so it is the midpoint.'
+      },
+      {
+        id: 'coord-q3',
+        prompt: 'Find the midpoint of (2, 4) and (8, 10).',
+        choices: [{ id: 'a', text: '(4, 6)' }, { id: 'b', text: '(5, 7)' }, { id: 'c', text: '(6, 8)' }, { id: 'd', text: '(10, 14)' }],
+        answer: 'b',
+        explanation: 'Average the x-values: (2+8)/2 = 5. Average the y-values: (4+10)/2 = 7.'
+      },
+      {
+        id: 'coord-q4',
+        prompt: 'If AP:PB = 2:1, which weights are used in the section formula for P?',
+        choices: [{ id: 'a', text: '2 multiplies A and 1 multiplies B' }, { id: 'b', text: '1 multiplies A and 2 multiplies B' }, { id: 'c', text: 'Both endpoints are multiplied by 2' }, { id: 'd', text: 'The ratio is not used' }],
+        answer: 'b',
+        explanation: 'For AP:PB = m:n, P = ((mx₂+nx₁)/(m+n), ...). So m multiplies B and n multiplies A.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 4'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -750,7 +875,8 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'math-poly': 'polynomials',
   'math-linear': 'pair-of-linear-equations',
   'math-quad': 'quadratic-equations',
-  'math-ap': 'arithmetic-progressions'
+  'math-ap': 'arithmetic-progressions',
+  'math-coord': 'coordinate-geometry'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
