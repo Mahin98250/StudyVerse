@@ -868,6 +868,263 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: mathematicsSource,
     sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 4'
   }
+,
+  {
+    id: 'triangles',
+    curriculumItemId: 'math-tri',
+    subjectId: 'mathematics',
+    title: 'Triangles',
+    chapterLabel: 'Geometry · Unit IV',
+    estimatedMinutes: 45,
+    syllabusScope: 'Similar triangles, Basic Proportionality Theorem and its converse, and similarity criteria (AA, SSS and SAS).',
+    overview: 'Similar triangles have the same shape, even when their sizes differ. Proportional sides and equal angles let you solve missing lengths and prove geometric relationships.',
+    learningGoals: [
+      'Distinguish similarity from congruence.',
+      'Recognise AA, SSS and SAS similarity criteria.',
+      'State and use the Basic Proportionality Theorem.',
+      'Explain the area-based proof of the Basic Proportionality Theorem.'
+    ],
+    sections: [
+      {
+        id: 'similarity',
+        title: '1. Similar triangles',
+        explanation: 'Two triangles are similar when their corresponding angles are equal and their corresponding sides are proportional. Similar triangles have the same shape, but not necessarily the same size. Congruent triangles are a special case in which corresponding sides and angles are equal.',
+        keyPoints: [
+          'Write corresponding vertices in the same order: ΔABC ~ ΔPQR means A↔P, B↔Q and C↔R.',
+          'Corresponding angles are equal.',
+          'Ratios of corresponding sides are equal.'
+        ]
+      },
+      {
+        id: 'criteria',
+        title: '2. Similarity criteria',
+        explanation: 'AA: two corresponding angles are equal. SSS: all three pairs of corresponding sides are proportional. SAS: one pair of included angles is equal and the pairs of sides including those angles are proportional. These conditions are enough to establish similarity.',
+        keyPoints: [
+          'AA uses two angles; the third pair is automatically equal because the angles of a triangle sum to 180°.',
+          'SSS compares all three side ratios.',
+          'SAS compares two side ratios and the included angle.'
+        ]
+      },
+      {
+        id: 'bpt',
+        title: '3. Basic Proportionality Theorem',
+        explanation: 'In ΔABC, if a line DE is drawn parallel to BC and meets AB at D and AC at E, then AD/DB = AE/EC. In simple terms, a line parallel to one side of a triangle divides the other two sides in the same ratio.',
+        keyPoints: [
+          'The parallel condition DE ∥ BC is essential.',
+          'The theorem compares the upper segment with the lower segment on each side.',
+          'Converse: if a line divides two sides in the same ratio, it is parallel to the third side.'
+        ]
+      },
+      {
+        id: 'bpt-proof',
+        title: '4. Why the Basic Proportionality Theorem works',
+        explanation: 'Compare the areas of three small triangles. Triangles ADE and BDE share the same altitude to line AB, so their area ratio is AD/DB. Triangles ADE and CDE share the same altitude to line AC, so their area ratio is AE/EC. Because DE is parallel to BC, triangles BDE and CDE lie between the same parallels and have equal areas. Therefore AD/DB = AE/EC.',
+        keyPoints: [
+          'For triangles with the same altitude, the ratio of areas equals the ratio of their bases.',
+          'Triangles on the same base and between the same parallels have equal areas.',
+          'The two area comparisons lead to AD/DB = AE/EC.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'tri-example-1',
+        title: 'Example 1 · Apply BPT',
+        question: 'In ΔABC, DE ∥ BC. If AD = 4, DB = 6 and AC = 15, find AE.',
+        steps: [
+          'By BPT, AD/DB = AE/EC.',
+          'So 4/6 = AE/EC, which simplifies to 2/3.',
+          'Let AE = 2k and EC = 3k. Since AC = 15, 5k = 15.',
+          'Thus k = 3 and AE = 2k = 6.'
+        ],
+        answer: 'AE = 6 units.'
+      },
+      {
+        id: 'tri-example-2',
+        title: 'Example 2 · Use similarity ratios',
+        question: 'If ΔABC ~ ΔPQR and AB:PQ = 3:5, what is QR when BC = 9?',
+        steps: [
+          'From ΔABC ~ ΔPQR, the correspondence is A↔P, B↔Q and C↔R.',
+          'Corresponding sides are proportional: AB/PQ = BC/QR.',
+          'Substitute 3/5 = 9/QR.',
+          'Cross-multiply: 3QR = 45, so QR = 15.'
+        ],
+        answer: 'QR = 15 units.'
+      },
+      {
+        id: 'tri-example-3',
+        title: 'Example 3 · Identify a criterion',
+        question: 'Two triangles have two pairs of equal corresponding angles. Which criterion proves them similar?',
+        steps: [
+          'Two angles in the first triangle match two angles in the second.',
+          'The third angles must also be equal because each triangle has an angle sum of 180°.',
+          'All corresponding angles are therefore equal.',
+          'This is the AA similarity criterion.'
+        ],
+        answer: 'AA similarity.'
+      }
+    ],
+    keyFacts: [
+      { title: 'AA similarity', detail: 'Two pairs of corresponding angles are equal.' },
+      { title: 'SSS similarity', detail: 'All three pairs of corresponding sides are proportional.' },
+      { title: 'SAS similarity', detail: 'Two side ratios and the included angle match.' },
+      { title: 'BPT', detail: 'DE ∥ BC ⇒ AD/DB = AE/EC.' }
+    ],
+    questions: [
+      {
+        id: 'tri-q1',
+        prompt: 'Which statement is required for the Basic Proportionality Theorem?',
+        choices: [{ id: 'a', text: 'DE is perpendicular to BC' }, { id: 'b', text: 'DE is parallel to BC' }, { id: 'c', text: 'DE is equal to BC' }, { id: 'd', text: 'D and E are midpoints only' }],
+        answer: 'b',
+        explanation: 'The theorem applies when a line through two sides of a triangle is parallel to the third side.'
+      },
+      {
+        id: 'tri-q2',
+        prompt: 'Two angles of one triangle are equal to two angles of another. Which criterion applies?',
+        choices: [{ id: 'a', text: 'SSS' }, { id: 'b', text: 'SAS' }, { id: 'c', text: 'AA' }, { id: 'd', text: 'RHS' }],
+        answer: 'c',
+        explanation: 'Two corresponding equal angles are sufficient for similarity by AA.'
+      },
+      {
+        id: 'tri-q3',
+        prompt: 'If AD/DB = AE/EC, what does the converse of BPT tell us?',
+        choices: [{ id: 'a', text: 'DE ∥ BC' }, { id: 'b', text: 'DE ⟂ BC' }, { id: 'c', text: 'AB = AC' }, { id: 'd', text: 'The triangles are congruent' }],
+        answer: 'a',
+        explanation: 'The converse says that a line dividing two sides in the same ratio is parallel to the third side.'
+      },
+      {
+        id: 'tri-q4',
+        prompt: 'In ΔABC, DE ∥ BC. If AD = 2 and DB = 3, what is AE:EC?',
+        choices: [{ id: 'a', text: '3:2' }, { id: 'b', text: '2:3' }, { id: 'c', text: '2:5' }, { id: 'd', text: '1:3' }],
+        answer: 'b',
+        explanation: 'By BPT, AD/DB = AE/EC, so AE:EC = 2:3.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · pages 4–5'
+  },
+  {
+    id: 'circles',
+    curriculumItemId: 'math-circle',
+    subjectId: 'mathematics',
+    title: 'Circles',
+    chapterLabel: 'Geometry · Unit IV',
+    estimatedMinutes: 30,
+    syllabusScope: 'Tangent at a point of contact; proof that the tangent is perpendicular to the radius; proof that tangents from an external point are equal.',
+    overview: 'A tangent touches a circle at exactly one point. Two theorems about tangents make many circle problems much easier to solve.',
+    learningGoals: [
+      'Identify a tangent and its point of contact.',
+      'Use the fact that a tangent is perpendicular to the radius at contact.',
+      'Use the equal-tangents theorem for an external point.',
+      'Solve simple length problems using right triangles.'
+    ],
+    sections: [
+      {
+        id: 'tangent',
+        title: '1. What is a tangent?',
+        explanation: 'A tangent to a circle is a line that touches the circle at exactly one point. That point is called the point of contact. A line that cuts the circle at two points is a secant, not a tangent.',
+        keyPoints: [
+          'A tangent touches the circle at one point.',
+          'The radius drawn to the point of contact is perpendicular to the tangent.',
+          'The perpendicular distance from the centre to a tangent equals the radius.'
+        ]
+      },
+      {
+        id: 'radius-theorem',
+        title: '2. Tangent-radius theorem',
+        explanation: 'The tangent at any point of a circle is perpendicular to the radius through the point of contact. If O is the centre, T is the contact point and PT is the tangent, then OT ⟂ PT and angle OTP = 90°.',
+        keyPoints: [
+          'Join the centre to the point of contact before solving a tangent problem.',
+          'The radius and tangent create a right-angled triangle.',
+          'Use Pythagoras when the centre-to-external-point distance and radius are known.'
+        ]
+      },
+      {
+        id: 'equal-tangents',
+        title: '3. Tangents from an external point',
+        explanation: 'If PA and PB are tangents drawn from the same external point P to a circle, then PA = PB. The two right triangles OAP and OBP are congruent by RHS: OA = OB (radii), OP is common, and both have a right angle at the point of contact.',
+        keyPoints: [
+          'The equal-tangents theorem applies to tangents from the same external point.',
+          'The lengths PA and PB are equal.',
+          'The line joining the external point to the centre bisects the angle between the two tangents.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'circle-example-1',
+        title: 'Example 1 · Right angle at contact',
+        question: 'PT is tangent to a circle with centre O at T. Find angle OTP.',
+        steps: [
+          'OT is the radius drawn to the point of contact T.',
+          'PT is the tangent at T.',
+          'By the tangent-radius theorem, OT is perpendicular to PT.'
+        ],
+        answer: '∠OTP = 90°.'
+      },
+      {
+        id: 'circle-example-2',
+        title: 'Example 2 · Equal tangents',
+        question: 'PA and PB are tangents from P. If PA = 7 cm, find PB.',
+        steps: [
+          'Both PA and PB are tangents drawn from the same external point P.',
+          'By the equal-tangents theorem, PA = PB.',
+          'Substitute PA = 7 cm.'
+        ],
+        answer: 'PB = 7 cm.'
+      },
+      {
+        id: 'circle-example-3',
+        title: 'Example 3 · Use Pythagoras',
+        question: 'A circle has radius 5 cm. The distance from its centre O to an external point P is 13 cm. Find the tangent length PT.',
+        steps: [
+          'Join O to the point of contact T. OT is the radius, so OT = 5 cm.',
+          'OT ⟂ PT, so triangle OPT is right-angled at T.',
+          'By Pythagoras: OP² = OT² + PT².',
+          'PT² = 13² − 5² = 169 − 25 = 144, so PT = 12 cm.'
+        ],
+        answer: 'PT = 12 cm.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Tangent-radius', detail: 'Radius ⟂ tangent at the point of contact.' },
+      { title: 'Equal tangents', detail: 'PA = PB when both are drawn from the same external point.' },
+      { title: 'Right triangle', detail: 'Use Pythagoras with centre, contact point and external point.' },
+      { title: 'Radii', detail: 'All radii of the same circle are equal.' }
+    ],
+    questions: [
+      {
+        id: 'circle-q1',
+        prompt: 'What is the angle between a radius and the tangent at the point of contact?',
+        choices: [{ id: 'a', text: '30°' }, { id: 'b', text: '45°' }, { id: 'c', text: '90°' }, { id: 'd', text: '180°' }],
+        answer: 'c',
+        explanation: 'The tangent-radius theorem states that they are perpendicular, so the angle is 90°.'
+      },
+      {
+        id: 'circle-q2',
+        prompt: 'Two tangents PA and PB are drawn from the same external point P. If PA = 9 cm, what is PB?',
+        choices: [{ id: 'a', text: '4.5 cm' }, { id: 'b', text: '9 cm' }, { id: 'c', text: '18 cm' }, { id: 'd', text: 'Cannot be found' }],
+        answer: 'b',
+        explanation: 'Tangents drawn from the same external point are equal in length.'
+      },
+      {
+        id: 'circle-q3',
+        prompt: 'A tangent touches a circle at how many points?',
+        choices: [{ id: 'a', text: 'Zero' }, { id: 'b', text: 'One' }, { id: 'c', text: 'Two' }, { id: 'd', text: 'Three' }],
+        answer: 'b',
+        explanation: 'A tangent touches the circle at exactly one point, called the point of contact.'
+      },
+      {
+        id: 'circle-q4',
+        prompt: 'A radius is 5 cm and OP is 13 cm, where PT is a tangent. What is PT?',
+        choices: [{ id: 'a', text: '8 cm' }, { id: 'b', text: '10 cm' }, { id: 'c', text: '12 cm' }, { id: 'd', text: '18 cm' }],
+        answer: 'c',
+        explanation: 'OT ⟂ PT, so PT = √(OP² − OT²) = √(169 − 25) = 12 cm.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 5'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -876,7 +1133,9 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'math-linear': 'pair-of-linear-equations',
   'math-quad': 'quadratic-equations',
   'math-ap': 'arithmetic-progressions',
-  'math-coord': 'coordinate-geometry'
+  'math-coord': 'coordinate-geometry',
+  'math-tri': 'triangles',
+  'math-circle': 'circles'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
