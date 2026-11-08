@@ -1504,6 +1504,521 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: mathematicsSource,
     sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 5'
   }
+,
+  {
+    id: 'areas-related-to-circles',
+    curriculumItemId: 'math-area',
+    subjectId: 'mathematics',
+    title: 'Areas Related to Circles',
+    chapterLabel: 'Mensuration · Unit VI',
+    estimatedMinutes: 30,
+    syllabusScope: 'Perimeter and area of a circle; area and perimeter of sectors and segments; central angles limited to 60°, 90° and 120°.',
+    overview: 'A sector is a slice of a circle made by two radii and an arc. A segment is the region between a chord and its corresponding arc. Their areas can be found by taking a fraction of the full circle.',
+    learningGoals: [
+      'Recall circumference and area of a circle.',
+      'Calculate the area and arc length of a sector.',
+      'Calculate the area of a segment by subtracting a triangle from a sector.',
+      'Use the specified central angles of 60°, 90° and 120°.'
+    ],
+    sections: [
+      {
+        id: 'circle-basics',
+        title: '1. Circle basics',
+        explanation: 'The radius r is the distance from the centre to the circle. The circumference is the distance around it, 2πr. The area inside the circle is πr². A central angle θ is the angle formed by two radii at the centre.',
+        keyPoints: [
+          'Circumference = 2πr.',
+          'Area of a circle = πr².',
+          'A full circle has a central angle of 360°.'
+        ]
+      },
+      {
+        id: 'sector',
+        title: '2. Sector area and arc length',
+        explanation: 'A sector with central angle θ is θ/360 of the full circle. Its area is (θ/360)πr². The arc length is the same fraction of the full circumference: (θ/360)2πr. Use the angle in degrees and keep the units consistent.',
+        keyPoints: [
+          'Sector area = (θ/360) × πr².',
+          'Arc length = (θ/360) × 2πr.',
+          'A quarter-circle sector has θ = 90°; a semicircle has θ = 180°.'
+        ]
+      },
+      {
+        id: 'segment',
+        title: '3. Area of a segment',
+        explanation: 'A chord divides a circle into two segments. For the minor segment, subtract the area of the triangle formed by the two radii and the chord from the area of the sector. Area of minor segment = area of sector − area of triangle. The major segment can be found by subtracting the minor segment from the full circle.',
+        keyPoints: [
+          'Minor segment = minor sector − triangle.',
+          'Major segment = circle area − minor segment.',
+          'Sketch the radii, chord and angle before choosing the triangle formula.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'area-example-1',
+        title: 'Example 1 · Sector area',
+        question: 'Find the area of a 90° sector of a circle with radius 7 cm. Use π = 22/7.',
+        steps: [
+          'Use sector area = (θ/360) × πr².',
+          'Substitute θ = 90° and r = 7 cm.',
+          'Area = (90/360) × (22/7) × 7².',
+          'Area = 1/4 × 154 = 38.5 cm².'
+        ],
+        answer: '38.5 cm².'
+      },
+      {
+        id: 'area-example-2',
+        title: 'Example 2 · Arc length',
+        question: 'Find the arc length of a 120° sector of radius 6 cm.',
+        steps: [
+          'Use arc length = (θ/360) × 2πr.',
+          'Substitute θ = 120° and r = 6 cm.',
+          'Arc length = (120/360) × 12π.',
+          'Simplify: one-third of 12π is 4π.'
+        ],
+        answer: '4π cm.'
+      },
+      {
+        id: 'area-example-3',
+        title: 'Example 3 · Segment area at 90°',
+        question: 'A circle has radius 7 cm. Find the area of the minor segment formed by a 90° central angle. Use π = 22/7.',
+        steps: [
+          'Area of the 90° sector = 1/4 × (22/7) × 49 = 38.5 cm².',
+          'The triangle between the two radii is right-angled with legs 7 cm and 7 cm.',
+          'Triangle area = 1/2 × 7 × 7 = 24.5 cm².',
+          'Minor segment area = 38.5 − 24.5.'
+        ],
+        answer: '14 cm².'
+      }
+    ],
+    keyFacts: [
+      { title: 'Circumference', detail: '2πr.' },
+      { title: 'Circle area', detail: 'πr².' },
+      { title: 'Sector area', detail: '(θ/360)πr².' },
+      { title: 'Minor segment', detail: 'Sector area − triangle area.' }
+    ],
+    questions: [
+      {
+        id: 'area-q1',
+        prompt: 'What fraction of a circle is a 90° sector?',
+        choices: [{ id: 'a', text: '1/2' }, { id: 'b', text: '1/3' }, { id: 'c', text: '1/4' }, { id: 'd', text: '1/6' }],
+        answer: 'c',
+        explanation: '90/360 = 1/4, so a 90° sector is one-quarter of the full circle.'
+      },
+      {
+        id: 'area-q2',
+        prompt: 'What is the area of a circle of radius 5 cm?',
+        choices: [{ id: 'a', text: '10π cm²' }, { id: 'b', text: '25π cm²' }, { id: 'c', text: '5π cm²' }, { id: 'd', text: '50π cm²' }],
+        answer: 'b',
+        explanation: 'Area = πr² = π × 5² = 25π cm².'
+      },
+      {
+        id: 'area-q3',
+        prompt: 'How do you find the area of a minor segment?',
+        choices: [{ id: 'a', text: 'Add the sector and triangle areas' }, { id: 'b', text: 'Subtract triangle area from sector area' }, { id: 'c', text: 'Subtract sector area from circle area' }, { id: 'd', text: 'Divide the circumference by 2' }],
+        answer: 'b',
+        explanation: 'The minor segment is the region in the sector outside the triangle, so subtract the triangle area.'
+      },
+      {
+        id: 'area-q4',
+        prompt: 'What is the arc length of a 60° sector in a circle of radius 3 cm?',
+        choices: [{ id: 'a', text: 'π cm' }, { id: 'b', text: '2π cm' }, { id: 'c', text: '3π cm' }, { id: 'd', text: '6π cm' }],
+        answer: 'a',
+        explanation: 'Arc length = (60/360) × 2π × 3 = π cm.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 6'
+  },
+  {
+    id: 'surface-areas-and-volumes',
+    curriculumItemId: 'math-volume',
+    subjectId: 'mathematics',
+    title: 'Surface Areas and Volumes',
+    chapterLabel: 'Mensuration · Unit VI',
+    estimatedMinutes: 40,
+    syllabusScope: 'Combinations of any two among cubes, cuboids, spheres, hemispheres, cylinders and cones. Use the stated solid formulas and count only exposed external surfaces.',
+    overview: 'Surface area measures the outside covering of a solid, while volume measures the space it occupies. For a combined solid, split it into familiar shapes, then add or subtract carefully.',
+    learningGoals: [
+      'Recall surface-area and volume formulas for the listed solids.',
+      'Split a combined solid into two familiar shapes.',
+      'Add volumes when solids are joined without overlap.',
+      'Find only the surfaces that remain exposed on the outside.'
+    ],
+    sections: [
+      {
+        id: 'solid-formulas',
+        title: '1. Formula reference',
+        explanation: 'For a cube of side a: total surface area 6a² and volume a³. For a cuboid l×b×h: TSA = 2(lb+bh+hl) and volume = lbh. For a sphere: surface area = 4πr² and volume = 4/3πr³. For a hemisphere: curved area = 2πr², total area = 3πr² and volume = 2/3πr³. For a cylinder: CSA = 2πrh, TSA = 2πr(r+h), volume = πr²h. For a cone: curved area = πrl, TSA = πr(l+r), volume = 1/3πr²h, where l = √(r²+h²).',
+        keyPoints: [
+          'CSA means curved surface area; TSA means total surface area.',
+          'Use the slant height l for cone surface area and the vertical height h for cone volume.',
+          'Write the required unit: square units for area and cubic units for volume.'
+        ]
+      },
+      {
+        id: 'combined-volume',
+        title: '2. Volume of a combined solid',
+        explanation: 'If two solids are joined without one entering the space of the other, the total volume is the sum of their volumes. If a problem describes a hollow part or a piece removed, subtract the removed volume. Identify the dimensions of each component before using a formula.',
+        keyPoints: [
+          'Joined non-overlapping solids: add their volumes.',
+          'Removed or hollow part: subtract its volume.',
+          'Use the same units for all dimensions before calculating.'
+        ]
+      },
+      {
+        id: 'exposed-area',
+        title: '3. External surface area',
+        explanation: 'For a combined solid, do not count the hidden surfaces where the two solids touch. Add only the outside surfaces that can be seen from the exterior. A circular face used to join a hemisphere to a cylinder, for example, is not exposed and must not be counted.',
+        keyPoints: [
+          'Sketch the solid and shade the exposed faces.',
+          'Exclude the common contact face between the two solids.',
+          'Do not confuse curved surface area with total surface area.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'volume-example-1',
+        title: 'Example 1 · Cylinder with a hemisphere',
+        question: 'A solid consists of a cylinder of radius 3 cm and height 7 cm with a hemisphere of the same radius attached on top. Find its volume.',
+        steps: [
+          'Cylinder volume = πr²h = π × 3² × 7 = 63π cm³.',
+          'Hemisphere volume = 2/3πr³ = 2/3 × π × 3³ = 18π cm³.',
+          'Add the two non-overlapping volumes: 63π + 18π.'
+        ],
+        answer: '81π cm³.'
+      },
+      {
+        id: 'volume-example-2',
+        title: 'Example 2 · Exposed area of the same solid',
+        question: 'For the cylinder and hemisphere in Example 1, find the external surface area, including the bottom circular base.',
+        steps: [
+          'The curved cylinder surface area = 2πrh = 2π × 3 × 7 = 42π cm².',
+          'The curved hemisphere area = 2πr² = 18π cm².',
+          'The bottom circular base is exposed: πr² = 9π cm².',
+          'The common circular face between the cylinder and hemisphere is hidden, so do not add it.'
+        ],
+        answer: 'External surface area = 42π + 18π + 9π = 69π cm².'
+      },
+      {
+        id: 'volume-example-3',
+        title: 'Example 3 · Volume of a cone',
+        question: 'Find the volume of a cone with radius 3 cm and height 4 cm.',
+        steps: [
+          'Use volume = 1/3πr²h.',
+          'Substitute r = 3 cm and h = 4 cm.',
+          'Volume = 1/3 × π × 9 × 4.',
+          'Simplify 36π/3.'
+        ],
+        answer: '12π cm³.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Cylinder volume', detail: 'πr²h.' },
+      { title: 'Cone volume', detail: '1/3πr²h.' },
+      { title: 'Sphere volume', detail: '4/3πr³.' },
+      { title: 'Hemisphere volume', detail: '2/3πr³.' }
+    ],
+    questions: [
+      {
+        id: 'volume-q1',
+        prompt: 'What is the volume of a cylinder of radius r and height h?',
+        choices: [{ id: 'a', text: '2πrh' }, { id: 'b', text: 'πr²h' }, { id: 'c', text: 'πrl' }, { id: 'd', text: '4πr²' }],
+        answer: 'b',
+        explanation: 'The cylinder volume is its base area πr² multiplied by height h.'
+      },
+      {
+        id: 'volume-q2',
+        prompt: 'Which cone length is used in its curved surface area formula πrl?',
+        choices: [{ id: 'a', text: 'Vertical height h' }, { id: 'b', text: 'Diameter' }, { id: 'c', text: 'Slant height l' }, { id: 'd', text: 'Circumference' }],
+        answer: 'c',
+        explanation: 'The cone curved surface area uses slant height l, not vertical height h.'
+      },
+      {
+        id: 'volume-q3',
+        prompt: 'When a hemisphere is joined to a cylinder along the same circular face, what happens to that shared face in external surface area?',
+        choices: [{ id: 'a', text: 'Count it twice' }, { id: 'b', text: 'Count it once' }, { id: 'c', text: 'Do not count it because it is hidden' }, { id: 'd', text: 'Subtract it twice' }],
+        answer: 'c',
+        explanation: 'The common face is inside the combined solid, so it is not part of the exposed external surface.'
+      },
+      {
+        id: 'volume-q4',
+        prompt: 'Two non-overlapping solids are joined. How do you find their combined volume?',
+        choices: [{ id: 'a', text: 'Add both volumes' }, { id: 'b', text: 'Subtract the smaller volume' }, { id: 'c', text: 'Multiply the volumes' }, { id: 'd', text: 'Add their surface areas' }],
+        answer: 'a',
+        explanation: 'The combined volume is the sum of the volumes of the non-overlapping components.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 6'
+  },
+  {
+    id: 'statistics',
+    curriculumItemId: 'math-stats',
+    subjectId: 'mathematics',
+    title: 'Statistics',
+    chapterLabel: 'Statistics and Probability · Unit VII',
+    estimatedMinutes: 45,
+    syllabusScope: 'Mean, median and mode of grouped data. Mean by direct, assumed-mean and step-deviation methods.',
+    overview: 'Statistics helps you describe a collection of data with a few useful numbers. Mean, median and mode each describe the centre of a distribution in a different way.',
+    learningGoals: [
+      'Find class marks and cumulative frequencies.',
+      'Calculate the mean by direct, assumed-mean and step-deviation methods.',
+      'Find the median of grouped data.',
+      'Find the mode of grouped data and identify its modal class.'
+    ],
+    sections: [
+      {
+        id: 'grouped-data',
+        title: '1. Grouped data and class marks',
+        explanation: 'Grouped data is arranged into class intervals with frequencies. The class mark xᵢ is the midpoint of a class interval: (lower limit + upper limit)/2. The frequency fᵢ tells how many observations lie in that interval. Total frequency N is Σfᵢ.',
+        keyPoints: [
+          'Class mark = (lower limit + upper limit)/2.',
+          'Total observations N = Σfᵢ.',
+          'Cumulative frequency is the running total of frequencies.'
+        ]
+      },
+      {
+        id: 'mean',
+        title: '2. Mean by three methods',
+        explanation: 'Direct method: mean = Σfᵢxᵢ/Σfᵢ. Assumed-mean method: choose an assumed mean A, calculate dᵢ = xᵢ − A, then mean = A + Σfᵢdᵢ/Σfᵢ. Step-deviation method: if class width is h, put uᵢ = (xᵢ − A)/h, then mean = A + h(Σfᵢuᵢ/Σfᵢ).',
+        keyPoints: [
+          'All three methods should give the same mean.',
+          'Choose an assumed mean near the centre to keep deviations small.',
+          'In step deviation, divide the deviation by the common class width h.'
+        ]
+      },
+      {
+        id: 'median',
+        title: '3. Median of grouped data',
+        explanation: 'Find N/2 and locate the class whose cumulative frequency first reaches or exceeds N/2. This is the median class. Then Median = l + [(N/2 − cf)/f] × h, where l is the lower boundary of the median class, cf is the cumulative frequency before that class, f is its frequency and h is its class width.',
+        keyPoints: [
+          'Calculate cumulative frequency before choosing the median class.',
+          'Use the cumulative frequency before the median class for cf, not the median class total.',
+          'Use the lower boundary l and class width h consistently.'
+        ]
+      },
+      {
+        id: 'mode',
+        title: '4. Mode of grouped data',
+        explanation: 'The modal class is the class with the highest frequency. For grouped data, Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h, where l is the lower boundary of the modal class, f₁ is its frequency, f₀ is the preceding frequency, f₂ is the succeeding frequency and h is the class width.',
+        keyPoints: [
+          'Find the highest frequency to identify the modal class.',
+          'f₀ is before the modal class and f₂ is after it.',
+          'Check the denominator 2f₁ − f₀ − f₂ before substituting.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'stats-example-1',
+        title: 'Example 1 · Mean by direct method',
+        question: 'For classes 0–10, 10–20, 20–30, 30–40 with frequencies 3, 8, 5, 4, find the mean.',
+        steps: [
+          'Class marks are 5, 15, 25 and 35.',
+          'Multiply by frequencies: 3×5 = 15, 8×15 = 120, 5×25 = 125, 4×35 = 140.',
+          'Σfᵢxᵢ = 400 and Σfᵢ = 20.',
+          'Mean = 400/20.'
+        ],
+        answer: 'Mean = 20.'
+      },
+      {
+        id: 'stats-example-2',
+        title: 'Example 2 · Median of grouped data',
+        question: 'For the same grouped data, find the median.',
+        steps: [
+          'Total frequency N = 20, so N/2 = 10.',
+          'Cumulative frequencies are 3, 11, 16, 20. The median class is 10–20.',
+          'Here l = 10, cf = 3, f = 8 and h = 10.',
+          'Median = 10 + [(10 − 3)/8] × 10 = 10 + 8.75.'
+        ],
+        answer: 'Median = 18.75.'
+      },
+      {
+        id: 'stats-example-3',
+        title: 'Example 3 · Mode of grouped data',
+        question: 'For the same grouped data, find the mode.',
+        steps: [
+          'The highest frequency is 8, so the modal class is 10–20.',
+          'Here l = 10, f₁ = 8, f₀ = 3, f₂ = 5 and h = 10.',
+          'Mode = 10 + [(8 − 3)/(2×8 − 3 − 5)] × 10.',
+          'Mode = 10 + (5/8) × 10 = 16.25.'
+        ],
+        answer: 'Mode = 16.25.'
+      },
+      {
+        id: 'stats-example-4',
+        title: 'Example 4 · Assumed mean and step deviation',
+        question: 'Use A = 15 and h = 10 for the same data to calculate the mean by the step-deviation method.',
+        steps: [
+          'Class marks xᵢ are 5, 15, 25 and 35. Calculate uᵢ = (xᵢ − 15)/10: −1, 0, 1, 2.',
+          'Multiply by frequencies 3, 8, 5 and 4: fᵢuᵢ = −3, 0, 5, 8.',
+          'Σfᵢuᵢ = 10 and Σfᵢ = 20.',
+          'Mean = A + h(Σfᵢuᵢ/Σfᵢ) = 15 + 10(10/20).'
+        ],
+        answer: 'Mean = 20.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Class mark', detail: '(Lower limit + upper limit)/2.' },
+      { title: 'Direct mean', detail: 'Σfᵢxᵢ/Σfᵢ.' },
+      { title: 'Median', detail: 'l + [(N/2 − cf)/f] × h.' },
+      { title: 'Mode', detail: 'l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h.' }
+    ],
+    questions: [
+      {
+        id: 'stats-q1',
+        prompt: 'How do you calculate a class mark?',
+        choices: [{ id: 'a', text: 'Upper limit − lower limit' }, { id: 'b', text: '(Lower limit + upper limit)/2' }, { id: 'c', text: 'Frequency × class width' }, { id: 'd', text: 'Cumulative frequency/2' }],
+        answer: 'b',
+        explanation: 'The class mark is the midpoint of the two class limits.'
+      },
+      {
+        id: 'stats-q2',
+        prompt: 'What is the direct-method formula for mean of grouped data?',
+        choices: [{ id: 'a', text: 'Σfᵢxᵢ/Σfᵢ' }, { id: 'b', text: 'Σxᵢ/Σfᵢ' }, { id: 'c', text: 'l + [(N/2−cf)/f]h' }, { id: 'd', text: '2πr' }],
+        answer: 'a',
+        explanation: 'Multiply each class mark by its frequency, add the products, and divide by the total frequency.'
+      },
+      {
+        id: 'stats-q3',
+        prompt: 'What is the median class?',
+        choices: [{ id: 'a', text: 'The class with the highest frequency' }, { id: 'b', text: 'The first class' }, { id: 'c', text: 'The class whose cumulative frequency first reaches or exceeds N/2' }, { id: 'd', text: 'The class with the lowest frequency' }],
+        answer: 'c',
+        explanation: 'Locate N/2 in the cumulative-frequency column. The first class reaching that value is the median class.'
+      },
+      {
+        id: 'stats-q4',
+        prompt: 'In the grouped-data mode formula, what is f₁?',
+        choices: [{ id: 'a', text: 'Frequency of the modal class' }, { id: 'b', text: 'Frequency of the preceding class' }, { id: 'c', text: 'Frequency of the succeeding class' }, { id: 'd', text: 'Total frequency' }],
+        answer: 'a',
+        explanation: 'f₁ is the frequency of the modal class, the class with the greatest frequency.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 7'
+  },
+  {
+    id: 'probability',
+    curriculumItemId: 'math-prob',
+    subjectId: 'mathematics',
+    title: 'Probability',
+    chapterLabel: 'Statistics and Probability · Unit VII',
+    estimatedMinutes: 25,
+    syllabusScope: 'Classical definition of probability and simple problems on finding the probability of an event.',
+    overview: 'Probability describes how likely an event is. In the classical model, when all outcomes are equally likely, compare the number of favourable outcomes with the total number of possible outcomes.',
+    learningGoals: [
+      'Describe a sample space and an event.',
+      'Count equally likely outcomes.',
+      'Calculate the probability of a simple event.',
+      'Use the basic range and complement rules.'
+    ],
+    sections: [
+      {
+        id: 'sample-space',
+        title: '1. Outcomes, sample space and events',
+        explanation: 'An outcome is one possible result of an experiment. The sample space is the set of all possible outcomes. An event is a collection of outcomes that match a condition. For one fair coin toss, the sample space is {H, T}; the event “get a head” contains only H.',
+        keyPoints: [
+          'List all possible outcomes before counting favourable ones.',
+          'An event may contain one or more outcomes.',
+          'For a fair coin or fair die, each individual outcome is equally likely.'
+        ]
+      },
+      {
+        id: 'classical-probability',
+        title: '2. Classical probability',
+        explanation: 'When all outcomes are equally likely, P(E) = number of favourable outcomes / total number of outcomes in the sample space. Make sure the outcomes are counted without duplication and that the experiment is fair if you are treating outcomes as equally likely.',
+        keyPoints: [
+          'P(E) = n(E)/n(S), for equally likely outcomes.',
+          'Probability is between 0 and 1 inclusive.',
+          'An impossible event has probability 0; a certain event has probability 1.'
+        ]
+      },
+      {
+        id: 'complement',
+        title: '3. Complement of an event',
+        explanation: 'The complement of an event E means that E does not occur. The probability of “not E” is 1 − P(E), because E and its complement together cover the full sample space and cannot occur at the same time.',
+        keyPoints: [
+          'P(not E) = 1 − P(E).',
+          'Use the complement when it is easier to count outcomes that do not match the event.',
+          'The probabilities of an event and its complement add up to 1.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'prob-example-1',
+        title: 'Example 1 · Fair coin',
+        question: 'A fair coin is tossed once. Find the probability of getting a head.',
+        steps: [
+          'Sample space S = {H, T}, so n(S) = 2.',
+          'Favourable outcomes for a head = {H}, so n(E) = 1.',
+          'P(E) = n(E)/n(S) = 1/2.'
+        ],
+        answer: '1/2.'
+      },
+      {
+        id: 'prob-example-2',
+        title: 'Example 2 · A fair die',
+        question: 'A fair die is rolled once. Find the probability of getting a prime number.',
+        steps: [
+          'Sample space S = {1, 2, 3, 4, 5, 6}, so there are 6 outcomes.',
+          'Prime outcomes are 2, 3 and 5, so there are 3 favourable outcomes.',
+          'Probability = 3/6.'
+        ],
+        answer: '1/2.'
+      },
+      {
+        id: 'prob-example-3',
+        title: 'Example 3 · Complement',
+        question: 'A fair die is rolled. Find the probability of not getting a 6.',
+        steps: [
+          'P(getting a 6) = 1/6.',
+          'Use P(not E) = 1 − P(E).',
+          'P(not getting a 6) = 1 − 1/6.'
+        ],
+        answer: '5/6.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Classical probability', detail: 'P(E) = favourable outcomes / total equally likely outcomes.' },
+      { title: 'Impossible event', detail: 'P(E) = 0.' },
+      { title: 'Certain event', detail: 'P(E) = 1.' },
+      { title: 'Complement', detail: 'P(not E) = 1 − P(E).' }
+    ],
+    questions: [
+      {
+        id: 'prob-q1',
+        prompt: 'A fair coin is tossed once. What is the probability of tails?',
+        choices: [{ id: 'a', text: '0' }, { id: 'b', text: '1/4' }, { id: 'c', text: '1/2' }, { id: 'd', text: '1' }],
+        answer: 'c',
+        explanation: 'There are two equally likely outcomes, H and T, and one is tails. So probability = 1/2.'
+      },
+      {
+        id: 'prob-q2',
+        prompt: 'What is the probability of rolling a number greater than 4 on a fair six-sided die?',
+        choices: [{ id: 'a', text: '1/6' }, { id: 'b', text: '1/3' }, { id: 'c', text: '1/2' }, { id: 'd', text: '2/3' }],
+        answer: 'b',
+        explanation: 'The favourable outcomes are 5 and 6: 2/6 = 1/3.'
+      },
+      {
+        id: 'prob-q3',
+        prompt: 'What is the probability of an impossible event?',
+        choices: [{ id: 'a', text: '0' }, { id: 'b', text: '1/2' }, { id: 'c', text: '1' }, { id: 'd', text: '2' }],
+        answer: 'a',
+        explanation: 'An impossible event has no favourable outcomes, so its probability is zero.'
+      },
+      {
+        id: 'prob-q4',
+        prompt: 'If P(E) = 0.35, what is P(not E)?',
+        choices: [{ id: 'a', text: '0.35' }, { id: 'b', text: '0.55' }, { id: 'c', text: '0.65' }, { id: 'd', text: '1.35' }],
+        answer: 'c',
+        explanation: 'P(not E) = 1 − P(E) = 1 − 0.35 = 0.65.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 7'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -1517,7 +2032,11 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'math-circle': 'circles',
   'math-trig': 'introduction-to-trigonometry',
   'math-ident': 'trigonometric-identities',
-  'math-height': 'heights-and-distances'
+  'math-height': 'heights-and-distances',
+  'math-area': 'areas-related-to-circles',
+  'math-volume': 'surface-areas-and-volumes',
+  'math-stats': 'statistics',
+  'math-prob': 'probability'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
