@@ -44,3 +44,17 @@ Regression, accessibility, mobile and privacy review.
 - [x] Add a real seven-day study-time visualisation derived from locally recorded sessions.
 - [ ] Verify visual behaviour at narrow mobile, tablet and desktop widths.
 - [ ] Run CI and fix any regressions before merging.
+
+
+## Phase 03 — Academic Content Engine (first slice)
+- [x] Add original, syllabus-bounded Mathematics study guides for Real Numbers, Polynomials and Pair of Linear Equations in Two Variables.
+- [x] Include concept explanations, learning goals, worked examples and key-fact reference cards.
+- [x] Add chapter quizzes with answer checking and explanations.
+- [x] Save chapter completion, attempt count, best score, last score and personal notes in the existing IndexedDB learning-record store.
+- [x] Preserve the chapter practice summary when Learning Hub completion/bookmark/note records are updated.
+- [x] Link supported curriculum topics to their study guides and expose the guides from Practice Centre.
+- [ ] Expand chapter coverage across the remaining Mathematics units and verified subjects.
+- [ ] Add short-answer/numeric question types, question difficulty tags and a dedicated mock-exam workflow.
+- [ ] Add unit tests for quiz scoring, progress persistence and old-backup compatibility.
+
+Content rule: curriculum boundaries come from the linked CBSE 2026–27 Class X syllabus. Lesson explanations and examples are original StudyVerse teaching material, not copied textbook pages. Do not label unverified school-specific subject choices as official.
