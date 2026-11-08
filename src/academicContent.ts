@@ -3479,6 +3479,316 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: scienceSource,
     sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit IV'
   }
+,
+  {
+    id: 'periodic-classification-of-elements',
+    curriculumItemId: 'sci-periodic',
+    subjectId: 'science',
+    title: 'Periodic Classification of Elements',
+    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    estimatedMinutes: 30,
+    syllabusScope: 'Döbereiner’s Triads, Newlands’ Law of Octaves, Mendeleev’s Periodic Table, Modern Periodic Table and metallic/non-metallic properties. This topic is formative only.',
+    overview: 'Scientists developed different ways to arrange elements so that patterns in their properties became easier to understand. The modern periodic table arranges elements by increasing atomic number.',
+    learningGoals: [
+      'Recall the main historical attempts to classify elements.',
+      'Explain the basis of the modern periodic table.',
+      'Distinguish groups and periods.',
+      'Describe broad trends in metallic character and atomic size.'
+    ],
+    sections: [
+      {
+        id: 'historical-classification',
+        title: '1. Early attempts at classification',
+        explanation: 'Döbereiner grouped some elements into triads of three with similar properties; the atomic mass of the middle element was approximately the average of the other two. Newlands arranged elements in increasing atomic mass and noticed that every eighth element had similar properties, calling this the Law of Octaves. The patterns worked only for a limited set of elements.',
+        keyPoints: ['Döbereiner’s Triads grouped elements in threes.', 'Newlands’ Law of Octaves noticed a repeating pattern for every eighth element.', 'Early systems revealed patterns but could not classify every known element successfully.']
+      },
+      {
+        id: 'mendeleev',
+        title: '2. Mendeleev’s Periodic Table',
+        explanation: 'Mendeleev arranged elements mainly in increasing atomic mass while placing elements with similar chemical properties in the same groups. He left gaps for elements not yet discovered and predicted some of their properties. Later discoveries supported several predictions.',
+        keyPoints: ['Similar chemical properties guided the grouping.', 'Gaps were left for undiscovered elements.', 'Some of Mendeleev’s predictions were confirmed by later discoveries.']
+      },
+      {
+        id: 'modern-table',
+        title: '3. Modern Periodic Table',
+        explanation: 'The modern periodic law states that the properties of elements are periodic functions of their atomic numbers. Elements are arranged in increasing atomic number. A horizontal row is a period and a vertical column is a group. Elements in the same group often have similar chemical properties.',
+        keyPoints: ['The modern table is arranged by increasing atomic number.', 'There are 7 periods and 18 groups.', 'The number of occupied electron shells generally corresponds to the period number.', 'Main-group elements in the same group often have the same number of valence electrons.']
+      },
+      {
+        id: 'periodic-trends',
+        title: '4. Broad periodic trends',
+        explanation: 'Across a period from left to right, atomic size generally decreases because the nuclear charge increases while electrons are added to the same main shell. Down a group, additional shells are added, so atomic size generally increases. Metallic character generally decreases across a period and increases down a group.',
+        keyPoints: ['Across a period: atomic size generally decreases.', 'Down a group: atomic size generally increases.', 'Metallic character generally decreases across a period.', 'Metallic character generally increases down a group.']
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'periodic-example-1',
+        title: 'Example 1 · Period or group?',
+        question: 'An element is in the third horizontal row of the modern periodic table. What is its period number?',
+        steps: ['Horizontal rows are called periods.', 'The row number gives the period number.', 'The element is in the third row.'],
+        answer: 'Period 3.'
+      },
+      {
+        id: 'periodic-example-2',
+        title: 'Example 2 · Trend down a group',
+        question: 'How does atomic size generally change as you move down a group?',
+        steps: ['Each step down a group adds another occupied electron shell.', 'The outer electrons are, on average, farther from the nucleus.', 'Therefore atomic size generally increases.'],
+        answer: 'Atomic size generally increases down a group.'
+      },
+      {
+        id: 'periodic-example-3',
+        title: 'Example 3 · Why atomic number?',
+        question: 'Why is the modern periodic table arranged by atomic number rather than atomic mass?',
+        steps: ['Atomic number is the number of protons in the nucleus and uniquely identifies an element.', 'Arranging by atomic number gives a consistent periodic pattern in properties.', 'It resolves anomalies that appeared when elements were arranged only by atomic mass.'],
+        answer: 'Periodic properties are based on atomic number, giving a consistent arrangement.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Modern periodic law', detail: 'Properties of elements are periodic functions of atomic number.' },
+      { title: 'Period', detail: 'A horizontal row in the periodic table.' },
+      { title: 'Group', detail: 'A vertical column in the periodic table.' },
+      { title: 'Metallic character', detail: 'Generally decreases across a period and increases down a group.' }
+    ],
+    questions: [
+      {
+        id: 'sci-periodic-q1',
+        prompt: 'What is the basis of arrangement in the modern periodic table?',
+        choices: [{ id: 'a', text: 'Increasing atomic mass only' }, { id: 'b', text: 'Increasing atomic number' }, { id: 'c', text: 'Increasing density' }, { id: 'd', text: 'Alphabetical order' }],
+        answer: 'b',
+        explanation: 'The modern periodic table is arranged in increasing atomic number.'
+      },
+      {
+        id: 'sci-periodic-q2',
+        prompt: 'What is a horizontal row called?',
+        choices: [{ id: 'a', text: 'Group' }, { id: 'b', text: 'Family only' }, { id: 'c', text: 'Period' }, { id: 'd', text: 'Block boundary' }],
+        answer: 'c',
+        explanation: 'A horizontal row is a period; a vertical column is a group.'
+      },
+      {
+        id: 'sci-periodic-q3',
+        prompt: 'What generally happens to atomic size down a group?',
+        choices: [{ id: 'a', text: 'It increases' }, { id: 'b', text: 'It decreases' }, { id: 'c', text: 'It is always zero' }, { id: 'd', text: 'It never changes' }],
+        answer: 'a',
+        explanation: 'Additional electron shells are added down a group, so atomic size generally increases.'
+      },
+      {
+        id: 'sci-periodic-q4',
+        prompt: 'Which scientist left gaps for undiscovered elements in the periodic table?',
+        choices: [{ id: 'a', text: 'Newton' }, { id: 'b', text: 'Mendeleev' }, { id: 'c', text: 'Bohr' }, { id: 'd', text: 'Rutherford' }],
+        answer: 'b',
+        explanation: 'Mendeleev left gaps and predicted properties of elements that had not yet been discovered.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+  },
+  {
+    id: 'acids-bases-and-salts',
+    curriculumItemId: 'sci-acid',
+    subjectId: 'science',
+    title: 'Acids, Bases and Salts',
+    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    estimatedMinutes: 40,
+    syllabusScope: 'Definitions through H⁺ and OH⁻ ions, indicators, chemical properties, neutralisation, pH in daily life and preparation/uses of common salts. Logarithmic definition of pH is not required. This topic is formative only.',
+    overview: 'Acids and bases have characteristic properties and can be identified using indicators. Their reactions help explain neutralisation and the preparation of useful salts used at home and in industry.',
+    learningGoals: [
+      'Identify acids and bases using indicators.',
+      'Describe reactions of acids and bases with metals and carbonates.',
+      'Explain neutralisation and the pH scale at the required level.',
+      'Recall common salts and their uses.'
+    ],
+    sections: [
+      {
+        id: 'acids-bases',
+        title: '1. Acids, bases and indicators',
+        explanation: 'At this level, acids are described as substances that furnish hydrogen ions (H⁺) in aqueous solution, while bases furnish hydroxide ions (OH⁻). Acids turn blue litmus red; bases turn red litmus blue. Indicators such as litmus, turmeric and phenolphthalein show characteristic colour changes.',
+        keyPoints: ['Acidic solutions furnish H⁺ ions in water.', 'Basic solutions furnish OH⁻ ions in water.', 'Blue litmus turns red in acid; red litmus turns blue in base.', 'Never taste laboratory chemicals.']
+      },
+      {
+        id: 'acid-reactions',
+        title: '2. Chemical properties',
+        explanation: 'Acids react with many metals to form a salt and hydrogen gas. Acids react with metal carbonates or hydrogen carbonates to form a salt, carbon dioxide and water. Bases can neutralise acids to form salt and water. Many metal oxides are basic, while many non-metal oxides are acidic.',
+        keyPoints: ['Acid + suitable metal → salt + hydrogen.', 'Acid + carbonate → salt + carbon dioxide + water.', 'Acid + base → salt + water (neutralisation).', 'Use teacher-supervised laboratory procedures for reactions that produce gas.']
+      },
+      {
+        id: 'ph',
+        title: '3. pH and everyday life',
+        explanation: 'The pH scale indicates how acidic or basic an aqueous solution is. A value below 7 is acidic, 7 is neutral and above 7 is basic at this school level. The 2026–27 curriculum asks for the importance of pH in everyday life but says the logarithmic definition is not required.',
+        keyPoints: ['pH below 7: acidic; pH 7: neutral; pH above 7: basic.', 'Soil pH affects plant growth and nutrient availability.', 'Tooth surfaces can become acidic when bacteria produce acids.', 'The pH scale is logarithmic, but its logarithmic definition is not required in this syllabus.']
+      },
+      {
+        id: 'common-salts',
+        title: '4. Common salts and their uses',
+        explanation: 'Sodium hydroxide is used in soap and paper manufacture. Bleaching powder is used for bleaching and disinfecting water. Baking soda (sodium hydrogen carbonate) is used in baking and some antacids. Washing soda (sodium carbonate decahydrate) is used for cleaning and softening hard water. Plaster of Paris is used for casts and moulds; it is made by heating gypsum under controlled conditions.',
+        keyPoints: ['Baking soda: NaHCO₃.', 'Washing soda crystals: Na₂CO₃·10H₂O.', 'Bleaching powder is commonly represented at this level as CaOCl₂.', 'Plaster of Paris: CaSO₄·½H₂O.']
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'acid-example-1',
+        title: 'Example 1 · Indicator test',
+        question: 'A solution turns red litmus blue. What can you infer?',
+        steps: ['Red litmus changes to blue in a basic solution.', 'The observation indicates the solution is basic under the test conditions.'],
+        answer: 'The solution is basic.'
+      },
+      {
+        id: 'acid-example-2',
+        title: 'Example 2 · Neutralisation',
+        question: 'What are the products when hydrochloric acid reacts with sodium hydroxide?',
+        steps: ['This is an acid-base neutralisation reaction.', 'The salt is sodium chloride and water is also formed.', 'Write and balance the equation.'],
+        answer: 'HCl + NaOH → NaCl + H₂O.'
+      },
+      {
+        id: 'acid-example-3',
+        title: 'Example 3 · pH classification',
+        question: 'Classify solutions with pH values 3, 7 and 10.',
+        steps: ['A pH below 7 is acidic.', 'A pH of 7 is neutral.', 'A pH above 7 is basic.'],
+        answer: 'pH 3: acidic; pH 7: neutral; pH 10: basic.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Acid', detail: 'Furnishes H⁺ ions in aqueous solution.' },
+      { title: 'Base', detail: 'Furnishes OH⁻ ions in aqueous solution.' },
+      { title: 'Neutralisation', detail: 'Acid + base → salt + water.' },
+      { title: 'Plaster of Paris', detail: 'CaSO₄·½H₂O.' }
+    ],
+    questions: [
+      {
+        id: 'sci-acid-q1',
+        prompt: 'What happens to blue litmus in an acidic solution?',
+        choices: [{ id: 'a', text: 'It turns red' }, { id: 'b', text: 'It turns green' }, { id: 'c', text: 'It remains blue in every case' }, { id: 'd', text: 'It becomes colourless' }],
+        answer: 'a',
+        explanation: 'Acids turn blue litmus red.'
+      },
+      {
+        id: 'sci-acid-q2',
+        prompt: 'Which gas is generally produced when an acid reacts with a metal carbonate?',
+        choices: [{ id: 'a', text: 'Oxygen' }, { id: 'b', text: 'Hydrogen' }, { id: 'c', text: 'Carbon dioxide' }, { id: 'd', text: 'Nitrogen' }],
+        answer: 'c',
+        explanation: 'Acid + metal carbonate forms salt, carbon dioxide and water.'
+      },
+      {
+        id: 'sci-acid-q3',
+        prompt: 'A solution has pH 10. How is it classified?',
+        choices: [{ id: 'a', text: 'Acidic' }, { id: 'b', text: 'Neutral' }, { id: 'c', text: 'Basic' }, { id: 'd', text: 'Always pure water' }],
+        answer: 'c',
+        explanation: 'A pH above 7 indicates a basic solution.'
+      },
+      {
+        id: 'sci-acid-q4',
+        prompt: 'What is the chemical formula of baking soda?',
+        choices: [{ id: 'a', text: 'NaCl' }, { id: 'b', text: 'NaHCO₃' }, { id: 'c', text: 'Na₂CO₃·10H₂O' }, { id: 'd', text: 'CaSO₄·½H₂O' }],
+        answer: 'b',
+        explanation: 'Baking soda is sodium hydrogen carbonate, NaHCO₃.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+  },
+  {
+    id: 'metals-and-non-metals',
+    curriculumItemId: 'sci-metal',
+    subjectId: 'science',
+    title: 'Metals and Non-metals',
+    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    estimatedMinutes: 40,
+    syllabusScope: 'Physical and chemical properties, reactivity series, ionic compounds, basic metallurgical processes, corrosion and prevention. This topic is formative only.',
+    overview: 'Metals and non-metals differ in their physical and chemical behaviour. Their reactivity helps predict displacement, while extraction and corrosion connect chemistry with everyday materials.',
+    learningGoals: [
+      'Compare common physical properties of metals and non-metals.',
+      'Use the reactivity series to predict displacement.',
+      'Explain the formation and properties of ionic compounds.',
+      'Describe basic metal extraction and corrosion prevention.'
+    ],
+    sections: [
+      {
+        id: 'physical-properties',
+        title: '1. Physical properties',
+        explanation: 'Many metals are lustrous, malleable, ductile and good conductors of heat and electricity. Many non-metals are dull and poor conductors, but there are exceptions: graphite conducts electricity, and mercury is a liquid metal at room temperature. These are general patterns, not rules without exceptions.',
+        keyPoints: ['Malleability: can be beaten into sheets.', 'Ductility: can be drawn into wires.', 'Metals are generally good conductors.', 'Graphite and mercury are important exceptions to simple generalisations.']
+      },
+      {
+        id: 'reactivity-series',
+        title: '2. Reactivity series',
+        explanation: 'The reactivity series arranges metals in decreasing order of their tendency to react. A more reactive metal can displace a less reactive metal from its salt solution. The likelihood and vigour of reactions with water or acids depend on the metal’s position in the series.',
+        keyPoints: ['A more reactive metal can displace a less reactive metal from its compound.', 'Potassium, sodium and calcium are highly reactive.', 'Copper, silver and gold are comparatively unreactive.', 'Use the series to predict whether a displacement reaction occurs.']
+      },
+      {
+        id: 'ionic-compounds',
+        title: '3. Ionic compounds',
+        explanation: 'Ionic compounds form when electrons are transferred, commonly from a metal atom to a non-metal atom. The resulting positive and negative ions attract each other strongly. Ionic compounds generally have high melting points and conduct electricity when molten or dissolved in water because their ions can move; they do not conduct as solids because their ions are fixed in place.',
+        keyPoints: ['Metals commonly form positive ions by losing electrons.', 'Non-metals commonly form negative ions by gaining electrons.', 'Ionic compounds are usually hard crystalline solids.', 'They conduct electricity when molten or in aqueous solution, not generally as solids.']
+      },
+      {
+        id: 'metallurgy-corrosion',
+        title: '4. Extraction and corrosion',
+        explanation: 'Metallurgy involves concentrating an ore, converting it into a suitable form and reducing it to obtain the metal, followed by refining where required. The extraction method depends on reactivity. Corrosion is gradual damage by the environment; rusting of iron needs oxygen and moisture. Painting, oiling, galvanising and alloying can help prevent corrosion.',
+        keyPoints: ['Highly reactive metals are generally extracted by electrolysis of their compounds.', 'Moderately reactive metals may be obtained by reduction of their oxides.', 'Rusting needs oxygen and water.', 'Galvanising coats iron or steel with zinc.']
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'metal-example-1',
+        title: 'Example 1 · Predict displacement',
+        question: 'Will zinc displace copper from copper sulphate solution?',
+        steps: ['Zinc is above copper in the reactivity series.', 'A more reactive metal can displace a less reactive metal from its salt.', 'Zinc replaces copper in copper sulphate.'],
+        answer: 'Yes. Zn + CuSO₄ → ZnSO₄ + Cu.'
+      },
+      {
+        id: 'metal-example-2',
+        title: 'Example 2 · Conductivity of ionic compounds',
+        question: 'Why can molten sodium chloride conduct electricity but solid sodium chloride cannot?',
+        steps: ['In solid sodium chloride, ions are held in fixed positions in a crystal lattice.', 'In the molten state, ions are free to move.', 'Moving ions carry electric charge through the molten substance.'],
+        answer: 'Molten sodium chloride conducts because its ions are mobile; solid sodium chloride has fixed ions.'
+      },
+      {
+        id: 'metal-example-3',
+        title: 'Example 3 · Preventing rust',
+        question: 'Why does galvanising protect iron from rusting?',
+        steps: ['Galvanising coats the iron surface with zinc.', 'The coating reduces contact between iron, water and oxygen.', 'Zinc can also provide sacrificial protection if a small area is exposed.'],
+        answer: 'A zinc coating protects iron from corrosion.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Malleability', detail: 'Ability to be beaten into thin sheets.' },
+      { title: 'Reactivity series', detail: 'More reactive metals can displace less reactive metals from compounds.' },
+      { title: 'Ionic conductivity', detail: 'Ionic compounds conduct when molten or in aqueous solution.' },
+      { title: 'Galvanising', detail: 'Protecting iron or steel with a zinc coating.' }
+    ],
+    questions: [
+      {
+        id: 'sci-metal-q1',
+        prompt: 'Which non-metal is a good conductor of electricity?',
+        choices: [{ id: 'a', text: 'Sulphur' }, { id: 'b', text: 'Phosphorus' }, { id: 'c', text: 'Graphite' }, { id: 'd', text: 'Oxygen' }],
+        answer: 'c',
+        explanation: 'Graphite has delocalised electrons that allow it to conduct electricity.'
+      },
+      {
+        id: 'sci-metal-q2',
+        prompt: 'Can zinc displace copper from copper sulphate solution?',
+        choices: [{ id: 'a', text: 'Yes, because zinc is more reactive' }, { id: 'b', text: 'No, because copper is more reactive' }, { id: 'c', text: 'No metal can displace another' }, { id: 'd', text: 'Only if the solution is heated' }],
+        answer: 'a',
+        explanation: 'Zinc is more reactive than copper, so it displaces copper from copper sulphate.'
+      },
+      {
+        id: 'sci-metal-q3',
+        prompt: 'Why can molten ionic compounds conduct electricity?',
+        choices: [{ id: 'a', text: 'Their ions are free to move' }, { id: 'b', text: 'Their electrons disappear' }, { id: 'c', text: 'They become metals' }, { id: 'd', text: 'Their atoms stop vibrating' }],
+        answer: 'a',
+        explanation: 'Mobile ions carry charge through the molten compound.'
+      },
+      {
+        id: 'sci-metal-q4',
+        prompt: 'Which process coats iron or steel with zinc?',
+        choices: [{ id: 'a', text: 'Distillation' }, { id: 'b', text: 'Galvanising' }, { id: 'c', text: 'Crystallisation' }, { id: 'd', text: 'Neutralisation' }],
+        answer: 'b',
+        explanation: 'Galvanising uses a zinc coating to protect iron or steel from corrosion.'
+      }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
@@ -3507,7 +3817,10 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'sci-carbon': 'carbon-and-its-compounds',
   'sci-heredity': 'heredity',
   'sci-evolution': 'evolution',
-  'sci-motor': 'motor-electromagnetic-induction-generator'
+  'sci-motor': 'motor-electromagnetic-induction-generator',
+  'sci-periodic': 'periodic-classification-of-elements',
+  'sci-acid': 'acids-bases-and-salts',
+  'sci-metal': 'metals-and-non-metals'
 }
 
 export function getChapter(id: string | undefined): AcademicChapter | undefined {
