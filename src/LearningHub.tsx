@@ -5,6 +5,7 @@ import {SOURCES,forSubject,type CurriculumItem,type CurriculumStatus} from './cu
 import {getChapter,RESOURCE_BY_TOPIC,type AcademicChapter} from './academicContent';
 import {db,DEFAULT_SUBJECTS,type LearningRecord} from './core';
 import './learning.css';
+import './academic.css';
 const labels:Record<CurriculumStatus,string>={board:'Board scope',formative:'Formative only',periodic:'Periodic assessment',project:'Project / map work'};
 export default function LearningHub(){
  const {subjectId,chapterId}=useParams();const subject=DEFAULT_SUBJECTS.find(s=>s.id===subjectId);
