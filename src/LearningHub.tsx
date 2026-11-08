@@ -1,15 +1,13 @@
 import {useEffect,useMemo,useState} from 'react';
 import {Link,useParams} from 'react-router-dom';
-import {ArrowLeft,ArrowUpRight,ArrowRight,Bookmark,BookOpen,Check,CheckCircle2,Circle,ExternalLink,FileText,Search,Sparkles,GraduationCap,Lightbulb,ChevronDown,Trophy} from 'lucide-react';
+import {ArrowLeft,ArrowUpRight,Bookmark,BookOpen,Check,CheckCircle2,Circle,ExternalLink,FileText,Search,Sparkles} from 'lucide-react';
 import {SOURCES,forSubject,type CurriculumItem,type CurriculumStatus} from './curriculum';
-import {getChapter,RESOURCE_BY_TOPIC,type AcademicChapter} from './academicContent';
+import {RESOURCE_BY_TOPIC} from './academicContent';
 import {db,DEFAULT_SUBJECTS,type LearningRecord} from './core';
 import './learning.css';
-import './academic.css';
 const labels:Record<CurriculumStatus,string>={board:'Board scope',formative:'Formative only',periodic:'Periodic assessment',project:'Project / map work'};
 export default function LearningHub(){
- const {subjectId,chapterId}=useParams();const subject=DEFAULT_SUBJECTS.find(s=>s.id===subjectId);
- if(chapterId){const chapter=getChapter(chapterId);return chapter&&chapter.subjectId===subjectId?<ChapterLesson chapter={chapter}/>:<div className="learn-empty"><BookOpen/><h2>Lesson not found</h2><Link to={'/learn/'+subjectId}>Back to subject</Link></div>;}
+ const {subjectId}=useParams();const subject=DEFAULT_SUBJECTS.find(s=>s.id===subjectId);
  const entries=useMemo(()=>subject?forSubject(subject.id):[],[subject]);
  const [records,setRecords]=useState<LearningRecord[]>([]),[query,setQuery]=useState(''),[filter,setFilter]=useState<'all'|CurriculumStatus|'saved'>('all'),[expanded,setExpanded]=useState<string|null>(null),[drafts,setDrafts]=useState<Record<string,string>>({}),[saving,setSaving]=useState<string|null>(null);
  useEffect(()=>{let live=true;void db.learningRecords.toArray().then(rows=>{if(live){setRecords(rows);setDrafts(Object.fromEntries(rows.map(r=>[r.itemId,r.note??''])))}});return()=>{live=false}},[]);
@@ -38,28 +36,3 @@ export default function LearningHub(){
  </div>
 }
 
-
-function ChapterLesson({chapter}:{chapter:AcademicChapter}){
- const [answers,setAnswers]=useState<Record<string,string>>({});
- const [checked,setChecked]=useState(false);
- const [completed,setCompleted]=useState(false);
- const [expandedExample,setExpandedExample]=useState<string|null>(chapter.workedExamples[0]?.id??null);
- const [loaded,setLoaded]=useState(false);
- useEffect(()=>{let live=true;void db.learningRecords.get('chapter:'+chapter.id).then(record=>{if(live){setCompleted(!!record?.completed);setLoaded(true)}});return()=>{live=false}},[chapter.id]);
- const score=chapter.questions.filter(q=>answers[q.id]===q.answer).length;
- async function saveCompletion(){await db.learningRecords.put({id:'chapter:'+chapter.id,itemId:'chapter:'+chapter.id,completed:true,bookmarked:false,note:'Completed '+new Date().toISOString(),updatedAt:new Date().toISOString()});setCompleted(true)}
- async function saveQuiz(){setChecked(true);await Promise.all(chapter.questions.filter(q=>answers[q.id]).map(q=>db.learningRecords.put({id:'quiz:'+chapter.id+':'+q.id,itemId:'quiz:'+chapter.id+':'+q.id,completed:answers[q.id]===q.answer,bookmarked:false,note:answers[q.id],updatedAt:new Date().toISOString()})))}
- return <div className="stack learn-page chapter-page">
-  <Link to={'/learn/'+chapter.subjectId} className="learn-back"><ArrowLeft size={15}/> Back to Mathematics</Link>
-  <header className="chapter-hero"><div><span className="eyebrow">STUDYVERSE ORIGINAL LESSON · CBSE CLASS X</span><h1>{chapter.title}<em>.</em></h1><p>{chapter.overview}</p><div className="chapter-meta"><span><BookOpen size={14}/>{chapter.chapterLabel}</span><span><GraduationCap size={14}/>{chapter.estimatedMinutes} min read</span><span><CheckCircle2 size={14}/>{completed?'Completed':'In progress'}</span></div></div><div className="chapter-hero-mark"><BookOpen size={36}/></div></header>
-  <section className="chapter-scope"><b>SYLLABUS SCOPE</b><p>{chapter.syllabusScope}</p><a href={chapter.sourceUrl} target="_blank" rel="noreferrer">Verify in {chapter.sourceLabel} <ExternalLink size={13}/></a></section>
-  <section className="card chapter-goals"><div className="card-heading"><div><span className="eyebrow">WHAT YOU'LL LEARN</span><h3>Learning goals</h3></div><Trophy size={20}/></div><ul>{chapter.learningGoals.map(goal=><li key={goal}><Check size={15}/>{goal}</li>)}</ul></section>
-  <section className="chapter-sections"><div className="chapter-section-heading"><span className="eyebrow">THE LESSON</span><h2>Understand the ideas.</h2></div>{chapter.sections.map((section,index)=><article className="card chapter-section" key={section.id}><span className="eyebrow">CONCEPT {String(index+1).padStart(2,'0')}</span><h3>{section.title}</h3><p>{section.explanation}</p><div className="chapter-key-points"><b><Lightbulb size={15}/> Remember</b>{section.keyPoints.map(point=><div key={point}><span>•</span>{point}</div>)}</div></article>)}</section>
-  <section className="chapter-examples"><div className="chapter-section-heading"><span className="eyebrow">LEARN BY DOING</span><h2>Worked examples.</h2><p>Follow each step, then try a similar question yourself.</p></div>{chapter.workedExamples.map(example=><article className="card chapter-example" key={example.id}><button className="chapter-example-toggle" onClick={()=>setExpandedExample(expandedExample===example.id?null:example.id)}><span><small>{example.title}</small><b>{example.question}</b></span><ChevronDown className={expandedExample===example.id?'rotated':''} size={19}/></button>{expandedExample===example.id&&<div className="chapter-example-body"><ol>{example.steps.map(step=><li key={step}>{step}</li>)}</ol><div className="chapter-answer"><b>Final answer</b><span>{example.answer}</span></div></div>}</article>)}</section>
-  <section className="card chapter-facts"><div className="card-heading"><div><span className="eyebrow">QUICK REVISION</span><h3>Key facts to remember</h3></div><Sparkles size={19}/></div><div className="chapter-fact-grid">{chapter.keyFacts.map(fact=><div key={fact.title}><b>{fact.title}</b><p>{fact.detail}</p></div>)}</div></section>
-  <section className="chapter-quiz"><div className="chapter-section-heading"><span className="eyebrow">CHECK YOUR UNDERSTANDING</span><h2>Quick practice.</h2><p>{chapter.questions.length} questions · Choose one answer for each question.</p></div>{chapter.questions.map((question,index)=><article className="card chapter-question" key={question.id}><span className="eyebrow">QUESTION {index+1} OF {chapter.questions.length}</span><h3>{question.prompt}</h3><div className="chapter-options">{question.choices.map(choice=><button key={choice.id} disabled={checked} className={'chapter-option '+(answers[question.id]===choice.id?'selected ':'')+(checked&&choice.id===question.answer?'correct ':'')+(checked&&answers[question.id]===choice.id&&choice.id!==question.answer?'incorrect':'')} onClick={()=>setAnswers(current=>({...current,[question.id]:choice.id}))}><span>{choice.id.toUpperCase()}</span>{choice.text}{checked&&choice.id===question.answer&&<Check size={15}/>}</button>)}</div>{checked&&<p className="chapter-explanation">{question.explanation}</p>}</article>)}
-  <div className="chapter-quiz-footer">{checked?<><div className="chapter-score"><Trophy size={20}/><b>{score}/{chapter.questions.length} correct</b><span>{score===chapter.questions.length?'Excellent work!':score>=chapter.questions.length/2?'Good effort. Review the explanations above.':'Revisit the lesson and try again.'}</span></div><button className="button outline" onClick={()=>{setAnswers({});setChecked(false)}}>Try again</button></>:<button className="button primary" disabled={Object.keys(answers).length!==chapter.questions.length} onClick={()=>void saveQuiz()}>Check my answers <ArrowRight size={15}/></button>}</div>
-  </section>
-  <section className="chapter-finish"><div><span className="eyebrow">CHAPTER CHECKPOINT</span><h3>{completed?'Lesson completed. Nice work!':'Finished this lesson?'}</h3><p>Mark the chapter complete when you understand the concepts and have reviewed the examples.</p></div><button className="button primary" disabled={completed||!loaded} onClick={()=>void saveCompletion()}>{completed?<><Check size={15}/> Completed</>:<>Mark chapter complete <ArrowRight size={15}/></>}</button></section>
- </div>
-}
