@@ -60,3 +60,14 @@ Regression, accessibility, mobile and privacy review.
 - [ ] Create content for verified Science, Social Science, English and Gujarati chapters from their exact 2026–27 curriculum documents and school-specific book choices.
 
 Content rule: syllabus boundaries come from the linked official CBSE 2026–27 Class X Mathematics curriculum. Lesson explanations, worked examples and questions are original StudyVerse teaching material, not copied textbook pages. Do not label unverified school-specific subject choices as official.
+
+
+## Phase 03 — Academic content engine (first slice)
+- [x] Add original, CBSE 2026–27 Mathematics lessons for Real Numbers, Polynomials and Pair of Linear Equations.
+- [x] Include syllabus boundaries, learning goals, concept explanations, key points, worked examples and original self-check questions.
+- [x] Add chapter routes and lesson navigation from the matching Learning Hub topics.
+- [x] Add interactive MCQ checking with explanations and local quiz-result records.
+- [x] Add local chapter completion tracking using the existing IndexedDB learning-record store.
+- [ ] Expand original lesson content to remaining Mathematics chapters, then Science and other verified subjects.
+- [ ] Add a dedicated practice history and score analytics view.
+- [ ] Review question wording and worked solutions before public release.
