@@ -23,6 +23,7 @@ export interface PracticeQuestion {
 
 export interface AcademicChapter {
   id: string
+  curriculumItemId: string
   subjectId: string
   title: string
   chapterLabel: string
@@ -43,6 +44,7 @@ const mathematicsSource = 'https://cbseacademic.nic.in/web_material/CurriculumMa
 export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
   {
     id: 'real-numbers',
+    curriculumItemId: 'math-real',
     subjectId: 'mathematics',
     title: 'Real Numbers',
     chapterLabel: 'Number Systems · Unit I',
@@ -187,6 +189,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
   },
   {
     id: 'polynomials',
+    curriculumItemId: 'math-poly',
     subjectId: 'mathematics',
     title: 'Polynomials',
     chapterLabel: 'Algebra · Unit II',
@@ -309,6 +312,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
   },
   {
     id: 'pair-of-linear-equations',
+    curriculumItemId: 'math-linear',
     subjectId: 'mathematics',
     title: 'Pair of Linear Equations in Two Variables',
     chapterLabel: 'Algebra · Unit II',
