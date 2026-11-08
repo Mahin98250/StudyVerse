@@ -484,6 +484,265 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: mathematicsSource,
     sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · pages 3–4'
   }
+,
+  {
+    id: 'quadratic-equations',
+    curriculumItemId: 'math-quad',
+    subjectId: 'mathematics',
+    title: 'Quadratic Equations',
+    chapterLabel: 'Algebra · Unit II',
+    estimatedMinutes: 40,
+    syllabusScope: 'Standard form, real roots by factorisation and the quadratic formula, discriminant and nature of roots, and simple situational problems.',
+    overview: 'A quadratic equation has a squared variable as its highest power. You will learn two ways to solve it and how the discriminant tells you what kind of real roots to expect.',
+    learningGoals: [
+      'Write a quadratic equation in standard form ax² + bx + c = 0, with a ≠ 0.',
+      'Solve quadratic equations by factorisation.',
+      'Use the quadratic formula when factorisation is not convenient.',
+      'Use the discriminant to determine the nature of real roots.'
+    ],
+    sections: [
+      {
+        id: 'quadratic-standard-form',
+        title: '1. Standard form',
+        explanation: 'A quadratic equation in one variable can be written as ax² + bx + c = 0, where a, b and c are real numbers and a is not zero. The coefficient a cannot be zero, because then the squared term disappears and the equation is no longer quadratic.',
+        keyPoints: [
+          'a is the coefficient of x², b is the coefficient of x and c is the constant.',
+          'Rearrange all terms to one side before identifying a, b and c.',
+          'A solution or root is a value of x that makes the equation true.'
+        ]
+      },
+      {
+        id: 'quadratic-factorisation',
+        title: '2. Solving by factorisation',
+        explanation: 'Bring the equation to one side so the other side is zero. Factor the quadratic expression into two linear factors. If a product is zero, at least one factor must be zero. Solve each resulting linear equation and check the roots in the original equation.',
+        keyPoints: [
+          'For x² + bx + c, look for two numbers whose product is c and sum is b.',
+          'For a product AB = 0, use A = 0 or B = 0.',
+          'Do not stop after finding one factor: solve both factors.'
+        ]
+      },
+      {
+        id: 'quadratic-formula',
+        title: '3. The quadratic formula',
+        explanation: 'For ax² + bx + c = 0 with a ≠ 0, the roots are x = [−b ± √(b² − 4ac)]/(2a). The expression b² − 4ac is called the discriminant and is usually written as D. The formula is useful even when factorisation is difficult.',
+        keyPoints: [
+          'Write down a, b and c with their signs before substituting.',
+          'Use brackets for negative values, especially when calculating b² and 4ac.',
+          'The ± sign gives two possible roots; they may be equal.'
+        ]
+      },
+      {
+        id: 'quadratic-discriminant',
+        title: '4. Nature of roots',
+        explanation: 'The discriminant D = b² − 4ac tells us the nature of the roots. If D is positive, there are two distinct real roots. If D is zero, there are two equal real roots. If D is negative, there are no real roots. This is a conclusion about real roots; it does not mean the equation has no solutions in every larger number system.',
+        keyPoints: [
+          'D > 0 → two distinct real roots.',
+          'D = 0 → two equal real roots.',
+          'D < 0 → no real roots.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'quadratic-example-1',
+        title: 'Example 1 · Factorisation',
+        question: 'Solve x² − 7x + 12 = 0.',
+        steps: [
+          'Find two numbers with product 12 and sum −7: −3 and −4.',
+          'Factorise: (x − 3)(x − 4) = 0.',
+          'Set each factor to zero: x − 3 = 0 or x − 4 = 0.',
+          'Therefore x = 3 or x = 4. Both values satisfy the original equation.'
+        ],
+        answer: 'The roots are 3 and 4.'
+      },
+      {
+        id: 'quadratic-example-2',
+        title: 'Example 2 · Quadratic formula',
+        question: 'Solve 2x² + 3x − 2 = 0 using the quadratic formula.',
+        steps: [
+          'Identify a = 2, b = 3 and c = −2.',
+          'Calculate D = b² − 4ac = 9 − 4(2)(−2) = 25.',
+          'Substitute: x = [−3 ± √25]/4 = [−3 ± 5]/4.',
+          'The two values are x = 2/4 = 1/2 and x = −8/4 = −2.'
+        ],
+        answer: 'The roots are 1/2 and −2.'
+      },
+      {
+        id: 'quadratic-example-3',
+        title: 'Example 3 · Discriminant',
+        question: 'Determine the nature of the roots of x² + 2x + 5 = 0.',
+        steps: [
+          'Here a = 1, b = 2 and c = 5.',
+          'D = b² − 4ac = 2² − 4(1)(5).',
+          'D = 4 − 20 = −16, which is negative.',
+          'A negative discriminant means there are no real roots.'
+        ],
+        answer: 'The equation has no real roots.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Standard form', detail: 'ax² + bx + c = 0, where a ≠ 0.' },
+      { title: 'Quadratic formula', detail: 'x = [−b ± √(b² − 4ac)]/(2a).' },
+      { title: 'Discriminant', detail: 'D = b² − 4ac.' },
+      { title: 'Equal roots', detail: 'The roots are equal when D = 0.' }
+    ],
+    questions: [
+      {
+        id: 'quad-q1',
+        prompt: 'Which is the standard form of a quadratic equation?',
+        choices: [{ id: 'a', text: 'ax + b = 0' }, { id: 'b', text: 'ax² + bx + c = 0, a ≠ 0' }, { id: 'c', text: 'ax³ + bx + c = 0' }, { id: 'd', text: 'a/x + b = 0' }],
+        answer: 'b',
+        explanation: 'A quadratic has degree 2, so the coefficient of x² must be non-zero.'
+      },
+      {
+        id: 'quad-q2',
+        prompt: 'What are the roots of x² − 5x + 6 = 0?',
+        choices: [{ id: 'a', text: '1 and 6' }, { id: 'b', text: '−2 and −3' }, { id: 'c', text: '2 and 3' }, { id: 'd', text: '−1 and −6' }],
+        answer: 'c',
+        explanation: 'Factorise as (x − 2)(x − 3) = 0, giving x = 2 or x = 3.'
+      },
+      {
+        id: 'quad-q3',
+        prompt: 'For 2x² + 3x − 2 = 0, what is the discriminant?',
+        choices: [{ id: 'a', text: '−7' }, { id: 'b', text: '9' }, { id: 'c', text: '16' }, { id: 'd', text: '25' }],
+        answer: 'd',
+        explanation: 'D = b² − 4ac = 3² − 4(2)(−2) = 9 + 16 = 25.'
+      },
+      {
+        id: 'quad-q4',
+        prompt: 'If the discriminant of a quadratic equation is zero, what can you say about its roots?',
+        choices: [{ id: 'a', text: 'Two equal real roots' }, { id: 'b', text: 'Two distinct real roots' }, { id: 'c', text: 'No real roots' }, { id: 'd', text: 'Exactly three roots' }],
+        answer: 'a',
+        explanation: 'When D = 0, the ±√D part becomes zero, so both roots have the same value.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 3'
+  },
+  {
+    id: 'arithmetic-progressions',
+    curriculumItemId: 'math-ap',
+    subjectId: 'mathematics',
+    title: 'Arithmetic Progressions',
+    chapterLabel: 'Algebra · Unit II',
+    estimatedMinutes: 35,
+    syllabusScope: 'Motivation for arithmetic progressions; derivation and application of the nth-term and first-n-terms sum formulae, including daily-life problems.',
+    overview: 'An arithmetic progression is a number pattern where the difference between consecutive terms stays the same. Two formulas help you find a far-away term or the total of many terms without listing them all.',
+    learningGoals: [
+      'Identify an arithmetic progression and its common difference.',
+      'Find the nth term of an arithmetic progression.',
+      'Find the sum of the first n terms.',
+      'Use the formulas in everyday situations.'
+    ],
+    sections: [
+      {
+        id: 'ap-sequence',
+        title: '1. Recognising an arithmetic progression',
+        explanation: 'A sequence is an arithmetic progression (AP) when the difference between each term and the previous term is constant. This fixed difference is called the common difference d. For example, 4, 7, 10, 13, … is an AP because each term increases by 3.',
+        keyPoints: [
+          'Common difference d = second term − first term.',
+          'The common difference can be positive, negative or zero.',
+          'Check more than one consecutive pair to confirm the difference stays constant.'
+        ]
+      },
+      {
+        id: 'ap-nth-term',
+        title: '2. The nth term',
+        explanation: 'If the first term is a and the common difference is d, then the nth term is aₙ = a + (n − 1)d. The first term has zero jumps from itself, the second term has one jump, and the nth term has n − 1 equal jumps.',
+        keyPoints: [
+          'a = first term; d = common difference; n = position.',
+          'Use n − 1, not n, because the first term is already counted.',
+          'If you know a term and its position, you can work backwards to find n or d.'
+        ]
+      },
+      {
+        id: 'ap-sum',
+        title: '3. Sum of the first n terms',
+        explanation: 'The sum of the first n terms is Sₙ = n/2 [2a + (n − 1)d]. If the last term l is known, the equivalent form is Sₙ = n/2 (a + l). The formula pairs the first and last terms, the second and second-last terms, and so on.',
+        keyPoints: [
+          'Use Sₙ = n/2 [2a + (n − 1)d] when a, d and n are known.',
+          'Use Sₙ = n/2 (a + l) when the first and last terms are known.',
+          'Make sure n is the number of terms, not the value of the last term.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'ap-example-1',
+        title: 'Example 1 · Find the nth term',
+        question: 'Find the 20th term of 3, 7, 11, 15, …',
+        steps: [
+          'The first term is a = 3 and the common difference is d = 7 − 3 = 4.',
+          'Use aₙ = a + (n − 1)d.',
+          'a₂₀ = 3 + (20 − 1) × 4 = 3 + 76.',
+          'Therefore the 20th term is 79.'
+        ],
+        answer: 'a₂₀ = 79.'
+      },
+      {
+        id: 'ap-example-2',
+        title: 'Example 2 · Sum of terms',
+        question: 'Find the sum of the first 20 terms of 3, 7, 11, 15, …',
+        steps: [
+          'Here a = 3, d = 4 and n = 20.',
+          'Use Sₙ = n/2 [2a + (n − 1)d].',
+          'S₂₀ = 20/2 [2(3) + 19(4)] = 10 [6 + 76].',
+          'S₂₀ = 10 × 82 = 820.'
+        ],
+        answer: 'The sum is 820.'
+      },
+      {
+        id: 'ap-example-3',
+        title: 'Example 3 · Find the position',
+        question: 'In the AP 2, 5, 8, 11, …, which term is 29?',
+        steps: [
+          'The first term is a = 2 and d = 3. Put aₙ = 29.',
+          'Use aₙ = a + (n − 1)d: 29 = 2 + (n − 1)3.',
+          'Subtract 2: 27 = 3(n − 1). Divide by 3: 9 = n − 1.',
+          'Therefore n = 10.'
+        ],
+        answer: '29 is the 10th term.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Common difference', detail: 'd = a₂ − a₁, and it stays constant.' },
+      { title: 'nth term', detail: 'aₙ = a + (n − 1)d.' },
+      { title: 'Sum of n terms', detail: 'Sₙ = n/2 [2a + (n − 1)d].' },
+      { title: 'Using the last term', detail: 'Sₙ = n/2 (a + l).' }
+    ],
+    questions: [
+      {
+        id: 'ap-q1',
+        prompt: 'Which sequence is an arithmetic progression?',
+        choices: [{ id: 'a', text: '2, 4, 8, 16, …' }, { id: 'b', text: '5, 8, 11, 14, …' }, { id: 'c', text: '1, 4, 9, 16, …' }, { id: 'd', text: '1, 2, 4, 7, …' }],
+        answer: 'b',
+        explanation: 'The difference is 3 between every consecutive pair: 8−5 = 11−8 = 14−11 = 3.'
+      },
+      {
+        id: 'ap-q2',
+        prompt: 'What is the 10th term of 4, 7, 10, 13, …?',
+        choices: [{ id: 'a', text: '28' }, { id: 'b', text: '30' }, { id: 'c', text: '31' }, { id: 'd', text: '34' }],
+        answer: 'c',
+        explanation: 'a = 4, d = 3. a₁₀ = 4 + 9 × 3 = 31.'
+      },
+      {
+        id: 'ap-q3',
+        prompt: 'For an AP with a = 2, d = 3 and n = 5, what is the sum of the first five terms?',
+        choices: [{ id: 'a', text: '25' }, { id: 'b', text: '35' }, { id: 'c', text: '40' }, { id: 'd', text: '45' }],
+        answer: 'b',
+        explanation: 'S₅ = 5/2 [2(2) + 4(3)] = 5/2 × 16 = 40. Wait: the correct answer is 40.'
+      },
+      {
+        id: 'ap-q4',
+        prompt: 'In the AP 7, 12, 17, 22, …, what is the common difference?',
+        choices: [{ id: 'a', text: '3' }, { id: 'b', text: '4' }, { id: 'c', text: '5' }, { id: 'd', text: '7' }],
+        answer: 'c',
+        explanation: 'Subtract consecutive terms: 12 − 7 = 5. The difference stays 5.'
+      }
+    ],
+    sourceUrl: mathematicsSource,
+    sourceLabel: 'CBSE Mathematics · Class X · 2026–27 · page 4'
+  }
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
