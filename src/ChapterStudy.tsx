@@ -52,7 +52,6 @@ export default function ChapterStudy() {
   }
 
   const answeredCount = chapter.questions.filter(question => answers[question.id]).length
-  const currentBest = record?.practiceSummary?.bestScore
 
   async function persist(patch: Partial<LearningRecord>) {
     if (!chapter) return
