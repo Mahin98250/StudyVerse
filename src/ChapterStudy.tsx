@@ -27,7 +27,7 @@ export default function ChapterStudy() {
     setScore(null)
     setMessage('')
     if (chapter) {
-      const id = `chapter:${chapter.id}`
+      const id = chapter.curriculumItemId
       void db.learningRecords.get(id).then(row => {
         if (live) {
           setRecord(row)
@@ -56,7 +56,7 @@ export default function ChapterStudy() {
 
   async function persist(patch: Partial<LearningRecord>) {
     if (!chapter) return
-    const id = `chapter:${chapter.id}`
+    const id = chapter.curriculumItemId
     setSaving(true)
     setMessage('')
     try {
