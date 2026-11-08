@@ -3,7 +3,7 @@ export type Color='blue'|'violet'|'green'|'amber'|'rose'|'cyan'
 export interface Subject{id:string;name:string;shortName:string;description:string;color:Color;order:number;active:boolean}
 export interface StudySession{id:string;subjectId:string|null;startedAt:string;endedAt:string;durationSeconds:number}
 export interface Profile{id:'default';displayName:string;academicSession:string;dailyGoalMinutes:number}
-export interface LearningRecord{id:string;itemId:string;completed:boolean;bookmarked:boolean;note:string;updatedAt:string}
+export interface LearningRecord{id:string;itemId:string;completed:boolean;bookmarked:boolean;note:string;updatedAt:string;practiceSummary?:{attempts:number;bestScore:number;lastScore:number;lastAttemptAt:string}}
 export interface Backup{application:'StudyVerse';backupVersion:1;exportedAt:string;data:{subjects:Subject[];studySessions:StudySession[];profile?:Profile;learningRecords?:LearningRecord[]}}
 export const DEFAULT_SUBJECTS:Subject[]=[
 {id:'mathematics',name:'Mathematics',shortName:'Maths',description:'Build confidence with concepts and problem solving.',color:'blue',order:1,active:true},
