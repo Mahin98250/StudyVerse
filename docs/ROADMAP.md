@@ -36,3 +36,11 @@ Formula vault, knowledge graph, keyboard shortcuts and optimisation.
 
 ## Phase 09 — Production release
 Regression, accessibility, mobile and privacy review.
+
+
+## Phase 02.5 — Crown-inspired experience refinement
+- [x] Apply a consistent charcoal, warm-cream and lime visual system inspired by CrownofConsole.
+- [x] Refine typography, navigation, cards, buttons, focus controls and mobile navigation.
+- [x] Add a real seven-day study-time visualisation derived from locally recorded sessions.
+- [ ] Verify visual behaviour at narrow mobile, tablet and desktop widths.
+- [ ] Run CI and fix any regressions before merging.
