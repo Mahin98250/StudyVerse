@@ -2,17 +2,19 @@
 
 ## Phase 01 — Foundation
 - [x] React + TypeScript + Vite application.
-- [x] Responsive light design system.
-- [x] Hash-based routing for GitHub Pages.
-- [x] IndexedDB database and six seeded subjects.
-- [x] Dashboard with real focus-session metrics.
-- [x] Focus timer with local session persistence.
-- [x] JSON backup and restore with basic validation.
-- [x] PWA shell and GitHub Actions workflows.
-- [ ] Verify dependency-backed build and live deployment.
+- [x] Responsive design system and GitHub Pages routing.
+- [x] IndexedDB, seeded subjects, dashboard and focus timer.
+- [x] JSON backup/restore and PWA shell.
+- [x] Typecheck, lint and production build pass.
+- [ ] Enable GitHub Pages in repository settings and verify live deployment.
 
 ## Phase 02 — Learning hub
-Verified academic-session curriculum, chapters, topics, notes and bookmarks.
+- [x] CBSE 2026–27 curriculum catalogue for Mathematics, Science, Social Science, English Language & Literature and Gujarati.
+- [x] Separate board-exam, formative-only and project/map scope where official curriculum defines it.
+- [x] Search, filters, completion tracking, bookmarks and local study notes.
+- [x] IndexedDB v2 upgrade for learning records.
+- [ ] Verify school-specific course choices, especially English, Gujarati and IT.
+- [ ] Add original explanations, formula sheets and chapter resources.
 
 ## Phase 03 — Examination engine
 Question bank, timed attempts, autosave, marking and results.
@@ -34,3 +36,11 @@ Formula vault, knowledge graph, keyboard shortcuts and optimisation.
 
 ## Phase 09 — Production release
 Regression, accessibility, mobile and privacy review.
+
+
+## Phase 02.5 — Crown-inspired experience refinement
+- [x] Apply a consistent charcoal, warm-cream and lime visual system inspired by CrownofConsole.
+- [x] Refine typography, navigation, cards, buttons, focus controls and mobile navigation.
+- [x] Add a real seven-day study-time visualisation derived from locally recorded sessions.
+- [ ] Verify visual behaviour at narrow mobile, tablet and desktop widths.
+- [ ] Run CI and fix any regressions before merging.
