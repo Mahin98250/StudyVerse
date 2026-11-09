@@ -42,13 +42,11 @@ export default function RevisionCentre() {
   useEffect(() => {
     let live = true
     void (async () => {
-      let saved = await db.revisionCards.toArray()
-      if (!saved.length) {
-        const seeded = buildCards()
-        await db.revisionCards.bulkAdd(seeded)
-        saved = seeded
-      }
-      if (live) setCards(saved)
+      const saved = await db.revisionCards.toArray()
+      const known = new Set(saved.map(card => card.id))
+      const missing = buildCards().filter(card => !known.has(card.id))
+      if (missing.length) await db.revisionCards.bulkAdd(missing)
+      if (live) setCards([...saved, ...missing])
     })().catch(() => setMessage('Revision cards could not be loaded from this browser.')).finally(() => { if (live) setLoading(false) })
     return () => { live = false }
   }, [])
