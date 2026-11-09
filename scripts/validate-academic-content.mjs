@@ -67,7 +67,7 @@ for (let i = 0; i < masteryMatches.length; i++) {
   if (blueprints < 2) failures.push(`${chapterId}: mastery notes need board-answer blueprints`)
 }
 if (!/ChapterMastery/.test(read('src/ChapterStudy.tsx'))) failures.push('Chapter mastery notes are not connected to the chapter reading page')
-if (!/getMasteryPack/.test(read('src/LearningHub.tsx')) || !/mastery:\/topicId/.test(read('src/App.tsx'))) failures.push('Supplementary subject mastery pages are not connected to the learning hub and route table')
+if (!/getMasteryPack/.test(read('src/LearningHub.tsx')) || !read('src/App.tsx').includes('mastery/:topicId')) failures.push('Supplementary subject mastery pages are not connected to the learning hub and route table')
 
 if (failures.length) {
   console.error('Academic content quality check failed:')
