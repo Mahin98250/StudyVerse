@@ -17,13 +17,13 @@ function Placeholder({kind}:{kind:'practice'|'revision'|'planner'|'analytics'}){
 function PracticeCentre(){
  const [subject,setSubject]=useState<'all'|'mathematics'|'science'>('all')
  const [query,setQuery]=useState('')
- const [records,setRecords]=useState<LearningRecord[]>([])
+ const [learningRecords,setRecords]=useState<LearningRecord[]>([])
  const [loading,setLoading]=useState(true)
  useEffect(()=>{let live=true;void db.learningRecords.toArray().then(rows=>{if(live)setRecords(rows)}).catch(()=>{if(live)setRecords([])}).finally(()=>{if(live)setLoading(false)});return()=>{live=false}},[])
  const chapters=ACADEMIC_CHAPTERS.filter(chapter=>(subject==='all'||chapter.subjectId===subject)&&((chapter.title+' '+chapter.chapterLabel).toLowerCase().includes(query.trim().toLowerCase())))
- const completed=chapters.filter(chapter=>records.find(record=>record.itemId===chapter.curriculumItemId)?.completed).length
- const attempts=chapters.reduce((sum,chapter)=>sum+(records.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.attempts??0),0)
- const scores=chapters.map(chapter=>records.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.bestScore).filter((score):score is number=>typeof score==='number')
+ const completed=chapters.filter(chapter=>learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.completed).length
+ const attempts=chapters.reduce((sum,chapter)=>sum+(learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.attempts??0),0)
+ const scores=chapters.map(chapter=>learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.bestScore).filter((score):score is number=>typeof score==='number')
  const average=scores.length?Math.round(scores.reduce((sum,score)=>sum+score,0)/scores.length):null
  return <div className="stack practice-centre">
   <Heading eyebrow="PRACTICE CENTRE" title={<>Build exam <em>confidence.</em></>} description="A focused place to practise, review your results and return to the chapters that need more work."/>
@@ -42,7 +42,7 @@ function PracticeCentre(){
   <section className="card practice-list-card">
    <div className="card-heading"><div><span className="eyebrow">CHAPTER LIBRARY</span><h3>Choose what to practise</h3></div><span className="muted">{chapters.length} chapters</span></div>
    {loading?<div className="practice-empty">Loading your saved practice history…</div>:chapters.length===0?<div className="practice-empty">No chapters match that search. Try another title.</div>:<div className="practice-chapter-grid">{chapters.map(chapter=>{
-    const record=records.find(item=>item.itemId===chapter.curriculumItemId)
+    const record=learningRecords.find(item=>item.itemId===chapter.curriculumItemId)
     const score=record?.practiceSummary?.bestScore
     const count=record?.practiceSummary?.attempts??0
     return <article className="practice-chapter" key={chapter.id}>
