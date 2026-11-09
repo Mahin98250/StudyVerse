@@ -51,7 +51,7 @@ export function getExternalNotes(chapter: { id: string; title: string; subjectId
     const slug = mathSlugs[chapter.id] ?? ''
     if (slug) resources.push({
       provider: 'GYANGHAR · CHAPTER NOTES',
-      title: 'Read the full chapter notes',
+      title: `Read ${chapter.title} notes`,
       description: 'Topic-by-topic explanations, worked examples, quick revision and quizzes. Free to read without an account.',
       url: mathBase + slug
     })
@@ -65,7 +65,7 @@ export function getExternalNotes(chapter: { id: string; title: string; subjectId
     const slugs = scienceSlugs[chapter.id] ?? []
     for (const slug of slugs) resources.push({
       provider: 'GYANGHAR · CHAPTER NOTES',
-      title: slug === 'electricity' ? 'Electricity notes' : slug === 'magnetic-effects-of-electric-current' ? 'Magnetic effects notes' : 'Read the full chapter notes',
+      title: slug === 'electricity' ? 'Electricity notes' : slug === 'magnetic-effects-of-electric-current' ? 'Magnetic effects notes' : `Read ${chapter.title} notes`,
       description: 'Free chapter-wise explanations, topic sections, examples and revision. No account needed to read.',
       url: scienceBase + slug
     })
