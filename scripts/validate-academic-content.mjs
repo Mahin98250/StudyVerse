@@ -7,6 +7,7 @@ const curriculum = read('src/curriculum.ts')
 const exam = read('src/ExamCentre.tsx')
 const visuals = read('src/ChapterVisual.tsx')
 const resources = read('src/externalNotes.ts')
+const mastery = read('src/chapterMasteryContent.ts')
 
 const matches = [...academic.matchAll(/id: '([^']+)',\n\s+curriculumItemId: '([^']+)'/g)]
 const ids = new Set()
@@ -47,6 +48,22 @@ for (const id of ['sci-heredity','sci-periodic','sci-evolution','sci-motor']) {
 }
 if (!exam.includes("ITEMS.filter(item => item.status === 'board')")) failures.push('Mock exams must only draw from board-scope curriculum items')
 for (const field of ['match:', 'access:', 'syllabus:']) if (!resources.includes(field)) failures.push(`External resource quality metadata missing: ${field}`)
+
+const masteryMatches = [...mastery.matchAll(/^  '([^']+)': \{/gm)]
+for (let i = 0; i < masteryMatches.length; i++) {
+  const chapterId = masteryMatches[i][1]
+  const block = mastery.slice(masteryMatches[i].index, masteryMatches[i + 1]?.index ?? mastery.indexOf('\n}\n\nexport function getMasteryPack'))
+  if (!ids.has(chapterId)) failures.push(`Mastery notes refer to unknown chapter: ${chapterId}`)
+  const lessons = (block.match(/\n      id: '/g) ?? []).length
+  const formulas = (block.match(/\{ label: '/g) ?? []).length
+  const mistakes = (block.match(/\{ mistake: '/g) ?? []).length
+  const blueprints = (block.match(/\{ marks: '/g) ?? []).length
+  if (lessons < 4) failures.push(`${chapterId}: mastery notes need at least 4 detailed lessons`)
+  if (formulas < 2) failures.push(`${chapterId}: mastery notes need a formula/fact desk`)
+  if (mistakes < 4) failures.push(`${chapterId}: mastery notes need at least 4 common-mistake checks`)
+  if (blueprints < 2) failures.push(`${chapterId}: mastery notes need board-answer blueprints`)
+}
+if (!/ChapterMastery/.test(read('src/ChapterStudy.tsx'))) failures.push('Chapter mastery notes are not connected to the chapter reading page')
 
 if (failures.length) {
   console.error('Academic content quality check failed:')
