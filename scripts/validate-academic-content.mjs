@@ -37,11 +37,11 @@ const mappedCurriculum = [...curriculum.matchAll(/add\('(mathematics|science)','
 for (const id of mappedCurriculum) if (!curriculumIds.has(id)) failures.push(`Curriculum item has no study guide: ${id}`)
 for (const id of curriculumIds) if (!mappedCurriculum.includes(id)) failures.push(`Study guide has no curriculum item: ${id}`)
 
-for (const id of ['sci-acid','sci-metal','sci-carbon','sci-heredity','sci-eye','sci-magnetic']) {
+for (const id of ['sci-acid','sci-metal','sci-carbon','sci-eye','sci-magnetic']) {
   const line = curriculum.split('\n').find(row => row.includes(`'${id}'`))
   if (!line?.includes("'board'")) failures.push(`${id} must be board-scope for 2026–27`)
 }
-for (const id of ['sci-periodic','sci-evolution','sci-motor']) {
+for (const id of ['sci-heredity','sci-periodic','sci-evolution','sci-motor']) {
   const line = curriculum.split('\n').find(row => row.includes(`'${id}'`))
   if (!line?.includes("'formative'")) failures.push(`${id} must remain formative-only`)
 }
