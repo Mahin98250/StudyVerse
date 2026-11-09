@@ -5,7 +5,8 @@ export const SOURCES:Record<string,{label:string;url:string;note:string}>={
  science:{label:'CBSE Science · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf',note:'Subject code 086. Formative-only topics are separated from year-end examination scope.'},
  'social-science':{label:'CBSE Social Science · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/SocialScience_SecP1X_2026-27.pdf',note:'Subject code 087. Board, project and periodic-assessment scope is distinguished.'},
  english:{label:'CBSE English Language & Literature · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/English_LL_SecP1_2026-27.pdf',note:'Subject code 184. Skill areas are listed; confirm prescribed literature titles with your school booklist.'},
- gujarati:{label:'CBSE Gujarati · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Gujarati_SecP1_2026-27.pdf',note:'Subject code 010. Confirm the exact course and prescribed text with your school.'}
+ gujarati:{label:'CBSE Gujarati · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Gujarati_SecP1_2026-27.pdf',note:'Subject code 010. Confirm the exact course and prescribed text with your school.'},
+ 'information-technology':{label:'CBSE Information Technology · Class X · 2026–27',url:'https://cbseacademic.nic.in/web_material/Curriculum27/sec/402-IT-X.pdf',note:'Skill subject code 402. Verify the subject offered by your school and use the current session curriculum.'}
 };
 const add=(subjectId:string,group:string,id:string,title:string,description:string,status:CurriculumStatus='board',marks?:number):CurriculumItem=>({id,subjectId,group,title,description,status,...(marks===undefined?{}:{marks})});
 export const ITEMS:CurriculumItem[]=[
@@ -86,6 +87,10 @@ add('gujarati','પૂરક વાંચન','guj-bharatiya','ભારતી�
 add('gujarati','પૂરક વાંચન','guj-satyavrat','સત્યવ્રત','વાર્તા · ઉમાશંકર જોશી'),
 add('gujarati','ભાષા કૌશલ્ય','guj-reading','વાંચન કૌશલ્ય','અપઠિત ગદ્યાંશનું વાંચન અને સમજણ.'),
 add('gujarati','ભાષા કૌશલ્ય','guj-writing','લેખન કૌશલ્ય','અનુચ્છેદ, વાર્તા, પત્ર અને જાહેરાત લેખન.'),
-add('gujarati','વ્યાકરણ','guj-grammar','વ્યાકરણ','રૂઢિપ્રયોગ, એક શબ્દ, સમાનાર્થી/વિરોધાર્થી, શુદ્ધ–અશુદ્ધ વાક્ય અને અનુગ/નામયોગી.')
+add('gujarati','વ્યાકરણ','guj-grammar','વ્યાકરણ','રૂઢિપ્રયોગ, એક શબ્દ, સમાનાર્થી/વિરોધાર્થી, શુદ્ધ–અશુદ્ધ વાક્ય અને અનુગ/નામયોગી.'),
+add('information-technology','Part B · Digital Documentation','it-docs','Digital Documentation (Advanced)','LibreOffice Writer styles, image handling, templates, table of contents and review tools.','board'),
+add('information-technology','Part B · Electronic Spreadsheet','it-calc','Electronic Spreadsheet (Advanced)','LibreOffice Calc consolidation, subtotals, What-if scenarios, Goal Seek, macros and linked data.','board'),
+add('information-technology','Part B · Database Management','it-dbms','Database Management System','LibreOffice Base tables, keys, relationships, queries, forms and reports.','board'),
+add('information-technology','Part B · Workplace Safety','it-safety','Maintain a Healthy, Safe and Secure Working Environment','Hazards, ergonomics, emergency procedures and secure workplace practices.','board')
 ];
 export const forSubject=(id:string)=>ITEMS.filter(entry=>entry.subjectId===id);
