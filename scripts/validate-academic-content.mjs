@@ -54,7 +54,7 @@ for (let i = 0; i < masteryMatches.length; i++) {
   const chapterId = masteryMatches[i][1]
   const block = mastery.slice(masteryMatches[i].index, masteryMatches[i + 1]?.index ?? mastery.indexOf('\n}\n\nexport function getMasteryPack'))
   if (!ids.has(chapterId)) failures.push(`Mastery notes refer to unknown chapter: ${chapterId}`)
-  const lessons = (block.match(/\n      id: '/g) ?? []).length
+  const lessons = (block.match(/\n\s+id: '/g) ?? []).length
   const formulas = (block.match(/\{ label: '/g) ?? []).length
   const mistakes = (block.match(/\{ mistake: '/g) ?? []).length
   const blueprints = (block.match(/\{ marks: '/g) ?? []).length
@@ -70,4 +70,4 @@ if (failures.length) {
   for (const failure of failures) console.error(`- ${failure}`)
   process.exit(1)
 }
-console.log(`Academic content quality check passed: ${matches.length} guides, ${mappedCurriculum.length} Mathematics/Science curriculum mappings.`)
+console.log(`Academic content quality check passed: ${matches.length} guides, ${mappedCurriculum.length} Mathematics/Science curriculum mappings, ${masteryMatches.length} deep-dive mastery packs.`)
