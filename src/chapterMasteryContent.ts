@@ -476,8 +476,7 @@ const PRACTICE_QUESTION_BANK: Record<string, MasteryPracticeQuestion[]> = {
   ],
   'it-spreadsheet-analysis': [
     {id:'itcalc-q1',prompt:'Which Goal Seek field contains the formula result that must reach a target?',choices:[{id:'a',text:'Set cell'},{id:'b',text:'Sheet name'},{id:'c',text:'Print area'},{id:'d',text:'Comment'}],answer:'a',explanation:'Set cell is the formula/result cell whose value Goal Seek tries to match.'},
-    {id:'itcalc-q2',prompt:'Which reference remains fixed when copied?',choices:[{id:'a',text:'B1'},{id:'b',text:'$B$1'},{id:'c',text:'B
-},{id:'d',text:'1B'}],answer:'b',explanation:'Dollar signs lock both the column and row in an absolute cell reference.'},
+    {id:'itcalc-q2',prompt:'Which reference remains fixed when copied?',choices:[{id:'a',text:'B1'},{id:'b',text:'$B$1'},{id:'c',text:'B$1'},{id:'d',text:'1B'}],answer:'b',explanation:'Dollar signs lock both the column and row in an absolute cell reference.'},
     {id:'itcalc-q3',prompt:'A What-if scenario is best described as:',choices:[{id:'a',text:'A guaranteed prediction'},{id:'b',text:'A stored alternative set of input values used to compare outcomes'},{id:'c',text:'A database primary key'},{id:'d',text:'A printed chart only'}],answer:'b',explanation:'Scenarios let a user compare outputs under different assumptions.'}
   ],
   'it-database-management': [
