@@ -31,7 +31,7 @@ function PracticeCentre(){
  useEffect(()=>{let live=true;void Promise.all([db.learningRecords.toArray(),db.examAttempts.toArray()]).then(([rows,attempts])=>{if(live){setRecords(rows);setExamHistory(attempts.filter(item=>item.status==='submitted').sort((a,b)=>new Date(b.submittedAt??b.startedAt).getTime()-new Date(a.submittedAt??a.startedAt).getTime()))}}).catch(()=>{if(live){setRecords([]);setExamHistory([])}}).finally(()=>{if(live)setLoading(false)});return()=>{live=false}},[])
  const chapters=practiceChapters.filter(chapter=>(subject==='all'||chapter.subjectId===subject)&&((chapter.title+' '+chapter.chapterLabel).toLowerCase().includes(query.trim().toLowerCase())))
  const subjectName=subject==='all'?'All available subjects':DEFAULT_SUBJECTS.find(item=>item.id===subject)?.name??'Subject'
- const chapters=practiceChapters.filter(chapter=>learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.completed).length
+ const completed=chapters.filter(chapter=>learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.completed).length
  const attempts=chapters.reduce((sum,chapter)=>sum+(learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.attempts??0),0)
  const scores=chapters.map(chapter=>learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.bestScore).filter((score):score is number=>typeof score==='number')
  const average=scores.length?Math.round(scores.reduce((sum,score)=>sum+score,0)/scores.length):null
