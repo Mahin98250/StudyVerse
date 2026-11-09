@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
-  ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, Circle,
+  ArrowLeft, ArrowRight, BookOpen, Brain, Check, CheckCircle2, Circle,
   ExternalLink, Lightbulb, NotebookPen, RotateCcw, Sparkles, Target, Trophy
 } from 'lucide-react'
 import { getChapter } from './academicContent'
@@ -153,6 +153,7 @@ export default function ChapterStudy() {
         <span>YOUR PROGRESS</span>
         <strong>{record?.completed ? 'Complete' : 'In progress'}</strong>
         <small>{record?.practiceSummary ? `Best quiz score: ${record.practiceSummary.bestScore}%` : 'Work through the lesson and try the quiz.'}</small>
+        <Link to={`/revision?chapter=${chapter.id}`} className="chapter-revise-link"><Brain size={14}/> Revise this chapter <ArrowRight size={13}/></Link>
         <button onClick={() => void toggleComplete()} disabled={saving} className={`chapter-complete-button ${record?.completed ? 'is-done' : ''}`}>
           {record?.completed ? <><CheckCircle2 size={15} /> Mark as in progress</> : <><Check size={15} /> Mark chapter complete</>}
         </button>
