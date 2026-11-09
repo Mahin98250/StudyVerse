@@ -144,3 +144,7 @@
  .mastery-mistakes b,.mastery-blueprint h4,.mastery-checklist label{font-size:12px}
  .mastery-resource-card>b{font-size:14px}
 }
+
+.mastery-resource-actions{display:flex;flex-wrap:wrap;gap:16px 22px;margin-top:5px}
+.mastery-resource-actions a{min-height:32px}
+@media(max-width:520px){.mastery-resource-actions{display:grid;gap:10px}}
