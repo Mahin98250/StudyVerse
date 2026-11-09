@@ -1,7 +1,7 @@
 import {useEffect,useState,type ReactNode,type CSSProperties} from 'react'
 import {NavLink,Outlet,Route,Routes,useLocation,Link} from 'react-router-dom'
 import {Activity,BookOpen,CalendarDays,ChartNoAxesCombined,ChevronRight,Clock3,GraduationCap,LayoutDashboard,Menu,NotebookPen,Settings,Sparkles,Target,X,ArrowRight,Timer,Flame,TrendingUp,ClipboardCheck,Brain,Download,Upload,Database,ShieldCheck,Play,Pause,RotateCcw,Check,Search,Trophy,CheckCircle2,BookMarked} from 'lucide-react'
-import {db,exportBackup,importBackup,formatDuration,makeId,type Subject,type StudySession,type LearningRecord} from './core'
+import {db,exportBackup,importBackup,formatDuration,makeId,type Subject,type StudySession,type LearningRecord,type ExamAttempt} from './core'
 import LearningHub from './LearningHub'
 import ChapterStudy from './ChapterStudy'
 import ExamCentre from './ExamCentre'
@@ -21,8 +21,9 @@ function PracticeCentre(){
  const [subject,setSubject]=useState<'all'|'mathematics'|'science'>('all')
  const [query,setQuery]=useState('')
  const [learningRecords,setRecords]=useState<LearningRecord[]>([])
+ const [examHistory,setExamHistory]=useState<ExamAttempt[]>([])
  const [loading,setLoading]=useState(true)
- useEffect(()=>{let live=true;void db.learningRecords.toArray().then(rows=>{if(live)setRecords(rows)}).catch(()=>{if(live)setRecords([])}).finally(()=>{if(live)setLoading(false)});return()=>{live=false}},[])
+ useEffect(()=>{let live=true;void Promise.all([db.learningRecords.toArray(),db.examAttempts.toArray()]).then(([rows,attempts])=>{if(live){setRecords(rows);setExamHistory(attempts.filter(item=>item.status==='submitted').sort((a,b)=>new Date(b.submittedAt??b.startedAt).getTime()-new Date(a.submittedAt??a.startedAt).getTime()))}}).catch(()=>{if(live){setRecords([]);setExamHistory([])}}).finally(()=>{if(live)setLoading(false)});return()=>{live=false}},[])
  const chapters=ACADEMIC_CHAPTERS.filter(chapter=>(subject==='all'||chapter.subjectId===subject)&&((chapter.title+' '+chapter.chapterLabel).toLowerCase().includes(query.trim().toLowerCase())))
  const completed=chapters.filter(chapter=>learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.completed).length
  const attempts=chapters.reduce((sum,chapter)=>sum+(learningRecords.find(record=>record.itemId===chapter.curriculumItemId)?.practiceSummary?.attempts??0),0)
@@ -54,6 +55,10 @@ function PracticeCentre(){
      <div className="practice-chapter-bottom">{score!==undefined?<span><Trophy size={14}/> Best score <b>{score}%</b></span>:<span><BookMarked size={14}/> Original StudyVerse questions</span>}<Link to={'/study/'+chapter.id}>Open chapter <ArrowRight size={14}/></Link></div>
     </article>
    })}</div>}
+  </section>
+  <section className="practice-history">
+   <div className="card-heading"><div><span className="eyebrow">YOUR EXAM RECORD</span><h3>Mock-exam history</h3></div><span className="muted">{examHistory.length} completed</span></div>
+   {examHistory.length===0?<div className="practice-empty">Your completed mock exams will appear here. Start your first timed exam when you are ready.</div>:<div className="practice-history-list">{examHistory.slice(0,12).map(exam=>{const percent=Math.round((exam.score??0)/Math.max(1,exam.questions.length)*100);return <article className="practice-history-row" key={exam.id}><div className="practice-history-score"><b>{percent}%</b><span>{exam.score??0}/{exam.questions.length}</span></div><div className="practice-history-info"><b>{exam.subject==='all'?'Mixed Mathematics & Science':exam.subject==='mathematics'?'Mathematics':'Science'} mock exam</b><span>{new Date(exam.submittedAt??exam.startedAt).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})} · {exam.durationMinutes} min · {exam.autoSubmitted?'Auto-submitted':'Submitted by you'}</span></div><span className={percent>=80?'history-grade strong':percent>=50?'history-grade steady':'history-grade revisit'}>{percent>=80?'Strong':percent>=50?'Building':'Revisit'}</span></article>})}</div>}
   </section>
   <p className="practice-footnote">Questions and worked examples are original StudyVerse material. Always use the linked official curriculum to confirm the assessed syllabus. Results remain in this browser until you clear its site data or restore a backup.</p>
  </div>
