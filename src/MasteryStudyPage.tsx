@@ -48,6 +48,7 @@ export default function MasteryStudyPage() {
         <span>STUDY ROUTE</span>
         <strong>{pack.subject}</strong>
         <small>{pack.focus}</small>
+        <Link to={`/revision?chapter=${item.id}`} className="chapter-revise-link"><BookOpen size={14}/> Revise with flashcards <ArrowRight size={13}/></Link>
         <Link to={`/learn/${subject.id}`} className="chapter-revise-link"><ArrowLeft size={14}/> Back to topic list</Link>
       </div>
     </section>
