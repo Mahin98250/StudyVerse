@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, ArrowRight, Bookmark, CheckCircle2, Clock3, Flag, GraduationCap, RotateCcw, ShieldCheck, Trophy } from 'lucide-react'
 import { ACADEMIC_CHAPTERS, type PracticeQuestion } from './academicContent'
+import { ITEMS } from './curriculum'
 import { db, makeId } from './core'
 import type { ExamAttempt } from './core'
 import './exam-centre.css'
 
 type ExamQuestion = PracticeQuestion & { chapterTitle: string; subjectId: string }
-const allQuestions: ExamQuestion[] = ACADEMIC_CHAPTERS.flatMap(chapter => chapter.questions.map(question => ({ ...question, chapterTitle: chapter.title, subjectId: chapter.subjectId })))
+const boardChapterIds = new Set(ITEMS.filter(item => item.status === 'board').map(item => item.id))
+const allQuestions: ExamQuestion[] = ACADEMIC_CHAPTERS.filter(chapter => boardChapterIds.has(chapter.curriculumItemId)).flatMap(chapter => chapter.questions.map(question => ({ ...question, chapterTitle: chapter.title, subjectId: chapter.subjectId })))
 const formatTime = (seconds: number) => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`
 const shuffle = <T,>(items: T[]) => [...items].sort(() => Math.random() - 0.5)
 

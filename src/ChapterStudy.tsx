@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
-  ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, Circle,
+  ArrowLeft, ArrowRight, BookOpen, Brain, Check, CheckCircle2, Circle,
   ExternalLink, Lightbulb, NotebookPen, RotateCcw, Sparkles, Target, Trophy
 } from 'lucide-react'
 import { getChapter } from './academicContent'
 import { getExternalNotes } from './externalNotes'
+import ChapterVisual from './ChapterVisual'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
 
@@ -152,6 +153,7 @@ export default function ChapterStudy() {
         <span>YOUR PROGRESS</span>
         <strong>{record?.completed ? 'Complete' : 'In progress'}</strong>
         <small>{record?.practiceSummary ? `Best quiz score: ${record.practiceSummary.bestScore}%` : 'Work through the lesson and try the quiz.'}</small>
+        <Link to={`/revision?chapter=${chapter.id}`} className="chapter-revise-link"><Brain size={14}/> Revise this chapter <ArrowRight size={13}/></Link>
         <button onClick={() => void toggleComplete()} disabled={saving} className={`chapter-complete-button ${record?.completed ? 'is-done' : ''}`}>
           {record?.completed ? <><CheckCircle2 size={15} /> Mark as in progress</> : <><Check size={15} /> Mark chapter complete</>}
         </button>
@@ -170,8 +172,10 @@ export default function ChapterStudy() {
       </div>
     </section>
 
+    <ChapterVisual chapterId={activeChapter.id} />
+
     <section className="chapter-section-block">
-      <div className="chapter-section-heading"><div><span className="chapter-eyebrow">THE LESSON</span><h2>Understand the ideas</h2></div><span>{chapter.sections.length} sections</span></div>
+      <div className="chapter-section-heading"><div><span className="chapter-eyebrow">DETAILED CHAPTER NOTES</span><h2>Concepts, explanations and key points</h2></div><span>{chapter.sections.length} sections</span></div>
       <div className="chapter-lesson-list">
         {chapter.sections.map((section, index) => <article className="chapter-lesson" key={section.id}>
           <div className="chapter-lesson-number">{String(index + 1).padStart(2, '0')}</div>
@@ -267,6 +271,8 @@ export default function ChapterStudy() {
           <span className="chapter-resource-provider">{resource.provider}</span>
           <b>{resource.title}</b>
           <span className="chapter-resource-description">{resource.description}</span>
+          <span className="chapter-resource-quality"><i className={resource.match==='exact'?'quality-exact':resource.match==='related'?'quality-related':'quality-library'}/>{resource.match==='exact'?'Chapter match':resource.match==='related'?'Related topic':'Subject library'} · {resource.access==='free-no-login'?'Free, no login':'Free; PDF may need sign-in'}</span>
+          {resource.syllabus!=='current-chapter'&&<span className="chapter-resource-warning">{resource.syllabus==='formative-only'?'Formative-only topic: not for board-paper scoring.':'Check current CBSE scope before treating this as a separate chapter.'}</span>}
           <span className="chapter-resource-open">Open resource <ExternalLink size={13}/></span>
         </a>)}
       </div>
