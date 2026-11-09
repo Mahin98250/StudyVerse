@@ -34,9 +34,11 @@ for (let i = 0; i < matches.length; i++) {
   if (!block.includes('sourceUrl:') || !block.includes('sourceLabel:')) failures.push(`${chapterId}: missing source attribution`)
 }
 
-const mappedCurriculum = [...curriculum.matchAll(/add\('(mathematics|science)','[^']+','([^']+)'/g)].map(match => match[2])
-for (const id of mappedCurriculum) if (!curriculumIds.has(id)) failures.push(`Curriculum item has no study guide: ${id}`)
-for (const id of curriculumIds) if (!mappedCurriculum.includes(id)) failures.push(`Study guide has no curriculum item: ${id}`)
+const mappedEntries = [...curriculum.matchAll(/add\\('([^']+)','[^']+','([^']+)'/g)].map(match => ({ subject: match[1], id: match[2] }))
+const mappedCurriculum = mappedEntries.filter(entry => ['mathematics', 'science'].includes(entry.subject)).map(entry => entry.id)
+const allCurriculumIds = new Set(mappedEntries.map(entry => entry.id))
+for (const id of mappedCurriculum) if (!curriculumIds.has(id)) failures.push(`Curriculum item has no Math/Science study guide: ${id}`)
+for (const id of curriculumIds) if (!mappedCurriculum.includes(id)) failures.push(`Math/Science study guide has no curriculum item: ${id}`)
 
 for (const id of ['sci-acid','sci-metal','sci-carbon','sci-eye','sci-magnetic']) {
   const line = curriculum.split('\n').find(row => row.includes(`'${id}'`))
