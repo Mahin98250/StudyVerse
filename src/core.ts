@@ -5,7 +5,8 @@ export interface StudySession{id:string;subjectId:string|null;startedAt:string;e
 export interface Profile{id:'default';displayName:string;academicSession:string;dailyGoalMinutes:number}
 export interface LearningRecord{id:string;itemId:string;completed:boolean;bookmarked:boolean;note:string;updatedAt:string;practiceSummary?:{attempts:number;bestScore:number;lastScore:number;lastAttemptAt:string}}
 export interface ExamQuestionRecord{id:string;prompt:string;choices:{id:string;text:string}[];answer:string;explanation:string;chapterTitle:string;subjectId:string}
-export interface ExamAttempt{id:string;status:'in-progress'|'submitted';subject:'all'|'mathematics'|'science';durationMinutes:number;startedAt:string;endsAt:string;submittedAt:string|null;questions:ExamQuestionRecord[];answers:Record<string,string>;marked:string[];score?:number;autoSubmitted?:boolean}
+export type ExamSubject='all'|'mathematics'|'science'|'social-science'|'english'|'gujarati'|'information-technology'
+export interface ExamAttempt{id:string;status:'in-progress'|'submitted';subject:ExamSubject;durationMinutes:number;startedAt:string;endsAt:string;submittedAt:string|null;questions:ExamQuestionRecord[];answers:Record<string,string>;marked:string[];score?:number;autoSubmitted?:boolean}
 export interface RevisionCard{id:string;chapterId:string;subjectId:string;front:string;back:string;sourceLabel:string;createdAt:string;dueAt:string;lastReviewedAt?:string;repetitions:number;intervalDays:number;easeFactor:number;lastRating?:'again'|'hard'|'good'}
 export interface Backup{application:'StudyVerse';backupVersion:1;exportedAt:string;data:{subjects:Subject[];studySessions:StudySession[];profile?:Profile;learningRecords?:LearningRecord[];examAttempts?:ExamAttempt[];revisionCards?:RevisionCard[]}}
 export const DEFAULT_SUBJECTS:Subject[]=[

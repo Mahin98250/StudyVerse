@@ -2,20 +2,36 @@ import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, ArrowRight, Bookmark, CheckCircle2, Clock3, Flag, GraduationCap, RotateCcw, ShieldCheck, Trophy } from 'lucide-react'
 import { ACADEMIC_CHAPTERS, type PracticeQuestion } from './academicContent'
 import { ITEMS } from './curriculum'
+import { CHAPTER_MASTERY, getMasteryPack } from './chapterMasteryContent'
 import { db, makeId } from './core'
-import type { ExamAttempt } from './core'
+import type { ExamAttempt, ExamSubject } from './core'
 import './exam-centre.css'
 
 type ExamQuestion = PracticeQuestion & { chapterTitle: string; subjectId: string }
 const boardChapterIds = new Set(ITEMS.filter(item => item.status === 'board').map(item => item.id))
-const allQuestions: ExamQuestion[] = ACADEMIC_CHAPTERS.filter(chapter => boardChapterIds.has(chapter.curriculumItemId)).flatMap(chapter => chapter.questions.map(question => ({ ...question, chapterTitle: chapter.title, subjectId: chapter.subjectId })))
+const legacyQuestions: ExamQuestion[] = ACADEMIC_CHAPTERS.filter(chapter => boardChapterIds.has(chapter.curriculumItemId)).flatMap(chapter => chapter.questions.map(question => ({ ...question, chapterTitle: chapter.title, subjectId: chapter.subjectId })))
+const masteryQuestions: ExamQuestion[] = Object.values(CHAPTER_MASTERY).filter(pack => !!pack.curriculumItemId && boardChapterIds.has(pack.curriculumItemId)).flatMap(pack => {
+  const item = ITEMS.find(entry => entry.id === pack.curriculumItemId)
+  return (getMasteryPack(pack.chapterId)?.practiceQuestions ?? []).map(question => ({ ...question, chapterTitle: item?.title ?? pack.subject, subjectId: item?.subjectId ?? '' }))
+})
+const allQuestions: ExamQuestion[] = [...legacyQuestions, ...masteryQuestions]
+const EXAM_SUBJECTS: { id: ExamSubject; label: string; detail: string }[] = [
+  { id: 'all', label: 'All active subjects', detail: 'Mixed preparation across subjects' },
+  { id: 'mathematics', label: 'Mathematics', detail: 'Algebra, geometry and more' },
+  { id: 'science', label: 'Science', detail: 'Physics, chemistry and biology' },
+  { id: 'social-science', label: 'Social Science', detail: 'History, geography, civics and economics' },
+  { id: 'english', label: 'English', detail: 'Reading, grammar and writing' },
+  { id: 'gujarati', label: 'Gujarati', detail: 'વાંચન, લેખન અને વ્યાકરણ' },
+  { id: 'information-technology', label: 'Information Technology', detail: 'Writer, Calc, databases and safety' }
+]
+const subjectLabel = (id: ExamSubject) => EXAM_SUBJECTS.find(item => item.id === id)?.label ?? 'Subject'
 const formatTime = (seconds: number) => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`
 const shuffle = <T,>(items: T[]) => [...items].sort(() => Math.random() - 0.5)
 
 export default function ExamCentre() {
   const [attempt, setAttempt] = useState<ExamAttempt | null>(null)
   const [loading, setLoading] = useState(true)
-  const [subject, setSubject] = useState<'all' | 'mathematics' | 'science'>('all')
+  const [subject, setSubject] = useState<ExamSubject>('all')
   const [questionCount, setQuestionCount] = useState(10)
   const [duration, setDuration] = useState(15)
   const [active, setActive] = useState(0)
@@ -90,7 +106,7 @@ export default function ExamCentre() {
     const isLast = active === questions.length - 1
     return <div className="exam-shell">
       <header className="exam-topline"><a href="#/practice" className="exam-back"><ArrowLeft size={16}/> Practice centre</a><span className="exam-live"><i/> EXAM IN PROGRESS</span><div className={remaining <= 60 ? 'exam-clock danger' : 'exam-clock'}><Clock3 size={17}/><strong>{formatTime(remaining)}</strong></div></header>
-      <div className="exam-intro"><span className="eyebrow">STUDYVERSE · MOCK EXAM</span><h1>Think clearly.<br/><em>Trust your preparation.</em></h1><p>{attempt.subject === 'all' ? 'Mixed Mathematics & Science' : attempt.subject === 'mathematics' ? 'Mathematics' : 'Science'} · {questions.length} questions · {attempt.durationMinutes} minutes</p></div>
+      <div className="exam-intro"><span className="eyebrow">STUDYVERSE · MOCK EXAM</span><h1>Think clearly.<br/><em>Trust your preparation.</em></h1><p>{subjectLabel(attempt.subject)} · {questions.length} questions · {attempt.durationMinutes} minutes</p></div>
       <div className="exam-progress"><div><span>YOUR PROGRESS</span><b>{answered} of {questions.length} answered</b></div><div className="exam-progress-track"><i style={{ width: `${answered / questions.length * 100}%` }}/></div></div>
       <div className="exam-layout">
         <section className="exam-question-card">
@@ -111,5 +127,5 @@ export default function ExamCentre() {
     return <div className="exam-shell exam-results"><a href="#/practice" className="exam-back"><ArrowLeft size={16}/> Practice centre</a><div className="result-hero"><div className="result-icon"><Trophy size={28}/></div><span className="eyebrow">EXAM COMPLETE</span><h1>{score >= Math.ceil(questions.length * .8) ? 'Excellent work.' : 'Every attempt builds skill.'}</h1><p>Your result is saved on this device. Review the explanations and use them to plan your next practice session.</p><div className="result-score"><strong>{Math.round(correct / questions.length * 100)}<small>%</small></strong><span>{correct} correct out of {questions.length}</span></div><div className="result-stats"><div><b>{correct}</b><span>Correct</span></div><div><b>{questions.length - correct}</b><span>Incorrect / skipped</span></div><div><b>{attempt.durationMinutes}m</b><span>Time allowed</span></div></div></div><section className="result-review"><div className="result-review-head"><span className="eyebrow">LEARN FROM THE RESULT</span><h2>Answer review</h2></div>{attempt.questions.map((q, i) => { const selected = attempt.answers[q.id]; const ok = selected === q.answer; return <article className="result-question" key={q.id}><div><span>QUESTION {i + 1} · {q.chapterTitle}</span><b className={ok ? 'review-correct' : 'review-wrong'}>{ok ? 'Correct' : 'Review this'}</b></div><h3>{q.prompt}</h3><p><strong>Your answer:</strong> {q.choices.find(c => c.id === selected)?.text ?? 'Not answered'}</p><p><strong>Correct answer:</strong> {q.choices.find(c => c.id === q.answer)?.text}</p><p className="review-explanation">{q.explanation}</p></article>})}<button className="exam-next result-restart" onClick={() => { setAttempt(null); setActive(0) }}><RotateCcw size={15}/> Create another mock exam</button></section></div>
   }
 
-  return <div className="exam-shell exam-setup"><div className="exam-setup-top"><span className="eyebrow">YOUR NEXT MILESTONE</span><span className="exam-private"><ShieldCheck size={14}/> PRIVATE · SAVED LOCALLY</span></div><div className="exam-intro"><h1>Prepare for the moment.<br/><em>Own the exam.</em></h1><p>A focused simulation built from the verified StudyVerse Mathematics and Science question bank.</p></div><div className="exam-setup-grid"><section className="exam-config"><span className="eyebrow">01 · CHOOSE YOUR SCOPE</span><h2>What would you like to practise?</h2><div className="exam-subjects">{(['all', 'mathematics', 'science'] as const).map(s => <button key={s} className={subject === s ? 'chosen' : ''} onClick={() => setSubject(s)}><span>{s === 'all' ? 'Mixed subjects' : s === 'mathematics' ? 'Mathematics' : 'Science'}</span><small>{s === 'all' ? 'A balanced mix' : s === 'mathematics' ? 'Algebra, geometry & more' : 'Physics, chemistry & biology'}</small></button>)}</div><span className="eyebrow">02 · SET YOUR SESSION</span><h2>Choose your challenge.</h2><div className="exam-setting-row"><label>Questions</label><div>{[10, 20, 30].map(n => <button key={n} className={questionCount === n ? 'chosen' : ''} onClick={() => setQuestionCount(n)}>{n}</button>)}</div></div><div className="exam-setting-row"><label>Time limit</label><div>{[15, 30, 45].map(n => <button key={n} className={duration === n ? 'chosen' : ''} onClick={() => setDuration(n)}>{n} min</button>)}</div></div><button className="exam-start" onClick={() => void startExam()}>Start mock exam <ArrowRight size={17}/></button><p className="exam-note">Your timer starts when you begin. Answers are saved automatically, so you can safely refresh and resume before time runs out.</p></section><aside className="exam-aside"><div className="exam-aside-art"><GraduationCap size={38}/><span>SV / 01</span></div><span className="eyebrow">A CALM SPACE TO PERFORM</span><h3>Less noise.<br/><em>More focus.</em></h3><p>No distractions, no pressure to be perfect. Just a clear space to test what you know and learn from what you don't.</p><div className="exam-aside-points"><span><CheckCircle2 size={15}/> Autosaved answers</span><span><Flag size={15}/> Mark questions for review</span><span><Clock3 size={15}/> Countdown with recovery</span></div></aside></div></div>
+  return <div className="exam-shell exam-setup"><div className="exam-setup-top"><span className="eyebrow">YOUR NEXT MILESTONE</span><span className="exam-private"><ShieldCheck size={14}/> PRIVATE · SAVED LOCALLY</span></div><div className="exam-intro"><h1>Prepare for the moment.<br/><em>Own the exam.</em></h1><p>A focused simulation built from board-scope StudyVerse questions across the available subjects.</p></div><div className="exam-setup-grid"><section className="exam-config"><span className="eyebrow">01 · CHOOSE YOUR SCOPE</span><h2>What would you like to practise?</h2><div className="exam-subjects">{EXAM_SUBJECTS.map(option => <button key={option.id} className={subject === option.id ? 'chosen' : ''} onClick={() => setSubject(option.id)}><span>{option.label}</span><small>{option.detail} · {allQuestions.filter(question => option.id === 'all' || question.subjectId === option.id).length} questions</small></button>)}</div><span className="eyebrow">02 · SET YOUR SESSION</span><h2>Choose your challenge.</h2><div className="exam-setting-row"><label>Questions</label><div>{[10, 20, 30].map(n => <button key={n} className={questionCount === n ? 'chosen' : ''} onClick={() => setQuestionCount(n)}>{n}</button>)}</div></div><div className="exam-setting-row"><label>Time limit</label><div>{[15, 30, 45].map(n => <button key={n} className={duration === n ? 'chosen' : ''} onClick={() => setDuration(n)}>{n} min</button>)}</div></div><button className="exam-start" onClick={() => void startExam()}>Start mock exam <ArrowRight size={17}/></button><p className="exam-note">Your timer starts when you begin. Answers are saved automatically, so you can safely refresh and resume before time runs out.</p></section><aside className="exam-aside"><div className="exam-aside-art"><GraduationCap size={38}/><span>SV / 01</span></div><span className="eyebrow">A CALM SPACE TO PERFORM</span><h3>Less noise.<br/><em>More focus.</em></h3><p>No distractions, no pressure to be perfect. Just a clear space to test what you know and learn from what you don't.</p><div className="exam-aside-points"><span><CheckCircle2 size={15}/> Autosaved answers</span><span><Flag size={15}/> Mark questions for review</span><span><Clock3 size={15}/> Countdown with recovery</span></div></aside></div></div>
 }

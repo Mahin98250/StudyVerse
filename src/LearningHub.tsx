@@ -3,6 +3,7 @@ import {Link,useParams} from 'react-router-dom';
 import {ArrowLeft,ArrowUpRight,Bookmark,BookOpen,Check,CheckCircle2,Circle,ExternalLink,FileText,Search,Sparkles} from 'lucide-react';
 import {SOURCES,forSubject,type CurriculumItem,type CurriculumStatus} from './curriculum';
 import {RESOURCE_BY_TOPIC} from './academicContent';
+import {getMasteryPack} from './chapterMasteryContent';
 import {db,DEFAULT_SUBJECTS,type LearningRecord} from './core';
 import './learning.css';
 const labels:Record<CurriculumStatus,string>={board:'Board scope',formative:'Formative only',periodic:'Periodic assessment',project:'Project / map work'};
@@ -27,7 +28,9 @@ export default function LearningHub(){
  <div className="learn-list">{visible.map(e=>{const r=records.find(x=>x.itemId===e.id),open=expanded===e.id;return <article className={`learn-item ${r?.completed?'is-complete':''}`} key={e.id}>
  <button className="learn-check" aria-label={r?.completed?'Mark incomplete':'Mark complete'} onClick={()=>void update(e,{completed:!r?.completed})}>{r?.completed?<CheckCircle2 size={21}/>:<Circle size={21}/>}</button>
  <div className="learn-item-main"><div className="learn-item-meta"><span>{e.group}</span><span className={`learn-status ${e.status}`}>{labels[e.status]}</span>{r?.practiceSummary&&<span className="learn-practice-badge">QUIZ {r.practiceSummary.bestScore}% · {r.practiceSummary.attempts} tries</span>}</div><h3>{e.title}</h3><p>{e.description}</p>
- {RESOURCE_BY_TOPIC[e.id]&&<Link className="learn-study-link" to={'/study/'+RESOURCE_BY_TOPIC[e.id]}><BookOpen size={13}/> Open study guide <ArrowUpRight size={13}/></Link>}
+ {RESOURCE_BY_TOPIC[e.id]
+   ? <Link className="learn-study-link" to={'/study/'+RESOURCE_BY_TOPIC[e.id]}><BookOpen size={13}/> Open study guide <ArrowUpRight size={13}/></Link>
+   : getMasteryPack(e.id) && <Link className="learn-study-link" to={'/mastery/'+e.id}><BookOpen size={13}/> Open detailed notes <ArrowUpRight size={13}/></Link>}
  {open&&<div className="learn-note"><label htmlFor={`note-${e.id}`}>My study notes</label><textarea id={`note-${e.id}`} rows={3} value={drafts[e.id]??r?.note??''} onChange={event=>setDrafts(d=>({...d,[e.id]:event.target.value}))} placeholder="Write your own explanation, doubts or key points…"/><div><span>Saved only on this device</span><button disabled={saving===e.id} onClick={()=>void update(e,{note:drafts[e.id]??''})}>{saving===e.id?'Saving…':'Save note'}</button></div></div>}
  <button className="learn-note-toggle" onClick={()=>setExpanded(open?null:e.id)}><FileText size={14}/>{open?'Close notes':r?.note?'Edit notes':'Add notes'}</button></div>
  <button className={`learn-bookmark ${r?.bookmarked?'saved':''}`} aria-label={r?.bookmarked?'Remove bookmark':'Bookmark topic'} onClick={()=>void update(e,{bookmarked:!r?.bookmarked})}><Bookmark size={18}/></button></article>})}</div>

@@ -7,6 +7,7 @@ import {
 import { getChapter } from './academicContent'
 import { getExternalNotes } from './externalNotes'
 import ChapterVisual from './ChapterVisual'
+import ChapterMastery from './ChapterMastery'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
 
@@ -54,6 +55,7 @@ export default function ChapterStudy() {
   }
 
   const activeChapter = chapter
+  const subjectLabel: Record<string, string> = { mathematics: 'Mathematics', science: 'Science', 'social-science': 'Social Science', english: 'English', gujarati: 'Gujarati', it: 'Information Technology' }
   const answeredCount = activeChapter.questions.filter(question => answers[question.id]).length
 
   async function persist(patch: Partial<LearningRecord>) {
@@ -134,7 +136,7 @@ export default function ChapterStudy() {
   const percentage = score === null ? 0 : Math.round((score / chapter.questions.length) * 100)
 
   return <div className="chapter-page">
-    <Link to={`/learn/${chapter.subjectId}`} className="chapter-back"><ArrowLeft size={15} /> {chapter.subjectId === 'mathematics' ? 'Mathematics' : 'Science'} curriculum</Link>
+    <Link to={`/learn/${chapter.subjectId}`} className="chapter-back"><ArrowLeft size={15} /> {subjectLabel[chapter.subjectId] ?? 'Subject'} curriculum</Link>
 
     <section className="chapter-hero">
       <div className="chapter-hero-copy">
@@ -187,6 +189,8 @@ export default function ChapterStudy() {
         </article>)}
       </div>
     </section>
+
+    <ChapterMastery chapterId={activeChapter.id} />
 
     <section className="chapter-section-block">
       <div className="chapter-section-heading"><div><span className="chapter-eyebrow">LEARN BY DOING</span><h2>Worked examples</h2></div><span>{chapter.workedExamples.length} solved</span></div>
@@ -281,7 +285,7 @@ export default function ChapterStudy() {
 
     <div className="chapter-next-step">
       <div><span className="chapter-eyebrow">KEEP THE MOMENTUM</span><b>Ready to continue?</b><p>Return to the curriculum to choose your next topic.</p></div>
-      <Link className="chapter-button chapter-button-primary" to={`/learn/${chapter.subjectId}`}>{chapter.subjectId === 'mathematics' ? 'Back to Mathematics' : 'Back to Science'} <ArrowRight size={15} /></Link>
+      <Link className="chapter-button chapter-button-primary" to={`/learn/${chapter.subjectId}`}>{`Back to ${subjectLabel[chapter.subjectId] ?? 'subject'}`} <ArrowRight size={15} /></Link>
     </div>
   </div>
 }
