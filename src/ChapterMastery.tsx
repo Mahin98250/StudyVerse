@@ -47,6 +47,7 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
     setChecked([])
     setAnswers({})
     setQuizSubmitted(false)
+    setQuizMessage('')
   }, [chapterId])
   const questions = pack?.practiceQuestions ?? []
   const answeredCount = questions.filter(question => answers[question.id]).length
