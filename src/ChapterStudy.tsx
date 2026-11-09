@@ -133,7 +133,7 @@ export default function ChapterStudy() {
   const percentage = score === null ? 0 : Math.round((score / chapter.questions.length) * 100)
 
   return <div className="chapter-page">
-    <Link to={`/learn/${chapter.subjectId}`} className="chapter-back"><ArrowLeft size={15} /> Mathematics curriculum</Link>
+    <Link to={`/learn/${chapter.subjectId}`} className="chapter-back"><ArrowLeft size={15} /> {chapter.subjectId === 'mathematics' ? 'Mathematics' : 'Science'} curriculum</Link>
 
     <section className="chapter-hero">
       <div className="chapter-hero-copy">
@@ -275,7 +275,7 @@ export default function ChapterStudy() {
 
     <div className="chapter-next-step">
       <div><span className="chapter-eyebrow">KEEP THE MOMENTUM</span><b>Ready to continue?</b><p>Return to the curriculum to choose your next topic.</p></div>
-      <Link className="chapter-button chapter-button-primary" to={`/learn/${chapter.subjectId}`}>Back to Mathematics <ArrowRight size={15} /></Link>
+      <Link className="chapter-button chapter-button-primary" to={`/learn/${chapter.subjectId}`}>{chapter.subjectId === 'mathematics' ? 'Back to Mathematics' : 'Back to Science'} <ArrowRight size={15} /></Link>
     </div>
   </div>
 }
