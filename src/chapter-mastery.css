@@ -1,0 +1,78 @@
+.mastery-shell{display:grid;gap:25px;color:#202a22}
+.mastery-hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 225px;gap:25px;overflow:hidden;padding:30px;background:#16221b;border:1px solid #304237;color:#f4f2e9}
+.mastery-hero:after{position:absolute;right:180px;top:-110px;width:300px;height:300px;border:1px solid #d8ff3e26;border-radius:50%;box-shadow:0 0 0 35px #d8ff3e08,0 0 0 70px #d8ff3e06;content:"";pointer-events:none}
+.mastery-hero-copy{position:relative;z-index:1;min-width:0}
+.mastery-kicker{display:flex;align-items:center;gap:7px;color:#d8ff3e;font-size:8px;font-weight:800;letter-spacing:1.5px}
+.mastery-subject{margin:22px 0 5px;color:#aebba9;font-size:8px;font-weight:800;letter-spacing:1.1px}
+.mastery-hero h2{margin:0;color:#f4f2e9;font:800 clamp(24px,3.2vw,36px)/1.12 Manrope,sans-serif;letter-spacing:-1.4px}
+.mastery-hero h2 span{color:#d8ff3e}
+.mastery-intro{max-width:670px;margin:10px 0 18px;color:#bdc8ba;font-size:11px;line-height:1.8}
+.mastery-outcomes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 15px;max-width:800px}
+.mastery-outcomes span{display:flex;align-items:flex-start;gap:9px;color:#d0d8cb;font-size:9px;line-height:1.65}
+.mastery-outcomes b{flex:0 0 auto;color:#d8ff3e;font:800 10px Manrope}
+.mastery-index-card{position:relative;z-index:1;align-self:center;display:flex;flex-direction:column;gap:9px;padding:17px;background:#25342a;border:1px solid #d8ff3e2a}
+.mastery-index-card>span{color:#d8ff3e;font-size:7px;font-weight:800;letter-spacing:1.35px}
+.mastery-index-card strong{color:#f6f4eb;font:800 17px Manrope;line-height:1.3}
+.mastery-index-card small{color:#b6c2b4;font-size:9px;line-height:1.65}
+.mastery-index-card a{display:flex;align-items:center;gap:7px;margin-top:6px;color:#d8ff3e;font-size:9px;font-weight:800}
+.mastery-layout{display:grid;grid-template-columns:190px minmax(0,1fr);align-items:start;gap:27px}
+.mastery-rail{position:sticky;top:18px;display:grid;gap:4px;padding:13px 0}
+.mastery-rail-label{margin:0 0 9px;color:#899382;font-size:8px;font-weight:800;letter-spacing:1.2px}
+.mastery-rail>a{display:flex;align-items:center;gap:9px;padding:9px 8px;border-left:2px solid transparent;color:#687466;font-size:9px;font-weight:700;line-height:1.45}
+.mastery-rail>a:hover,.mastery-rail>a:focus-visible{border-color:#91ad5c;background:#f2f5eb;color:#405532}
+.mastery-rail>a i{color:#9aaa85;font:800 9px Manrope;font-style:normal}
+.mastery-rail-note{display:grid;grid-template-columns:18px 1fr;gap:6px 8px;margin-top:18px;padding:12px;background:#f1f4e9;border:1px solid #e0e7d4;color:#718a4c}
+.mastery-rail-note>span{color:#546640;font-size:9px;font-weight:800}
+.mastery-rail-note p{grid-column:1/-1;margin:0;color:#7b8871;font-size:8px;line-height:1.65}
+.mastery-main{display:grid;gap:27px;min-width:0}
+.mastery-section{display:grid;gap:13px;scroll-margin-top:20px}
+.mastery-section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+.mastery-section-heading>div{display:grid;gap:5px}
+.mastery-section-heading>div>span{color:#8a9a74;font-size:8px;font-weight:800;letter-spacing:1.3px}
+.mastery-section-heading h3{margin:0;color:#202a22;font:800 21px/1.2 Manrope;letter-spacing:-.7px}
+.mastery-section-heading p{margin:0;color:#7b8778;font-size:9px;line-height:1.65}
+.mastery-section-heading>b,.mastery-section-heading>svg{color:#82916e;font-size:9px}
+.mastery-lessons{display:grid;gap:12px}
+.mastery-lesson{display:grid;grid-template-columns:39px minmax(0,1fr);gap:15px;padding:19px 20px;background:#fffefa;border:1px solid #e6e9de;box-shadow:0 7px 25px #1d2c1e08}
+.mastery-lesson-index{display:grid;place-items:center;width:34px;height:34px;background:#edf2e4;color:#718a4c;font:800 12px Manrope}
+.mastery-lesson-body{min-width:0}
+.mastery-lesson h4{margin:2px 0 9px;color:#273328;font:800 15px Manrope;letter-spacing:-.35px}
+.mastery-lesson-body>p{margin:0;color:#586456;font-size:10px;line-height:1.9}
+.mastery-lesson ul{display:grid;gap:7px;margin:12px 0 0;padding-left:17px;color:#687568;font-size:9px;line-height:1.75}
+.mastery-lesson li::marker{color:#91a960}
+.mastery-example{display:grid;gap:9px;margin-top:15px;padding:15px;background:#f3f5ed;border-left:3px solid #a8bd6e}
+.mastery-example-kicker{display:flex;align-items:center;gap:7px;color:#71884c;font-size:7px;font-weight:800;letter-spacing:1.2px}
+.mastery-example h5{margin:0;color:#34432e;font:800 12px Manrope}
+.mastery-example-question{margin:0;color:#495846;font-size:9px;font-weight:700;line-height:1.7}
+.mastery-example ol{display:grid;gap:6px;margin:0;padding-left:18px;color:#65715e;font-size:9px;line-height:1.7}
+.mastery-example li::marker{color:#829b53;font-weight:800}
+.mastery-example-answer{display:flex;flex-wrap:wrap;gap:8px;padding-top:9px;border-top:1px solid #dfe6d5;color:#45583b;font-size:9px;line-height:1.6}
+.mastery-example-answer b{color:#70884a}
+.mastery-examiner-note{margin:0;padding:9px 10px;background:#fffefa;color:#7b775e;font-size:8px;line-height:1.6}
+.mastery-formula-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.mastery-formula{display:grid;gap:8px;padding:15px;background:#19261e;border:1px solid #344539}
+.mastery-formula>span{color:#b0c09e;font-size:8px;font-weight:800;letter-spacing:.5px}
+.mastery-formula strong{color:#e3f0cb;font:700 14px/1.5 'Playfair Display',Georgia,serif;overflow-wrap:anywhere}
+.mastery-formula p{margin:0;color:#a8b5a4;font-size:8px;line-height:1.65}
+.mastery-mistakes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.mastery-mistakes article{display:grid;grid-template-columns:25px 1fr;gap:9px;padding:13px;background:#fffefa;border:1px solid #e8e8df}
+.mastery-mistakes article>span{color:#a3b37a;font:800 10px Manrope}
+.mastery-mistakes b{display:block;color:#46513f;font-size:9px;line-height:1.6}
+.mastery-mistakes p{margin:5px 0 0;color:#7b8778;font-size:8px;line-height:1.65}
+.mastery-blueprint-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mastery-blueprint{padding:15px;background:#f4f5ee;border:1px solid #e4e8dc}
+.mastery-blueprint>span{display:inline-flex;padding:5px 7px;background:#e5ebd7;color:#647b41;font-size:8px;font-weight:800}
+.mastery-blueprint h4{margin:10px 0;color:#364330;font:800 11px/1.5 Manrope}
+.mastery-blueprint ol{display:grid;gap:6px;margin:0;padding-left:17px;color:#687467;font-size:8px;line-height:1.65}
+.mastery-checklist{display:grid;gap:7px}
+.mastery-checklist label{display:flex;align-items:center;gap:10px;padding:11px 13px;background:#fffefa;border:1px solid #e6e9de;color:#53614e;font-size:9px;line-height:1.6;cursor:pointer}
+.mastery-checklist label.is-checked{background:#f0f5e8;border-color:#dce7ca}
+.mastery-checklist input{width:15px;height:15px;accent-color:#718d43}
+.mastery-checklist label>span:nth-child(2){flex:1}
+.mastery-checklist svg{color:#78994c}
+.mastery-check-number{color:#a1ad92;font-size:9px}
+.mastery-complete-note{display:flex;align-items:center;gap:9px;padding:12px 14px;background:#eaf0df;color:#637b43;font-size:8px;line-height:1.6}
+.mastery-complete-note span{flex:1}
+@media(max-width:850px){.mastery-hero{grid-template-columns:minmax(0,1fr) 195px;padding:22px}.mastery-layout{grid-template-columns:155px minmax(0,1fr);gap:17px}.mastery-outcomes{grid-template-columns:1fr}}
+@media(max-width:640px){.mastery-hero{grid-template-columns:1fr;padding:19px}.mastery-hero:after{right:-130px}.mastery-index-card{max-width:none}.mastery-layout{grid-template-columns:1fr;gap:15px}.mastery-rail{position:static;display:flex;gap:5px;overflow-x:auto;padding:2px 0 8px;scroll-snap-type:x proximity}.mastery-rail-label,.mastery-rail-note{display:none}.mastery-rail>a{flex:0 0 auto;white-space:nowrap;padding:8px 10px;border:1px solid #e3e8dc;background:#fffefa;font-size:8px;scroll-snap-align:start}.mastery-rail>a i{display:none}.mastery-section-heading{align-items:flex-start}.mastery-section-heading h3{font-size:18px}.mastery-lesson{grid-template-columns:29px minmax(0,1fr);gap:9px;padding:14px 12px}.mastery-lesson-index{width:27px;height:27px;font-size:10px}.mastery-lesson h4{font-size:13px}.mastery-lesson-body>p{font-size:9px;line-height:1.85}.mastery-formula-grid,.mastery-mistakes,.mastery-blueprint-grid{grid-template-columns:1fr}.mastery-formula strong{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.mastery-shell *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
