@@ -45,6 +45,8 @@ const scienceSlugs: Record<string, string[]> = {
   'human-eye-and-the-colourful-world': ['human-eye-and-the-colourful-world'],
   electricity: ['electricity'],
   'magnetic-effects-of-electric-current': ['magnetic-effects-of-electric-current'],
+  'electricity': ['electricity'],
+  'magnetic-effects-of-electric-current': ['magnetic-effects-of-electric-current'],
   'electricity-and-magnetic-effects': ['electricity', 'magnetic-effects-of-electric-current'],
   'our-environment': ['our-environment']
 }
