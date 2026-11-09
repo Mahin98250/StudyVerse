@@ -1,7 +1,7 @@
 import {useEffect,useState,type ReactNode,type CSSProperties} from 'react'
 import {NavLink,Outlet,Route,Routes,useLocation,Link} from 'react-router-dom'
 import {Activity,BookOpen,CalendarDays,ChartNoAxesCombined,ChevronRight,Clock3,GraduationCap,LayoutDashboard,Menu,NotebookPen,Settings,Sparkles,Target,X,ArrowRight,Timer,Flame,TrendingUp,ClipboardCheck,Brain,Download,Upload,Database,ShieldCheck,Play,Pause,RotateCcw,Check,Search,Trophy,CheckCircle2,BookMarked} from 'lucide-react'
-import {db,exportBackup,importBackup,formatDuration,makeId,type Subject,type StudySession} from './core'
+import {db,exportBackup,importBackup,formatDuration,makeId,type Subject,type StudySession,type LearningRecord} from './core'
 import LearningHub from './LearningHub'
 import ChapterStudy from './ChapterStudy'
 import {ACADEMIC_CHAPTERS} from './academicContent'
@@ -17,7 +17,7 @@ function Placeholder({kind}:{kind:'practice'|'revision'|'planner'|'analytics'}){
 function PracticeCentre(){
  const [subject,setSubject]=useState<'all'|'mathematics'|'science'>('all')
  const [query,setQuery]=useState('')
- const [records,setRecords]=useState<Awaited<ReturnType<typeof db.learningRecords.toArray>>>([])
+ const [records,setRecords]=useState<LearningRecord[]>([])
  const [loading,setLoading]=useState(true)
  useEffect(()=>{let live=true;void db.learningRecords.toArray().then(rows=>{if(live)setRecords(rows)}).catch(()=>{if(live)setRecords([])}).finally(()=>{if(live)setLoading(false)});return()=>{live=false}},[])
  const chapters=ACADEMIC_CHAPTERS.filter(chapter=>(subject==='all'||chapter.subjectId===subject)&&((chapter.title+' '+chapter.chapterLabel).toLowerCase().includes(query.trim().toLowerCase())))
