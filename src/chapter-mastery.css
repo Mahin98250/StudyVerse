@@ -148,3 +148,34 @@
 .mastery-resource-actions{display:flex;flex-wrap:wrap;gap:16px 22px;margin-top:5px}
 .mastery-resource-actions a{min-height:32px}
 @media(max-width:520px){.mastery-resource-actions{display:grid;gap:10px}}
+
+.mastery-question-list{display:grid;gap:10px}
+.mastery-question{padding:16px;background:#fffefa;border:1px solid #e5e9df}
+.mastery-question-heading{display:flex;justify-content:space-between;gap:10px;color:#849371;font-size:9px;font-weight:800;letter-spacing:.1em}
+.mastery-question-heading b{color:#718b49}
+.mastery-question h4{margin:10px 0 13px;color:#31402f;font:800 14px/1.55 Manrope}
+.mastery-question-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mastery-question-option{display:flex;align-items:flex-start;gap:9px;min-height:42px;padding:10px 11px;border:1px solid #e3e8dc;background:#f7f8f2;color:#53634e;text-align:left;font-size:11px;line-height:1.6;cursor:pointer;transition:border-color .16s,background .16s}
+.mastery-question-option>span{display:grid;place-items:center;flex:0 0 21px;width:21px;height:21px;background:#e7ecdE;color:#647c42;font-size:9px;font-weight:800}
+.mastery-question-option:hover:not(:disabled){border-color:#9bb46e}
+.mastery-question-option.is-selected{border-color:#829d4f;background:#edf3e3}
+.mastery-question-option.is-answer{border-color:#829d4f;background:#e8f0db}
+.mastery-question-option:disabled{cursor:default}
+.mastery-question.is-wrong .mastery-question-heading b{color:#a46e42}
+.mastery-question-explanation{margin-top:11px;padding:11px 12px;background:#f0f4e8;border-left:3px solid #92a95e}
+.mastery-question-explanation b{color:#536c36;font-size:11px}
+.mastery-question-explanation p{margin:5px 0 0;color:#697663;font-size:11px;line-height:1.75}
+.mastery-quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid #e0e6d8}
+.mastery-quiz-footer>span{color:#798573;font-size:11px}
+.mastery-quiz-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:0 14px;border:0;background:#17251c;color:#e8f2d7;font-size:10px;font-weight:800;cursor:pointer}
+.mastery-quiz-button:disabled{opacity:.45;cursor:not-allowed}
+.mastery-quiz-button.is-secondary{background:#e9efdf;color:#536c36}
+@media(max-width:640px){
+ .mastery-question{padding:13px}
+ .mastery-question h4{font-size:13px}
+ .mastery-question-options{grid-template-columns:1fr}
+ .mastery-question-option{font-size:11px}
+ .mastery-quiz-footer{align-items:flex-start;flex-direction:column}
+ .mastery-quiz-button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.mastery-question-option{transition:none}}
