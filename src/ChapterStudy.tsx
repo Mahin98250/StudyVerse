@@ -5,6 +5,7 @@ import {
   ExternalLink, Lightbulb, NotebookPen, RotateCcw, Sparkles, Target, Trophy
 } from 'lucide-react'
 import { getChapter } from './academicContent'
+import { getExternalNotes } from './externalNotes'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
 
@@ -132,7 +133,7 @@ export default function ChapterStudy() {
   const percentage = score === null ? 0 : Math.round((score / chapter.questions.length) * 100)
 
   return <div className="chapter-page">
-    <Link to={`/learn/${chapter.subjectId}`} className="chapter-back"><ArrowLeft size={15} /> Mathematics curriculum</Link>
+    <Link to={`/learn/${chapter.subjectId}`} className="chapter-back"><ArrowLeft size={15} /> {chapter.subjectId === 'mathematics' ? 'Mathematics' : 'Science'} curriculum</Link>
 
     <section className="chapter-hero">
       <div className="chapter-hero-copy">
@@ -256,9 +257,25 @@ export default function ChapterStudy() {
       </div>
     </section>
 
+    <section className="chapter-external-notes">
+      <div className="chapter-external-heading">
+        <div><span className="chapter-eyebrow">GO DEEPER · FREE RESOURCES</span><h2>Want another explanation?</h2><p>Explore additional chapter notes from free learning websites. Use them as a second explanation, then check every topic against the official CBSE syllabus linked above.</p></div>
+        <span className="chapter-free-pill">FREE TO READ</span>
+      </div>
+      <div className="chapter-resource-grid">
+        {getExternalNotes(activeChapter).map(resource => <a className="chapter-resource-card" href={resource.url} target="_blank" rel="noopener noreferrer" key={resource.url}>
+          <span className="chapter-resource-provider">{resource.provider}</span>
+          <b>{resource.title}</b>
+          <span className="chapter-resource-description">{resource.description}</span>
+          <span className="chapter-resource-open">Open resource <ExternalLink size={13}/></span>
+        </a>)}
+      </div>
+      <p className="chapter-resource-disclaimer">StudyVerse does not own or verify third-party content. Free access, sign-in requirements and syllabus coverage can change. Some external notes may include topics outside the current CBSE scope.</p>
+    </section>
+
     <div className="chapter-next-step">
       <div><span className="chapter-eyebrow">KEEP THE MOMENTUM</span><b>Ready to continue?</b><p>Return to the curriculum to choose your next topic.</p></div>
-      <Link className="chapter-button chapter-button-primary" to={`/learn/${chapter.subjectId}`}>Back to Mathematics <ArrowRight size={15} /></Link>
+      <Link className="chapter-button chapter-button-primary" to={`/learn/${chapter.subjectId}`}>{chapter.subjectId === 'mathematics' ? 'Back to Mathematics' : 'Back to Science'} <ArrowRight size={15} /></Link>
     </div>
   </div>
 }
