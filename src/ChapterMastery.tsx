@@ -71,7 +71,7 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
   async function submitKnowledgeCheck() {
     if (answeredCount !== questions.length || !questions.length) return
     setQuizSubmitted(true)
-    if (!pack.curriculumItemId) return
+    if (!pack?.curriculumItemId) return
     try {
       const itemId = pack.curriculumItemId
       const previous = await db.learningRecords.get(itemId)
