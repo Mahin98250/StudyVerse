@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Activity, Award, BookOpen, CalendarDays, ChartNoAxesCombined, Clock3, Flame, Target, TrendingUp, Trophy } from 'lucide-react'
+import { Activity, Award, BookOpen, CalendarDays, Clock3, Flame, Target, TrendingUp, Trophy } from 'lucide-react'
 import { ACADEMIC_CHAPTERS } from './academicContent'
 import { db, formatDuration, type ExamAttempt, type LearningRecord, type StudySession } from './core'
 import './academic-analytics.css'
