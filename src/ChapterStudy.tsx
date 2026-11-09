@@ -51,7 +51,8 @@ export default function ChapterStudy() {
     </div>
   }
 
-  const answeredCount = chapter.questions.filter(question => answers[question.id]).length
+  const activeChapter = chapter
+  const answeredCount = activeChapter.questions.filter(question => answers[question.id]).length
 
   async function persist(patch: Partial<LearningRecord>) {
     if (!chapter) return
@@ -82,12 +83,12 @@ export default function ChapterStudy() {
   }
 
   async function submitPractice() {
-    if (answeredCount !== chapter.questions.length) {
-      setMessage(`Answer all ${chapter.questions.length} questions before checking your work.`)
+    if (answeredCount !== activeChapter.questions.length) {
+      setMessage(`Answer all ${activeChapter.questions.length} questions before checking your work.`)
       return
     }
-    const correct = chapter.questions.filter(question => answers[question.id] === question.answer).length
-    const percent = Math.round((correct / chapter.questions.length) * 100)
+    const correct = activeChapter.questions.filter(question => answers[question.id] === question.answer).length
+    const percent = Math.round((correct / activeChapter.questions.length) * 100)
     setScore(correct)
     try {
       await persist({
