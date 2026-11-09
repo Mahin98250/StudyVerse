@@ -45,8 +45,6 @@ const scienceSlugs: Record<string, string[]> = {
   'metals-and-non-metals': ['metals-and-non-metals']
 }
 
-const slugify = (value: string) => value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-
 export function getExternalNotes(chapter: { id: string; title: string; subjectId: string }): ExternalNoteResource[] {
   const resources: ExternalNoteResource[] = []
   if (chapter.subjectId === 'mathematics') {
