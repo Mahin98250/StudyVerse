@@ -7,6 +7,7 @@ import {
 import { getChapter } from './academicContent'
 import { getExternalNotes } from './externalNotes'
 import ChapterVisual from './ChapterVisual'
+import ChapterMastery from './ChapterMastery'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
 
@@ -187,6 +188,8 @@ export default function ChapterStudy() {
         </article>)}
       </div>
     </section>
+
+    <ChapterMastery chapterId={activeChapter.id} />
 
     <section className="chapter-section-block">
       <div className="chapter-section-heading"><div><span className="chapter-eyebrow">LEARN BY DOING</span><h2>Worked examples</h2></div><span>{chapter.workedExamples.length} solved</span></div>
