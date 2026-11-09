@@ -148,3 +148,6 @@
 .chapter-resource-disclaimer{font-size:10px;line-height:1.7;color:#899282;margin:16px 0 0}
 @media(max-width:620px){.chapter-external-heading{flex-direction:column}.chapter-resource-grid{grid-template-columns:1fr}.chapter-resource-card{min-height:140px}}
 @media(prefers-reduced-motion:reduce){.chapter-resource-card{transition:none}}
+
+
+.chapter-visual{margin:18px 0 8px;padding:18px 20px;background:linear-gradient(135deg,#f5f8ef,#fff);border:1px solid #e2e9d8;border-radius:12px;overflow:hidden}.chapter-visual-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}.chapter-visual-heading span{font-size:8px;letter-spacing:.14em;font-weight:900;color:#8a9875}.chapter-visual-heading b{font-size:11px;color:#45563b}.chapter-visual-svg{display:block;width:100%;max-height:250px;overflow:visible}.chapter-visual figcaption{margin-top:7px;color:#7c8874;font-size:10px;line-height:1.65;text-align:center}
