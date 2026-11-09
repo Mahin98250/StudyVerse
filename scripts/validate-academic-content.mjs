@@ -53,7 +53,8 @@ const masteryMatches = [...mastery.matchAll(/^\s{2}'([^']+)': \{/gm)]
 for (let i = 0; i < masteryMatches.length; i++) {
   const chapterId = masteryMatches[i][1]
   const block = mastery.slice(masteryMatches[i].index, masteryMatches[i + 1]?.index ?? mastery.indexOf('\n}\n\nexport function getMasteryPack'))
-  if (!ids.has(chapterId)) failures.push(`Mastery notes refer to unknown chapter: ${chapterId}`)
+  const curriculumId = block.match(/curriculumItemId: '([^']+)'/)?.[1]
+  if (!ids.has(chapterId) && (!curriculumId || !allCurriculumIds.has(curriculumId))) failures.push(`Mastery notes refer to unknown chapter or curriculum item: ${chapterId}`)
   const lessons = (block.match(/\n\s+id: '/g) ?? []).length
   const formulas = (block.match(/\{ label: '/g) ?? []).length
   const mistakes = (block.match(/\{ mistake: '/g) ?? []).length
@@ -64,6 +65,7 @@ for (let i = 0; i < masteryMatches.length; i++) {
   if (blueprints < 2) failures.push(`${chapterId}: mastery notes need board-answer blueprints`)
 }
 if (!/ChapterMastery/.test(read('src/ChapterStudy.tsx'))) failures.push('Chapter mastery notes are not connected to the chapter reading page')
+if (!/getMasteryPack/.test(read('src/LearningHub.tsx')) || !/mastery:\/topicId/.test(read('src/App.tsx'))) failures.push('Supplementary subject mastery pages are not connected to the learning hub and route table')
 
 if (failures.length) {
   console.error('Academic content quality check failed:')
