@@ -5,7 +5,6 @@ export interface MasteryExample {
   answer: string
   examinerNote?: string
 }
-
 export interface MasterySection {
   id: string
   title: string
@@ -13,9 +12,9 @@ export interface MasterySection {
   keyIdeas: string[]
   example?: MasteryExample
 }
-
 export interface MasteryPack {
   chapterId: string
+  curriculumItemId?: string
   subject: string
   focus: string
   outcomes: string[]
@@ -25,7 +24,6 @@ export interface MasteryPack {
   answerBlueprints: { marks: string; prompt: string; structure: string[] }[]
   finalChecklist: string[]
 }
-
 export const CHAPTER_MASTERY: Record<string, MasteryPack> = {
   'real-numbers': {
     chapterId: 'real-numbers',
@@ -145,564 +143,277 @@ export const CHAPTER_MASTERY: Record<string, MasteryPack> = {
     chapterId: 'polynomials',
     subject: 'Mathematics',
     focus: 'Zeros of quadratic polynomials, their geometrical meaning and the relationship between zeros and coefficients.',
-    outcomes: [
-      'Identify the degree and coefficients of a polynomial.',
-      'Check whether a number is a zero by substitution.',
-      'Interpret zeros as x-axis intersections of the graph.',
-      'Use the sum and product of zeros to verify or form a quadratic polynomial.'
-    ],
+    outcomes: ['Identify a polynomial and its degree.','Test zeros by substitution and connect them to the graph.','Use the sum and product of zeros.','Construct and verify a quadratic polynomial from given information.'],
     sections: [
-      {
-        id: 'polynomial-language',
-        title: '1. Understand the language of polynomials',
-        explanation: 'A polynomial in x is an expression made from constants and non-negative integer powers of x, combined using addition, subtraction and multiplication. In 3x² − 5x + 2, the terms are 3x², −5x and 2. The coefficient of x² is 3, the coefficient of x is −5, and the constant term is 2. The highest power with a non-zero coefficient is the degree. This expression has degree 2, so it is quadratic.',
-        keyIdeas: [
-          'A non-zero constant polynomial has degree 0; a linear polynomial has degree 1; a quadratic polynomial has degree 2.',
-          'The zero polynomial has no defined degree in the usual school convention.',
-          'A variable in a denominator, a negative power or a fractional power does not make a polynomial in that variable.',
-          'Always include the sign with a coefficient: the coefficient of x in 3x² − 5x + 2 is −5.'
-        ],
-        example: {
-          title: 'Read coefficients accurately',
-          question: 'For p(x) = 4x² + 7x − 9, state the degree and coefficients a, b and c.',
-          working: ['Compare the expression with ax² + bx + c.', 'The coefficient of x² is a = 4.', 'The coefficient of x is b = 7; the constant term is c = −9.'],
-          answer: 'Degree = 2; a = 4, b = 7, c = −9.'
-        }
-      },
-      {
-        id: 'zeros-of-polynomial',
-        title: '2. Zeros: the values that make the polynomial zero',
-        explanation: 'A number α is a zero of p(x) if p(α) = 0. Substitution is the safest way to test a proposed zero. For p(x) = x² − 5x + 6, p(2) = 4 − 10 + 6 = 0, so 2 is a zero. A quadratic can have two distinct real zeros, one repeated real zero, or no real zeros. The graph helps us see these possibilities.',
-        keyIdeas: [
-          'A zero is an input value, not the value of the polynomial at that input.',
-          'For a quadratic, there can be at most two real zeros.',
-          'If a graph crosses the x-axis twice, it has two distinct real zeros; if it touches once, it has a repeated real zero.',
-          'If the graph stays entirely above or below the x-axis, it has no real zero.'
-        ],
-        example: {
-          title: 'Verify both zeros',
-          question: 'Check whether 2 and 3 are zeros of p(x) = x² − 5x + 6.',
-          working: ['p(2) = 2² − 5(2) + 6 = 4 − 10 + 6 = 0.', 'p(3) = 3² − 5(3) + 6 = 9 − 15 + 6 = 0.', 'Both values make the polynomial equal to zero.'],
-          answer: 'The zeros are 2 and 3.'
-        }
-      },
-      {
-        id: 'coefficients-and-zeros',
-        title: '3. Connect zeros with coefficients',
-        explanation: 'For p(x) = ax² + bx + c, where a ≠ 0, let the zeros be α and β. Then α + β = −b/a and αβ = c/a. These formulas are not guesses: when a quadratic is written as a(x − α)(x − β), expanding it gives a[x² − (α + β)x + αβ]. Comparing coefficients produces the two relationships. The sign in the sum formula is especially important.',
-        keyIdeas: [
-          'Sum of zeros = −b/a. The negative sign belongs to the formula.',
-          'Product of zeros = c/a. Keep the constant term sign exactly as written.',
-          'The leading coefficient a cannot be zero; otherwise the expression is not quadratic.',
-          'Use these relationships to check roots and construct a monic quadratic when the sum and product are known.'
-        ],
-        example: {
-          title: 'Verify the relationships',
-          question: 'For 2x² − 7x + 3, find the sum and product of its zeros.',
-          working: ['Identify a = 2, b = −7 and c = 3.', 'Sum = −b/a = −(−7)/2 = 7/2.', 'Product = c/a = 3/2.', 'Factorisation gives (2x − 1)(x − 3), so the zeros are 1/2 and 3; their sum and product match.'],
-          answer: 'Sum = 7/2; product = 3/2.',
-          examinerNote: 'Showing the coefficient method and a quick factorisation check makes the reasoning easy to follow.'
-        }
-      },
-      {
-        id: 'forming-quadratics',
-        title: '4. Form a quadratic when the sum and product are known',
-        explanation: 'If the sum of the zeros is S and their product is P, a monic quadratic polynomial is x² − Sx + P. For a non-monic polynomial, any non-zero constant multiple has the same zeros. To avoid sign errors, write the template first and then substitute the given sum and product.',
-        keyIdeas: [
-          'Template: x² − (sum of zeros)x + (product of zeros).',
-          'If the sum is negative, the coefficient of x becomes positive after subtracting the negative sum.',
-          'If the product is negative, the constant term is negative.',
-          'Verify a formed polynomial by checking that its zero sum and product match the given values.'
-        ],
-        example: {
-          title: 'Construct a polynomial',
-          question: 'Form a monic quadratic whose zeros have sum 5 and product 6.',
-          working: ['Use x² − Sx + P.', 'Substitute S = 5 and P = 6.', 'The expression becomes x² − 5x + 6.'],
-          answer: 'x² − 5x + 6.'
-        }
-      }
+      { id: 'polynomial-language', title: '1. Understand the language of polynomials', explanation: 'A polynomial in x is an expression made from constants and non-negative integer powers of x, combined using addition, subtraction and multiplication. In 3x² − 5x + 2, the terms are 3x², −5x and 2. The coefficient of x² is 3, the coefficient of x is −5, and the constant term is 2. The highest power with a non-zero coefficient is the degree.', keyIdeas: ['A non-zero constant polynomial has degree 0; a linear polynomial has degree 1; a quadratic polynomial has degree 2.','The zero polynomial has no defined degree in the usual school convention.','A variable in a denominator, a negative power or a fractional power does not make a polynomial in that variable.','Always include the sign with a coefficient: the coefficient of x in 3x² − 5x + 2 is −5.'], example: { title: 'Read coefficients accurately', question: 'For p(x) = 4x² + 7x − 9, state the degree and coefficients a, b and c.', working: ['Compare the expression with ax² + bx + c.','The coefficient of x² is a = 4.','The coefficient of x is b = 7; the constant term is c = −9.'], answer: 'Degree = 2; a = 4, b = 7, c = −9.' } },
+      { id: 'zeros-of-polynomial', title: '2. Zeros: values that make the polynomial zero', explanation: 'A number α is a zero of p(x) if p(α) = 0. Substitution is the safest way to test a proposed zero. For p(x) = x² − 5x + 6, p(2) = 4 − 10 + 6 = 0, so 2 is a zero. A quadratic can have two distinct real zeros, one repeated real zero, or no real zeros. The graph helps us see these possibilities.', keyIdeas: ['A zero is an input value, not the value of the polynomial at that input.','A quadratic has at most two real zeros.','A graph crossing the x-axis twice has two distinct real zeros; touching once indicates a repeated real zero.','A graph staying entirely above or below the x-axis has no real zero.'], example: { title: 'Verify both zeros', question: 'Check whether 2 and 3 are zeros of p(x) = x² − 5x + 6.', working: ['p(2) = 2² − 5(2) + 6 = 0.','p(3) = 3² − 5(3) + 6 = 0.','Both values make the polynomial equal to zero.'], answer: 'The zeros are 2 and 3.' } },
+      { id: 'coefficients-and-zeros', title: '3. Connect zeros with coefficients', explanation: 'For p(x) = ax² + bx + c, where a ≠ 0, let the zeros be α and β. Then α + β = −b/a and αβ = c/a. These relationships follow by writing the polynomial as a(x − α)(x − β), expanding and comparing coefficients. The negative sign in the sum formula is especially important.', keyIdeas: ['Sum of zeros = −b/a.','Product of zeros = c/a.','The leading coefficient a cannot be zero; otherwise the expression is not quadratic.','Use the relationships to check roots and form a monic quadratic from a known sum and product.'], example: { title: 'Verify the relationships', question: 'For 2x² − 7x + 3, find the sum and product of its zeros.', working: ['Identify a = 2, b = −7 and c = 3.','Sum = −b/a = 7/2.','Product = c/a = 3/2.','The factorisation (2x − 1)(x − 3) gives zeros 1/2 and 3, which confirm both results.'], answer: 'Sum = 7/2; product = 3/2.' } },
+      { id: 'forming-quadratics', title: '4. Form a quadratic when the sum and product are known', explanation: 'If the sum of the zeros is S and their product is P, a monic quadratic polynomial is x² − Sx + P. Write the template first and then substitute. If a non-monic polynomial is required, any non-zero constant multiple has the same zeros.', keyIdeas: ['Template: x² − (sum of zeros)x + (product of zeros).','If the sum is negative, subtracting it makes the coefficient of x positive.','If the product is negative, the constant term is negative.','Verify the formed polynomial by checking its zero sum and product.'], example: { title: 'Construct a polynomial', question: 'Form a monic quadratic whose zeros have sum 5 and product 6.', working: ['Use x² − Sx + P.','Substitute S = 5 and P = 6.','The polynomial is x² − 5x + 6.'], answer: 'x² − 5x + 6.' } }
     ],
-    formulaDesk: [
-      { label: 'General quadratic', formula: 'p(x) = ax² + bx + c, a ≠ 0', note: 'a, b and c are real coefficients.' },
-      { label: 'Sum of zeros', formula: 'α + β = −b/a', note: 'For a quadratic with zeros α and β.' },
-      { label: 'Product of zeros', formula: 'αβ = c/a', note: 'Keep the sign of c unchanged.' },
-      { label: 'Forming a monic quadratic', formula: 'x² − Sx + P', note: 'S is the sum; P is the product of its zeros.' }
-    ],
-    commonMistakes: [
-      { mistake: 'Writing the coefficient b without its sign.', correction: 'In 2x² − 7x + 3, b = −7, not +7.' },
-      { mistake: 'Using b/a for the sum.', correction: 'The correct sum is −b/a.' },
-      { mistake: 'Using −c/a for the product.', correction: 'The correct product is c/a.' },
-      { mistake: 'Calling the y-value a zero.', correction: 'A zero is the x-value for which p(x) = 0.' },
-      { mistake: 'Forgetting that a must be non-zero.', correction: 'If a = 0, the expression is not a quadratic polynomial.' }
-    ],
-    answerBlueprints: [
-      { marks: '2 marks', prompt: 'Find the sum and product of zeros.', structure: ['Identify a, b and c with their signs.', 'Write the two relationships.', 'Substitute and simplify clearly.'] },
-      { marks: '3 marks', prompt: 'Form a quadratic polynomial from the sum and product.', structure: ['Write x² − Sx + P.', 'Substitute the values with signs.', 'Expand only if required and state the final polynomial.'] },
-      { marks: '3–4 marks', prompt: 'Verify a proposed zero or pair of zeros.', structure: ['Substitute each value into p(x).', 'Show the arithmetic line by line.', 'Conclude whether p(α) = 0.'] }
-    ],
-    finalChecklist: [
-      'I can identify a, b and c without losing negative signs.',
-      'I can verify a zero using substitution.',
-      'I can explain the x-axis meaning of zeros.',
-      'I can apply both coefficient relationships and form a polynomial from S and P.'
-    ]
+    formulaDesk: [{label:'General quadratic',formula:'p(x) = ax² + bx + c, a ≠ 0',note:'a, b and c are real coefficients.'},{label:'Sum of zeros',formula:'α + β = −b/a',note:'For a quadratic with zeros α and β.'},{label:'Product of zeros',formula:'αβ = c/a',note:'Keep the sign of c unchanged.'},{label:'Forming a monic quadratic',formula:'x² − Sx + P',note:'S is the sum; P is the product of its zeros.'}],
+    commonMistakes: [{mistake:'Writing the coefficient b without its sign.',correction:'In 2x² − 7x + 3, b = −7, not +7.'},{mistake:'Using b/a for the sum.',correction:'The correct sum is −b/a.'},{mistake:'Using −c/a for the product.',correction:'The correct product is c/a.'},{mistake:'Calling the y-value a zero.',correction:'A zero is the x-value for which p(x) = 0.'},{mistake:'Forgetting that a must be non-zero.',correction:'If a = 0, the expression is not quadratic.'}],
+    answerBlueprints: [{marks:'2 marks',prompt:'Find the sum and product of zeros.',structure:['Identify a, b and c with their signs.','Write the two relationships.','Substitute and simplify clearly.']},{marks:'3 marks',prompt:'Form a quadratic polynomial from its zero sum and product.',structure:['Write x² − Sx + P.','Substitute the values with signs.','State the final polynomial.']}],
+    finalChecklist:['I can identify a, b and c without losing negative signs.','I can verify a zero using substitution.','I can explain the x-axis meaning of zeros.','I can apply both coefficient relationships and form a polynomial from S and P.']
   },
   'pair-of-linear-equations': {
-    chapterId: 'pair-of-linear-equations',
-    subject: 'Mathematics',
+    chapterId: 'pair-of-linear-equations', subject: 'Mathematics',
     focus: 'Graphical and algebraic solutions, consistency and word problems involving two unknowns.',
-    outcomes: [
-      'Translate a situation into two linear equations in two variables.',
-      'Solve a pair using substitution or elimination and verify the answer.',
-      'Explain unique, no-solution and infinitely-many-solution cases.',
-      'Interpret the intersection of two lines in the context of a word problem.'
-    ],
+    outcomes: ['Translate a situation into two equations.','Solve by substitution or elimination and verify the pair.','Explain unique, no-solution and infinitely-many-solution cases.','Interpret the graphical solution in context.'],
     sections: [
-      {
-        id: 'two-unknowns',
-        title: '1. What does a pair of linear equations represent?',
-        explanation: 'A linear equation in two variables has the form ax + by + c = 0, where a and b are not both zero. One equation usually has infinitely many ordered-pair solutions; each solution is a point on its straight-line graph. A pair asks for points that satisfy both equations at the same time. The common solution, when it exists, is the point where the two lines intersect.',
-        keyIdeas: [
-          'A solution is an ordered pair (x, y), not two unrelated numbers.',
-          'A correct solution must satisfy both equations, not just one.',
-          'Two non-parallel lines meet once, parallel distinct lines never meet, and coincident lines share every point.',
-          'The variables should be defined in words before forming equations from a story.'
-        ],
-        example: {
-          title: 'Translate a simple situation',
-          question: 'The sum of two numbers is 18 and their difference is 4. Form a pair of equations.',
-          working: ['Let the numbers be x and y.', 'Their sum is 18: x + y = 18.', 'Their difference is 4: x − y = 4.'],
-          answer: 'x + y = 18 and x − y = 4.'
-        }
-      },
-      {
-        id: 'graphical-meaning',
-        title: '2. Read the graphical solution',
-        explanation: 'Draw both equations as straight lines on the same coordinate plane. If the lines intersect at exactly one point, the coordinates of that point satisfy both equations and the pair has a unique solution. If the lines are parallel and distinct, there is no common point and no solution. If the lines lie exactly on top of each other, every point on the line is common and there are infinitely many solutions.',
-        keyIdeas: [
-          'Unique solution: intersecting lines; the pair is consistent and independent.',
-          'No solution: parallel distinct lines; the pair is inconsistent.',
-          'Infinitely many solutions: coincident lines; the equations represent the same line.',
-          'Choose a scale carefully and plot at least two accurate points for each line.'
-        ]
-      },
-      {
-        id: 'substitution-elimination',
-        title: '3. Solve algebraically',
-        explanation: 'In substitution, rearrange one equation to express one variable in terms of the other, then substitute that expression into the second equation. In elimination, multiply one or both equations if necessary so that the coefficients of one variable become equal or opposite. Add or subtract the equations to remove that variable, solve the remaining equation and substitute back. Both methods should lead to the same ordered pair.',
-        keyIdeas: [
-          'Keep equations aligned and preserve signs when moving terms across the equals sign.',
-          'In elimination, multiply every term on both sides of an equation by the same non-zero number.',
-          'After finding one variable, substitute it into an original equation to find the other.',
-          'Check the pair in both original equations to catch arithmetic mistakes.'
-        ],
-        example: {
-          title: 'Elimination step by step',
-          question: 'Solve x + y = 18 and x − y = 4.',
-          working: ['Add the equations: (x + y) + (x − y) = 18 + 4.', 'The y terms cancel: 2x = 22, so x = 11.', 'Substitute into x + y = 18: 11 + y = 18, so y = 7.', 'Check: 11 + 7 = 18 and 11 − 7 = 4.'],
-          answer: 'The solution is (x, y) = (11, 7).'
-        }
-      },
-      {
-        id: 'consistency-tests',
-        title: '4. Decide how many solutions exist',
-        explanation: 'For a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0, compare the ratios of corresponding coefficients. If a₁/a₂ is not equal to b₁/b₂, the lines meet once and there is a unique solution. If a₁/a₂ = b₁/b₂ but c₁/c₂ is different, the lines are parallel and there is no solution. If all three ratios are equal, the equations represent the same line and there are infinitely many solutions. When a denominator is zero, compare the equivalent cross-products or reason directly from the equations instead of dividing by zero.',
-        keyIdeas: [
-          'Unique solution: a₁/a₂ ≠ b₁/b₂.',
-          'No solution: a₁/a₂ = b₁/b₂ ≠ c₁/c₂.',
-          'Infinitely many solutions: a₁/a₂ = b₁/b₂ = c₁/c₂.',
-          'Write the equations in the same standard form before comparing coefficients.'
-        ]
-      },
-      {
-        id: 'word-problems',
-        title: '5. Build and solve word problems confidently',
-        explanation: 'Most word problems become easier when the variables are chosen carefully. Read the question once for context, then again to identify the two unknown quantities and the relationships between them. Convert each sentence into one equation. Solve the pair and finally answer the question in words with the correct units. A numerical pair without a contextual conclusion is often incomplete.',
-        keyIdeas: [
-          'Define each variable with a unit where relevant: for example, x = number of adult tickets.',
-          'Use the total relationship for one equation and the difference, rate or cost relationship for the other.',
-          'Reject answers that violate the context, such as a negative number of people.',
-          'Substitute the final values into the original statements to validate the model.'
-        ]
-      }
+      {id:'two-unknowns',title:'1. What does a pair of linear equations represent?',explanation:'A linear equation in two variables has the form ax + by + c = 0, where a and b are not both zero. One equation usually has infinitely many ordered-pair solutions; each solution is a point on its straight-line graph. A pair asks for points that satisfy both equations at the same time. The common solution, when it exists, is where the two lines intersect.',keyIdeas:['A solution is an ordered pair (x, y), not two unrelated numbers.','A correct solution must satisfy both equations.','Two non-parallel lines meet once, parallel distinct lines never meet, and coincident lines share every point.','Define variables in words before forming equations from a story.'],example:{title:'Translate a situation',question:'The sum of two numbers is 18 and their difference is 4. Form two equations.',working:['Let the numbers be x and y.','Their sum is 18: x + y = 18.','Their difference is 4: x − y = 4.'],answer:'x + y = 18 and x − y = 4.'}},
+      {id:'graphical-meaning',title:'2. Read the graphical solution',explanation:'Draw both equations as straight lines on the same coordinate plane. If the lines intersect at exactly one point, the coordinates satisfy both equations. If they are parallel and distinct, there is no common point. If they lie exactly on top of each other, every point on that line is common and there are infinitely many solutions.',keyIdeas:['Unique solution: intersecting lines; consistent and independent.','No solution: parallel distinct lines; inconsistent.','Infinitely many solutions: coincident lines; dependent.','Choose a scale carefully and plot at least two accurate points for each line.']},
+      {id:'substitution-elimination',title:'3. Solve algebraically',explanation:'In substitution, rearrange one equation to express one variable in terms of the other, then substitute into the second equation. In elimination, multiply one or both equations so that the coefficients of one variable become equal or opposite. Add or subtract to remove that variable, solve the remaining equation and substitute back. Both methods should lead to the same ordered pair.',keyIdeas:['Preserve signs when moving terms across the equals sign.','In elimination, multiply every term on both sides by the same non-zero number.','Substitute the value found into an original equation to find the other variable.','Check the pair in both original equations.'],example:{title:'Elimination step by step',question:'Solve x + y = 18 and x − y = 4.',working:['Add the equations: 2x = 22.','Therefore x = 11.','Substitute into x + y = 18: 11 + y = 18, so y = 7.','Check: 11 + 7 = 18 and 11 − 7 = 4.'],answer:'The solution is (x, y) = (11, 7).'}},
+      {id:'consistency-tests',title:'4. Decide how many solutions exist',explanation:'For a₁x + b₁y + c₁ = 0 and a₂x + b₂y + c₂ = 0, compare ratios of corresponding coefficients. If a₁/a₂ is not equal to b₁/b₂, the lines meet once. If a₁/a₂ = b₁/b₂ but c₁/c₂ differs, the lines are parallel. If all three ratios are equal, the equations represent the same line. If a denominator is zero, compare equivalent cross-products or reason directly instead of dividing by zero.',keyIdeas:['Unique solution: a₁/a₂ ≠ b₁/b₂.','No solution: a₁/a₂ = b₁/b₂ ≠ c₁/c₂.','Infinitely many: a₁/a₂ = b₁/b₂ = c₁/c₂.','Write both equations in the same standard form before comparing coefficients.']}
     ],
-    formulaDesk: [
-      { label: 'Standard form', formula: 'a₁x + b₁y + c₁ = 0', note: 'Write both equations in the same form before comparing.' },
-      { label: 'Unique solution', formula: 'a₁/a₂ ≠ b₁/b₂', note: 'The two lines intersect once.' },
-      { label: 'No solution', formula: 'a₁/a₂ = b₁/b₂ ≠ c₁/c₂', note: 'The two lines are parallel and distinct.' },
-      { label: 'Infinitely many', formula: 'a₁/a₂ = b₁/b₂ = c₁/c₂', note: 'The two equations represent the same line.' }
-    ],
-    commonMistakes: [
-      { mistake: 'Reporting x and y but not the ordered pair.', correction: 'Write (x, y) and explain what each value represents.' },
-      { mistake: 'Changing a sign incorrectly during elimination.', correction: 'Keep each equation aligned and show the addition or subtraction line.' },
-      { mistake: 'Multiplying only one term of an equation.', correction: 'Multiply every term on both sides by the same factor.' },
-      { mistake: 'Checking the answer in only one equation.', correction: 'Substitute into both original equations.' },
-      { mistake: 'Dividing by a zero coefficient ratio.', correction: 'Use cross-products or inspect the equations directly when a denominator is zero.' }
-    ],
-    answerBlueprints: [
-      { marks: '3 marks', prompt: 'Solve a pair by elimination or substitution.', structure: ['Write the equations in standard form.', 'Show the elimination/substitution steps.', 'Find the ordered pair and verify it in both equations.'] },
-      { marks: '4–5 marks', prompt: 'Solve a contextual word problem.', structure: ['Define both variables with meaning and units.', 'Form two equations from the given relationships.', 'Solve using a named method.', 'Check the values and state the final answer in context.'] }
-    ],
-    finalChecklist: [
-      'I can define variables and form both equations from a situation.',
-      'I can solve by substitution and elimination.',
-      'I can explain all three graphical cases.',
-      'I can use coefficient ratios without dividing by zero.',
-      'I always verify the final ordered pair in both equations.'
-    ]
+    formulaDesk:[{label:'Standard form',formula:'a₁x + b₁y + c₁ = 0',note:'Write both equations in the same form.'},{label:'Unique solution',formula:'a₁/a₂ ≠ b₁/b₂',note:'The two lines intersect once.'},{label:'No solution',formula:'a₁/a₂ = b₁/b₂ ≠ c₁/c₂',note:'The two lines are parallel and distinct.'},{label:'Infinitely many',formula:'a₁/a₂ = b₁/b₂ = c₁/c₂',note:'The equations represent the same line.'}],
+    commonMistakes:[{mistake:'Reporting x and y but not the ordered pair.',correction:'Write (x, y) and explain what each value represents.'},{mistake:'Changing a sign incorrectly during elimination.',correction:'Keep each equation aligned and show the addition or subtraction line.'},{mistake:'Multiplying only one term of an equation.',correction:'Multiply every term on both sides by the same factor.'},{mistake:'Checking only one equation.',correction:'Substitute the pair into both original equations.'},{mistake:'Dividing by a zero coefficient ratio.',correction:'Use cross-products or inspect the equations directly.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Solve a pair by elimination or substitution.',structure:['Write the equations in standard form.','Show the algebraic steps.','Give the ordered pair and verify it in both equations.']},{marks:'4–5 marks',prompt:'Solve a contextual pair of equations.',structure:['Define both variables and units.','Form two equations from the statements.','Solve using a named method.','Check the values and state the result in context.']}],
+    finalChecklist:['I can define variables and form both equations from a situation.','I can solve by substitution and elimination.','I can explain all three graphical cases.','I can use coefficient ratios without dividing by zero.','I always verify the final ordered pair in both equations.']
   },
   'quadratic-equations': {
-    chapterId: 'quadratic-equations',
-    subject: 'Mathematics',
+    chapterId: 'quadratic-equations', subject: 'Mathematics',
     focus: 'Factorisation, the quadratic formula, discriminant and applications of quadratic equations.',
-    outcomes: [
-      'Recognise a quadratic equation and write it in standard form.',
-      'Solve by factorisation when suitable and by the quadratic formula.',
-      'Use the discriminant to determine the nature of roots.',
-      'Form and solve equations from suitable real-life situations.'
-    ],
+    outcomes: ['Recognise standard form and identify coefficients.','Solve by factorisation or quadratic formula.','Use the discriminant to determine the nature of roots.','Model and solve suitable real-life situations.'],
     sections: [
-      {
-        id: 'standard-form',
-        title: '1. Recognise the standard form',
-        explanation: 'A quadratic equation in one variable can be written as ax² + bx + c = 0, where a, b and c are real numbers and a ≠ 0. The x² term makes it quadratic. Before choosing a method, move every term to one side and arrange the equation in descending powers of x. This makes the coefficients unambiguous and prevents sign errors.',
-        keyIdeas: [
-          'The equation must be equal to zero before using the standard formula.',
-          'The coefficient a must not be zero.',
-          'The signs of a, b and c are exactly the signs shown after rearranging.',
-          'An equation is not solved merely by finding factors; set each factor equal to zero.'
-        ],
-        example: {
-          title: 'Convert into standard form',
-          question: 'Write 2x(x − 3) = 5 in standard form and identify a, b and c.',
-          working: ['Expand: 2x² − 6x = 5.', 'Bring 5 to the left: 2x² − 6x − 5 = 0.', 'Compare with ax² + bx + c = 0.'],
-          answer: 'a = 2, b = −6 and c = −5.'
-        }
-      },
-      {
-        id: 'factorisation',
-        title: '2. Solve by factorisation',
-        explanation: 'Factorisation rewrites a quadratic expression as a product of two linear factors. The zero-product property says that if a product is zero, at least one factor must be zero. For example, (x − 2)(x − 3) = 0 gives x − 2 = 0 or x − 3 = 0. Therefore x = 2 or x = 3. Always verify roots in the original equation when the algebra is complicated.',
-        keyIdeas: [
-          'Look for two numbers whose product is ac and whose sum is b when using the splitting-middle-term method.',
-          'For a monic quadratic, look for factors whose product is c and sum is b.',
-          'Set each factor equal to zero separately.',
-          'Factorisation is efficient when the factors are simple; the formula works more generally.'
-        ],
-        example: {
-          title: 'Factorise and solve',
-          question: 'Solve x² − 5x + 6 = 0.',
-          working: ['Find two numbers with product 6 and sum −5: −2 and −3.', 'Write x² − 5x + 6 = (x − 2)(x − 3).', 'Set x − 2 = 0 or x − 3 = 0.'],
-          answer: 'x = 2 or x = 3.'
-        }
-      },
-      {
-        id: 'quadratic-formula',
-        title: '3. Use the quadratic formula',
-        explanation: 'When factorisation is difficult, use the quadratic formula. For ax² + bx + c = 0, the roots are obtained by substituting the coefficients into the formula. Be especially careful with brackets around negative b and with the entire expression under the square root. A reliable routine is: identify a, b, c; calculate the discriminant; substitute; simplify; then check the roots.',
-        keyIdeas: [
-          'Write the formula before substituting values.',
-          'Use −b, not simply the opposite of what you remember b to be; preserve brackets.',
-          'The denominator is 2a and applies to the entire numerator.',
-          'If a common factor can simplify the equation first, do so without changing its roots.'
-        ],
-        example: {
-          title: 'Apply the formula',
-          question: 'Solve x² − 4x + 1 = 0.',
-          working: ['Here a = 1, b = −4 and c = 1.', 'D = b² − 4ac = 16 − 4 = 12.', 'x = [−(−4) ± √12] / 2 = [4 ± 2√3] / 2.', 'Simplify both values.'],
-          answer: 'x = 2 ± √3.'
-        }
-      },
-      {
-        id: 'discriminant',
-        title: '4. The discriminant tells the nature of roots',
-        explanation: 'The expression D = b² − 4ac is called the discriminant. It is the part under the square root in the quadratic formula, so its sign tells us what kind of roots are possible. A positive discriminant gives two distinct real roots, zero gives equal real roots, and a negative discriminant gives no real roots. The discriminant does not by itself give the roots; it classifies them.',
-        keyIdeas: [
-          'D > 0: two distinct real roots.',
-          'D = 0: two equal real roots (a repeated root).',
-          'D < 0: no real roots.',
-          'For D > 0, the roots may be rational or irrational; the sign alone does not decide that.'
-        ]
-      },
-      {
-        id: 'applications',
-        title: '5. Model a word problem with a quadratic',
-        explanation: 'A quadratic model appears when a situation contains a product of two quantities that depend on the same unknown, such as length × breadth or consecutive integers. Define the unknown clearly, translate the relationship into an equation and rearrange to standard form. After solving, select only values that make sense in the original situation. Length, time and number of objects are generally non-negative, so a mathematically valid negative root may need to be rejected.',
-        keyIdeas: [
-          'Draw and label a simple diagram when the problem describes dimensions or geometry.',
-          'Keep units consistent before forming the equation.',
-          'State why an unsuitable root is rejected; do not silently discard it.',
-          'Write the final answer in the units and context asked by the question.'
-        ]
-      }
+      {id:'standard-form',title:'1. Recognise the standard form',explanation:'A quadratic equation in one variable can be written as ax² + bx + c = 0, where a, b and c are real numbers and a ≠ 0. Before choosing a method, move every term to one side and arrange the equation in descending powers of x. This makes the coefficients unambiguous and prevents sign errors.',keyIdeas:['The equation must equal zero before using the formula.','The coefficient a must not be zero.','The signs of a, b and c are exactly the signs shown after rearranging.','An equation is not solved merely by finding factors; set each factor equal to zero.'],example:{title:'Convert into standard form',question:'Write 2x(x − 3) = 5 in standard form and identify a, b and c.',working:['Expand: 2x² − 6x = 5.','Bring 5 to the left: 2x² − 6x − 5 = 0.','Compare with ax² + bx + c = 0.'],answer:'a = 2, b = −6 and c = −5.'}},
+      {id:'factorisation',title:'2. Solve by factorisation',explanation:'Factorisation rewrites a quadratic expression as a product of two linear factors. The zero-product property says that if a product is zero, at least one factor must be zero. For example, (x − 2)(x − 3) = 0 gives x = 2 or x = 3. Always verify roots when the algebra is complicated.',keyIdeas:['For splitting the middle term, find two numbers with product ac and sum b.','For a monic quadratic, look for factors whose product is c and sum is b.','Set each factor equal to zero separately.','Factorisation is efficient when factors are simple; the formula works more generally.'],example:{title:'Factorise and solve',question:'Solve x² − 5x + 6 = 0.',working:['Find two numbers with product 6 and sum −5: −2 and −3.','Write (x − 2)(x − 3) = 0.','Set each factor to zero.'],answer:'x = 2 or x = 3.'}},
+      {id:'quadratic-formula',title:'3. Use the quadratic formula',explanation:'When factorisation is difficult, use the quadratic formula. For ax² + bx + c = 0, substitute the coefficients into the formula. Be careful with brackets around a negative b and with the entire expression under the square root. A reliable routine is: identify a, b, c; calculate the discriminant; substitute; simplify; then check the roots.',keyIdeas:['Write the formula before substituting values.','Use −b with brackets, especially when b is negative.','The denominator is 2a and applies to the entire numerator.','Simplify the equation first only by operations that preserve its roots.'],example:{title:'Apply the formula',question:'Solve x² − 4x + 1 = 0.',working:['Here a = 1, b = −4 and c = 1.','D = b² − 4ac = 16 − 4 = 12.','x = [4 ± √12] / 2.','Since √12 = 2√3, simplify both values.'],answer:'x = 2 ± √3.'}},
+      {id:'discriminant-applications',title:'4. Discriminant and word problems',explanation:'The discriminant D = b² − 4ac is the expression under the square root in the quadratic formula. If D is positive, there are two distinct real roots; if D is zero, the real roots are equal; if D is negative, there are no real roots. In an application, define the unknown, form an equation, solve and then check which roots make sense in the original situation.',keyIdeas:['D > 0: two distinct real roots.','D = 0: two equal real roots.','D < 0: no real roots.','A mathematically valid negative root may be unsuitable for a length, age or number of objects; explain why it is rejected.']}
     ],
-    formulaDesk: [
-      { label: 'Standard form', formula: 'ax² + bx + c = 0, a ≠ 0', note: 'Rearrange first and identify all signs.' },
-      { label: 'Quadratic formula', formula: 'x = [−b ± √(b² − 4ac)] / 2a', note: 'The denominator 2a applies to the whole numerator.' },
-      { label: 'Discriminant', formula: 'D = b² − 4ac', note: 'D > 0: distinct real; D = 0: equal real; D < 0: no real roots.' }
-    ],
-    commonMistakes: [
-      { mistake: 'Using coefficients before rearranging the equation to zero.', correction: 'First write ax² + bx + c = 0, then identify a, b and c.' },
-      { mistake: 'Forgetting the negative sign in −b.', correction: 'Substitute b with brackets, for example −(−4).' },
-      { mistake: 'Putting only part of the numerator over 2a.', correction: 'Use brackets around the complete numerator.' },
-      { mistake: 'Calling D = 0 two different roots.', correction: 'The roots are equal; it is one repeated value.' },
-      { mistake: 'Keeping a negative root that makes a length negative.', correction: 'Check every root against the original context and explain the rejection.' }
-    ],
-    answerBlueprints: [
-      { marks: '3 marks', prompt: 'Solve a quadratic equation.', structure: ['Write standard form and identify a, b and c.', 'Show factorisation or formula substitution.', 'State both roots clearly and verify if appropriate.'] },
-      { marks: '2 marks', prompt: 'Find the nature of roots.', structure: ['Calculate D = b² − 4ac.', 'State whether D is positive, zero or negative.', 'Give the corresponding nature of the roots.'] },
-      { marks: '4–5 marks', prompt: 'Solve a real-life quadratic problem.', structure: ['Define the unknown and any units.', 'Form the quadratic equation from the condition.', 'Solve using a suitable method.', 'Reject any contextually impossible root with a reason.', 'State the final answer in context.'] }
-    ],
-    finalChecklist: [
-      'I can rearrange an equation into standard form without sign errors.',
-      'I can solve by factorisation and by the quadratic formula.',
-      'I can classify roots using the discriminant.',
-      'I can explain why a root is rejected in a word problem.'
-    ]
+    formulaDesk:[{label:'Standard form',formula:'ax² + bx + c = 0, a ≠ 0',note:'Rearrange first and identify all signs.'},{label:'Quadratic formula',formula:'x = [−b ± √(b² − 4ac)] / 2a',note:'The denominator applies to the whole numerator.'},{label:'Discriminant',formula:'D = b² − 4ac',note:'Positive: distinct real; zero: equal real; negative: no real roots.'}],
+    commonMistakes:[{mistake:'Using coefficients before rearranging to zero.',correction:'First write ax² + bx + c = 0.'},{mistake:'Forgetting the negative sign in −b.',correction:'Substitute b with brackets, such as −(−4).'}, {mistake:'Putting only part of the numerator over 2a.',correction:'Use brackets around the complete numerator.'},{mistake:'Calling D = 0 two different roots.',correction:'The roots are equal; it is one repeated value.'},{mistake:'Keeping a negative root that makes a length negative.',correction:'Check the original context and explain why that root is rejected.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Solve a quadratic equation.',structure:['Write standard form and identify a, b and c.','Show factorisation or formula substitution.','State the roots clearly and verify if appropriate.']},{marks:'2 marks',prompt:'Find the nature of roots.',structure:['Calculate D = b² − 4ac.','State the sign of D.','Give the corresponding nature of the roots.']},{marks:'4–5 marks',prompt:'Solve a real-life quadratic problem.',structure:['Define the unknown and units.','Form the quadratic equation.','Solve using a suitable method.','Reject an unsuitable root with a reason and state the result in context.']}],
+    finalChecklist:['I can rearrange into standard form without sign errors.','I can solve by factorisation and the quadratic formula.','I can classify roots using the discriminant.','I can explain why a root is rejected in a word problem.']
   },
   'chemical-reactions-and-equations': {
-    chapterId: 'chemical-reactions-and-equations',
-    subject: 'Science',
+    chapterId: 'chemical-reactions-and-equations', subject: 'Science',
     focus: 'Writing and balancing equations, reaction types, energy changes, oxidation and reduction.',
-    outcomes: [
-      'Identify evidence that a chemical reaction has occurred.',
-      'Write a balanced chemical equation using correct symbols and state labels.',
-      'Classify combination, decomposition, displacement and double-displacement reactions.',
-      'Explain oxidation, reduction, exothermic change, corrosion and rancidity.'
-    ],
+    outcomes: ['Identify evidence of a chemical reaction.','Write a balanced equation with correct formulae and state symbols.','Classify common reaction patterns.','Explain redox, exothermic changes, corrosion and rancidity.'],
     sections: [
-      {
-        id: 'reaction-evidence',
-        title: '1. Recognise a chemical reaction',
-        explanation: 'A chemical reaction changes one or more substances into new substances with different properties. Common observations include a change in colour, evolution of a gas, formation of a precipitate, change in temperature or change in state. An observation is evidence, but the explanation should identify the substances involved whenever possible. A physical change such as melting is not automatically a chemical reaction.',
-        keyIdeas: [
-          'Reactants are written on the left side of an equation; products are written on the right.',
-          'A precipitate is an insoluble solid formed when solutions react.',
-          'Gas bubbles, a colour change or a temperature change can indicate a reaction.',
-          'Do not decide that a reaction occurred from one observation alone when the context suggests a physical change.'
-        ],
-        example: {
-          title: 'Describe an observation precisely',
-          question: 'When lead nitrate solution is mixed with potassium iodide solution, a yellow solid appears. What does this indicate?',
-          working: ['The yellow solid is an insoluble product.', 'The formation of a solid from two solutions is called precipitation.', 'The new solid is lead iodide.'],
-          answer: 'A precipitation reaction occurs and a yellow precipitate of lead iodide is formed.'
-        }
-      },
-      {
-        id: 'chemical-equations',
-        title: '2. Write and balance a chemical equation',
-        explanation: 'A word equation names the reactants and products. A chemical equation uses symbols and formulae. A skeletal equation may not be balanced. A balanced equation has the same number of atoms of each element on both sides, following the law of conservation of mass. Balance by changing coefficients in front of formulae; never change the small numbers inside a chemical formula because that would change the substance itself.',
-        keyIdeas: [
-          'Write the correct formulae before balancing. For example, water is H₂O, not HO.',
-          'Count atoms on both sides, including atoms inside brackets in a formula.',
-          'Use the smallest whole-number coefficients when possible.',
-          'Add state symbols when the question or experiment requires them: (s), (l), (g) and (aq).',
-          'A catalyst or reaction condition is usually written above or beside the arrow, not as a reactant.'
-        ],
-        example: {
-          title: 'Balance the formation of water',
-          question: 'Balance H₂ + O₂ → H₂O.',
-          working: ['There are 2 oxygen atoms on the left and 1 on the right. Put 2 before H₂O.', 'Now the right side has 4 hydrogen atoms. Put 2 before H₂.', 'Count again: left has 4 H and 2 O; right has 4 H and 2 O.'],
-          answer: '2H₂ + O₂ → 2H₂O.'
-        }
-      },
-      {
-        id: 'reaction-types',
-        title: '3. Classify common reaction patterns',
-        explanation: 'A combination reaction forms a single product from two or more reactants. A decomposition reaction breaks one compound into simpler substances, often using heat, light or electricity. In a displacement reaction, a more reactive element replaces a less reactive element from its compound. In a double-displacement reaction, ions are exchanged between two compounds; precipitation and neutralisation can follow this pattern.',
-        keyIdeas: [
-          'Combination: A + B → AB. Example: 2Mg + O₂ → 2MgO.',
-          'Thermal decomposition: a compound breaks down on heating. Example: CaCO₃ → CaO + CO₂.',
-          'Displacement: Zn + CuSO₄ → ZnSO₄ + Cu.',
-          'Double displacement: Na₂SO₄ + BaCl₂ → BaSO₄ + 2NaCl.',
-          'The pattern of reactants and products is the clue; do not classify only by the number of substances shown.'
-        ],
-        example: {
-          title: 'Identify a displacement reaction',
-          question: 'Zinc is added to copper sulphate solution. What happens?',
-          working: ['Zinc is more reactive than copper.', 'Zinc displaces copper from copper sulphate.', 'The products are zinc sulphate and copper metal.'],
-          answer: 'Zn + CuSO₄ → ZnSO₄ + Cu; this is a displacement reaction.'
-        }
-      },
-      {
-        id: 'energy-redox',
-        title: '4. Energy changes and redox reactions',
-        explanation: 'An exothermic reaction releases energy to its surroundings, often as heat. An endothermic reaction absorbs energy. Oxidation and reduction occur together in a redox reaction. In the school-level oxygen/hydrogen description, oxidation can mean gain of oxygen or loss of hydrogen, while reduction can mean loss of oxygen or gain of hydrogen. The substance oxidised and the substance reduced should be identified from the same reaction.',
-        keyIdeas: [
-          'Respiration is an example of an exothermic process because energy is released from food.',
-          'Thermal decomposition of calcium carbonate requires heat and is endothermic.',
-          'In CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced.',
-          'Hydrogen gains oxygen to form water and is oxidised.',
-          'Oxidation and reduction happen simultaneously in a redox reaction.'
-        ]
-      },
-      {
-        id: 'corrosion-rancidity',
-        title: '5. Corrosion and rancidity in everyday life',
-        explanation: 'Corrosion is the gradual damage of a metal by reaction with substances in its environment. Rusting of iron requires oxygen and moisture. Painting, oiling, greasing, galvanising and alloying can help protect metals by reducing contact with corrosive conditions or changing the material. Rancidity is the oxidation of fats and oils in food, which can produce unpleasant smell and taste. Airtight storage, refrigeration, antioxidants and packing with nitrogen can slow it down.',
-        keyIdeas: [
-          'Rust is hydrated iron(III) oxide; rusting is not simply a colour change.',
-          'Galvanising coats iron or steel with zinc.',
-          'Food packets may be flushed with nitrogen to reduce oxidation.',
-          'Refrigeration slows many reactions but does not make food permanently safe.'
-        ]
-      }
+      {id:'reaction-evidence',title:'1. Recognise a chemical reaction',explanation:'A chemical reaction changes one or more substances into new substances with different properties. Common observations include a colour change, gas evolution, formation of a precipitate, temperature change or change of state. An observation is evidence; the explanation should identify substances involved whenever possible. Melting alone is a physical change, not automatically a chemical reaction.',keyIdeas:['Reactants are written on the left side of an equation; products on the right.','A precipitate is an insoluble solid formed when solutions react.','Gas bubbles, colour change or temperature change can indicate a reaction.','Use the experiment context to distinguish physical and chemical changes.'],example:{title:'Describe an observation precisely',question:'Lead nitrate solution is mixed with potassium iodide solution and a yellow solid appears. What does this indicate?',working:['The yellow solid is an insoluble product.','Formation of a solid from two solutions is precipitation.','The solid is lead iodide.'],answer:'A precipitation reaction forms yellow lead iodide.'}},
+      {id:'chemical-equations',title:'2. Write and balance a chemical equation',explanation:'A word equation names reactants and products. A chemical equation uses symbols and formulae. A balanced equation has the same number of atoms of each element on both sides, following conservation of mass. Balance by changing coefficients in front of formulae; never change subscripts inside a chemical formula because that would change the substance.',keyIdeas:['Write correct formulae before balancing: water is H₂O, not HO.','Count atoms on both sides, including those inside brackets.','Use the smallest whole-number coefficients when possible.','State symbols include (s), (l), (g) and (aq).','Write catalysts and conditions above or beside the arrow.'],example:{title:'Balance the formation of water',question:'Balance H₂ + O₂ → H₂O.',working:['There are 2 oxygen atoms on the left and 1 on the right. Put 2 before H₂O.','The right now has 4 hydrogen atoms. Put 2 before H₂.','Count again: 4 H and 2 O on each side.'],answer:'2H₂ + O₂ → 2H₂O.'}},
+      {id:'reaction-types',title:'3. Classify common reaction patterns',explanation:'A combination reaction forms one product from two or more reactants. A decomposition reaction breaks one compound into simpler substances, often using heat, light or electricity. In a displacement reaction, a more reactive element replaces a less reactive element from a compound. In a double-displacement reaction, ions are exchanged between two compounds; precipitation or neutralisation may follow.',keyIdeas:['Combination: A + B → AB. Example: 2Mg + O₂ → 2MgO.','Thermal decomposition: CaCO₃ → CaO + CO₂.','Displacement: Zn + CuSO₄ → ZnSO₄ + Cu.','Double displacement: Na₂SO₄ + BaCl₂ → BaSO₄ + 2NaCl.','Classify from the pattern of products, not only the number of reactants.'],example:{title:'Identify displacement',question:'Zinc is added to copper sulphate solution. What happens?',working:['Zinc is more reactive than copper.','It displaces copper from copper sulphate.','The products are zinc sulphate and copper metal.'],answer:'Zn + CuSO₄ → ZnSO₄ + Cu; displacement reaction.'}},
+      {id:'energy-redox-corrosion',title:'4. Energy changes, redox and daily-life effects',explanation:'An exothermic reaction releases energy to its surroundings; an endothermic reaction absorbs energy. Oxidation and reduction occur together in a redox reaction. In the school-level oxygen/hydrogen description, oxidation can mean gain of oxygen or loss of hydrogen, while reduction can mean loss of oxygen or gain of hydrogen. Corrosion damages metals through environmental reactions; rancidity is oxidation of fats and oils in food.',keyIdeas:['Respiration is exothermic because energy is released from food.','Thermal decomposition of calcium carbonate requires heat.','In CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced; hydrogen gains oxygen and is oxidised.','Rusting of iron requires oxygen and moisture.','Painting, oiling, galvanising and alloying help protect metals; nitrogen packing can slow food oxidation.']}
     ],
-    formulaDesk: [
-      { label: 'Conservation of mass', formula: 'Atoms of each element: left = right', note: 'The number of atoms is conserved in a balanced chemical equation.' },
-      { label: 'Combination pattern', formula: 'A + B → AB', note: 'Two or more reactants form one product.' },
-      { label: 'Decomposition pattern', formula: 'AB → A + B', note: 'One compound breaks into simpler products.' },
-      { label: 'Displacement pattern', formula: 'A + BC → AC + B', note: 'A more reactive element displaces a less reactive one.' }
-    ],
-    commonMistakes: [
-      { mistake: 'Changing a formula subscript to balance atoms.', correction: 'Change coefficients only; subscripts define the substance.' },
-      { mistake: 'Forgetting to count atoms inside brackets.', correction: 'Multiply the atoms inside a bracket by the number outside it.' },
-      { mistake: 'Calling every reaction with two reactants a combination reaction.', correction: 'A combination reaction forms one product; inspect the products.' },
-      { mistake: 'Describing oxidation and reduction as separate events in one redox reaction.', correction: 'They occur together: one species is oxidised while another is reduced.' },
-      { mistake: 'Saying rusting needs only air.', correction: 'Oxygen and moisture are both required for ordinary rusting of iron.' }
-    ],
-    answerBlueprints: [
-      { marks: '2 marks', prompt: 'Balance a chemical equation.', structure: ['Write the correct formulae.', 'Balance one element at a time using coefficients.', 'Show a final atom count or clearly state that atoms balance.'] },
-      { marks: '3 marks', prompt: 'Classify a reaction and justify the answer.', structure: ['Write or identify the balanced equation.', 'Name the reaction type.', 'Explain the pattern using the reactants and products.'] },
-      { marks: '3–5 marks', prompt: 'Explain a redox reaction.', structure: ['Identify which substance gains or loses oxygen/hydrogen.', 'State which species is oxidised and which is reduced.', 'Support each statement with the relevant equation or change.'] }
-    ],
-    finalChecklist: [
-      'I can recognise evidence of a chemical reaction.',
-      'I can write correct formulae and balance equations without changing subscripts.',
-      'I can distinguish combination, decomposition, displacement and double displacement.',
-      'I can explain energy changes, oxidation, reduction, corrosion and rancidity.'
-    ]
+    formulaDesk:[{label:'Conservation of mass',formula:'Atoms of each element: left = right',note:'The number of atoms is conserved in a balanced equation.'},{label:'Combination',formula:'A + B → AB',note:'Two or more reactants form one product.'},{label:'Decomposition',formula:'AB → A + B',note:'One compound breaks into simpler products.'},{label:'Displacement',formula:'A + BC → AC + B',note:'A more reactive element displaces a less reactive one.'}],
+    commonMistakes:[{mistake:'Changing a formula subscript to balance atoms.',correction:'Change coefficients only; subscripts define the substance.'},{mistake:'Forgetting atoms inside brackets.',correction:'Multiply the atoms inside a bracket by the outside subscript.'},{mistake:'Calling every equation with two reactants a combination reaction.',correction:'Combination forms one product; inspect the products.'},{mistake:'Describing oxidation and reduction as separate events.',correction:'They occur together in a redox reaction.'},{mistake:'Saying rusting needs only air.',correction:'Ordinary rusting requires oxygen and moisture.'}],
+    answerBlueprints:[{marks:'2 marks',prompt:'Balance a chemical equation.',structure:['Write correct formulae.','Balance using coefficients only.','Check that each element has equal atom counts.']},{marks:'3 marks',prompt:'Classify and justify a reaction.',structure:['Write or identify the equation.','Name the reaction type.','Explain the pattern from reactants to products.']},{marks:'3–5 marks',prompt:'Explain a redox reaction.',structure:['Identify the oxygen/hydrogen change.','State which substance is oxidised and which is reduced.','Support both statements with the reaction equation.']}],
+    finalChecklist:['I can recognise evidence of a chemical reaction.','I can balance equations without changing formula subscripts.','I can distinguish combination, decomposition, displacement and double displacement.','I can explain energy changes, redox, corrosion and rancidity.']
   },
   'life-processes': {
-    chapterId: 'life-processes',
-    subject: 'Science',
+    chapterId: 'life-processes', subject: 'Science',
     focus: 'Nutrition, respiration, transport and excretion in plants and animals.',
-    outcomes: [
-      'Explain why organisms need life processes to maintain life.',
-      'Compare autotrophic and heterotrophic nutrition and describe human digestion.',
-      'Explain aerobic and anaerobic respiration and the role of ATP.',
-      'Describe transport in plants, double circulation in humans and urine formation.'
-    ],
+    outcomes: ['Explain why organisms need life processes.','Compare nutrition types and explain human digestion.','Describe aerobic and anaerobic respiration.','Explain plant transport, double circulation and urine formation.'],
     sections: [
-      {
-        id: 'life-process-basics',
-        title: '1. Why organisms need life processes',
-        explanation: 'Living organisms constantly use energy and materials to maintain their bodies. Life processes such as nutrition, respiration, transport and excretion keep cells supplied with raw materials, release usable energy, distribute substances and remove metabolic wastes. Movement or growth may be visible, but many essential life processes continue inside the body even when an organism appears still.',
-        keyIdeas: [
-          'Nutrition provides or makes food materials needed for energy, growth and repair.',
-          'Respiration releases energy from food in a form cells can use.',
-          'Transport distributes food, gases and other substances to different parts of the organism.',
-          'Excretion removes metabolic wastes that could become harmful if they accumulate.'
-        ]
-      },
-      {
-        id: 'nutrition-plants',
-        title: '2. Nutrition in plants: photosynthesis',
-        explanation: 'Green plants are autotrophs: they make organic food from simpler inorganic materials. During photosynthesis, chlorophyll captures light energy and helps convert carbon dioxide and water into carbohydrates, with oxygen released. Carbon dioxide enters mainly through stomata in leaves, while water is absorbed by roots and transported to leaves. The food produced may be used immediately or stored, often as starch.',
-        keyIdeas: [
-          'Raw materials: carbon dioxide and water. Conditions: light and chlorophyll.',
-          'Stomata are pores in leaves; guard cells help regulate their opening and closing.',
-          'Chlorophyll is present in chloroplasts and absorbs light energy.',
-          'A leaf starch test uses iodine; a blue-black colour indicates starch.',
-          'Plants also respire. Photosynthesis and respiration are different processes.'
-        ],
-        example: {
-          title: 'Explain the starch test',
-          question: 'Why is a leaf boiled in alcohol during the starch test?',
-          working: ['Chlorophyll gives the leaf a green colour that can hide the iodine colour change.', 'Alcohol removes chlorophyll from the leaf.', 'The leaf is then rinsed and iodine solution is added.'],
-          answer: 'Alcohol decolourises the leaf so the blue-black starch test result can be observed clearly.'
-        }
-      },
-      {
-        id: 'nutrition-human',
-        title: '3. Nutrition in humans: digestion and absorption',
-        explanation: 'Human nutrition is holozoic: food is taken into the body, digested, absorbed and used. Digestion breaks large, insoluble food molecules into smaller soluble substances. Salivary amylase begins starch digestion in the mouth. The stomach churns food and gastric juice contains hydrochloric acid and pepsin. Bile from the liver helps make fats easier to digest by emulsifying them, while pancreatic and intestinal enzymes complete digestion. The small intestine has villi that provide a large surface area for absorption.',
-        keyIdeas: [
-          'Mouth: chewing increases surface area; saliva moistens food and amylase acts on starch.',
-          'Stomach: muscular churning mixes food; hydrochloric acid creates an acidic medium and pepsin digests proteins.',
-          'Small intestine: digestion is completed and nutrients are absorbed through villi.',
-          'Large intestine: water and some salts are absorbed; undigested material is removed.',
-          'Bile is made by the liver and stored in the gall bladder; it is not an enzyme.'
-        ]
-      },
-      {
-        id: 'respiration',
-        title: '4. Respiration releases usable energy',
-        explanation: 'Respiration is the cellular process through which food molecules are broken down and energy is released. In aerobic respiration, glucose is broken down in the presence of oxygen and the products are carbon dioxide and water; a large amount of energy is released. When oxygen is insufficient, some organisms and cells use anaerobic pathways. Yeast forms ethanol and carbon dioxide, while human muscle cells may form lactic acid for a short period during intense activity. ATP acts as an immediately usable energy currency for cellular work.',
-        keyIdeas: [
-          'Aerobic respiration uses oxygen and releases more energy per glucose molecule than anaerobic pathways.',
-          'In humans, gas exchange takes place in alveoli of the lungs; their thin walls and rich blood supply support diffusion.',
-          'Breathing is the movement of air; cellular respiration is a chemical process inside cells.',
-          'Glucose breakdown begins in the cytoplasm; later steps of aerobic respiration occur in mitochondria.',
-          'ATP supplies energy for processes such as muscle contraction, synthesis and active transport.'
-        ],
-        example: {
-          title: 'Do not confuse breathing and respiration',
-          question: 'A student says breathing and respiration mean the same thing. Correct the statement.',
-          working: ['Breathing is the physical movement of air into and out of the lungs.', 'Respiration is the chemical release of energy from food in cells.', 'Breathing supplies oxygen and removes carbon dioxide, supporting aerobic respiration.'],
-          answer: 'Breathing and cellular respiration are linked but are not the same process.'
-        }
-      },
-      {
-        id: 'transport',
-        title: '5. Transport in plants and humans',
-        explanation: 'Plants use xylem to transport water and minerals mainly from roots towards leaves. Transpiration, the loss of water vapour from aerial parts, creates a pull that helps move water upward. Phloem transports food such as sucrose from regions where it is made or stored to regions where it is needed; this movement is called translocation and requires energy. In humans, blood transports oxygen, carbon dioxide, nutrients, hormones and wastes. The heart keeps blood moving through a double-circulation system.',
-        keyIdeas: [
-          'Xylem transports water and minerals; phloem transports food.',
-          'Transpiration also helps cool plant surfaces.',
-          'Arteries carry blood away from the heart; veins carry blood towards the heart.',
-          'Capillaries have thin walls that allow exchange between blood and tissues.',
-          'In double circulation, blood passes through the heart twice in one complete circuit: pulmonary and systemic circulation.',
-          'The separation of oxygenated and deoxygenated blood supports efficient oxygen delivery.'
-        ]
-      },
-      {
-        id: 'excretion',
-        title: '6. Excretion and the nephron',
-        explanation: 'Excretion removes metabolic wastes such as urea, excess salts and excess water. In humans, kidneys filter blood and help maintain water and salt balance. Each kidney contains many nephrons, the structural and functional units of filtration. Blood is filtered in the glomerulus into Bowman’s capsule. Useful substances such as glucose, amino acids, salts and much of the water are selectively reabsorbed according to the body’s needs. The remaining fluid becomes urine and passes through the ureters to the urinary bladder.',
-        keyIdeas: [
-          'The nephron includes the glomerulus, Bowman’s capsule and a long renal tubule.',
-          'Filtration moves water and small dissolved substances out of blood; blood cells and most proteins remain in the blood.',
-          'Selective reabsorption returns useful substances and needed water to the blood.',
-          'Urine travels: kidneys → ureters → urinary bladder → urethra.',
-          'Plants remove or store wastes in different ways, including diffusion, storage in leaves/bark and secretion of substances such as gums and resins.'
-        ],
-        example: {
-          title: 'Explain why urine composition can change',
-          question: 'Why may the amount of water in urine change after a person drinks a large amount of water?',
-          working: ['The kidneys regulate water balance in the body.', 'When more water is available than needed, less water needs to be conserved.', 'A greater amount of dilute urine may be produced.'],
-          answer: 'The kidneys adjust water reabsorption to maintain the body’s water balance.'
-        }
-      }
+      {id:'life-process-basics',title:'1. Why organisms need life processes',explanation:'Living organisms constantly use energy and materials to maintain their bodies. Nutrition, respiration, transport and excretion keep cells supplied with raw materials, release usable energy, distribute substances and remove metabolic wastes. Movement or growth may be visible, but essential life processes continue inside the body even when an organism appears still.',keyIdeas:['Nutrition provides or makes materials needed for energy, growth and repair.','Respiration releases energy from food in a usable form.','Transport distributes food, gases and other substances.','Excretion removes metabolic wastes before they accumulate.']},
+      {id:'nutrition-plants',title:'2. Nutrition in plants: photosynthesis',explanation:'Green plants are autotrophs: they make organic food from simpler inorganic materials. During photosynthesis, chlorophyll captures light energy and helps convert carbon dioxide and water into carbohydrates, with oxygen released. Carbon dioxide enters mainly through stomata, while water is absorbed by roots and transported to leaves. Food may be used immediately or stored as starch.',keyIdeas:['Raw materials: carbon dioxide and water; conditions: light and chlorophyll.','Stomata are pores in leaves; guard cells help control their opening.','Chlorophyll is present in chloroplasts and absorbs light energy.','A blue-black iodine result indicates starch in the leaf.','Plants respire during day and night; photosynthesis requires light.'],example:{title:'Explain the starch test',question:'Why is a leaf boiled in alcohol during the starch test?',working:['Chlorophyll gives the leaf a green colour.','Alcohol removes chlorophyll.','The leaf is rinsed and iodine is added so the starch colour change can be seen.'],answer:'Alcohol decolourises the leaf so the iodine test for starch is visible.'}},
+      {id:'nutrition-human',title:'3. Human digestion and absorption',explanation:'Human nutrition is holozoic: food is taken in, digested, absorbed and used. Digestion breaks large insoluble molecules into smaller soluble substances. Salivary amylase begins starch digestion in the mouth. The stomach churns food; gastric juice contains hydrochloric acid and pepsin. Bile from the liver emulsifies fats, while pancreatic and intestinal enzymes complete digestion. Villi in the small intestine provide a large surface area for absorption.',keyIdeas:['Mouth: chewing increases surface area; saliva contains amylase.','Stomach: churning mixes food; HCl creates an acidic medium and pepsin digests proteins.','Small intestine: digestion is completed and nutrients are absorbed through villi.','Large intestine: water and some salts are absorbed.','Bile is made by the liver and stored in the gall bladder; it is not an enzyme.']},
+      {id:'respiration',title:'4. Respiration releases usable energy',explanation:'Respiration is the cellular process through which food molecules are broken down and energy is released. Aerobic respiration uses oxygen and produces carbon dioxide and water, releasing a large amount of energy. When oxygen is insufficient, some organisms and cells use anaerobic pathways. Yeast forms ethanol and carbon dioxide; human muscle cells may form lactic acid during intense activity. ATP acts as an immediately usable energy currency.',keyIdeas:['Aerobic respiration uses oxygen and releases more energy than anaerobic pathways.','Alveoli have thin walls and a rich blood supply for gas exchange.','Breathing is the movement of air; cellular respiration is a chemical process inside cells.','Glucose breakdown begins in the cytoplasm; later aerobic steps occur in mitochondria.','ATP supplies energy for cellular work.'],example:{title:'Separate breathing from respiration',question:'A student says breathing and respiration mean the same thing. Correct the statement.',working:['Breathing is the physical movement of air into and out of the lungs.','Respiration is the chemical release of energy from food in cells.','Breathing supplies oxygen and removes carbon dioxide, supporting aerobic respiration.'],answer:'They are linked but are not the same process.'}},
+      {id:'transport',title:'5. Transport in plants and humans',explanation:'Plants use xylem to transport water and minerals mainly from roots towards leaves. Transpiration, the loss of water vapour from aerial parts, creates a pull that helps move water upward. Phloem transports food such as sucrose from regions where it is made or stored to regions where it is needed; this translocation requires energy. In humans, blood transports gases, nutrients, hormones and wastes. The heart maintains double circulation.',keyIdeas:['Xylem transports water and minerals; phloem transports food.','Transpiration can also cool plant surfaces.','Arteries carry blood away from the heart; veins carry blood towards it.','Capillaries have thin walls for exchange with tissues.','In double circulation, blood passes through the heart twice in one complete circuit.','Pulmonary veins carry oxygenated blood; do not define veins by oxygen content alone.']},
+      {id:'excretion',title:'6. Excretion and the nephron',explanation:'Excretion removes metabolic wastes such as urea, excess salts and water. Human kidneys filter blood and help maintain water and salt balance. Each kidney contains many nephrons. Blood is filtered in the glomerulus into Bowman’s capsule. Useful substances and needed water are selectively reabsorbed in the renal tubule. The remaining fluid becomes urine and passes through the ureters to the urinary bladder.',keyIdeas:['The nephron includes the glomerulus, Bowman’s capsule and renal tubule.','Filtration moves water and small dissolved substances out of blood; blood cells and most proteins remain.','Selective reabsorption returns useful substances and needed water to blood.','Urine travels: kidneys → ureters → urinary bladder → urethra.','Plants may diffuse, store or secrete wastes such as gums and resins.'],example:{title:'Explain why urine composition changes',question:'Why may a person produce more dilute urine after drinking plenty of water?',working:['The kidneys regulate water balance.','When the body has excess water, less water must be conserved.','A greater amount of dilute urine may be produced.'],answer:'The kidneys adjust water reabsorption to maintain water balance.'}}
     ],
-    formulaDesk: [
-      { label: 'Photosynthesis', formula: '6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂', note: 'Light and chlorophyll are required; simplified overall equation.' },
-      { label: 'Aerobic respiration', formula: 'Glucose + oxygen → carbon dioxide + water + energy', note: 'Occurs in cells and releases energy captured in ATP.' },
-      { label: 'Plant transport', formula: 'Xylem: water/minerals · Phloem: food', note: 'Remember the different transported materials.' },
-      { label: 'Urine pathway', formula: 'Kidney → ureter → bladder → urethra', note: 'Learn the sequence in the correct order.' }
+    formulaDesk:[{label:'Photosynthesis',formula:'6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂',note:'Light and chlorophyll are required; simplified overall equation.'},{label:'Aerobic respiration',formula:'Glucose + oxygen → carbon dioxide + water + energy',note:'Energy is captured in ATP.'},{label:'Plant transport',formula:'Xylem: water/minerals · Phloem: food',note:'Remember the different materials transported.'},{label:'Urine pathway',formula:'Kidney → ureter → bladder → urethra',note:'Learn the sequence in order.'}],
+    commonMistakes:[{mistake:'Saying plants only respire at night.',correction:'Plants respire day and night; photosynthesis requires light.'},{mistake:'Calling bile an enzyme.',correction:'Bile is not an enzyme; it emulsifies fats.'},{mistake:'Confusing breathing with respiration.',correction:'Breathing moves air; respiration releases energy chemically inside cells.'},{mistake:'Swapping xylem and phloem functions.',correction:'Xylem carries water/minerals; phloem carries food.'},{mistake:'Writing that veins always carry deoxygenated blood.',correction:'Veins carry blood towards the heart; pulmonary veins carry oxygenated blood.'},{mistake:'Saying filtration alone forms urine.',correction:'Filtration is followed by selective reabsorption and other adjustments.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Explain nutrition or respiration.',structure:['Name the process and its location.','Describe the stages or organs in order.','Mention important substances, conditions and products.']},{marks:'5 marks',prompt:'Explain transport or urine formation with a labelled diagram.',structure:['State the purpose.','Describe the structures or route in sequence.','Explain each major part.','Add a neat labelled diagram where appropriate.','Use correct scientific terms.']}],
+    finalChecklist:['I can explain photosynthesis and stomata.','I can describe digestion and the role of digestive organs.','I can distinguish breathing, aerobic and anaerobic respiration.','I can compare xylem and phloem and explain double circulation.','I can describe filtration and selective reabsorption in a nephron.']
+  },
+
+  'nationalism-india': {
+    chapterId: 'nationalism-india', curriculumItemId: 'sst-india', subject: 'Social Science',
+    focus: 'How different groups and movements came together in the Indian national movement, and why national unity was not experienced in exactly the same way by everyone.',
+    outcomes: ['Connect the First World War, the Rowlatt Act and the growth of mass protest.','Explain Non-Cooperation and Civil Disobedience in sequence.','Compare how peasants, tribals, workers, business groups and women participated.','Use historical evidence and dates to construct balanced answers.'],
+    sections: [
+      {id:'war-to-protest',title:'1. From war-time hardship to mass protest',explanation:'The First World War changed everyday life in India. Defence expenditure rose, taxes increased, prices climbed and forced recruitment created resentment in villages. Crop failures and an influenza epidemic added to hardship. In 1919 the Rowlatt Act allowed detention without trial in certain cases. Gandhi called for a nationwide hartal, and protests spread. The Jallianwala Bagh massacre in Amritsar on 13 April 1919, when troops fired on a gathered crowd, deepened anger and distrust of colonial rule.',keyIdeas:['Use chronology: war-time hardship → Rowlatt Act → protest → repression.','The Rowlatt Act was opposed because it restricted civil liberties and due process.','Jallianwala Bagh became a turning point in public opinion; describe the event accurately and do not confuse it with later movement dates.','Historical answers should connect an event to its political effect, not merely list it.'],example:{title:'Build a cause-and-effect answer',question:'Explain two reasons why resentment against British rule increased after the First World War.',working:['War expenditure and rising prices placed pressure on families; taxes and forced recruitment added hardship.','The Rowlatt Act restricted civil liberties, while repression at Jallianwala Bagh intensified opposition.'],answer:'Economic hardship and repressive colonial policies both widened opposition to British rule.'}},
+      {id:'non-cooperation',title:'2. Non-Cooperation and the idea of Swaraj',explanation:'Gandhi linked the Khilafat issue with the demand for Swaraj and launched the Non-Cooperation Movement in 1920. The method was to withdraw cooperation from colonial institutions: students could leave government schools, lawyers could boycott courts, people could give up titles and foreign goods could be boycotted. Participation was not identical everywhere. In Awadh, peasants protested against high rents and begar; in the Gudem Hills, tribal communities opposed forest restrictions and colonial authority; plantation workers connected Swaraj with freedom to move and return to their villages. The movement was withdrawn in 1922 after violence at Chauri Chaura.',keyIdeas:['Non-Cooperation was based on non-violent withdrawal of support from colonial institutions.','Awadh peasants had local demands involving rent, begar and landlords.','Tribal and plantation-worker participation reflected local experiences, not one identical national programme.','Gandhi withdrew the movement after the Chauri Chaura incident in 1922 because it had turned violent.'],example:{title:'Compare two regions',question:'How did the meaning of Swaraj differ for Awadh peasants and plantation workers?',working:['Awadh peasants wanted relief from oppressive rents, taxes and begar.','Plantation workers associated Swaraj with freedom to leave plantations and return to their home villages.','Both used the national movement’s language to express local grievances.'],answer:'Swaraj was a shared political ideal, but different groups connected it to their own immediate struggles.'}},
+      {id:'civil-disobedience',title:'3. Civil Disobedience and the Salt March',explanation:'After the demand for dominion status was not accepted, the Congress declared Purna Swaraj in December 1929. Gandhi began the Salt March from Sabarmati Ashram to Dandi in March 1930 and broke the salt law there on 6 April 1930. Salt was a powerful symbol because it was used by rich and poor alike and the colonial tax affected everyone. People broke selected colonial laws, refused some taxes, boycotted foreign cloth and picketed liquor shops. The movement broadened participation, but different social groups had different expectations and the movement did not remove all social inequalities.',keyIdeas:['Remember the sequence: Purna Swaraj declaration (1929) → Salt March (March–April 1930) → Civil Disobedience.','Salt was chosen because it was a common necessity and a visible symbol of colonial control.','Women participated in marches, picketing and protest, though leadership roles remained limited in many organisations.','The Gandhi-Irwin Pact of 1931 led to suspension of the movement and Gandhi attended the Second Round Table Conference.'],example:{title:'Why salt?',question:'Why did Gandhi choose salt as the symbol to begin Civil Disobedience?',working:['Salt was used by people across income groups.','The state monopoly and tax made a daily necessity a symbol of unjust colonial control.','Breaking the salt law made the protest simple, visible and accessible to ordinary people.'],answer:'Salt linked an everyday need to the wider demand for freedom and made colonial injustice easy to demonstrate.'}},
+      {id:'belonging-and-limits',title:'4. Collective belonging and the limits of unity',explanation:'A sense of collective belonging developed through symbols, songs, folklore, history and images such as Bharat Mata. The national flag and reinterpretations of the past helped people imagine a shared nation. Yet unity was not automatic. Dalit leaders, many Muslim political organisations and other groups had distinct concerns about representation, rights and political safeguards. A strong historical answer recognises both the widening of participation and the tensions within the movement.',keyIdeas:['National identity was built through cultural symbols as well as political action.','Bharat Mata images and folklore helped create emotional connections, but could also carry different meanings for different communities.','Dr B. R. Ambedkar and Gandhi disagreed over political representation for the Depressed Classes; the Poona Pact was signed in 1932.','Avoid writing that every Indian joined every movement or that the movement had identical effects everywhere.']}
     ],
-    commonMistakes: [
-      { mistake: 'Saying plants only respire at night.', correction: 'Plants respire day and night; photosynthesis requires light.' },
-      { mistake: 'Calling bile an enzyme.', correction: 'Bile is not an enzyme; it emulsifies fats and helps create suitable conditions for digestion.' },
-      { mistake: 'Confusing breathing with respiration.', correction: 'Breathing moves air; respiration releases energy chemically inside cells.' },
-      { mistake: 'Swapping xylem and phloem functions.', correction: 'Xylem carries water and minerals; phloem carries food.' },
-      { mistake: 'Writing that veins always carry deoxygenated blood.', correction: 'Veins carry blood towards the heart; pulmonary veins are an important exception to the oxygenation shortcut.' },
-      { mistake: 'Saying filtration alone forms final urine.', correction: 'Filtration is followed by selective reabsorption and other adjustments in the nephron.' }
+    formulaDesk:[{label:'Key chronology',formula:'1919 → 1920 → 1922 → 1929 → 1930 → 1931',note:'Rowlatt protests; Non-Cooperation; withdrawal; Purna Swaraj; Salt March; Gandhi-Irwin Pact.'},{label:'Non-Cooperation',formula:'Withdraw cooperation from colonial institutions',note:'Titles, schools, courts, foreign goods and other institutions.'},{label:'Civil Disobedience',formula:'Break selected colonial laws non-violently',note:'The Salt Law became the opening symbol.'}],
+    commonMistakes:[{mistake:'Mixing up Non-Cooperation and Civil Disobedience.',correction:'Non-Cooperation withdraws support; Civil Disobedience deliberately breaks selected colonial laws.'},{mistake:'Writing that all groups joined for the same reason.',correction:'Compare local demands and experiences for each group.'},{mistake:'Giving the Salt March date as the 1929 Purna Swaraj declaration.',correction:'The declaration was in December 1929; the march and law-breaking happened in 1930.'},{mistake:'Ignoring why the movement was withdrawn in 1922.',correction:'Mention the violence at Chauri Chaura and Gandhi’s commitment to non-violence.'},{mistake:'Describing national unity as complete and tension-free.',correction:'Recognise differences in representation, social reform and political expectations.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Explain causes or features of a national movement.',structure:['State the historical context.','Give three distinct, relevant points with brief explanations.','Use one date/name as evidence where appropriate.']},{marks:'5 marks',prompt:'Compare how different social groups participated.',structure:['Name the groups being compared.','Explain each group’s specific grievance or expectation.','Show how each connected its struggle to the wider movement.','Conclude with a balanced comparison rather than claiming identical motives.']}],
+    finalChecklist:['I can explain why resentment grew after the First World War.','I can distinguish Non-Cooperation from Civil Disobedience.','I can explain how salt became a national symbol.','I can compare local participation by at least three social groups.','I can explain both collective belonging and tensions within the movement.']
+  },
+  'power-sharing': {
+    chapterId: 'power-sharing', curriculumItemId: 'sst-power', subject: 'Social Science',
+    focus: 'Why democratic governments share power, and how constitutional design can prevent domination by one group.',
+    outcomes: ['Explain prudential and moral reasons for power-sharing.','Compare Belgium’s accommodation with Sri Lanka’s majoritarian approach.','Identify horizontal, vertical, social-group and party-based power-sharing.','Use key terms accurately in case-based and long answers.'],
+    sections: [
+      {id:'why-share',title:'1. Why power-sharing matters',explanation:'Power-sharing means distributing political power among different organs, levels, social groups and political organisations. The prudential reason is practical: sharing reduces the possibility of conflict between communities and supports political stability. The moral reason is democratic: people affected by decisions have a right to participate in making them. It is therefore not simply a favour given by a majority; it is a basic feature of democratic government.',keyIdeas:['Prudential reason: reduce social conflict and protect stability.','Moral reason: democracy requires participation and consultation.','A majority can make decisions, but permanent domination of minorities damages democracy.','Power-sharing can improve legitimacy because more groups have a voice.'],example:{title:'Separate the two reasons',question:'A country shares power to avoid conflict and because citizens have an equal right to influence decisions. Identify the two reasons.',working:['Avoiding conflict and maintaining stability is the prudential reason.','Equal participation as a democratic right is the moral reason.'],answer:'The situation contains both prudential and moral reasons.'}},
+      {id:'belgium-sri-lanka',title:'2. Belgium and Sri Lanka: two different choices',explanation:'Belgium had Dutch-speaking, French-speaking and a smaller German-speaking community. Its leaders amended arrangements to ensure equal representation of Dutch- and French-speaking ministers in the central government, created regional governments and established community government for language and cultural matters. Sri Lanka adopted majoritarian policies after independence, including the 1956 Sinhala Only Act and preferences that disadvantaged Tamil speakers. The resulting alienation contributed to long-running conflict. The comparison shows how accommodation and domination produce different outcomes.',keyIdeas:['Belgium’s central cabinet has equal numbers of Dutch- and French-speaking ministers.','Community government handles cultural, educational and language-related matters.','Sri Lanka’s Sinhala Only policy and other majoritarian measures increased Tamil alienation.','Do not describe Belgium as having no tensions; explain how institutional compromise managed them.'],example:{title:'Compare institutional choices',question:'Give one feature of Belgium’s accommodation and one effect of Sri Lankan majoritarianism.',working:['Belgium shared central power and created community government to protect linguistic interests.','Sri Lankan majoritarian policies made many Tamil speakers feel excluded from state institutions.'],answer:'Belgium institutionalised compromise; Sri Lanka’s majoritarian approach deepened alienation.'}},
+      {id:'forms',title:'3. Four forms of power-sharing',explanation:'Horizontal power-sharing divides authority among the legislature, executive and judiciary at the same level. Vertical power-sharing distributes power among central, state and local governments. Power can also be shared among religious or linguistic communities through representation or reserved arrangements. Finally, political parties, pressure groups and movements influence decisions by competing, negotiating and shaping public opinion.',keyIdeas:['Horizontal: different organs of government check one another.','Vertical: different levels of government have their own powers.','Social-group sharing: representation for linguistic or religious communities.','Political sharing: parties, coalitions, pressure groups and movements influence policy.'],example:{title:'Classify an arrangement',question:'A state government and a central government have constitutionally defined responsibilities. Which form is this?',working:['Both are levels of government.','Power is distributed between the national and state levels.'],answer:'Vertical power-sharing, also called federal division of power.'}},
+      {id:'checks-and-balances',title:'4. Checks, balances and democratic practice',explanation:'The legislature makes laws, the executive implements them, and the judiciary interprets laws and protects constitutional limits. Their functions overlap in some areas, but each can check the others. In a coalition, parties share executive responsibility; pressure groups and movements influence public debate. These arrangements prevent power from becoming concentrated and make it harder for a single institution or group to act without accountability.',keyIdeas:['Checks and balances stop one organ from exercising unchecked authority.','An independent judiciary can review whether government action follows the Constitution.','Coalition governments share power among parties.','Pressure groups influence policy but do not normally exercise formal government authority.']}
     ],
-    answerBlueprints: [
-      { marks: '3 marks', prompt: 'Explain nutrition or respiration in a named organism.', structure: ['Name the process and where it occurs.', 'Describe the main stages or organs in order.', 'Mention important substances, conditions and products.'] },
-      { marks: '5 marks', prompt: 'Explain transport or urine formation with a labelled diagram.', structure: ['Start with the purpose of the process.', 'Describe the route or structures in the correct sequence.', 'Explain the function of each major part.', 'Add a neat labelled diagram where requested.', 'Use the correct scientific terms.'] }
+    formulaDesk:[{label:'Prudential reason',formula:'Stability + reduced social conflict',note:'A practical reason for sharing power.'},{label:'Moral reason',formula:'Participation is a democratic right',note:'People should have a voice in decisions affecting them.'},{label:'Horizontal',formula:'Legislature ↔ Executive ↔ Judiciary',note:'Different organs at the same level.'},{label:'Vertical',formula:'Central → State → Local',note:'Different levels of government.'}],
+    commonMistakes:[{mistake:'Calling power-sharing a weakness of democracy.',correction:'Power-sharing is a key democratic feature that protects participation and stability.'},{mistake:'Confusing horizontal and vertical sharing.',correction:'Horizontal divides organs; vertical divides levels of government.'},{mistake:'Saying Belgium solved every social tension permanently.',correction:'Explain its constitutional accommodation without claiming conflict disappeared.'},{mistake:'Saying all pressure groups form the government.',correction:'They influence decisions; formal government power is held by constitutional institutions and elected authorities.'},{mistake:'Describing Sri Lanka’s policy without its consequences.',correction:'Connect majoritarianism with Tamil alienation and conflict.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Give reasons for power-sharing.',structure:['State the prudential reason.','State the moral reason.','Explain each in one complete sentence.']},{marks:'5 marks',prompt:'Explain forms of power-sharing with examples.',structure:['Define power-sharing.','Explain horizontal and vertical division.','Explain social-group and political-party sharing.','Give a suitable example for each form.']}],
+    finalChecklist:['I can distinguish prudential and moral reasons.','I can compare Belgium and Sri Lanka.','I can identify all four forms of power-sharing.','I can explain checks and balances in a democracy.']
+  },
+  'development-economics': {
+    chapterId: 'development-economics', curriculumItemId: 'sst-development', subject: 'Social Science',
+    focus: 'How development goals differ, why income alone is incomplete and how public facilities and sustainability affect quality of life.',
+    outcomes: ['Compare development goals of different people.','Use per-capita income and understand its limitations.','Explain public facilities and non-income indicators.','Distinguish sustainable development from short-term resource exploitation.'],
+    sections: [
+      {id:'different-goals',title:'1. Development goals can differ',explanation:'People value different things depending on their circumstances. A landless rural labourer may prioritise regular employment and higher wages, while a farmer may need reliable irrigation and fair prices. A girl may place greater value on safety, equal treatment and access to education. Development therefore involves income as well as dignity, security, freedom, equality and opportunities. One goal may conflict with another, so development decisions often require discussion and compromise.',keyIdeas:['Different people can have different or even conflicting development goals.','Income matters because it allows people to buy goods and services.','Non-material goals include respect, security, freedom and equal treatment.','A development project may benefit one group while harming another.'],example:{title:'Identify conflicting goals',question:'A factory provides jobs but pollutes a nearby village’s water. Explain why people may disagree about whether it is development.',working:['Workers may value the new jobs and income.','Residents may lose access to clean water and health security.','The project must be judged by who gains, who loses and whether harms can be prevented.'],answer:'Development goals can conflict; a fair decision must consider both livelihoods and health.'}},
+      {id:'income-comparison',title:'2. Compare countries and states carefully',explanation:'Average income is often compared through per-capita income: total income divided by total population. It provides a simple average, but it does not reveal how income is distributed. Two places may have the same per-capita income while one has much greater inequality. Averages also do not directly measure health, education, safety or environmental quality. Use income comparisons as one indicator, not as the full meaning of development.',keyIdeas:['Per-capita income = total income ÷ total population.','Use the same currency, time period and method when comparing.','An average can hide unequal distribution between people.','Income does not directly tell us life expectancy, literacy or access to healthcare.'],example:{title:'Calculate per-capita income',question:'A town has a total annual income of ₹12,00,000 and a population of 400. Find its per-capita income.',working:['Per-capita income = total income ÷ population.','₹12,00,000 ÷ 400 = ₹3,000.'],answer:'₹3,000 per person per year.'}},
+      {id:'public-facilities',title:'3. Why public facilities matter',explanation:'Some services are difficult or unfair to leave entirely to individual purchasing power. Public facilities such as schools, hospitals, sanitation, safe drinking water and public transport can improve the quality of life of many people. A person’s health and education depend not only on personal income but also on whether good services are available and accessible. This is why development comparisons use indicators such as life expectancy, literacy and schooling along with income.',keyIdeas:['Public facilities can benefit people across income groups.','Health and education indicators measure important dimensions of well-being.','The Human Development Index uses health, education and income dimensions.','Equal access and quality matter; the presence of a facility alone is not enough.'],example:{title:'Explain why averages are not enough',question:'Two states have similar per-capita income, but one has better schools and health services. Why may its people be better off?',working:['Income gives only an average of material resources.','Better education and healthcare improve capabilities and life chances.','Development must consider several dimensions of well-being.'],answer:'The state with stronger public facilities may offer better overall development despite similar average income.'}},
+      {id:'sustainability',title:'4. Sustainable development protects the future',explanation:'Sustainable development means meeting present needs without reducing the ability of future generations to meet their needs. Groundwater overuse, deforestation and pollution can produce short-term gains while creating long-term costs. Renewable resources must be used at a rate that allows renewal; non-renewable resources should be conserved and used carefully. Good development planning balances economic needs, social justice and environmental protection.',keyIdeas:['Groundwater can be depleted when extraction exceeds natural recharge.','Fossil fuels are finite and their use contributes to pollution and climate change.','Conservation, efficiency, recycling and renewable energy support sustainability.','A resource decision should consider future generations as well as present users.']}
     ],
-    finalChecklist: [
-      'I can explain photosynthesis and the role of stomata and chlorophyll.',
-      'I can describe digestion and the function of key digestive organs.',
-      'I can distinguish breathing, aerobic respiration and anaerobic respiration.',
-      'I can compare xylem and phloem and explain double circulation.',
-      'I can describe filtration and selective reabsorption in a nephron.'
-    ]
+    formulaDesk:[{label:'Per-capita income',formula:'Total income ÷ total population',note:'Average income per person for a stated period.'},{label:'Development dimensions',formula:'Income + Health + Education + Dignity',note:'A broader way to think about human well-being.'},{label:'Sustainability',formula:'Meet present needs without harming future ability',note:'Protect resources and opportunities for future generations.'}],
+    commonMistakes:[{mistake:'Equating development only with higher income.',correction:'Include health, education, dignity, security, equality and environment.'},{mistake:'Assuming per-capita income shows every person’s income.',correction:'It is an average and can hide inequality.'},{mistake:'Treating a public facility as automatically good quality.',correction:'Ask whether it is accessible, reliable and effective.'},{mistake:'Thinking renewable resources can never run out.',correction:'They can be depleted if used faster than their rate of renewal.'},{mistake:'Ignoring people who bear the cost of a project.',correction:'Assess who benefits, who is harmed and whether the harm can be prevented.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Explain the limitations of per-capita income.',structure:['Define per-capita income.','Explain that an average hides distribution.','Mention non-income aspects such as health or education.']},{marks:'5 marks',prompt:'Explain sustainable development with examples.',structure:['Define sustainable development.','Explain one renewable and one non-renewable resource issue.','Give practical conservation measures.','Link decisions to future generations.']}],
+    finalChecklist:['I can explain why development goals differ.','I can calculate per-capita income.','I can state at least three limitations of income averages.','I can explain public facilities and sustainability.']
+  },
+  'english-reading-comprehension': {
+    chapterId: 'english-reading-comprehension', curriculumItemId: 'eng-reading', subject: 'English',
+    focus: 'A repeatable method for understanding unseen discursive and case-based factual passages with accurate evidence-based answers.',
+    outcomes: ['Preview a passage and identify its purpose and structure.','Distinguish explicit information, inference and the writer’s viewpoint.','Use evidence from the passage rather than outside assumptions.','Answer vocabulary and synthesis questions precisely.'],
+    sections: [
+      {id:'first-reading',title:'1. Read for the big picture first',explanation:'Before answering questions, identify the topic, purpose and tone of the passage. A discursive passage develops an argument or explores an issue; a factual or case-based passage usually presents information, data or a real-world situation. Read the title, opening and closing carefully, then notice how each paragraph contributes. This creates a mental map and prevents you from searching randomly.',keyIdeas:['Topic: what the passage is about.','Purpose: to inform, explain, persuade, compare, warn or describe.','Tone: the writer’s attitude, such as concerned, critical, balanced or optimistic.','Paragraph function: introduction, evidence, example, counterpoint or conclusion.'],example:{title:'Identify purpose and tone',question:'A passage presents rising urban heat, cites temperature data, then recommends trees and cool roofs. What is its likely purpose?',working:['The data explains the problem.','The final recommendations propose solutions.','The tone is likely informative and concerned rather than purely entertaining.'],answer:'To explain the urban-heat problem and suggest practical responses.'}},
+      {id:'evidence-and-inference',title:'2. Separate direct information from inference',explanation:'A direct-information question asks for something stated in the passage. An inference question asks what can reasonably be concluded from the evidence. The answer must still be anchored in the text. A useful test is to underline the sentence that supports your response. If you cannot find evidence, you may be importing outside knowledge or guessing. For an inference, explain the link between evidence and conclusion in a short, logical sentence.',keyIdeas:['Direct answer: restate the relevant fact accurately.','Inference: combine clues and draw a reasonable conclusion.','Do not extend the conclusion beyond what the text supports.','For “why” questions, include the reason, not just the event.'],example:{title:'Make a supported inference',question:'The passage says a library extended evening hours and student visits doubled. What can be inferred?',working:['The number of student visits increased after opening hours were extended.','The longer hours may have made the library more accessible to students.','The passage does not prove that opening hours were the only cause.'],answer:'Extended hours likely improved access, although the passage does not prove they were the only reason for the increase.'}},
+      {id:'data-and-vocabulary',title:'3. Handle data, vocabulary and reference questions',explanation:'Case-based passages may contain tables, percentages, charts or survey findings. Read the heading, unit, time period, sample and footnotes before interpreting a number. For vocabulary, use the sentence context rather than choosing a familiar meaning automatically. For pronoun-reference questions, trace the pronoun back to the exact noun or idea it replaces. These small checks avoid careless errors.',keyIdeas:['Read units and labels before comparing values.','A percentage and a percentage-point change are not the same thing.','Use nearby words and the passage topic to infer vocabulary meaning.','For “this”, “they” or “it”, identify the nearest grammatical and logical reference.'],example:{title:'Interpret a comparison carefully',question:'A survey rises from 40% to 50%. What is the increase?',working:['Subtract the first percentage from the second: 50 − 40 = 10.','The change is 10 percentage points.','Relative to 40%, the increase is 25%; use this only if the question asks for percentage increase.'],answer:'The increase is 10 percentage points, or 25% relative to the original 40%.'}},
+      {id:'answer-efficiently',title:'4. Write concise answers that match the question',explanation:'Answer exactly what is asked, using your own words unless a quotation is requested. A one-mark question usually needs one accurate point; a multi-part question needs every part answered. Avoid copying a full paragraph. Use the passage’s key terms, preserve meaning and check that the answer does not contradict the text. When asked to summarise, combine related points and remove repeated examples.',keyIdeas:['Match answer length to marks and command words.','Use evidence but avoid copying unnecessary sentences.','Keep separate sub-parts clearly labelled if the question has multiple parts.','Re-read the question after drafting to ensure every requirement is answered.']}
+    ],
+    formulaDesk:[{label:'Evidence test',formula:'Claim → supporting line/detail → conclusion',note:'Use the passage as the source of truth.'},{label:'Data change',formula:'New value − old value',note:'State units and distinguish percentage points from percent change.'},{label:'Short answer',formula:'Direct response + one relevant supporting detail',note:'Be complete without copying a whole paragraph.'}],
+    commonMistakes:[{mistake:'Answering from general knowledge instead of the passage.',correction:'Anchor every answer in a line, detail or data point from the text.'},{mistake:'Treating an inference as a fact stated directly.',correction:'Use cautious language such as “this suggests” when drawing a conclusion.'},{mistake:'Ignoring units or dates in data questions.',correction:'Check headings, units, period and labels before calculating.'},{mistake:'Copying a long paragraph for a one-mark question.',correction:'Select only the exact point needed.'},{mistake:'Choosing a vocabulary meaning without checking context.',correction:'Read the sentence and neighbouring ideas before deciding.'}],
+    answerBlueprints:[{marks:'1–2 marks',prompt:'Answer a direct or inference question.',structure:['Locate the supporting line or data.','State the answer in one complete sentence.','For an inference, explain the clue-to-conclusion link.']},{marks:'Summary',prompt:'Summarise a passage or set of points.',structure:['Identify the central idea.','Combine related supporting points.','Remove repetition and minor examples.','Keep the original meaning and use clear, concise language.']}],
+    finalChecklist:['I can identify purpose, topic and tone.','I can distinguish direct information from inference.','I can interpret data with correct units.','I can write concise answers supported by the passage.']
+  },
+  'english-grammar-context': {
+    chapterId: 'english-grammar-context', curriculumItemId: 'eng-grammar', subject: 'English',
+    focus: 'Grammar in context: determiners, tenses, modals, subject–verb agreement and reported speech.',
+    outcomes: ['Choose determiners based on countability and meaning.','Use tense forms consistently with time and aspect.','Select modals for ability, permission, advice, obligation and possibility.','Apply subject–verb agreement and transform reported speech accurately.'],
+    sections: [
+      {id:'determiners',title:'1. Determiners: choose the word that fits the noun',explanation:'Determiners come before nouns and help specify quantity, possession or reference. “A” and “an” are used with singular countable nouns when the listener does not know which one; “the” points to a specific or already identified noun. “Much” generally modifies uncountable nouns, while “many” modifies plural countable nouns. “Few” and “a few” have different meanings: the first suggests almost none, while the second means some.',keyIdeas:['Use a/an with singular countable nouns; choose by sound, not spelling.','Use many/few with plural countable nouns; much/little with uncountable nouns.','“The” identifies a specific or uniquely understood noun.','“Each” focuses on individuals; “every” refers to all members individually.'],example:{title:'Choose the correct determiner',question:'There are ___ students in the hall, but only ___ water remains.',working:['Students are plural countable, so “many” fits.','Water is uncountable, so “little” fits if the amount is small.'],answer:'There are many students in the hall, but only little water remains.'}},
+      {id:'tenses',title:'2. Tenses: connect the verb to time and aspect',explanation:'Tense and aspect show when an action happens and whether it is complete, continuing or connected to another time. The simple present describes habits and general truths; the present continuous describes actions happening around now; the present perfect links a past action to the present; the simple past describes a completed past event. Time expressions often guide tense choice, but meaning and context matter more than memorising a single keyword.',keyIdeas:['Simple present: habits, schedules and universal truths.','Present continuous: an action happening now or temporarily.','Present perfect: a past action connected to the present; do not normally pair it with a finished-time expression such as “yesterday”.','Past perfect: an earlier past action viewed from a later past point.'],example:{title:'Select a tense from context',question:'By the time we reached the station, the train ___ (leave).',working:['The train left before the later past event “we reached”.','Use the past perfect for the earlier past action.'],answer:'By the time we reached the station, the train had left.'}},
+      {id:'modals-and-agreement',title:'3. Modals and subject–verb concord',explanation:'Modals are helping verbs that express ability, permission, possibility, advice or obligation. “Can” often expresses ability or informal permission; “may” can express permission or possibility; “must” expresses strong obligation or logical certainty; “should” expresses advice. Subject–verb concord means the verb agrees with the grammatical subject. A phrase between subject and verb does not change the subject’s number.',keyIdeas:['A modal is followed by the base form of the main verb: “must go”, not “must goes”.','Singular third-person subjects take -s/-es in the simple present; plural subjects use the base form.','“Each”, “every” and “one” normally take singular verbs.','With “neither…nor” or “either…or”, agreement commonly follows the nearer subject in school-level usage.'],example:{title:'Find the real subject',question:'The quality of the answers ___ (is/are) improving.',working:['The subject is “quality”, not “answers”.','“Quality” is singular, so use “is”.'],answer:'The quality of the answers is improving.'}},
+      {id:'reported-speech',title:'4. Reported speech: preserve meaning while changing form',explanation:'Reported speech communicates what someone said without repeating the exact quotation. When the reporting verb is in the past, tense may shift back where the meaning requires it: present simple to past simple, present continuous to past continuous and will to would. Pronouns, possessives and time/place expressions may also change according to the speaker and situation. Questions use statement word order in the reported clause; yes/no questions commonly use “if” or “whether”.',keyIdeas:['Remove quotation marks and adjust pronouns to the new speaker.','When required, shift tense back after a past reporting verb.','Change time expressions only when the reporting context makes them different.','Reported questions use statement word order: “where he was”, not “where was he”.'],example:{title:'Report a question',question:'Change: Riya said to me, “Are you ready?”',working:['The reporting verb “said to” changes to “asked”.','A yes/no question takes “if” or “whether”.','Change “you” to “I” from the speaker’s point of view and use statement order.'],answer:'Riya asked me if I was ready.'}}
+    ],
+    formulaDesk:[{label:'Countable nouns',formula:'many / few / a few',note:'Use with plural countable nouns.'},{label:'Uncountable nouns',formula:'much / little / a little',note:'Use with uncountable nouns.'},{label:'Reported yes/no question',formula:'asked + if / whether + subject + verb',note:'Use statement word order in the reported clause.'},{label:'Modal pattern',formula:'modal + base verb',note:'Example: should study, must attend, may leave.'}],
+    commonMistakes:[{mistake:'Using “much” with an ordinary plural countable noun.',correction:'Use many with plural countable nouns.'},{mistake:'Using present perfect with “yesterday”.',correction:'Use the simple past with a finished past-time marker.'},{mistake:'Letting a nearby plural noun control the verb.',correction:'Find the true subject and make the verb agree with it.'},{mistake:'Writing “must goes” or “should studies”.',correction:'A modal is followed by the base form of the verb.'},{mistake:'Keeping question word order in reported speech.',correction:'Use statement order after the question word.'}],
+    answerBlueprints:[{marks:'Grammar item',prompt:'Choose or edit a verb form.',structure:['Identify the subject and time reference.','Check whether the action is habitual, ongoing, completed or earlier than another event.','Apply agreement and write the complete corrected sentence.']},{marks:'Reported speech',prompt:'Transform a statement or question.',structure:['Identify the speaker, listener and reporting verb.','Adjust pronouns and tense where required.','Change time/place words only when context requires it.','Use statement word order in reported questions.']}],
+    finalChecklist:['I can select determiners for countable and uncountable nouns.','I can choose tense by meaning and time relationship.','I can use modals and subject–verb agreement.','I can report statements and questions without changing the meaning.']
+  },
+  'english-writing-skills': {
+    chapterId: 'english-writing-skills', curriculumItemId: 'eng-letter', subject: 'English',
+    focus: 'Organising formal letters and analytical paragraphs with relevant content, logical progression and controlled language.',
+    outcomes: ['Identify audience, purpose and required format before writing.','Plan a formal letter with clear paragraphs and a polite tone.','Describe and compare data without inventing reasons.','Edit for word limit, grammar, cohesion and accuracy.'],
+    sections: [
+      {id:'purpose-and-planning',title:'1. Read the writing task before drafting',explanation:'A strong response begins with task analysis. Identify the role you are writing in, the reader, the purpose, the required format and any points that must be covered. Underline command words such as request, complain, suggest, inform or analyse. Plan the content in a few short points before writing full sentences. This prevents a polished response from missing the actual task.',keyIdeas:['Audience controls tone: a principal or editor requires formal, respectful language.','Purpose controls content: a complaint needs the issue, evidence and requested action.','Cover every bullet or cue supplied in the question.','Do not add invented facts, statistics or personal details.'],example:{title:'Plan a complaint letter',question:'You are asked to complain about unsafe traffic near your school. What should the body cover?',working:['State the location and nature of the problem.','Give specific observations such as speeding vehicles or unsafe crossings without inventing data.','Explain the risk to students.','Request practical action such as signage, speed control or a crossing guard.'],answer:'A focused letter moves from problem to evidence to impact to a reasonable request.'}},
+      {id:'formal-letter-structure',title:'2. Structure a formal letter clearly',explanation:'A formal letter normally includes the sender’s address, date, recipient’s designation and address, a clear subject line, salutation, body paragraphs, courteous closing and name/designation where required. The body should be organised: opening identifies the purpose, the middle explains details and supporting points, and the closing states the expected action. Follow the exact format and word range in the question or school instructions.',keyIdeas:['Use a specific subject line that summarises the purpose.','Keep the tone respectful, direct and professional.','Use one main purpose per paragraph.','Avoid contractions, slang and emotional exaggeration in formal writing.'],example:{title:'Build the body in three parts',question:'Write a plan for a letter to the editor about reducing plastic waste.',working:['Opening: explain why single-use plastic is a local concern.','Middle: mention practical effects and actions such as segregation, reusable containers and collection systems.','Closing: request public awareness and coordinated action.'],answer:'A clear opening, evidence-based middle and specific closing make the letter purposeful.'}},
+      {id:'analytical-paragraph',title:'3. Turn data into an analytical paragraph',explanation:'An analytical paragraph describes and compares information shown in a chart, table, map or other visual prompt. Begin with an overview of the main pattern. Then select the most important comparisons, trends, highest and lowest values, or notable exceptions. Support statements with the given figures and units. Do not assume causes unless the prompt supplies them. Finish with a concise synthesis of the overall pattern.',keyIdeas:['Read the title, labels, units and time period first.','Start with the most important overall trend, not a list of every number.','Compare values using accurate language: higher, lower, doubled, remained stable.','Do not turn correlation into a cause unless the data or prompt supports it.'],example:{title:'Compare a simple data set',question:'A table shows reading club membership: Class A 30, Class B 45, Class C 25. What is a useful overview?',working:['Class B has the highest membership at 45.','Class C has the lowest at 25.','Class B exceeds Class A by 15 and Class C by 20.'],answer:'Class B records the strongest participation, while Class C has the lowest; the gap between them is 20 students.'}},
+      {id:'editing-and-cohesion',title:'4. Edit for marks and clarity',explanation:'Before submitting, check whether the response answers the task, follows the requested format and stays near the prescribed word range. Check verb agreement, tense consistency, articles, prepositions, punctuation and spelling. Cohesion matters: use linking words where they show a real relationship, not as decoration. A good analytical response uses the data accurately and avoids repeating the same comparison.',keyIdeas:['Check every task point before checking grammar.','Use a consistent tense and person.','Remove repeated ideas and vague phrases.','Check names, dates, units and figures against the prompt.']}
+    ],
+    formulaDesk:[{label:'Formal letter body',formula:'Purpose → Details/evidence → Impact → Request',note:'A practical paragraph plan; follow the format asked in the prompt.'},{label:'Analytical paragraph',formula:'Overview → Key comparisons → Evidence → Synthesis',note:'Do not invent causes or data.'},{label:'Final edit',formula:'Task · Format · Word range · Grammar · Accuracy',note:'A five-part check before submitting.'}],
+    commonMistakes:[{mistake:'Writing a beautiful letter that misses one required point.',correction:'Underline and tick off every cue before drafting.'},{mistake:'Using casual language in a formal letter.',correction:'Use respectful, direct and professional wording.'},{mistake:'Listing every number without identifying the overall pattern.',correction:'Start with an overview and select the most meaningful comparisons.'},{mistake:'Inventing a reason for a change shown in a chart.',correction:'Describe what the data shows; do not guess why it happened.'},{mistake:'Ignoring the word range or format.',correction:'Check the exact task instructions before final editing.'}],
+    answerBlueprints:[{marks:'Formal letter',prompt:'Write a situation-based formal letter.',structure:['Identify audience, purpose and all required points.','Use the prescribed sender/date/recipient/subject/salutation format.','Develop the body in logical paragraphs.','Close politely and check word range.']},{marks:'Analytical paragraph',prompt:'Analyse a chart, map or data table.',structure:['Write one overview sentence.','Compare the key values and trends.','Use figures and units as evidence.','Avoid unsupported causes; close with the main finding.']}],
+    finalChecklist:['I can identify audience and purpose before writing.','I can use a correct formal-letter structure.','I can analyse a chart using accurate comparisons.','I can edit for task coverage, word range and correctness.']
+  },
+  'gujarati-reading-skills': {
+    chapterId: 'gujarati-reading-skills', curriculumItemId: 'guj-reading', subject: 'Gujarati',
+    focus: 'અપઠિત ગદ્ય વાંચતી વખતે મુખ્ય વિચાર, વિગતો, અનુમાન અને શબ્દાર્થને યોગ્ય સંદર્ભમાં સમજવાની પદ્ધતિ.',
+    outcomes: ['ગદ્યખંડનો મુખ્ય વિચાર ઓળખવો.','પ્રશ્નમાં માંગેલી ચોક્કસ માહિતી શોધવી.','સંદર્ભના આધારે યોગ્ય અનુમાન કરવું.','ટૂંકા, સ્પષ્ટ અને સંપૂર્ણ ગુજરાતી જવાબ લખવા.'],
+    sections: [
+      {id:'mukhya-vichar',title:'૧. મુખ્ય વિચાર અને હેતુ ઓળખો',explanation:'અપઠિત ગદ્યખંડ વાંચતી વખતે પહેલાં સમગ્ર લખાણનો વિષય અને લેખકનો હેતુ સમજો. ગદ્યખંડ માહિતી આપે છે, કોઈ વિચાર સમજાવે છે, સમસ્યા રજૂ કરે છે કે કોઈ સૂચન કરે છે તે ઓળખો. દરેક વાક્યને અલગથી યાદ રાખવાને બદલે આખા ફકરાનો કેન્દ્રીય વિચાર સમજો. શીર્ષક હોય તો તે વિષયની દિશા બતાવે છે, પરંતુ જવાબ માટે આખા લખાણનો આધાર લેવો.',keyIdeas:['મુખ્ય વિચાર એટલે ગદ્યખંડનો કેન્દ્રસ્થ વિષય.','લેખકનો હેતુ માહિતી આપવાનો, સમજાવવાનો, ચેતવણી આપવાનો કે પ્રેરિત કરવાનો હોઈ શકે.','દરેક ફકરાનું એક મુખ્ય કાર્ય શોધો.','જવાબમાં ગદ્યખંડની બહારની કલ્પિત માહિતી ઉમેરશો નહીં.'],example:{title:'મુખ્ય વિચાર શોધો',question:'ગદ્યખંડમાં વૃક્ષોના ફાયદા, શહેરની ગરમી અને વૃક્ષારોપણની જરૂરિયાત સમજાવવામાં આવે છે. મુખ્ય વિચાર શું હોઈ શકે?',working:['વૃક્ષોના ફાયદા અને ગરમી એકબીજા સાથે જોડાયેલા વિષયો છે.','અંતે વૃક્ષારોપણનો ઉલ્લેખ ઉકેલ તરીકે થાય છે.'],answer:'શહેરોમાં પર્યાવરણ સુધારવા અને ગરમી ઘટાડવા વૃક્ષોનું મહત્વ.'}},
+      {id:'detail-and-inference',title:'૨. વિગતો અને અનુમાન અલગ રાખો',explanation:'કેટલાક પ્રશ્નો ગદ્યખંડમાં સીધી આપેલી માહિતી પૂછે છે. કેટલાક પ્રશ્નો બે કે વધુ સંકેતોને જોડીને અનુમાન માંગે છે. સીધી માહિતી માટે સંબંધિત વાક્ય શોધો. અનુમાન માટે લખાણના પુરાવા પરથી યોગ્ય તારણ કાઢો. અનુમાન કરતી વખતે વધારે દાવો ન કરો; લખાણ જેટલું સમર્થન આપે છે એટલું જ લખો.',keyIdeas:['સીધો જવાબ લખતી વખતે સંબંધિત વિગતો ચોક્કસ રાખો.','અનુમાન માટે ગદ્યખંડમાં આપેલા સંકેતો જોડો.','“શા માટે” પૂછે ત્યારે કારણ આપો, માત્ર ઘટના નહીં.','જવાબ ટૂંકો હોય છતાં પૂર્ણ અર્થ આપે તે જરૂરી છે.'],example:{title:'પુરાવા પરથી અનુમાન',question:'ગદ્યખંડ કહે છે કે શાળાએ પુસ્તકાલયનો સમય વધાર્યો અને વિદ્યાર્થીઓની મુલાકાત વધી. યોગ્ય અનુમાન શું?',working:['સમય વધ્યા પછી મુલાકાત વધી છે.','વધુ સમય મળવાથી પુસ્તકાલય સુધી પહોંચ સરળ બની હોઈ શકે.','લખાણ એ જ એકમાત્ર કારણ છે એવું સાબિત કરતું નથી.'],answer:'વધારેલા સમયથી પુસ્તકાલયનો ઉપયોગ વધુ સરળ બન્યો હોઈ શકે.'}},
+      {id:'shabdarth',title:'૩. સંદર્ભથી શબ્દાર્થ સમજો',explanation:'અપઠિત ગદ્યમાં કોઈ શબ્દનો અર્થ અજાણ્યો હોય તો આજુબાજુનાં વાક્યો વાંચો. સમાનાર્થી, વિરોધી અર્થ, ઉદાહરણ અથવા પરિસ્થિતિ શબ્દનો અર્થ સમજવામાં મદદ કરે છે. શબ્દનો પ્રથમ યાદ આવતો અર્થ દરેક સંદર્ભમાં યોગ્ય હોય જ એવું નથી. પ્રશ્નમાં શબ્દનો અર્થ પૂછાયો હોય તો ગદ્યખંડના સંદર્ભને અનુરૂપ અર્થ લખો.',keyIdeas:['શબ્દની આસપાસનાં વાક્યો અને વિષય વાંચો.','શબ્દનો ભાવ સકારાત્મક, નકારાત્મક કે તટસ્થ છે તે જુઓ.','સમાનાર્થી શબ્દ લખતી વખતે મૂળ વાક્યમાં તેનો અર્થ બેસે છે કે નહીં તે તપાસો.','રૂઢિપ્રયોગનો અર્થ શાબ્દિક નહીં પરંતુ પ્રચલિત અર્થ પ્રમાણે હોઈ શકે.']},
+      {id:'uttar-lekhan',title:'૪. સ્પષ્ટ અને સંક્ષિપ્ત જવાબ લખો',explanation:'જવાબમાં પ્રશ્ને માગેલી માહિતી જ આપો. એક ગુણના પ્રશ્ન માટે સામાન્ય રીતે એક ચોક્કસ મુદ્દો પૂરતો હોય છે; બે ભાગવાળા પ્રશ્નમાં બંને ભાગનો જવાબ આપવો. ગદ્યખંડમાંથી આખો ફકરો નકલ કરવાને બદલે યોગ્ય શબ્દોમાં જવાબ રચો. લખ્યા પછી પ્રશ્ન ફરી વાંચો અને ખાતરી કરો કે જવાબ વિષયથી ભટકતો નથી.',keyIdeas:['પ્રશ્નના મુખ્ય શબ્દો ઓળખો.','પૂર્ણ વાક્યમાં જવાબ આપો જ્યાં જરૂરી હોય.','અનાવશ્યક વિસ્તરણ અને પુનરાવર્તન ટાળો.','જોડણી અને વિરામચિહ્નો તપાસો.']}
+    ],
+    formulaDesk:[{label:'વાંચનની રીત',formula:'વિષય → મુખ્ય વિચાર → વિગતો → અનુમાન',note:'પહેલા સમગ્ર ગદ્યખંડ સમજો.'},{label:'અનુમાન',formula:'સંકેત + પુરાવો → યોગ્ય તારણ',note:'લખાણથી આગળ વધીને અસમર્થિત દાવો ન કરો.'},{label:'જવાબ',formula:'ચોક્કસ મુદ્દો + જરૂરી કારણ',note:'પ્રશ્ન જેટલું માંગે તેટલું જ લખો.'}],
+    commonMistakes:[{mistake:'ગદ્યખંડ વાંચ્યા વગર બહારના જ્ઞાનથી જવાબ આપવો.',correction:'દરેક જવાબનો આધાર ગદ્યખંડમાં શોધો.'},{mistake:'મુખ્ય વિચારને એક નાની વિગતો સમજી લેવી.',correction:'સમગ્ર લખાણમાં વારંવાર આવતો કેન્દ્રીય વિચાર ઓળખો.'},{mistake:'અનુમાનને લખાણમાં સીધું લખેલું તથ્ય કહેવું.',correction:'અનુમાન માટે સંકેતો જોડો અને મર્યાદિત તારણ આપો.'},{mistake:'સંદર્ભ વિના શબ્દનો પહેલો અર્થ લખવો.',correction:'વાક્યમાં બેસે એવો સંદર્ભાનુરૂપ અર્થ પસંદ કરો.'},{mistake:'પ્રશ્નના એક ભાગનો જ જવાબ આપવો.',correction:'બધા ઉપપ્રશ્નો અને સૂચનો ચકાસો.'}],
+    answerBlueprints:[{marks:'ટૂંકો જવાબ',prompt:'અપઠિત ગદ્યખંડના પ્રશ્નો.',structure:['પ્રશ્નનો વિષય ઓળખો.','સંબંધિત વાક્ય અથવા સંકેત શોધો.','ચોક્કસ અને પૂર્ણ જવાબ લખો.']},{marks:'સારાંશ',prompt:'ગદ્યખંડનો સાર લખો.',structure:['કેન્દ્રીય વિચાર શોધો.','મુખ્ય મુદ્દા યોગ્ય ક્રમમાં જોડો.','ઉદાહરણો અને પુનરાવર્તન ઘટાડો.','મૂળ અર્થ જાળવો.']}],
+    finalChecklist:['હું ગદ્યખંડનો મુખ્ય વિચાર ઓળખી શકું છું.','હું સીધી માહિતી અને અનુમાન વચ્ચેનો તફાવત સમજું છું.','હું સંદર્ભ પ્રમાણે શબ્દાર્થ લખી શકું છું.','હું સ્પષ્ટ અને સંક્ષિપ્ત ગુજરાતી જવાબ લખી શકું છું.']
+  },
+  'gujarati-writing-skills': {
+    chapterId: 'gujarati-writing-skills', curriculumItemId: 'guj-writing', subject: 'Gujarati',
+    focus: 'અનુચ્છેદ, વાર્તા, પત્ર અને જાહેરાતમાં વિચારની ગોઠવણી, ભાષાની શુદ્ધતા અને યોગ્ય સ્વરૂપ.',
+    outcomes: ['લેખન કાર્યનો હેતુ અને વાચક ઓળખવો.','વિચારને શરૂઆત, મધ્ય અને અંતમાં ગોઠવવો.','પત્ર અને જાહેરાતનું સ્વરૂપ જાળવવું.','શબ્દમર્યાદા, જોડણી અને વિરામચિહ્નો ચકાસવા.'],
+    sections: [
+      {id:'planning',title:'૧. લખતાં પહેલાં વિચાર ગોઠવો',explanation:'લેખન શરૂ કરતાં પહેલાં પ્રશ્નમાં આપેલો વિષય, હેતુ, વાચક અને જરૂરી મુદ્દા ઓળખો. અનુચ્છેદમાં એક કેન્દ્રસ્થ વિચાર હોવો જોઈએ. વાર્તામાં પાત્ર, સ્થળ, સમસ્યા, ઘટના અને અંતનો સંબંધ સ્પષ્ટ હોવો જોઈએ. પત્રમાં કોને અને શા માટે લખી રહ્યા છો તે નક્કી કરો. બે મિનિટનું આયોજન લખાણને વધુ સચોટ બનાવે છે.',keyIdeas:['વિષયથી સંબંધિત મુદ્દાઓ જ પસંદ કરો.','અનુચ્છેદમાં એક મુખ્ય વિચારને આધાર આપો.','વાર્તામાં ઘટનાઓનો ક્રમ અને પાત્રોની પ્રેરણા સ્પષ્ટ રાખો.','બધા ઉપમુદ્દા આવરી લીધા છે કે નહીં તે ચકાસો.'],example:{title:'વાર્તાનું માળખું',question:'“પ્રામાણિકતાનું ફળ” વિષય પર વાર્તા લખવાની યોજના બનાવો.',working:['પાત્ર: રસ્તામાં પાકીટ મેળવનાર વિદ્યાર્થી.','સમસ્યા: પાકીટમાં પૈસા અને ઓળખપત્ર છે.','નિર્ણય: ઓળખપત્રની મદદથી માલિક શોધે છે.','અંત: માલિકનો આભાર અને પ્રામાણિકતાનો સંદેશ.'],answer:'સ્પષ્ટ પાત્ર, સમસ્યા, યોગ્ય નિર્ણય અને સ્વાભાવિક અંત ધરાવતી વાર્તા.'}},
+      {id:'paragraph-story',title:'૨. અનુચ્છેદ અને વાર્તા અસરકારક બનાવો',explanation:'અનુચ્છેદમાં શરૂઆત વિષય રજૂ કરે, મધ્યમાં કારણો/ઉદાહરણો આવે અને અંતમાં વિચારને સમાપન મળે. વાર્તામાં માત્ર ઉપદેશ લખવાથી વાર્તા બનતી નથી; ઘટનાઓ દ્વારા સંદેશ દેખાવવો જોઈએ. સંવાદ મર્યાદિત અને સ્વાભાવિક રાખો. સમય અને કાળમાં અચાનક ફેરફાર ન કરો.',keyIdeas:['અનુચ્છેદમાં મુદ્દાઓ તર્કસંગત ક્રમમાં મૂકો.','વાર્તાની શરૂઆત રસપ્રદ પરંતુ વિષયને અનુરૂપ રાખો.','ઘટનાઓ વચ્ચે કારણ-પરિણામનો સંબંધ હોવો જોઈએ.','અંતમાં સંદેશ હોય તો તે વાર્તામાંથી સ્વાભાવિક રીતે નીકળવો જોઈએ.']},
+      {id:'letter-writing',title:'૩. પત્રનું સ્વરૂપ અને ભાષા',explanation:'ઔપચારિક પત્રમાં મોકલનારનું સરનામું, તારીખ, પ્રાપ્તકર્તાની વિગતો, વિષય, સંબોધન, મુખ્ય ભાગ અને અંતિમ અભિવાદન યોગ્ય ક્રમમાં આવે છે. મુખ્ય ભાગમાં હેતુ સ્પષ્ટ કરો, જરૂરી વિગતો આપો અને વિનંતી અથવા સૂચન લખો. અનૌપચારિક પત્રમાં સંબંધ મુજબ આત્મીય ભાષા વાપરો, પણ રજૂઆત ગોઠવેલી રાખો. પ્રશ્નમાં આપેલી પદ્ધતિ અને શબ્દમર્યાદાને પ્રાથમિકતા આપો.',keyIdeas:['ઔપચારિક અને અનૌપચારિક પત્રની ભાષા અલગ રાખો.','વિષય પંક્તિ ટૂંકી અને ચોક્કસ લખો જ્યાં જરૂરી હોય.','મુખ્ય ભાગમાં મુદ્દા અલગ પરિચ્છેદમાં ગોઠવો.','અંતિમ અભિવાદન અને નામ/હસ્તાક્ષર યોગ્ય રીતે લખો.'],example:{title:'ઔપચારિક પત્રનું આયોજન',question:'વિસ્તારમાં કચરો ન ઉઠાવાતો હોવાની ફરિયાદ માટે નગરપાલિકાને પત્ર લખવો છે. મુદ્દા ગોઠવો.',working:['સમસ્યા અને સ્થળ સ્પષ્ટ કરો.','પરિસ્થિતિના પરિણામો જેમ કે દુર્ગંધ અને મચ્છરો જણાવો.','કચરો નિયમિત ઉઠાવવા અને સફાઈ માટે વિનંતી કરો.'],answer:'સમસ્યા → અસર → યોગ્ય કાર્યવાહી માટે વિનંતી.'}},
+      {id:'advertisement-and-editing',title:'૪. જાહેરાત અને અંતિમ સંપાદન',explanation:'જાહેરાત ટૂંકી, આકર્ષક અને માહિતીપ્રદ હોવી જોઈએ. તેમાં જરૂરી વિગતો જેમ કે વસ્તુ/કાર્યક્રમ, તારીખ, સ્થળ, સંપર્ક અથવા ખાસિયત સ્પષ્ટ દેખાય. જો માહિતી પ્રશ્નમાં ન હોય તો કલ્પિત ફોન નંબર કે સરનામું ન ઉમેરો. અંતે જોડણી, માત્રા, વિરામચિહ્નો, વાક્યરચના અને શબ્દમર્યાદા તપાસો.',keyIdeas:['મથાળું ધ્યાન ખેંચે અને વિષય સ્પષ્ટ કરે.','મહત્વની વિગતો છૂટી ન જાય.','ટૂંકા વાક્યો અને યોગ્ય ભાષા વાપરો.','કલ્પિત સંપર્ક વિગતો ઉમેરશો નહીં.']}
+    ],
+    formulaDesk:[{label:'અનુચ્છેદ',formula:'વિષય રજૂઆત → મુદ્દા/ઉદાહરણ → સમાપન',note:'એક કેન્દ્રસ્થ વિચાર જાળવો.'},{label:'વાર્તા',formula:'પાત્ર → સમસ્યા → ઘટના → ઉકેલ → અંત',note:'સંદેશ ઘટનાઓમાંથી સ્વાભાવિક રીતે દેખાવવો જોઈએ.'},{label:'ઔપચારિક પત્ર',formula:'વિગતો → વિષય → સંબોધન → મુખ્ય ભાગ → અંત',note:'પ્રશ્નમાં દર્શાવેલું સ્વરૂપ અનુસરો.'}],
+    commonMistakes:[{mistake:'વિષયથી દૂર જતો લાંબો અનુચ્છેદ લખવો.',correction:'દરેક વાક્ય કેન્દ્રસ્થ વિચારને ટેકો આપે તે જુઓ.'},{mistake:'વાર્તામાં અચાનક અને અવિશ્વસનીય અંત લાવવો.',correction:'અંત પહેલાંની ઘટનાઓ સાથે સ્વાભાવિક રીતે જોડો.'},{mistake:'ઔપચારિક પત્રમાં બોલચાલની ભાષા વાપરવી.',correction:'વિનમ્ર, સ્પષ્ટ અને ઔપચારિક ભાષા રાખો.'},{mistake:'જાહેરાતમાં તારીખ, સ્થળ કે મુખ્ય વિગતો છોડવી.',correction:'પ્રશ્નમાં આપેલા બધા જરૂરી મુદ્દા ટિક કરીને ચકાસો.'},{mistake:'જોડણી અને માત્રા તપાસ્યા વગર લખાણ પૂર્ણ કરવું.',correction:'અંતે અલગથી ભાષાની શુદ્ધતા તપાસો.'}],
+    answerBlueprints:[{marks:'અનુચ્છેદ/વાર્તા',prompt:'વિષય આધારિત સર્જનાત્મક લેખન.',structure:['વિષય અને હેતુ ઓળખો.','મુદ્દાઓનો ક્રમ નક્કી કરો.','સુસંગત વાક્યોમાં લખો.','શબ્દમર્યાદા અને ભાષાની શુદ્ધતા તપાસો.']},{marks:'પત્ર/જાહેરાત',prompt:'નિયત સ્વરૂપમાં લેખન.',structure:['પ્રશ્નમાં માંગેલું સ્વરૂપ પસંદ કરો.','બધી આપેલી વિગતો સામેલ કરો.','યોગ્ય ભાષા અને ગોઠવણી રાખો.','જોડણી અને વિરામચિહ્નો ચકાસો.']}],
+    finalChecklist:['હું લખતાં પહેલાં મુદ્દાઓ ગોઠવી શકું છું.','હું અનુચ્છેદ અને વાર્તાનું યોગ્ય માળખું રાખું છું.','હું ઔપચારિક પત્રનું સ્વરૂપ જાળવી શકું છું.','હું જાહેરાત ટૂંકી અને માહિતીપ્રદ લખી શકું છું.']
+  },
+  'gujarati-grammar-skills': {
+    chapterId: 'gujarati-grammar-skills', curriculumItemId: 'guj-grammar', subject: 'Gujarati',
+    focus: 'રૂઢિપ્રયોગ, સમાનાર્થી-વિરોધાર્થી, એક શબ્દ, શુદ્ધ વાક્ય અને નામયોગી જેવા ભાષાકૌશલ્યો.',
+    outcomes: ['રૂઢિપ્રયોગનો ભાવાર્થ વાક્યમાં વાપરવો.','સંદર્ભ પ્રમાણે સમાનાર્થી અને વિરોધાર્થી પસંદ કરવો.','વાક્યની અશુદ્ધિ શોધી સુધારવી.','નામયોગી અને અનુગનો યોગ્ય ઉપયોગ કરવો.'],
+    sections: [
+      {id:'idioms',title:'૧. રૂઢિપ્રયોગ: ભાવાર્થ સમજો',explanation:'રૂઢિપ્રયોગ એવો શબ્દસમૂહ છે જેનો અર્થ માત્ર શબ્દોના શાબ્દિક અર્થથી સમજાતો નથી. તેનો પ્રચલિત ભાવાર્થ ઓળખવો અને વાક્યના સંદર્ભમાં તેનો યોગ્ય ઉપયોગ કરવો. જવાબમાં માત્ર અર્થ લખવા કરતાં શક્ય હોય તો નાનું, સ્વાભાવિક વાક્ય બનાવો જેથી અર્થ સ્પષ્ટ થાય.',keyIdeas:['રૂઢિપ્રયોગનો અર્થ શાબ્દિક રીતે ન કાઢો.','પ્રચલિત ભાવાર્થ યાદ રાખો અને સંદર્ભમાં તપાસો.','વાક્યમાં કર્તા, ક્રિયા અને અર્થનો મેળ હોવો જોઈએ.','શબ્દસમૂહનો મૂળ ભાવ જાળવો.'],example:{title:'રૂઢિપ્રયોગનો ઉપયોગ',question:'“આંખનો તારો” રૂઢિપ્રયોગનો અર્થ સમજાવો અને વાક્ય બનાવો.',working:['આંખનો તારો એટલે ખૂબ વહાલો અથવા પ્રિય વ્યક્તિ.','વાક્યમાં કોઈ વ્યક્તિ માટેનો પ્રેમ દર્શાવો.'],answer:'અર્થ: અતિપ્રિય વ્યક્તિ. વાક્ય: દાદી માટે નાનો પૌત્ર આંખનો તારો છે.'}},
+      {id:'synonyms-antonyms',title:'૨. સમાનાર્થી અને વિરોધાર્થી',explanation:'સમાનાર્થી શબ્દોનો અર્થ મળતો આવે છે, પરંતુ દરેક શબ્દ દરેક સંદર્ભમાં બદલી શકાય એવું નથી. વિરોધાર્થી શબ્દ અર્થમાં વિરુદ્ધ હોય છે. યોગ્ય શબ્દ પસંદ કરવા માટે વાક્યનો ભાવ, વ્યાકરણિક રૂપ અને શબ્દની તીવ્રતા ધ્યાનમાં લો. એક શબ્દનો જવાબ આપતી વખતે જોડણી ચોક્કસ લખો.',keyIdeas:['સમાનાર્થીમાં અર્થની નજીકતા જરૂરી છે; સંપૂર્ણ સમાનતા જરૂરી નથી.','વિરોધાર્થી સંદર્ભમાં સાચો વિરોધ દર્શાવતો હોવો જોઈએ.','શબ્દનું લિંગ, વચન અથવા રૂપ વાક્ય સાથે મેળ ખાતું રાખો.','જોડણીમાં માત્રા અને અક્ષરો તપાસો.'],example:{title:'સંદર્ભ પ્રમાણે શબ્દ પસંદ કરો',question:'“ઉદાર” માટે સમાનાર્થી અને “ઉદાર”નો વિરોધી અર્થ આપો.',working:['“ઉદાર”નો નજીકનો અર્થ દાનવીર/વિશાળહૃદયી છે.','સંદર્ભ પ્રમાણે “કૃપણ” તેનો વિરોધી અર્થ આપે છે.'],answer:'સમાનાર્થી: દાનવીર. વિરોધાર્થી: કૃપણ.'}},
+      {id:'sentence-correction',title:'૩. શુદ્ધ વાક્યરચના',explanation:'વાક્ય શુદ્ધ કરવા માટે કર્તા-ક્રિયા, કાળ, લિંગ, વચન, વિભક્તિ અને શબ્દક્રમ તપાસો. વાક્યમાં એક જ પ્રકારની ભૂલ ન હોય શકે, તેથી પહેલાં અર્થ સમજો અને પછી વ્યાકરણિક સંબંધો જુઓ. સુધારેલા વાક્યમાં મૂળ અર્થ બદલાઈ ન જાય તેની પણ ખાતરી કરો.',keyIdeas:['કર્તા અને ક્રિયાપદ વચ્ચે લિંગ/વચનનો મેળ તપાસો.','કાળનો ઉપયોગ આખા વાક્યમાં સુસંગત રાખો.','યોગ્ય અનુગ/વિભક્તિ પસંદ કરો.','વાક્યનો અર્થ જાળવીને ઓછામાં ઓછો જરૂરી ફેરફાર કરો.']},
+      {id:'one-word-and-postpositions',title:'૪. એક શબ્દ અને નામયોગી',explanation:'કેટલાક શબ્દસમૂહો માટે એક ચોક્કસ શબ્દ વપરાય છે. નામયોગી શબ્દો નામ અથવા સર્વનામ પછી આવીને સંબંધ દર્શાવે છે, જેમ કે સાથે, માટે, તરફ, પાસે, ઉપર. યોગ્ય નામયોગી પસંદ કરવાથી સ્થાન, દિશા, હેતુ અથવા સંબંધ સ્પષ્ટ થાય છે. પ્રશ્નમાં આપેલા વાક્યમાં નામયોગીનો અર્થ શું છે તે જાણી પછી જવાબ આપો.',keyIdeas:['એક શબ્દ લખતી વખતે અર્થનું સંપૂર્ણ પ્રતિનિધિત્વ થાય તે પસંદ કરો.','નામયોગી પહેલાંનું નામ/સર્વનામ અને પછીનો શબ્દ સંબંધ મુજબ ગોઠવો.','એકથી વધુ નામયોગી શક્ય હોય તો વાક્યના અર્થ પ્રમાણે પસંદ કરો.','શબ્દની જોડણી અને વાક્યમાં સ્થાન તપાસો.'],example:{title:'નામયોગી ઓળખો',question:'“વિદ્યાર્થી મિત્ર સાથે પુસ્તકાલય ગયો.” વાક્યમાં નામયોગી કયો છે અને શું સંબંધ બતાવે છે?',working:['“સાથે” શબ્દ “મિત્ર” અને “ગયો” વચ્ચેનો સાથ દર્શાવે છે.','તે સહભાગિતાનો સંબંધ બતાવે છે.'],answer:'“સાથે” નામયોગી છે; તે સંગાથ દર્શાવે છે.'}}
+    ],
+    formulaDesk:[{label:'રૂઢિપ્રયોગ',formula:'શબ્દસમૂહ → પ્રચલિત ભાવાર્થ',note:'શાબ્દિક અર્થથી અલગ હોઈ શકે.'},{label:'સમાનાર્થી',formula:'નજીકનો અર્થ',note:'સંદર્ભ અને શબ્દનો ભાવ ધ્યાનમાં લો.'},{label:'વિરોધાર્થી',formula:'વિરુદ્ધ અર્થ',note:'વાક્યમાં સાચો વિરોધ દર્શાવતો શબ્દ પસંદ કરો.'}],
+    commonMistakes:[{mistake:'રૂઢિપ્રયોગનો શાબ્દિક અર્થ લખવો.',correction:'પ્રચલિત ભાવાર્થ સમજાવી વાક્યમાં વાપરો.'},{mistake:'સંદર્ભ વિના કોઈપણ સમાનાર્થી લખવો.',correction:'વાક્યના ભાવ અને વ્યાકરણિક રૂપ સાથે મેળ બેસાડો.'},{mistake:'શુદ્ધિકરણમાં મૂળ અર્થ બદલી નાખવો.',correction:'ફક્ત જરૂરી વ્યાકરણિક સુધારો કરો.'},{mistake:'કર્તા અને ક્રિયાપદનો મેળ અવગણવો.',correction:'લિંગ, વચન અને કાળ તપાસો.'},{mistake:'નામયોગીનો સંબંધ સમજ્યા વિના પસંદ કરવો.',correction:'સ્થાન, દિશા, હેતુ કે સંગાથ કયો સંબંધ છે તે ઓળખો.'}],
+    answerBlueprints:[{marks:'વ્યાકરણ',prompt:'રૂઢિપ્રયોગ અથવા શબ્દાર્થ.',structure:['શબ્દ/રૂઢિપ્રયોગનો યોગ્ય અર્થ ઓળખો.','સંદર્ભ પ્રમાણે જવાબ લખો.','વાક્ય માગ્યું હોય તો સ્વાભાવિક વાક્ય બનાવો.']},{marks:'વાક્ય શુદ્ધિ',prompt:'અશુદ્ધ વાક્ય સુધારો.',structure:['મૂળ વાક્યનો અર્થ સમજો.','કર્તા-ક્રિયા, કાળ, લિંગ અને વચન તપાસો.','સુધારેલું વાક્ય ફરી વાંચીને અર્થ ચકાસો.']}],
+    finalChecklist:['હું રૂઢિપ્રયોગનો ભાવાર્થ ઓળખું છું.','હું સંદર્ભ પ્રમાણે સમાનાર્થી અને વિરોધાર્થી પસંદ કરું છું.','હું વાક્યની વ્યાકરણિક અશુદ્ધિ શોધી શકું છું.','હું નામયોગીનો યોગ્ય ઉપયોગ કરી શકું છું.']
+  },
+  'it-digital-documentation': {
+    chapterId: 'it-digital-documentation', curriculumItemId: 'it-docs', subject: 'Information Technology',
+    focus: 'Advanced digital documentation with LibreOffice Writer: styles, images, tables of contents, templates and review tools.',
+    outcomes: ['Explain why styles improve consistency and document structure.','Create, update and apply paragraph, character and page styles.','Insert and position images with suitable anchoring and wrapping.','Create a table of contents and use review features.'],
+    sections: [
+      {id:'styles',title:'1. Styles create consistent documents',explanation:'A style is a saved collection of formatting settings that can be applied to text or document elements. Paragraph styles control the appearance and spacing of whole paragraphs; character styles apply to selected characters; page styles control page layout; list styles define bullets and numbering; frame and table styles apply to those objects. Styles make a long document consistent and allow global changes without formatting every heading separately.',keyIdeas:['Use Heading 1 and Heading 2 styles to create a logical document hierarchy.','Direct formatting changes one selected item; a style applies a reusable set of settings.','A style can be created from a selection or through the Styles interface.','Updating a style can change every paragraph using that style.'],example:{title:'Use a heading style',question:'A report has 12 section headings that must all become dark green, bold and 16 pt. What is the efficient approach?',working:['Apply the same paragraph style to all 12 headings.','Modify that style to use the required font, size and colour.','All paragraphs using the style update consistently.'],answer:'Apply a common heading style and update it once rather than formatting each heading individually.'}},
+      {id:'images-and-objects',title:'2. Insert and control images',explanation:'Images can be inserted through the menu, by drag-and-drop, copy-and-paste or by linking to an external file. Once inserted, the image can be resized, cropped and positioned. Anchoring defines how an object relates to the page, paragraph or character. Text wrapping controls how paragraphs flow around it; arrangement controls which object appears in front when objects overlap. Grouping drawing objects makes them easier to move as one unit.',keyIdeas:['Keep aspect ratio when resizing photographs or diagrams unless distortion is intended.','Anchoring and text wrapping are related but different settings.','Linking may keep a smaller document but the source image must remain available.','Use descriptive alternative text where the software and document requirements support it.'],example:{title:'Prevent an image from breaking the layout',question:'A logo jumps to another page when text is edited. Which settings should be checked?',working:['Check whether the image is anchored to the page, paragraph or character.','Review text wrapping and position.','Choose the anchor that matches the document’s intended flow.'],answer:'Review anchoring, position and text wrapping; choose settings that keep the logo with the intended content.'}},
+      {id:'toc-templates-review',title:'3. Table of contents, templates and review',explanation:'A table of contents is generated from document headings that use recognised outline or heading styles. If headings are merely made bold by direct formatting, they may not appear correctly. Templates provide reusable layouts and settings for new documents. Track Changes records edits for review; comments add discussion without replacing the document text. A reviewer can accept or reject changes and compare document versions.',keyIdeas:['Apply heading styles before inserting a table of contents.','Update the table of contents after adding, removing or renaming headings.','Templates can be created, imported, edited and reused.','Track Changes records edits; comments communicate feedback.','Accept or reject tracked changes before producing the final copy.'],example:{title:'Why a heading is missing from the table of contents',question:'A report heading is bold and large but does not appear in the automatic table of contents. Why?',working:['The heading may have only direct formatting.','Automatic tables of contents use heading/outline structure.','Apply the correct heading style and update the table.'],answer:'Apply an appropriate heading style, then update the table of contents.'}},
+      {id:'document-quality',title:'4. Build a reliable final document',explanation:'A professional document is more than attractive text. It needs a logical heading structure, readable type, consistent spacing, relevant images, captions where needed, page numbering and a correctly updated table of contents. Before sharing, inspect page breaks, object positions, spelling, links and tracked changes. Save in the required format and retain an editable source file when collaboration or later updates are expected.',keyIdeas:['Use heading hierarchy in logical order.','Keep fonts, spacing, margins and alignment consistent.','Check image position and page breaks in print layout.','Resolve comments and tracked changes before final distribution.']}
+    ],
+    formulaDesk:[{label:'Style hierarchy',formula:'Title → Heading 1 → Heading 2 → Body text',note:'Use structural styles, not just visual formatting.'},{label:'Image placement',formula:'Anchor + Position + Text wrapping',note:'These settings work together but control different behaviour.'},{label:'Automatic contents',formula:'Heading styles → Insert ToC → Update ToC',note:'Update after document changes.'}],
+    commonMistakes:[{mistake:'Using only bold and larger font for headings.',correction:'Apply proper heading styles so the document structure is recognised.'},{mistake:'Changing image dimensions and distorting it.',correction:'Preserve the aspect ratio when resizing.'},{mistake:'Assuming anchoring and wrapping mean the same thing.',correction:'Anchoring ties the object to content; wrapping controls text flow.'},{mistake:'Forgetting to update the table of contents.',correction:'Refresh it after heading or page changes.'},{mistake:'Sharing a file with unresolved tracked changes.',correction:'Review, accept/reject changes and resolve comments before final export.'}],
+    answerBlueprints:[{marks:'Theory/practical explanation',prompt:'Explain or demonstrate applying styles.',structure:['Identify the type of style required.','Open the Styles interface and create/apply the style.','Show how updating the style affects all linked content.']},{marks:'Practical task',prompt:'Create a structured document with a table of contents.',structure:['Apply heading styles in a hierarchy.','Insert the automatic table of contents.','Add page numbers and relevant objects.','Update and inspect the final document.']}],
+    finalChecklist:['I can distinguish paragraph, character and page styles.','I can use anchoring and text wrapping correctly.','I can create and update a table of contents.','I can use templates, Track Changes and comments.']
+  },
+  'it-spreadsheet-analysis': {
+    chapterId: 'it-spreadsheet-analysis', curriculumItemId: 'it-calc', subject: 'Information Technology',
+    focus: 'Advanced spreadsheet work using data consolidation, groups, subtotals, scenarios, Goal Seek, macros and linked sheets.',
+    outcomes: ['Explain when to consolidate data and create subtotals.','Use What-if scenarios to compare possible outcomes.','Use Goal Seek to find an input that reaches a target result.','Describe macros and linked spreadsheet references safely.'],
+    sections: [
+      {id:'consolidation-subtotals',title:'1. Consolidate data and create subtotals',explanation:'Data consolidation combines information from different ranges or sheets into a summary. Before consolidating, check that the source ranges use consistent headings, categories and data types. Groups and subtotals organise rows into categories and calculate summaries such as sums or averages. Sorting by the grouping field first helps subtotals appear in the correct places.',keyIdeas:['Use consistent labels and column structures in source ranges.','Consolidation can summarise data from several sheets or ranges.','Subtotals calculate grouped summaries such as sum, count or average.','Sort by the relevant category before creating subtotals when required.'],example:{title:'Summarise sales by region',question:'Three sheets contain monthly sales with the same columns. How can a manager compare total sales by region?',working:['Check that all sheets use matching headings and data types.','Consolidate the ranges into one summary or combine the data first.','Group/sort by region and calculate subtotals of sales.'],answer:'Use consolidation for the multi-sheet summary and subtotals to calculate totals by region.'}},
+      {id:'what-if-scenarios',title:'2. Explore What-if scenarios',explanation:'What-if analysis changes one or more input values to examine how a result changes. A scenario stores a set of alternative input values, such as optimistic, expected and cautious sales assumptions. Comparing scenarios helps a user understand risk and plan decisions. The output is only as reliable as the assumptions entered; a scenario is not a prediction or proof that an outcome will happen.',keyIdeas:['Identify the input cells and the formula/result cell.','Create named scenarios for clearly different assumptions.','Compare the result under each scenario.','Record assumptions so another user understands what each case means.'],example:{title:'Compare three budgets',question:'A school estimates event cost using participant count and cost per student. How can it compare low, expected and high attendance?',working:['Choose participant count as an input cell and total cost as the formula cell.','Create three scenarios with different participant counts.','Compare total cost for each scenario.'],answer:'Use scenarios to compare low, expected and high attendance assumptions.'}},
+      {id:'goal-seek',title:'3. Goal Seek works backwards from a target',explanation:'Goal Seek is a What-if tool that changes one input cell until a formula cell reaches a specified target value. It is useful when the result is known but the required input is not. The formula cell must depend on the changing input cell. Goal Seek finds a value based on that relationship; it does not decide whether the assumption is realistic.',keyIdeas:['Set cell: the cell containing the formula/result.','To value: the target result.','By changing cell: the input that Goal Seek may alter.','The result depends on the correctness of the formula and the suitability of the changing cell.'],example:{title:'Find the required sales quantity',question:'A product sells for ₹50 each. A spreadsheet calculates revenue as price × quantity. Find the quantity needed for revenue of ₹5,000.',working:['Set the revenue formula cell as Set cell.','Enter 5000 as To value.','Choose quantity as By changing cell.','Goal Seek changes quantity until the formula equals the target.'],answer:'100 units are required, because ₹50 × 100 = ₹5,000.'}},
+      {id:'macros-and-links',title:'4. Macros and linked spreadsheet data',explanation:'A macro records or stores a sequence of actions so repetitive tasks can be automated. A simple macro can format a report or process a repeated routine. Linked data can connect cells across sheets or documents so one source feeds another. Relative references adjust when copied; absolute references remain fixed. Macros and external links should be used only when their source and effect are understood, because untrusted files can create security risks.',keyIdeas:['Record a macro only after planning the repeatable steps.','Test a macro on a copy before using it on important work.','Use absolute references when a reference must remain fixed during copying.','Verify external links and do not enable unknown macros blindly.'],example:{title:'Understand an absolute reference',question:'A formula is copied down a column, but the tax rate cell must always remain B1. Which reference is suitable?',working:['A relative reference changes when copied.','An absolute reference locks both column and row.','In Calc, use dollar signs to lock the cell.'],answer:'Use $B$1 as the absolute reference.'}}
+    ],
+    formulaDesk:[{label:'Revenue',formula:'Price × Quantity',note:'A simple model used for Goal Seek.'},{label:'Goal Seek inputs',formula:'Set cell · To value · By changing cell',note:'The formula cell must depend on the changing input.'},{label:'Absolute reference',formula:'$B$1',note:'Locks both column and row when copied.'},{label:'Scenario analysis',formula:'Alternative inputs → alternative outputs',note:'Name and document assumptions.'}],
+    commonMistakes:[{mistake:'Consolidating ranges with mismatched headings.',correction:'Standardise labels and layouts before combining data.'},{mistake:'Confusing a scenario with a forecast.',correction:'A scenario is a conditional “what-if” case, not a guarantee.'},{mistake:'Selecting a Goal Seek cell that does not affect the formula.',correction:'The formula result must depend on the changing input cell.'},{mistake:'Copying a relative reference when a cell must stay fixed.',correction:'Use an absolute reference such as $B$1.'},{mistake:'Running an unknown macro without checking its source.',correction:'Use trusted macros and test automation on a safe copy.'}],
+    answerBlueprints:[{marks:'Theory/practical',prompt:'Explain a Goal Seek task.',structure:['Identify the formula/result cell.','State the target value.','Choose the input cell to change.','Run Goal Seek and verify the result.']},{marks:'Theory/practical',prompt:'Compare scenarios in a spreadsheet.',structure:['Identify input cells and result cells.','Create named alternative sets of inputs.','Compare outputs and explain assumptions.']}],
+    finalChecklist:['I can prepare consistent data for consolidation.','I can create groups and subtotals.','I can explain scenario analysis and Goal Seek.','I can distinguish relative and absolute references.','I can explain macros and safe use.']
+  },
+  'it-database-management': {
+    chapterId: 'it-database-management', curriculumItemId: 'it-dbms', subject: 'Information Technology',
+    focus: 'Relational databases, tables, keys, relationships, queries, forms and reports using LibreOffice Base.',
+    outcomes: ['Explain why a database is useful for structured information.','Identify tables, records, fields and data types.','Distinguish primary and foreign keys and understand relationships.','Explain the purpose of queries, forms and reports.'],
+    sections: [
+      {id:'database-basics',title:'1. Tables, fields and records',explanation:'A database stores related information in an organised way so it can be searched, updated and reported reliably. A table represents one kind of entity, such as Students or Books. A field is a column that stores one attribute, such as StudentID or Name. A record is one row describing one instance. Choosing appropriate data types improves accuracy and prevents invalid entries.',keyIdeas:['A field stores one kind of information; a record stores one complete entry.','Use clear field names and suitable data types.','Avoid storing multiple unrelated values in one field.','A table should represent one main entity or relationship.'],example:{title:'Design a student table',question:'A school wants to store student ID, name, date of birth and class. Identify fields and a possible primary key.',working:['Create fields StudentID, StudentName, DateOfBirth and Class.','StudentID should be unique and not blank.','Use suitable text/date data types.'],answer:'StudentID is a suitable primary key if every student has a unique ID.'}},
+      {id:'keys-and-relationships',title:'2. Primary keys and relationships',explanation:'A primary key uniquely identifies each record in a table. A foreign key is a field that refers to a key in another table and helps connect related information. A one-to-many relationship occurs when one record in a parent table can be linked to many records in another table. Relationships reduce unnecessary repetition and help maintain referential integrity.',keyIdeas:['A primary key must be unique and should not be null.','A foreign key refers to a key in a related table.','One student can have many fee payments: one-to-many.','Referential integrity helps prevent references to records that do not exist.'],example:{title:'Connect students and payments',question:'One student can make many fee payments. How should the tables be related?',working:['Students table uses StudentID as its primary key.','Payments table stores a StudentID foreign key in each payment record.','One StudentID can appear in many payment rows.'],answer:'Create a one-to-many relationship from Students to Payments using StudentID.'}},
+      {id:'queries-forms-reports',title:'3. Queries, forms and reports',explanation:'A query retrieves or manipulates selected data according to criteria. A form provides a user-friendly way to enter or view records. A report presents database information in an organised, printable layout, often with grouping and totals. These objects serve different purposes: queries select data, forms support interaction and reports communicate results.',keyIdeas:['A query can filter records by a condition, sort data or combine related tables.','A form supports controlled data entry and editing.','A report formats selected data for presentation or printing.','A query is not the same as a table; it presents a result based on stored data.'],example:{title:'Choose the right database object',question:'A school wants a printable list of students whose attendance is below 75%. What should it use?',working:['A query selects students where attendance is below 75%.','A report formats that selected result for printing.'],answer:'Use a query to filter the records and a report to present them.'}},
+      {id:'database-quality',title:'4. Data integrity, security and maintenance',explanation:'Reliable databases use validation, appropriate data types, keys and relationships to protect data quality. Users should receive only the access they need. Regular backups help recover information after accidental deletion or device failure. Duplicate records, inconsistent spellings and missing values can make reports misleading, so entry rules and periodic checks matter.',keyIdeas:['Validation rules restrict values to an acceptable range or format.','Use the least privilege principle when assigning access.','Back up important databases and test that backups can be restored.','Use consistent codes and naming conventions to reduce duplicate or mismatched records.']}
+    ],
+    formulaDesk:[{label:'Database structure',formula:'Table → Record (row) → Field (column)',note:'Know the difference between these three terms.'},{label:'Primary key',formula:'Unique + Not null',note:'Identifies one record.'},{label:'One-to-many',formula:'One parent record → many child records',note:'A foreign key in the child table refers to the parent.'},{label:'Database objects',formula:'Query = select · Form = enter · Report = present',note:'Different objects have different purposes.'}],
+    commonMistakes:[{mistake:'Using a person’s name as a guaranteed unique key.',correction:'Use a stable unique identifier such as StudentID.'},{mistake:'Putting several values in one field.',correction:'Use separate fields or a related table where appropriate.'},{mistake:'Confusing primary and foreign keys.',correction:'Primary key identifies a row; foreign key links to another table.'},{mistake:'Using a report to filter source data.',correction:'Use a query to select records, then a report to present them.'},{mistake:'Skipping validation and backups.',correction:'Use data rules and maintain recoverable backups.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Explain primary and foreign keys.',structure:['Define primary key and its uniqueness.','Define foreign key as a reference to another table.','Give a suitable example of a relationship.']},{marks:'Practical task',prompt:'Create a filtered report.',structure:['Design tables with suitable fields and keys.','Create a query with the required criteria.','Create a report based on the query.','Check accuracy and layout.']}],
+    finalChecklist:['I can explain tables, fields, records and data types.','I can identify primary and foreign keys.','I can explain a one-to-many relationship.','I can distinguish queries, forms and reports.','I can describe validation, access control and backups.']
+  },
+  'it-workplace-safety': {
+    chapterId: 'it-workplace-safety', curriculumItemId: 'it-safety', subject: 'Information Technology',
+    focus: 'Maintaining a healthy, safe and secure working environment: hazards, ergonomics, emergency response and responsible workplace practice.',
+    outcomes: ['Identify physical, electrical and environmental hazards.','Explain ergonomic practices for safe computer use.','Describe emergency response and reporting.','Explain basic workplace security and safe handling of information.'],
+    sections: [
+      {id:'hazard-identification',title:'1. Identify hazards before they cause harm',explanation:'A hazard is anything with the potential to cause injury, illness or damage. In a computer workplace, hazards can include loose cables, overloaded sockets, damaged equipment, blocked exits, poor lighting, clutter, spills and unsafe lifting. Risk depends on both the likelihood of an incident and how serious the harm could be. Regular inspection and prompt reporting reduce preventable accidents.',keyIdeas:['Keep walkways and exits clear.','Do not use damaged plugs, cables or electrical equipment.','Keep liquids away from computers and power sources.','Report hazards and near misses to the responsible person.'],example:{title:'Spot the hazard',question:'A power cable crosses a busy walkway and a drink is placed beside a desktop computer. Identify the risks and safer actions.',working:['The cable creates a trip hazard; route and secure it away from the walkway.','The drink may spill onto electrical equipment; move it to a safe area.','Report any damaged electrical equipment rather than attempting unsafe repair.'],answer:'Remove the trip hazard, keep liquids away and report unsafe equipment.'}},
+      {id:'ergonomics',title:'2. Ergonomics and healthy computer use',explanation:'Ergonomics means arranging work, tools and posture to reduce strain and improve comfort. A suitable workstation supports the back, keeps feet stable, positions the screen near eye level and places the keyboard and mouse within easy reach. Regular short breaks and changes of posture reduce continuous strain. Good lighting and screen settings can reduce glare and eye discomfort.',keyIdeas:['Sit with back supported and shoulders relaxed.','Keep the monitor at a comfortable distance and near eye level.','Keep wrists neutral and avoid reaching repeatedly for the mouse.','Take short movement and eye-rest breaks during long sessions.'],example:{title:'Improve a workstation',question:'A student leans forward, bends the wrists and works with screen glare. Suggest three improvements.',working:['Adjust the chair and screen so the back is supported and the head remains neutral.','Position keyboard and mouse so wrists remain straight and shoulders relaxed.','Change screen angle/lighting to reduce glare and take regular breaks.'],answer:'Support posture, arrange input devices ergonomically and reduce screen glare.'}},
+      {id:'emergency-response',title:'3. Emergency procedures and incident reporting',explanation:'An emergency procedure explains how people should respond to fire, electric shock, injury or another serious incident. Know the exit routes, alarm method, assembly point and responsible contacts. Do not touch a person who may still be in contact with live electricity; isolate power only if it is safe to do so and call trained emergency help. Follow workplace instructions rather than improvising a risky rescue.',keyIdeas:['Know the nearest safe exit and assembly point.','Raise the alarm and contact trained responders.','Never touch a person or equipment that may be live until the electrical hazard is isolated safely.','Report incidents and near misses so the cause can be addressed.']},
+      {id:'security-and-wellbeing',title:'4. Workplace security and wellbeing',explanation:'A safe workplace includes the protection of people, equipment and information. Lock devices when unattended, use approved access credentials, avoid unknown attachments and protect confidential information. Use only authorised software and follow the organisation’s data-handling rules. Healthy work habits also include respectful communication, adequate rest, clean surroundings and seeking help when stress or workload becomes difficult to manage.',keyIdeas:['Use strong, unique passwords and never share them.','Lock the screen when leaving a workstation.','Do not open suspicious links or attachments.','Protect confidential information and use authorised storage and sharing methods.']}
+    ],
+    formulaDesk:[{label:'Risk assessment',formula:'Likelihood × Severity',note:'A simple way to prioritise hazards.'},{label:'Ergonomics',formula:'Posture + Workstation + Breaks',note:'Reduce strain through setup and habits.'},{label:'Emergency response',formula:'Raise alarm → Safe exit → Assembly point',note:'Follow the organisation’s procedure and trained responders.'}],
+    commonMistakes:[{mistake:'Ignoring a small trip hazard.',correction:'Remove or report hazards before they cause an incident.'},{mistake:'Trying to rescue someone touching live electrical equipment.',correction:'Do not touch them until the electrical hazard is isolated safely; call trained responders.'},{mistake:'Working for hours without changing posture.',correction:'Use suitable workstation setup and regular short breaks.'},{mistake:'Sharing passwords with classmates or colleagues.',correction:'Keep credentials private and use approved access methods.'},{mistake:'Blocking exits with bags or equipment.',correction:'Keep emergency routes clear at all times.'}],
+    answerBlueprints:[{marks:'3 marks',prompt:'Explain how to prevent a workplace hazard.',structure:['Name the hazard and possible harm.','Give practical control measures.','Mention reporting and follow-up where relevant.']},{marks:'3–5 marks',prompt:'Describe safe response to an emergency.',structure:['Raise the alarm and contact trained help.','Avoid actions that create additional danger.','Use the designated exit and assembly point.','Follow reporting and recovery procedures.']}],
+    finalChecklist:['I can identify common computer-workplace hazards.','I can describe an ergonomic workstation.','I know why emergency procedures and reporting matter.','I can explain safe digital and information-handling practices.']
   }
 }
-
 export function getMasteryPack(chapterId: string) {
-  return CHAPTER_MASTERY[chapterId]
+  return CHAPTER_MASTERY[chapterId] ?? Object.values(CHAPTER_MASTERY).find(pack => pack.curriculumItemId === chapterId)
 }
