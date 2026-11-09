@@ -34,7 +34,7 @@ function buildCards(): RevisionCard[] {
       id: `seed:${pack.chapterId}:${section.id}:${index}`,
       chapterId: item.id,
       subjectId: item.subjectId,
-      front: index === 0 ? section.title.replace(/^\\d+\\.\\s*/, '') : `Remember this: ${section.title.replace(/^\\d+\\.\\s*/, '')}?`,
+      front: index === 0 ? section.title.replace(/^\d+\.\s*/, '') : `Remember this: ${section.title.replace(/^\d+\.\s*/, '')}?`,
       back: point,
       sourceLabel: item.title,
       createdAt: now,
