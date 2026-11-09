@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowRight, BookmarkCheck, CheckCircle2, ClipboardList, ExternalLink, Lightbulb, Sparkles } from 'lucide-react'
 import { getMasteryPack } from './chapterMasteryContent'
+import { db, type LearningRecord } from './core'
 import './chapter-mastery.css'
 
 const BOARD_RESOURCES: Record<string, { label: string; paper: string; markingScheme: string; note: string }> = {
@@ -41,6 +42,7 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
   const [checked, setChecked] = useState<string[]>([])
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [quizSubmitted, setQuizSubmitted] = useState(false)
+  const [quizMessage, setQuizMessage] = useState('')
   useEffect(() => {
     setChecked([])
     setAnswers({})
@@ -63,6 +65,35 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
 
   function toggleItem(item: string) {
     setChecked(current => current.includes(item) ? current.filter(value => value !== item) : [...current, item])
+  }
+
+  async function submitKnowledgeCheck() {
+    if (answeredCount !== questions.length || !questions.length) return
+    setQuizSubmitted(true)
+    if (!pack.curriculumItemId) return
+    try {
+      const itemId = pack.curriculumItemId
+      const previous = await db.learningRecords.get(itemId)
+      const percent = Math.round((quizScore / questions.length) * 100)
+      const record: LearningRecord = {
+        id: itemId,
+        itemId,
+        completed: previous?.completed ?? false,
+        bookmarked: previous?.bookmarked ?? false,
+        note: previous?.note ?? '',
+        updatedAt: new Date().toISOString(),
+        practiceSummary: {
+          attempts: (previous?.practiceSummary?.attempts ?? 0) + 1,
+          bestScore: Math.max(previous?.practiceSummary?.bestScore ?? 0, percent),
+          lastScore: percent,
+          lastAttemptAt: new Date().toISOString()
+        }
+      }
+      await db.learningRecords.put(record)
+      setQuizMessage('Result saved to your local learning record and analytics.')
+    } catch {
+      setQuizMessage('Answers were checked, but this result could not be saved on this device.')
+    }
   }
 
   return <section className="mastery-shell" aria-labelledby="mastery-title">
@@ -175,11 +206,11 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
             })}
           </div>
           <div className="mastery-quiz-footer">
-            <span>{quizSubmitted ? `Your score: ${quizScore} / ${questions.length}` : 'Complete every question before checking your answers.'}</span>
+            <span>{quizSubmitted ? `Your score: ${quizScore} / ${questions.length}` : 'Complete every question before checking your answers.'}{quizMessage && <small>{quizMessage}</small>}</span>
             {!quizSubmitted
               ? <button type="button" className="mastery-quiz-button" disabled={answeredCount !== questions.length}
-                  onClick={() => setQuizSubmitted(true)}>Check answers <ArrowRight size={14}/></button>
-              : <button type="button" className="mastery-quiz-button is-secondary" onClick={() => { setAnswers({}); setQuizSubmitted(false) }}>Try again <ArrowRight size={14}/></button>}
+                  onClick={() => void submitKnowledgeCheck()}>Check answers <ArrowRight size={14}/></button>
+              : <button type="button" className="mastery-quiz-button is-secondary" onClick={() => { setAnswers({}); setQuizSubmitted(false); setQuizMessage('') }}>Try again <ArrowRight size={14}/></button>}
           </div>
         </section>}
 
