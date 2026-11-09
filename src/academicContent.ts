@@ -3106,9 +3106,9 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     curriculumItemId: 'sci-heredity',
     subjectId: 'science',
     title: 'Heredity',
-    chapterLabel: 'World of Living · Unit II · Board scope',
+    chapterLabel: 'World of Living · Unit II · Formative only',
     estimatedMinutes: 35,
-    syllabusScope: 'Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination. Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination are included in the year-end board syllabus. Evolution-related extension topics are formative only.',
+    syllabusScope: 'Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination. Heredity, Mendel’s contribution, laws for inheritance of traits and a brief introduction to sex determination are included for formative learning. This topic is not assessed in the year-end examination.',
     overview: 'Heredity is the passing of traits from parents to offspring. Genes carry information, and the combination of genes inherited by an offspring helps explain similarities and variation within a family.',
     learningGoals: [
       'Distinguish inherited traits from acquired traits.',
@@ -3223,7 +3223,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       }
     ],
     sourceUrl: scienceSource,
-    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit II · board scope'
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit II'
   },
   {
     id: 'evolution',
