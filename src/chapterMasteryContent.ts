@@ -155,6 +155,128 @@ export const CHAPTER_MASTERY: Record<string, MasteryPack> = {
     answerBlueprints: [{marks:'2 marks',prompt:'Find the sum and product of zeros.',structure:['Identify a, b and c with their signs.','Write the two relationships.','Substitute and simplify clearly.']},{marks:'3 marks',prompt:'Form a quadratic polynomial from its zero sum and product.',structure:['Write x² − Sx + P.','Substitute the values with signs.','State the final polynomial.']}],
     finalChecklist:['I can identify a, b and c without losing negative signs.','I can verify a zero using substitution.','I can explain the x-axis meaning of zeros.','I can apply both coefficient relationships and form a polynomial from S and P.']
   },
+  'polynomials': {
+    chapterId: 'polynomials',
+    subject: 'Mathematics',
+    focus: 'Zeros of quadratic polynomials, their geometrical meaning and the relationship between zeros and coefficients.',
+    outcomes: [
+      'Identify the degree and coefficients of a polynomial.',
+      'Check whether a number is a zero by substitution.',
+      'Interpret zeros as x-axis intersections of the graph.',
+      'Use the sum and product of zeros to verify or form a quadratic polynomial.'
+    ],
+    sections: [
+      {
+        id: 'polynomial-language',
+        title: '1. Understand the language of polynomials',
+        explanation: 'A polynomial in x is an expression made from constants and non-negative integer powers of x, combined using addition, subtraction and multiplication. In 3x² − 5x + 2, the terms are 3x², −5x and 2. The coefficient of x² is 3, the coefficient of x is −5, and the constant term is 2. The highest power with a non-zero coefficient is the degree. This expression has degree 2, so it is quadratic.',
+        keyIdeas: [
+          'A non-zero constant polynomial has degree 0; a linear polynomial has degree 1; a quadratic polynomial has degree 2.',
+          'The zero polynomial has no defined degree in the usual school convention.',
+          'A variable in a denominator, a negative power or a fractional power does not make a polynomial in that variable.',
+          'Always include the sign with a coefficient: the coefficient of x in 3x² − 5x + 2 is −5.'
+        ],
+        example: {
+          title: 'Read coefficients accurately',
+          question: 'For p(x) = 4x² + 7x − 9, state the degree and coefficients a, b and c.',
+          working: [
+            'Compare the expression with ax² + bx + c.',
+            'The coefficient of x² is a = 4.',
+            'The coefficient of x is b = 7; the constant term is c = −9.'
+          ],
+          answer: 'Degree = 2; a = 4, b = 7, c = −9.'
+        }
+      },
+      {
+        id: 'zeros-of-polynomial',
+        title: '2. Zeros: the values that make a polynomial zero',
+        explanation: 'A number α is a zero of p(x) if p(α) = 0. Substitution is the safest way to test a proposed zero. For p(x) = x² − 5x + 6, p(2) = 4 − 10 + 6 = 0, so 2 is a zero. A quadratic can have two distinct real zeros, one repeated real zero, or no real zeros. The graph helps us see these possibilities.',
+        keyIdeas: [
+          'A zero is an input value, not the value of the polynomial at that input.',
+          'A quadratic can have at most two real zeros.',
+          'If a graph crosses the x-axis twice, it has two distinct real zeros; if it touches once, it has a repeated real zero.',
+          'If the graph stays entirely above or below the x-axis, it has no real zero.'
+        ],
+        example: {
+          title: 'Verify both zeros',
+          question: 'Check whether 2 and 3 are zeros of p(x) = x² − 5x + 6.',
+          working: [
+            'p(2) = 2² − 5(2) + 6 = 4 − 10 + 6 = 0.',
+            'p(3) = 3² − 5(3) + 6 = 9 − 15 + 6 = 0.',
+            'Both values make the polynomial equal to zero.'
+          ],
+          answer: 'The zeros are 2 and 3.'
+        }
+      },
+      {
+        id: 'coefficient-relationships',
+        title: '3. Connect zeros with coefficients',
+        explanation: 'For p(x) = ax² + bx + c, where a ≠ 0, let the zeros be α and β. Then α + β = −b/a and αβ = c/a. These relationships follow by writing the polynomial as a(x − α)(x − β), expanding and comparing coefficients. The negative sign in the sum formula is especially important.',
+        keyIdeas: [
+          'Sum of zeros = −b/a. The negative sign belongs to the formula.',
+          'Product of zeros = c/a. Keep the constant-term sign exactly as written.',
+          'The leading coefficient a cannot be zero; otherwise the expression is not quadratic.',
+          'Use these relationships to check roots and form a monic quadratic when the sum and product are known.'
+        ],
+        example: {
+          title: 'Verify the relationships',
+          question: 'For 2x² − 7x + 3, find the sum and product of its zeros.',
+          working: [
+            'Identify a = 2, b = −7 and c = 3.',
+            'Sum = −b/a = −(−7)/2 = 7/2.',
+            'Product = c/a = 3/2.',
+            'Factorisation gives (2x − 1)(x − 3), so the zeros are 1/2 and 3; their sum and product match.'
+          ],
+          answer: 'Sum = 7/2; product = 3/2.'
+        }
+      },
+      {
+        id: 'forming-quadratics',
+        title: '4. Form a quadratic when the sum and product are known',
+        explanation: 'If the sum of the zeros is S and their product is P, a monic quadratic polynomial is x² − Sx + P. For a non-monic polynomial, any non-zero constant multiple has the same zeros. To avoid sign errors, write the template first and then substitute the given sum and product.',
+        keyIdeas: [
+          'Template: x² − (sum of zeros)x + (product of zeros).',
+          'If the sum is negative, the coefficient of x becomes positive after subtracting the negative sum.',
+          'If the product is negative, the constant term is negative.',
+          'Verify a formed polynomial by checking that its zero sum and product match the given values.'
+        ],
+        example: {
+          title: 'Construct a polynomial',
+          question: 'Form a monic quadratic whose zeros have sum 5 and product 6.',
+          working: [
+            'Use x² − Sx + P.',
+            'Substitute S = 5 and P = 6.',
+            'The expression becomes x² − 5x + 6.'
+          ],
+          answer: 'x² − 5x + 6.'
+        }
+      }
+    ],
+    formulaDesk: [
+      { label: 'General quadratic', formula: 'p(x) = ax² + bx + c, a ≠ 0', note: 'a, b and c are real coefficients.' },
+      { label: 'Sum of zeros', formula: 'α + β = −b/a', note: 'For a quadratic with zeros α and β.' },
+      { label: 'Product of zeros', formula: 'αβ = c/a', note: 'Keep the sign of c unchanged.' },
+      { label: 'Forming a monic quadratic', formula: 'x² − Sx + P', note: 'S is the sum; P is the product of its zeros.' }
+    ],
+    commonMistakes: [
+      { mistake: 'Writing the coefficient b without its sign.', correction: 'In 2x² − 7x + 3, b = −7, not +7.' },
+      { mistake: 'Using b/a for the sum.', correction: 'The correct sum is −b/a.' },
+      { mistake: 'Using −c/a for the product.', correction: 'The correct product is c/a.' },
+      { mistake: 'Calling the y-value a zero.', correction: 'A zero is the x-value for which p(x) = 0.' },
+      { mistake: 'Forgetting that a must be non-zero.', correction: 'If a = 0, the expression is not a quadratic polynomial.' }
+    ],
+    answerBlueprints: [
+      { marks: '2 marks', prompt: 'Find the sum and product of zeros.', structure: ['Identify a, b and c with their signs.', 'Write the two relationships.', 'Substitute and simplify clearly.'] },
+      { marks: '3 marks', prompt: 'Form a quadratic polynomial from the sum and product.', structure: ['Write x² − Sx + P.', 'Substitute the values with signs.', 'Expand only if required and state the final polynomial.'] },
+      { marks: '3–4 marks', prompt: 'Verify a proposed zero or pair of zeros.', structure: ['Substitute each value into p(x).', 'Show the arithmetic line by line.', 'Conclude whether p(α) = 0.'] }
+    ],
+    finalChecklist: [
+      'I can identify a, b and c without losing negative signs.',
+      'I can verify a zero using substitution.',
+      'I can explain the x-axis meaning of zeros.',
+      'I can apply both coefficient relationships and form a polynomial from S and P.'
+    ]
+  },
   'pair-of-linear-equations': {
     chapterId: 'pair-of-linear-equations', subject: 'Mathematics',
     focus: 'Graphical and algebraic solutions, consistency and word problems involving two unknowns.',
