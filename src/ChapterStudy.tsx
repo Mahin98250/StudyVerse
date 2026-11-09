@@ -175,7 +175,7 @@ export default function ChapterStudy() {
     <ChapterVisual chapterId={activeChapter.id} />
 
     <section className="chapter-section-block">
-      <div className="chapter-section-heading"><div><span className="chapter-eyebrow">THE LESSON</span><h2>Understand the ideas</h2></div><span>{chapter.sections.length} sections</span></div>
+      <div className="chapter-section-heading"><div><span className="chapter-eyebrow">DETAILED CHAPTER NOTES</span><h2>Concepts, explanations and key points</h2></div><span>{chapter.sections.length} sections</span></div>
       <div className="chapter-lesson-list">
         {chapter.sections.map((section, index) => <article className="chapter-lesson" key={section.id}>
           <div className="chapter-lesson-number">{String(index + 1).padStart(2, '0')}</div>
