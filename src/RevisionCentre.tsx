@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, ArrowRight, Brain, Check, Clock3, RotateCcw, Sparkles } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { ACADEMIC_CHAPTERS } from './academicContent'
-import { db, type RevisionCard } from './core'
+import { CHAPTER_MASTERY } from './chapterMasteryContent'
+import { ITEMS } from './curriculum'
+import { db, DEFAULT_SUBJECTS, type RevisionCard, type ExamSubject } from './core'
 import './revision-centre.css'
 
 type Rating = 'again' | 'hard' | 'good'
@@ -10,7 +12,7 @@ const DAY = 86_400_000
 
 function buildCards(): RevisionCard[] {
   const now = new Date().toISOString()
-  return ACADEMIC_CHAPTERS.flatMap(chapter => chapter.sections.flatMap(section =>
+  const academicCards = ACADEMIC_CHAPTERS.flatMap(chapter => chapter.sections.flatMap(section =>
     section.keyPoints.map((point, index) => ({
       id: `seed:${chapter.id}:${section.id}:${index}`,
       chapterId: chapter.id,
@@ -25,6 +27,24 @@ function buildCards(): RevisionCard[] {
       easeFactor: 2.5
     }))
   ))
+  const masteryCards = Object.values(CHAPTER_MASTERY).filter(pack => !!pack.curriculumItemId).flatMap(pack => {
+    const item = ITEMS.find(entry => entry.id === pack.curriculumItemId)
+    if (!item) return []
+    return pack.sections.flatMap(section => section.keyIdeas.map((point, index) => ({
+      id: `seed:${pack.chapterId}:${section.id}:${index}`,
+      chapterId: item.id,
+      subjectId: item.subjectId,
+      front: index === 0 ? section.title.replace(/^\\d+\\.\\s*/, '') : `Remember this: ${section.title.replace(/^\\d+\\.\\s*/, '')}?`,
+      back: point,
+      sourceLabel: item.title,
+      createdAt: now,
+      dueAt: now,
+      repetitions: 0,
+      intervalDays: 0,
+      easeFactor: 2.5
+    })))
+  })
+  return [...academicCards, ...masteryCards]
 }
 
 export default function RevisionCentre() {
@@ -32,12 +52,12 @@ export default function RevisionCentre() {
   const [loading, setLoading] = useState(true)
   const [active, setActive] = useState<RevisionCard | null>(null)
   const [revealed, setRevealed] = useState(false)
-  const [subject, setSubject] = useState<'all' | 'mathematics' | 'science'>('all')
+  const [subject, setSubject] = useState<ExamSubject>('all')
   const [mode, setMode] = useState<'due' | 'all'>('due')
   const [message, setMessage] = useState('')
   const [searchParams, setSearchParams] = useSearchParams()
   const chapterFilter = searchParams.get('chapter')
-  const selectedChapter = ACADEMIC_CHAPTERS.find(chapter => chapter.id === chapterFilter)
+  const selectedChapterTitle = ACADEMIC_CHAPTERS.find(chapter => chapter.id === chapterFilter)?.title ?? ITEMS.find(item => item.id === chapterFilter)?.title
 
   useEffect(() => {
     let live = true
@@ -61,6 +81,7 @@ export default function RevisionCentre() {
 
   const dueCount = cards.filter(card => (!chapterFilter || card.chapterId === chapterFilter) && (subject === 'all' || card.subjectId === subject) && new Date(card.dueAt).getTime() <= Date.now()).length
   const reviewedCount = cards.filter(card => card.repetitions > 0).length
+  const chapterCount = new Set(cards.map(card => card.chapterId)).size
 
   useEffect(() => {
     if (!active || !filtered.length) setActive(filtered[0] ?? null)
@@ -92,18 +113,18 @@ export default function RevisionCentre() {
   if (loading) return <div className="revision-loading">Preparing your revision deck…</div>
 
   return <div className="revision-page">
-    <div className="revision-heading"><div><span className="eyebrow">SMART REVISION · CLASS X</span><h1>Make it <em>stick.</em></h1><p>Short active-recall sessions. Review what is due, rate honestly, and let the schedule bring it back.</p>{selectedChapter&&<button className="revision-clear-filter" onClick={()=>setSearchParams({})}>Chapter focus: {selectedChapter.title} · Clear</button>}</div><div className="revision-mark"><Brain size={25}/><span>LOCAL<br/>REVIEW</span></div></div>
+    <div className="revision-heading"><div><span className="eyebrow">SMART REVISION · CLASS X</span><h1>Make it <em>stick.</em></h1><p>Short active-recall sessions. Review what is due, rate honestly, and let the schedule bring it back.</p>{selectedChapterTitle&&<button className="revision-clear-filter" onClick={()=>setSearchParams({})}>Chapter focus: {selectedChapterTitle} · Clear</button>}</div><div className="revision-mark"><Brain size={25}/><span>LOCAL<br/>REVIEW</span></div></div>
     <div className="revision-stats">
       <div><span>DUE NOW</span><b>{dueCount}</b><small>Cards ready to revisit</small></div>
-      <div><span>IN YOUR DECK</span><b>{cards.length}</b><small>Across {ACADEMIC_CHAPTERS.length} chapter guides</small></div>
+      <div><span>IN YOUR DECK</span><b>{cards.length}</b><small>Across {chapterCount} chapter guides</small></div>
       <div><span>REVIEWED</span><b>{reviewedCount}</b><small>Cards with saved review history</small></div>
     </div>
     <div className="revision-controls">
       <div className="revision-tabs"><button className={mode==='due'?'active':''} onClick={()=>setMode('due')}>Due for review</button><button className={mode==='all'?'active':''} onClick={()=>setMode('all')}>All cards</button></div>
-      <div className="revision-tabs"><button className={subject==='all'?'active':''} onClick={()=>setSubject('all')}>All</button><button className={subject==='mathematics'?'active':''} onClick={()=>setSubject('mathematics')}>Maths</button><button className={subject==='science'?'active':''} onClick={()=>setSubject('science')}>Science</button></div>
+      <div className="revision-tabs"><button className={subject==='all'?'active':''} onClick={()=>setSubject('all')}>All</button>{DEFAULT_SUBJECTS.filter(item=>item.active).map(item=><button key={item.id} className={subject===item.id?'active':''} onClick={()=>setSubject(item.id as ExamSubject)}>{item.shortName}</button>)}</div>
     </div>
     {active ? <section className="revision-study">
-      <div className="revision-card-meta"><span>{active.subjectId==='mathematics'?'MATHEMATICS':'SCIENCE'} · {active.sourceLabel.toUpperCase()}</span><span>{filtered.findIndex(card=>card.id===active.id)+1} / {filtered.length}</span></div>
+      <div className="revision-card-meta"><span>{(DEFAULT_SUBJECTS.find(item=>item.id===active.subjectId)?.name??active.subjectId).toUpperCase()} · {active.sourceLabel.toUpperCase()}</span><span>{filtered.findIndex(card=>card.id===active.id)+1} / {filtered.length}</span></div>
       <button className={`revision-flashcard ${revealed?'revealed':''}`} onClick={()=>setRevealed(value=>!value)} aria-label={revealed?'Hide answer':'Reveal answer'}>
         <span className="revision-card-label">{revealed?'THE ANSWER':'ACTIVE RECALL'}</span>
         <strong>{revealed?active.back:active.front}</strong>
