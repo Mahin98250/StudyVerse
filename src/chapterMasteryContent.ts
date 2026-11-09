@@ -414,6 +414,85 @@ export const CHAPTER_MASTERY: Record<string, MasteryPack> = {
     finalChecklist:['I can identify common computer-workplace hazards.','I can describe an ergonomic workstation.','I know why emergency procedures and reporting matter.','I can explain safe digital and information-handling practices.']
   }
 }
+
+export interface MasteryPracticeQuestion {
+  id: string
+  prompt: string
+  choices: { id: string; text: string }[]
+  answer: string
+  explanation: string
+}
+
+const PRACTICE_QUESTION_BANK: Record<string, MasteryPracticeQuestion[]> = {
+  'nationalism-india': [
+    {id:'nindia-q1',prompt:'Which factor added to economic hardship in India during the First World War?',choices:[{id:'a',text:'Lower taxes and falling prices'},{id:'b',text:'Higher taxes, rising prices and forced recruitment'},{id:'c',text:'End of all military expenditure'},{id:'d',text:'Abolition of land revenue'}],answer:'b',explanation:'War expenditure, taxes, rising prices and forced recruitment increased pressure on ordinary people.'},
+    {id:'nindia-q2',prompt:'Why was the Non-Cooperation Movement withdrawn in 1922?',choices:[{id:'a',text:'The Salt March had ended'},{id:'b',text:'The Gandhi-Irwin Pact was signed'},{id:'c',text:'Violence broke out at Chauri Chaura'},{id:'d',text:'Purna Swaraj was declared'}],answer:'c',explanation:'Gandhi withdrew the movement after the Chauri Chaura incident because it had turned violent.'},
+    {id:'nindia-q3',prompt:'What made salt an effective symbol for Civil Disobedience?',choices:[{id:'a',text:'Only traders used it'},{id:'b',text:'It was a common necessity affected by colonial control and taxation'},{id:'c',text:'It was used only in coastal regions'},{id:'d',text:'It had no link to everyday life'}],answer:'b',explanation:'Salt was used by rich and poor alike, so the tax and monopoly connected colonial injustice to daily life.'}
+  ],
+  'power-sharing': [
+    {id:'power-q1',prompt:'Which is a prudential reason for power-sharing?',choices:[{id:'a',text:'It prevents every disagreement'},{id:'b',text:'It reduces social conflict and supports stability'},{id:'c',text:'It removes elections'},{id:'d',text:'It gives unlimited power to the majority'}],answer:'b',explanation:'The prudential reason is practical: power-sharing reduces conflict and helps political stability.'},
+    {id:'power-q2',prompt:'Division of authority among the legislature, executive and judiciary is:',choices:[{id:'a',text:'Vertical power-sharing'},{id:'b',text:'Community government'},{id:'c',text:'Horizontal power-sharing'},{id:'d',text:'Majoritarianism'}],answer:'c',explanation:'Horizontal power-sharing distributes authority among organs of government at the same level.'},
+    {id:'power-q3',prompt:'Which statement best describes Belgium’s community government?',choices:[{id:'a',text:'It deals with language, culture and education for communities'},{id:'b',text:'It replaces all regional governments'},{id:'c',text:'It gives power only to one language group'},{id:'d',text:'It is the national judiciary'}],answer:'a',explanation:'Belgium’s community governments handle cultural, educational and language-related matters.'}
+  ],
+  'development-economics': [
+    {id:'dev-q1',prompt:'Per-capita income is calculated by:',choices:[{id:'a',text:'Population ÷ total income'},{id:'b',text:'Total income ÷ total population'},{id:'c',text:'Total income × population'},{id:'d',text:'Exports ÷ imports'}],answer:'b',explanation:'Per-capita income is the average income per person: total income divided by total population.'},
+    {id:'dev-q2',prompt:'Why can per-capita income hide inequality?',choices:[{id:'a',text:'It measures every person’s exact income'},{id:'b',text:'It is an average that does not show how income is distributed'},{id:'c',text:'It excludes all income'},{id:'d',text:'It measures only literacy'}],answer:'b',explanation:'An average can be similar across places even when income distribution is very different.'},
+    {id:'dev-q3',prompt:'Which action supports sustainable development?',choices:[{id:'a',text:'Extract groundwater faster than it can recharge'},{id:'b',text:'Ignore pollution costs'},{id:'c',text:'Use resources efficiently and protect future availability'},{id:'d',text:'Use only non-renewable resources'}],answer:'c',explanation:'Sustainable development considers present needs while protecting the ability of future generations to meet theirs.'}
+  ],
+  'english-reading-comprehension': [
+    {id:'eread-q1',prompt:'An inference question asks you to:',choices:[{id:'a',text:'Copy any sentence from the passage'},{id:'b',text:'Draw a reasonable conclusion supported by clues in the passage'},{id:'c',text:'Use unrelated outside knowledge'},{id:'d',text:'Guess the writer’s personal life'}],answer:'b',explanation:'An inference combines textual clues to reach a supported conclusion; it must not go beyond the evidence.'},
+    {id:'eread-q2',prompt:'Before interpreting a chart in a passage, what should you check first?',choices:[{id:'a',text:'Only the largest number'},{id:'b',text:'The heading, units, labels and time period'},{id:'c',text:'The colour of the chart'},{id:'d',text:'Your own estimate'}],answer:'b',explanation:'Labels and units establish what the numbers represent and prevent incorrect comparisons.'},
+    {id:'eread-q3',prompt:'A passage gives a problem and then recommends solutions. Its likely purpose is to:',choices:[{id:'a',text:'Explain the issue and suggest action'},{id:'b',text:'Entertain with fictional dialogue only'},{id:'c',text:'List unrelated definitions'},{id:'d',text:'Avoid presenting a viewpoint'}],answer:'a',explanation:'The structure moves from explaining a problem to proposing ways to address it.'}
+  ],
+  'english-grammar-context': [
+    {id:'egram-q1',prompt:'Choose the correct phrase: “There are ___ books on the shelf.”',choices:[{id:'a',text:'much'},{id:'b',text:'many'},{id:'c',text:'little'},{id:'d',text:'a little'}],answer:'b',explanation:'Books is a plural countable noun, so “many” is appropriate.'},
+    {id:'egram-q2',prompt:'Complete: “By the time we arrived, the train ___.”',choices:[{id:'a',text:'leaves'},{id:'b',text:'has left'},{id:'c',text:'had left'},{id:'d',text:'will leave'}],answer:'c',explanation:'The train left before another past event, so the past perfect is used.'},
+    {id:'egram-q3',prompt:'Choose the correct reported question: She asked me, “Where do you live?”',choices:[{id:'a',text:'She asked me where did I live.'},{id:'b',text:'She asked me where I lived.'},{id:'c',text:'She asked me where do I live.'},{id:'d',text:'She said me where I lived.'}],answer:'b',explanation:'Reported questions use statement word order; the tense and pronoun shift to fit the reporting context.'}
+  ],
+  'english-writing-skills': [
+    {id:'ewrite-q1',prompt:'What is the best first step before writing a formal letter?',choices:[{id:'a',text:'Add decorative phrases'},{id:'b',text:'Identify audience, purpose and every required point'},{id:'c',text:'Write the closing first'},{id:'d',text:'Invent supporting statistics'}],answer:'b',explanation:'Task analysis ensures the response addresses the correct reader and covers all required content.'},
+    {id:'ewrite-q2',prompt:'An analytical paragraph based on a chart should:',choices:[{id:'a',text:'Invent possible causes for every trend'},{id:'b',text:'List every number without comparison'},{id:'c',text:'Present an overview and support comparisons with data'},{id:'d',text:'Ignore units'}],answer:'c',explanation:'A useful analysis identifies the main pattern and supports key comparisons with accurate figures.'},
+    {id:'ewrite-q3',prompt:'If a chart shows an increase but gives no reason, the writer should:',choices:[{id:'a',text:'Invent a likely cause'},{id:'b',text:'Describe the increase without claiming an unsupported cause'},{id:'c',text:'Ignore the data'},{id:'d',text:'Change the figures'}],answer:'b',explanation:'Describe what the data shows and avoid unsupported causal claims.'}
+  ],
+  'gujarati-reading-skills': [
+    {id:'gread-q1',prompt:'અપઠિત ગદ્યખંડનો મુખ્ય વિચાર ઓળખવા માટે શું કરવું?',choices:[{id:'a',text:'માત્ર છેલ્લું વાક્ય વાંચવું'},{id:'b',text:'સમગ્ર ગદ્યખંડનો વિષય અને હેતુ સમજવો'},{id:'c',text:'બહારની માહિતી ઉમેરવી'},{id:'d',text:'દરેક શબ્દનો અલગ અર્થ લખવો'}],answer:'b',explanation:'મુખ્ય વિચાર આખા ગદ્યખંડમાંથી સમજાય છે; માત્ર એક વાક્ય પૂરતું નથી.'},
+    {id:'gread-q2',prompt:'અનુમાન આધારિત જવાબ કયા આધાર પર લખવો જોઈએ?',choices:[{id:'a',text:'લખાણમાં આપેલા સંકેતો અને પુરાવા'},{id:'b',text:'માત્ર વ્યક્તિગત કલ્પના'},{id:'c',text:'અસંબંધિત માહિતી'},{id:'d',text:'પ્રશ્નમાં ન હોય તેવા આંકડા'}],answer:'a',explanation:'યોગ્ય અનુમાન ગદ્યખંડના સંકેતો સાથે જોડાયેલું હોવું જોઈએ.'},
+    {id:'gread-q3',prompt:'કોઈ શબ્દનો સંદર્ભાનુરૂપ અર્થ જાણવા માટે શું કરવું?',choices:[{id:'a',text:'હંમેશાં પ્રથમ યાદ આવતો અર્થ લખવો'},{id:'b',text:'આસપાસનાં વાક્યો અને ગદ્યખંડનો વિષય વાંચવો'},{id:'c',text:'શબ્દ અવગણવો'},{id:'d',text:'અર્થ વગર વાક્ય નકલ કરવું'}],answer:'b',explanation:'આસપાસનો સંદર્ભ યોગ્ય અર્થ પસંદ કરવામાં મદદ કરે છે.'}
+  ],
+  'gujarati-writing-skills': [
+    {id:'gwrite-q1',prompt:'અનુચ્છેદમાં કઈ ગોઠવણી વધુ યોગ્ય છે?',choices:[{id:'a',text:'અસંબંધિત વિચારો'},{id:'b',text:'વિષય રજૂઆત, મુદ્દા/ઉદાહરણ અને સમાપન'},{id:'c',text:'માત્ર અંતિમ વાક્ય'},{id:'d',text:'માત્ર શીર્ષક'}],answer:'b',explanation:'અનુચ્છેદમાં એક કેન્દ્રસ્થ વિચારને શરૂઆત, મધ્ય અને અંત દ્વારા વિકસાવવામાં આવે છે.'},
+    {id:'gwrite-q2',prompt:'ઔપચારિક પત્રમાં ભાષા કેવી હોવી જોઈએ?',choices:[{id:'a',text:'અતિ અનૌપચારિક અને અસ્પષ્ટ'},{id:'b',text:'વિનમ્ર, સ્પષ્ટ અને ઔપચારિક'},{id:'c',text:'અપમાનજનક'},{id:'d',text:'માત્ર ટૂંકા શબ્દોવાળી'}],answer:'b',explanation:'ઔપચારિક પત્રમાં વાચક અને હેતુ પ્રમાણે વિનમ્ર તથા સીધી ભાષા વાપરવી.'},
+    {id:'gwrite-q3',prompt:'જાહેરાત લખતી વખતે કઈ બાબત ખાસ ધ્યાનમાં રાખવી?',choices:[{id:'a',text:'પ્રશ્નમાં ન હોય તેવો ફોન નંબર બનાવવો'},{id:'b',text:'જરૂરી વિગતો સ્પષ્ટ અને સંક્ષિપ્ત આપવી'},{id:'c',text:'વિષય છુપાવવો'},{id:'d',text:'અસંબંધિત લાંબી વાર્તા લખવી'}],answer:'b',explanation:'જાહેરાત ટૂંકી અને માહિતીપ્રદ હોવી જોઈએ; કલ્પિત વિગતો ઉમેરવી નહીં.'}
+  ],
+  'gujarati-grammar-skills': [
+    {id:'ggram-q1',prompt:'રૂઢિપ્રયોગનો અર્થ કેવી રીતે સમજવો?',choices:[{id:'a',text:'માત્ર દરેક શબ્દનો શાબ્દિક અર્થ'},{id:'b',text:'પ્રચલિત ભાવાર્થ અને સંદર્ભ પ્રમાણે'},{id:'c',text:'અર્થ વિના'},{id:'d',text:'વિરોધાર્થીથી જ'}],answer:'b',explanation:'રૂઢિપ્રયોગનો ભાવાર્થ ઘણી વાર શબ્દોના શાબ્દિક અર્થથી અલગ હોય છે.'},
+    {id:'ggram-q2',prompt:'“વિદ્યાર્થી મિત્ર સાથે ગયો.” વાક્યમાં “સાથે” શું દર્શાવે છે?',choices:[{id:'a',text:'સમય'},{id:'b',text:'સંગાથ'},{id:'c',text:'વિરોધ'},{id:'d',text:'કારણ'}],answer:'b',explanation:'“સાથે” સંગાથ અથવા સહભાગિતાનો સંબંધ દર્શાવે છે.'},
+    {id:'ggram-q3',prompt:'વાક્ય શુદ્ધ કરતી વખતે કઈ બાબત તપાસવી જરૂરી છે?',choices:[{id:'a',text:'કર્તા-ક્રિયા અને લિંગ/વચનનો મેળ'},{id:'b',text:'માત્ર અક્ષરોની સંખ્યા'},{id:'c',text:'વાક્યનો રંગ'},{id:'d',text:'અસંબંધિત ઉદાહરણ'}],answer:'a',explanation:'કર્તા-ક્રિયાપદ, કાળ, લિંગ અને વચનનો મેળ વાક્ય શુદ્ધિમાં મહત્વનો છે.'}
+  ],
+  'it-digital-documentation': [
+    {id:'itdoc-q1',prompt:'Why should a long report use heading styles rather than only bold formatting?',choices:[{id:'a',text:'Styles make the file impossible to edit'},{id:'b',text:'Heading styles create document structure and support automatic tables of contents'},{id:'c',text:'Direct formatting is required for every heading'},{id:'d',text:'Styles remove all page breaks'}],answer:'b',explanation:'Heading styles provide reusable formatting and structural information that document tools can use.'},
+    {id:'itdoc-q2',prompt:'Which setting controls how an image is attached to page content?',choices:[{id:'a',text:'Anchoring'},{id:'b',text:'Spell check'},{id:'c',text:'Word count'},{id:'d',text:'Page zoom'}],answer:'a',explanation:'Anchoring determines how an object is tied to the page, paragraph or character.'},
+    {id:'itdoc-q3',prompt:'What should be done after headings are added or renamed?',choices:[{id:'a',text:'Delete the document'},{id:'b',text:'Update the table of contents'},{id:'c',text:'Turn off all styles'},{id:'d',text:'Flatten all text'}],answer:'b',explanation:'The generated table of contents must be refreshed to reflect structural changes.'}
+  ],
+  'it-spreadsheet-analysis': [
+    {id:'itcalc-q1',prompt:'Which Goal Seek field contains the formula result that must reach a target?',choices:[{id:'a',text:'Set cell'},{id:'b',text:'Sheet name'},{id:'c',text:'Print area'},{id:'d',text:'Comment'}],answer:'a',explanation:'Set cell is the formula/result cell whose value Goal Seek tries to match.'},
+    {id:'itcalc-q2',prompt:'Which reference remains fixed when copied?',choices:[{id:'a',text:'B1'},{id:'b',text:'$B$1'},{id:'c',text:'B
+},{id:'d',text:'1B'}],answer:'b',explanation:'Dollar signs lock both the column and row in an absolute cell reference.'},
+    {id:'itcalc-q3',prompt:'A What-if scenario is best described as:',choices:[{id:'a',text:'A guaranteed prediction'},{id:'b',text:'A stored alternative set of input values used to compare outcomes'},{id:'c',text:'A database primary key'},{id:'d',text:'A printed chart only'}],answer:'b',explanation:'Scenarios let a user compare outputs under different assumptions.'}
+  ],
+  'it-database-management': [
+    {id:'itdb-q1',prompt:'What is the main purpose of a primary key?',choices:[{id:'a',text:'To format a report'},{id:'b',text:'To uniquely identify a record'},{id:'c',text:'To store several values in one field'},{id:'d',text:'To create a chart'}],answer:'b',explanation:'A primary key uniquely identifies each record in a table.'},
+    {id:'itdb-q2',prompt:'Which database object filters records using criteria?',choices:[{id:'a',text:'Form'},{id:'b',text:'Report'},{id:'c',text:'Query'},{id:'d',text:'Page style'}],answer:'c',explanation:'A query retrieves selected records according to conditions.'},
+    {id:'itdb-q3',prompt:'If one student can have many payment records, the relationship is:',choices:[{id:'a',text:'One-to-one'},{id:'b',text:'One-to-many'},{id:'c',text:'Many-to-none'},{id:'d',text:'No relationship'}],answer:'b',explanation:'One parent student record can be referenced by many child payment records.'}
+  ],
+  'it-workplace-safety': [
+    {id:'itsafe-q1',prompt:'A loose cable across a walkway is best classified as:',choices:[{id:'a',text:'A trip hazard'},{id:'b',text:'A data type'},{id:'c',text:'A primary key'},{id:'d',text:'A style'}],answer:'a',explanation:'A cable across a route can cause someone to trip and should be removed or secured.'},
+    {id:'itsafe-q2',prompt:'Which practice supports ergonomic computer use?',choices:[{id:'a',text:'Leaning forward for long periods'},{id:'b',text:'Keeping wrists bent continuously'},{id:'c',text:'Supporting the back and positioning the screen comfortably'},{id:'d',text:'Ignoring glare'}],answer:'c',explanation:'A supportive posture, suitable screen position and reduced glare help lower strain.'},
+    {id:'itsafe-q3',prompt:'What should you do before touching equipment involved in a possible electric shock?',choices:[{id:'a',text:'Touch the person immediately'},{id:'b',text:'Make sure the electrical hazard is safely isolated and call trained help'},{id:'c',text:'Pour water over the equipment'},{id:'d',text:'Move the equipment with bare hands'}],answer:'b',explanation:'Do not touch a person or equipment that may still be live. Isolate the hazard only if safe and call trained responders.'}
+  ]
+}
+
 export function getMasteryPack(chapterId: string) {
-  return CHAPTER_MASTERY[chapterId] ?? Object.values(CHAPTER_MASTERY).find(pack => pack.curriculumItemId === chapterId)
+  const pack = CHAPTER_MASTERY[chapterId] ?? Object.values(CHAPTER_MASTERY).find(item => item.curriculumItemId === chapterId)
+  return pack ? { ...pack, practiceQuestions: PRACTICE_QUESTION_BANK[pack.chapterId] } : undefined
 }
