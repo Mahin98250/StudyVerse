@@ -32,7 +32,7 @@ add('science','I · Chemical Substances · 25 marks','sci-carbon','Carbon and it
 add('science','II · World of Living · 25 marks','sci-life','Life Processes','Nutrition, respiration, transport and excretion in plants and animals.','board',25),
 add('science','II · World of Living · 25 marks','sci-control','Control and Coordination','Plant movements/hormones; nervous system, reflexes and animal hormones.','board',25),
 add('science','II · World of Living · 25 marks','sci-reproduction','Reproduction','Asexual/sexual reproduction, reproductive health, family planning and HIV/AIDS awareness.','board',25),
-add('science','II · World of Living · 25 marks','sci-heredity','Heredity','Inheritance of traits, Mendel’s contribution and sex determination. Evolution-related extension topics are formative only.','board',25),
+add('science','II · World of Living · formative','sci-heredity','Heredity','Inheritance of traits, Mendel’s contribution and sex determination. Formative only; not assessed in the year-end examination.','formative'),
 add('science','II · World of Living · formative','sci-evolution','Evolution','Inherited traits, speciation, fossils and evolutionary relationships. Formative only.','formative'),
 add('science','III · Natural Phenomena · 12 marks','sci-light','Light: Reflection and Refraction','Spherical mirrors and lenses, ray diagrams, mirror/lens formulae, magnification and refraction.','board',12),
 add('science','III · Natural Phenomena · 12 marks','sci-eye','The Human Eye and the Colourful World','Structure and accommodation of the eye, vision defects and correction, dispersion, scattering and atmospheric refraction.','board',12),
