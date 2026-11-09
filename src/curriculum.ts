@@ -32,7 +32,7 @@ add('science','I · Chemical Substances · formative','sci-carbon','Carbon and i
 add('science','II · World of Living · 25 marks','sci-life','Life Processes','Nutrition, respiration, transport and excretion in plants and animals.','board',25),
 add('science','II · World of Living · 25 marks','sci-control','Control and Coordination','Plant movements/hormones; nervous system, reflexes and animal hormones.','board',25),
 add('science','II · World of Living · 25 marks','sci-reproduction','Reproduction','Asexual/sexual reproduction, reproductive health, family planning and HIV/AIDS awareness.','board',25),
-add('science','II · World of Living · 25 marks','sci-heredity','Heredity','Inheritance of traits, Mendel’s contribution and sex determination.','board',25),
+add('science','II · World of Living · formative','sci-heredity','Heredity','Inheritance of traits, Mendel’s contribution and sex determination. Formative only; not assessed in the year-end examination.','formative'),
 add('science','II · World of Living · formative','sci-evolution','Evolution','Inherited traits, speciation, fossils and evolutionary relationships. Formative only.','formative'),
 add('science','III · Natural Phenomena · 12 marks','sci-light','Light: Reflection and Refraction','Spherical mirrors/lenses, ray diagrams, formulae, magnification, vision and dispersion.','board',12),
 add('science','IV · Effects of Current · 13 marks','sci-electric','Electricity and Magnetic Effects','Current, potential difference, Ohm’s law, resistance, circuits, heating, power and magnetic effects.','board',13),
