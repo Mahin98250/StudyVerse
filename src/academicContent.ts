@@ -2697,14 +2697,14 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit III'
   },
   {
-    id: 'electricity-and-magnetic-effects',
+    id: 'electricity',
     curriculumItemId: 'sci-electric',
     subjectId: 'science',
-    title: 'Electricity and Magnetic Effects of Current',
+    title: 'Electricity',
     chapterLabel: 'Effects of Current · Unit IV · Board scope',
     estimatedMinutes: 50,
-    syllabusScope: 'Current, potential difference, Ohm’s law, resistance/resistivity, series and parallel combinations, heating effect, electrical power, magnetic fields, force on a current-carrying conductor, Fleming’s Left Hand Rule, AC/DC and domestic circuits. Motor, electromagnetic induction and generator are formative-only in this syllabus.',
-    overview: 'Electric circuits allow charges to move and transfer energy. The same current can also create magnetic fields, linking electricity and magnetism in everyday devices and household wiring.',
+    syllabusScope: 'Electric current, potential difference, Ohm’s law, resistance/resistivity, series and parallel combinations, heating effect, electrical power, and safe domestic electric circuits. Magnetic effects are covered in the separate chapter guide. Motor, electromagnetic induction and generator are formative-only in this syllabus.',
+    overview: 'Electric circuits allow charges to move and transfer energy. Understanding current, resistance and power helps explain household appliances, electricity use and safe wiring.',
     learningGoals: [
       'Use current, potential difference and resistance in circuit calculations.',
       'Apply Ohm’s law and compare series and parallel combinations.',
@@ -2746,14 +2746,14 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
         ]
       },
       {
-        id: 'magnetic-effects',
-        title: '4. Magnetic effects and household circuits',
-        explanation: 'A current-carrying conductor produces a magnetic field. The right-hand thumb rule gives the direction of the magnetic field around a straight conductor. A current-carrying conductor in a magnetic field can experience a force; Fleming’s Left Hand Rule gives its direction. Household appliances are connected in parallel so each receives the supply voltage and can operate independently. A fuse or circuit breaker protects against excessive current.',
+        id: 'domestic-circuits',
+        title: '4. Domestic circuits and electrical safety',
+        explanation: 'Household appliances are connected in parallel so each receives the supply potential difference and can operate independently. A fuse or circuit breaker is connected in the live wire and protects against excessive current. Earthing provides a low-resistance path for leakage current and reduces the risk of electric shock.',
         keyPoints: [
-          'Magnetic field lines around a straight current-carrying wire are concentric circles.',
-          'Fleming’s Left Hand Rule relates magnetic field, current and force directions.',
-          'Live and neutral wires provide the supply path; earthing provides a safety path for leakage current.',
-          'The formative-only motor, electromagnetic induction and generator content is not treated here as year-end board scope.'
+          'Parallel connection lets appliances work independently at the supply voltage.',
+          'A fuse melts when excessive current flows and breaks the circuit.',
+          'Earthing provides a safety path for leakage current.',
+          'Never touch electrical equipment with wet hands or exposed wiring.'
         ]
       }
     ],
@@ -2815,10 +2815,10 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       },
       {
         id: 'sci-electric-q3',
-        prompt: 'Which rule gives the direction of force on a current-carrying conductor in a magnetic field?',
-        choices: [{ id: 'a', text: 'Fleming’s Left Hand Rule' }, { id: 'b', text: 'Right-hand thumb rule only' }, { id: 'c', text: 'Law of reflection' }, { id: 'd', text: 'Snell’s law' }],
+        prompt: 'Which device protects a household circuit by breaking it when excessive current flows?',
+        choices: [{ id: 'a', text: 'Fuse or circuit breaker' }, { id: 'b', text: 'Right-hand thumb rule only' }, { id: 'c', text: 'Law of reflection' }, { id: 'd', text: 'Snell’s law' }],
         answer: 'a',
-        explanation: 'Fleming’s Left Hand Rule relates the direction of magnetic field, current and force.'
+        explanation: 'A fuse or circuit breaker interrupts the circuit when current becomes dangerously high.'
       },
       {
         id: 'sci-electric-q4',
@@ -3789,6 +3789,205 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     sourceUrl: scienceSource,
     sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
   }
+  ,{
+    id: 'human-eye-and-the-colourful-world',
+    curriculumItemId: 'sci-eye',
+    subjectId: 'science',
+    title: 'The Human Eye and the Colourful World',
+    chapterLabel: 'Natural Phenomena · Unit III · Board scope',
+    estimatedMinutes: 45,
+    syllabusScope: 'Human eye, accommodation, defects of vision and correction, dispersion, scattering and atmospheric refraction. Follow the official 2026–27 syllabus for the exact depth of each subtopic.',
+    overview: 'The human eye is a natural optical instrument. Its lens focuses light on the retina, while the cornea, iris, pupil and ciliary muscles help control and focus incoming light. Optical effects in the atmosphere explain several everyday colour and visibility phenomena.',
+    learningGoals: [
+      'Identify the main parts of the human eye and their functions.',
+      'Explain accommodation and the near and far points of vision.',
+      'Describe myopia, hypermetropia and their corrective lenses.',
+      'Explain dispersion, scattering and atmospheric refraction in familiar examples.'
+    ],
+    sections: [
+      {
+        id: 'eye-structure',
+        title: '1. Structure and function of the human eye',
+        explanation: 'Light enters through the transparent cornea, passes through the pupil and is focused by the eye lens onto the retina. The iris controls pupil size and therefore regulates how much light enters. The retina contains light-sensitive cells that convert light into nerve signals. The optic nerve carries these signals to the brain, where visual information is interpreted.',
+        keyPoints: [
+          'Cornea provides most of the refraction of incoming light.',
+          'Iris controls the size of the pupil.',
+          'The eye lens focuses a real, inverted image on the retina.',
+          'The optic nerve carries visual signals from the retina to the brain.'
+        ]
+      },
+      {
+        id: 'accommodation',
+        title: '2. Power of accommodation',
+        explanation: 'Accommodation is the ability of the eye lens to change its focal length so that objects at different distances are focused on the retina. Ciliary muscles change the curvature of the flexible lens. For a distant object the lens becomes thinner and its focal length increases; for a nearby object it becomes thicker and its focal length decreases.',
+        keyPoints: [
+          'The normal near point of a young adult eye is approximately 25 cm.',
+          'The far point of a normal eye is at infinity.',
+          'Ciliary muscles change the curvature and focal length of the eye lens.',
+          'The image must be focused on the retina for clear vision.'
+        ]
+      },
+      {
+        id: 'vision-defects',
+        title: '3. Defects of vision and their correction',
+        explanation: 'Myopia (short-sightedness) makes distant objects appear blurred because the image forms in front of the retina; a concave lens diverges incoming rays so the eye can focus them on the retina. Hypermetropia (long-sightedness) makes nearby objects appear blurred because the image would form behind the retina; a convex lens converges rays before they enter the eye. Presbyopia is an age-related reduction in accommodation and may require suitable corrective lenses.',
+        keyPoints: [
+          'Myopia is corrected using a concave (diverging) lens.',
+          'Hypermetropia is corrected using a convex (converging) lens.',
+          'Presbyopia is associated with reduced accommodation with age.',
+          'A corrective lens helps form the image on the retina.'
+        ]
+      },
+      {
+        id: 'colourful-world',
+        title: '4. Dispersion, scattering and atmospheric refraction',
+        explanation: 'Dispersion is the splitting of white light into its component colours when different colours refract by different amounts, as in a glass prism. Scattering redirects light in different directions; shorter wavelengths are scattered more strongly by small particles, helping explain the blue appearance of the sky. Atmospheric refraction occurs because the atmosphere has layers of varying optical density and can cause effects such as the apparent twinkling of stars and an advanced sunrise.',
+        keyPoints: [
+          'A prism disperses white light into a spectrum of colours.',
+          'Shorter wavelengths are scattered more strongly by small air molecules.',
+          'The sky appears blue mainly because shorter blue wavelengths are scattered more.',
+          'Atmospheric refraction can make stars appear to twinkle.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'eye-example-1',
+        title: 'Example 1 · Correcting myopia',
+        question: 'A student can see nearby text clearly but distant writing on the board appears blurred. Which lens is used to correct this defect?',
+        steps: ['Distant objects are not focused on the retina in myopia.', 'A diverging lens spreads the incoming rays before they enter the eye.', 'A concave lens helps the eye focus the image on the retina.'],
+        answer: 'A concave lens.'
+      },
+      {
+        id: 'eye-example-2',
+        title: 'Example 2 · Accommodation',
+        question: 'Why does the eye lens become thicker when looking at a nearby object?',
+        steps: ['Light from a nearby object diverges more before entering the eye.', 'The eye needs greater converging power to focus it on the retina.', 'Ciliary muscles make the lens more curved and reduce its focal length.'],
+        answer: 'The lens becomes thicker and its focal length decreases.'
+      },
+      {
+        id: 'eye-example-3',
+        title: 'Example 3 · Blue sky',
+        question: 'Why does the clear daytime sky generally appear blue?',
+        steps: ['Sunlight contains many colours.', 'Air molecules scatter shorter wavelengths more strongly.', 'Blue light is scattered in many directions and reaches our eyes from across the sky.'],
+        answer: 'Because shorter blue wavelengths are scattered more strongly by air molecules.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Retina', detail: 'Light-sensitive screen where the eye forms the image.' },
+      { title: 'Accommodation', detail: 'Change in lens curvature to focus objects at different distances.' },
+      { title: 'Myopia', detail: 'Corrected with a concave lens.' },
+      { title: 'Hypermetropia', detail: 'Corrected with a convex lens.' }
+    ],
+    questions: [
+      { id: 'sci-eye-q1', prompt: 'Which part of the eye controls the amount of light entering it?', choices: [{id:'a',text:'Retina'},{id:'b',text:'Iris'},{id:'c',text:'Optic nerve'},{id:'d',text:'Blind spot'}], answer:'b', explanation:'The iris changes pupil size and regulates the amount of light entering the eye.' },
+      { id: 'sci-eye-q2', prompt: 'Which lens is used to correct myopia?', choices: [{id:'a',text:'Convex'},{id:'b',text:'Concave'},{id:'c',text:'Cylindrical only'},{id:'d',text:'Plane glass'}], answer:'b', explanation:'A concave lens diverges incoming rays and helps the myopic eye focus distant objects on the retina.' },
+      { id: 'sci-eye-q3', prompt: 'What is accommodation?', choices: [{id:'a',text:'Changing pupil colour'},{id:'b',text:'Changing eye-lens focal length to focus'},{id:'c',text:'Movement of the retina'},{id:'d',text:'Scattering of light'}], answer:'b', explanation:'Ciliary muscles change lens curvature and focal length so objects at different distances can be focused.' },
+      { id: 'sci-eye-q4', prompt: 'Which phenomenon is mainly responsible for the blue colour of the sky?', choices: [{id:'a',text:'Dispersion'},{id:'b',text:'Reflection'},{id:'c',text:'Scattering of shorter wavelengths'},{id:'d',text:'Total internal reflection'}], answer:'c', explanation:'Air molecules scatter shorter wavelengths more strongly than longer wavelengths.' }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit III'
+  },
+  {
+    id: 'magnetic-effects-of-electric-current',
+    curriculumItemId: 'sci-magnetic',
+    subjectId: 'science',
+    title: 'Magnetic Effects of Electric Current',
+    chapterLabel: 'Effects of Current · Unit IV · Board scope',
+    estimatedMinutes: 40,
+    syllabusScope: 'Magnetic field and field lines, magnetic field due to a straight conductor, circular loop and solenoid, force on a current-carrying conductor, Fleming’s Left Hand Rule and domestic electric circuits. Motor, electromagnetic induction and generator are formative-only.',
+    overview: 'An electric current creates a magnetic field. The shape and direction of that field depend on the conductor, while a current-carrying conductor placed in an external magnetic field can experience a force.',
+    learningGoals: [
+      'Describe magnetic field lines and their properties.',
+      'Use the right-hand thumb rule for a straight current-carrying conductor.',
+      'Explain the field around a circular loop and a solenoid.',
+      'Apply Fleming’s Left Hand Rule to the force on a current-carrying conductor.'
+    ],
+    sections: [
+      {
+        id: 'magnetic-field-lines',
+        title: '1. Magnetic field and field lines',
+        explanation: 'A magnetic field is the region around a magnet or current-carrying conductor where magnetic force can be experienced. Magnetic field lines are imaginary curves used to represent the field. Outside a bar magnet they emerge from the north pole and enter the south pole. Field lines never intersect, and closer lines indicate a stronger field.',
+        keyPoints: [
+          'Magnetic field direction at a point is the direction a north pole would move.',
+          'Outside a bar magnet, field lines go from north to south.',
+          'Magnetic field lines never intersect.',
+          'Closer field lines represent a stronger magnetic field.'
+        ]
+      },
+      {
+        id: 'field-current',
+        title: '2. Magnetic field due to electric current',
+        explanation: 'A straight current-carrying wire produces concentric circular magnetic field lines around it. The right-hand thumb rule gives their direction: point the right thumb in the direction of conventional current; curled fingers show the magnetic field direction. A circular current loop produces a field that becomes stronger near its centre. A solenoid produces a field similar to that of a bar magnet and can behave as an electromagnet.',
+        keyPoints: [
+          'The magnetic field around a straight wire forms concentric circles.',
+          'The right-hand thumb rule gives the field direction.',
+          'Increasing current strengthens the magnetic field.',
+          'A solenoid produces a nearly uniform field inside its central region.'
+        ]
+      },
+      {
+        id: 'force-on-conductor',
+        title: '3. Force on a current-carrying conductor',
+        explanation: 'A current-carrying conductor placed in an external magnetic field experiences a force. The direction of force depends on the direction of current and magnetic field. Fleming’s Left Hand Rule gives the direction: hold the thumb, forefinger and middle finger of the left hand mutually perpendicular; forefinger indicates field, middle finger current and thumb force or motion.',
+        keyPoints: [
+          'The force is greatest when current is perpendicular to the magnetic field.',
+          'Reversing current or magnetic field reverses the force direction.',
+          'Fleming’s Left Hand Rule links field, current and force.',
+          'The motor principle is included for conceptual understanding; motor construction is formative-only in this session.'
+        ]
+      },
+      {
+        id: 'domestic-safety',
+        title: '4. Domestic electric circuits and safety',
+        explanation: 'Domestic appliances are connected in parallel so each receives the same supply potential difference and can be switched independently. The fuse or circuit breaker is placed in the live wire to interrupt excessive current. Earthing connects the metal body of an appliance to the ground through a low-resistance wire, reducing the risk of electric shock.',
+        keyPoints: [
+          'Household appliances are connected in parallel.',
+          'A fuse or circuit breaker protects against excessive current.',
+          'Earthing provides a safe path for leakage current.',
+          'Never overload sockets or handle damaged electrical wiring.'
+        ]
+      }
+    ],
+    workedExamples: [
+      {
+        id: 'magnetic-example-1',
+        title: 'Example 1 · Right-hand thumb rule',
+        question: 'A straight wire carries conventional current vertically upwards. What is the direction of the magnetic field around it?',
+        steps: ['Point the right thumb upwards along the current.', 'Curl the fingers around the wire.', 'The curled fingers show the circular magnetic-field direction.'],
+        answer: 'The field forms concentric circles around the wire; use the curled fingers to read the direction at the required side.'
+      },
+      {
+        id: 'magnetic-example-2',
+        title: 'Example 2 · Field strength',
+        question: 'What happens to the magnetic field around a straight conductor if the current is increased?',
+        steps: ['The field strength around a current-carrying conductor depends on current.', 'A larger current produces a stronger magnetic field.'],
+        answer: 'The magnetic field becomes stronger.'
+      },
+      {
+        id: 'magnetic-example-3',
+        title: 'Example 3 · Fleming’s Left Hand Rule',
+        question: 'Which finger indicates the direction of force in Fleming’s Left Hand Rule?',
+        steps: ['Forefinger represents magnetic field.', 'Middle finger represents conventional current.', 'Thumb represents force or motion.'],
+        answer: 'The thumb.'
+      }
+    ],
+    keyFacts: [
+      { title: 'Field lines', detail: 'Never intersect; closer lines indicate a stronger field.' },
+      { title: 'Right-hand thumb rule', detail: 'Thumb = current; curled fingers = magnetic field.' },
+      { title: 'Solenoid', detail: 'A coil that produces a bar-magnet-like field.' },
+      { title: 'Fleming’s Left Hand Rule', detail: 'Forefinger = field; middle finger = current; thumb = force.' }
+    ],
+    questions: [
+      { id: 'sci-magnetic-q1', prompt: 'What is the shape of magnetic field lines around a straight current-carrying wire?', choices: [{id:'a',text:'Straight parallel lines'},{id:'b',text:'Concentric circles'},{id:'c',text:'Concentric squares'},{id:'d',text:'Random zigzags'}], answer:'b', explanation:'The magnetic field around a straight current-carrying conductor forms concentric circles centred on the wire.' },
+      { id: 'sci-magnetic-q2', prompt: 'Which rule gives the direction of magnetic field around a straight current-carrying conductor?', choices: [{id:'a',text:'Fleming’s Left Hand Rule'},{id:'b',text:'Right-hand thumb rule'},{id:'c',text:'Law of reflection'},{id:'d',text:'Ohm’s law'}], answer:'b', explanation:'Point the right thumb along conventional current; curled fingers show the magnetic field direction.' },
+      { id: 'sci-magnetic-q3', prompt: 'Which finger represents force in Fleming’s Left Hand Rule?', choices: [{id:'a',text:'Thumb'},{id:'b',text:'Forefinger'},{id:'c',text:'Middle finger'},{id:'d',text:'Little finger'}], answer:'a', explanation:'The thumb indicates force or motion; forefinger indicates field and middle finger indicates current.' },
+      { id: 'sci-magnetic-q4', prompt: 'Why are household appliances connected in parallel?', choices: [{id:'a',text:'Each gets a different frequency'},{id:'b',text:'Each receives the supply voltage and works independently'},{id:'c',text:'All appliances must be switched on together'},{id:'d',text:'It removes the need for earthing'}], answer:'b', explanation:'Parallel connections provide the same supply potential difference to each appliance and allow independent operation.' }
+    ],
+    sourceUrl: scienceSource,
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit IV'
+  }
+
 ]
 
 export const RESOURCE_BY_TOPIC: Record<string, string> = {
