@@ -2971,7 +2971,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     curriculumItemId: 'sci-carbon',
     subjectId: 'science',
     title: 'Carbon and Its Compounds',
-    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    chapterLabel: 'Chemical Substances · Unit I · Board scope',
     estimatedMinutes: 45,
     syllabusScope: 'Covalent bonding and properties; versatility of carbon; saturated and unsaturated hydrocarbons; homologous series; naming alkanes, alkenes, alkynes and functional groups (halogens, alcohols, ketones, aldehydes); combustion, oxidation, addition and substitution; properties/uses of ethanol, ethanoic acid, soaps and detergents. This topic is formative only.',
     overview: 'Carbon forms a huge variety of compounds because it makes four covalent bonds and can join to itself in long chains and rings. Learning the patterns of bonding and naming makes these compounds easier to understand.',
@@ -3099,16 +3099,16 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       }
     ],
     sourceUrl: scienceSource,
-    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit I · board scope'
   },
   {
     id: 'heredity',
     curriculumItemId: 'sci-heredity',
     subjectId: 'science',
     title: 'Heredity',
-    chapterLabel: 'World of Living · Unit II · Formative only',
+    chapterLabel: 'World of Living · Unit II · Board scope',
     estimatedMinutes: 35,
-    syllabusScope: 'Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination. This topic is not assessed in the year-end examination; it may support portfolio/formative work.',
+    syllabusScope: 'Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination. Heredity, Mendel’s contribution and laws for inheritance of traits, and a brief introduction to sex determination are included in the year-end board syllabus. Evolution-related extension topics are formative only.',
     overview: 'Heredity is the passing of traits from parents to offspring. Genes carry information, and the combination of genes inherited by an offspring helps explain similarities and variation within a family.',
     learningGoals: [
       'Distinguish inherited traits from acquired traits.',
@@ -3223,7 +3223,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       }
     ],
     sourceUrl: scienceSource,
-    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit II'
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit II · board scope'
   },
   {
     id: 'evolution',
@@ -3588,9 +3588,9 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
     curriculumItemId: 'sci-acid',
     subjectId: 'science',
     title: 'Acids, Bases and Salts',
-    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    chapterLabel: 'Chemical Substances · Unit I · Board scope',
     estimatedMinutes: 40,
-    syllabusScope: 'Definitions through H⁺ and OH⁻ ions, indicators, chemical properties, neutralisation, pH in daily life and preparation/uses of common salts. Logarithmic definition of pH is not required. This topic is formative only.',
+    syllabusScope: 'Definitions through H⁺ and OH⁻ ions, indicators, chemical properties, neutralisation, pH in daily life and preparation/uses of common salts. Logarithmic definition of pH is not required. This chapter is included in the year-end board syllabus.',
     overview: 'Acids and bases have characteristic properties and can be identified using indicators. Their reactions help explain neutralisation and the preparation of useful salts used at home and in industry.',
     learningGoals: [
       'Identify acids and bases using indicators.',
@@ -3684,14 +3684,14 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       }
     ],
     sourceUrl: scienceSource,
-    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit I · board scope'
   },
   {
     id: 'metals-and-non-metals',
     curriculumItemId: 'sci-metal',
     subjectId: 'science',
     title: 'Metals and Non-metals',
-    chapterLabel: 'Chemical Substances · Unit I · Formative only',
+    chapterLabel: 'Chemical Substances · Unit I · Board scope',
     estimatedMinutes: 40,
     syllabusScope: 'Physical and chemical properties, reactivity series, ionic compounds, basic metallurgical processes, corrosion and prevention. This topic is formative only.',
     overview: 'Metals and non-metals differ in their physical and chemical behaviour. Their reactivity helps predict displacement, while extraction and corrosion connect chemistry with everyday materials.',
@@ -3787,7 +3787,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       }
     ],
     sourceUrl: scienceSource,
-    sourceLabel: 'CBSE Science · Class X · 2026–27 · formative-only Unit I'
+    sourceLabel: 'CBSE Science · Class X · 2026–27 · Unit I · board scope'
   }
   ,{
     id: 'human-eye-and-the-colourful-world',
