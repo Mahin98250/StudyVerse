@@ -2709,7 +2709,7 @@ export const ACADEMIC_CHAPTERS: AcademicChapter[] = [
       'Use current, potential difference and resistance in circuit calculations.',
       'Apply Ohm’s law and compare series and parallel combinations.',
       'Calculate electrical heating and power.',
-      'Describe magnetic fields around conductors and basic domestic-circuit safety.'
+      'Explain domestic circuits, fuses, circuit breakers and earthing for electrical safety.'
     ],
     sections: [
       {
@@ -4011,7 +4011,9 @@ export const RESOURCE_BY_TOPIC: Record<string, string> = {
   'sci-control': 'control-and-coordination',
   'sci-reproduction': 'reproduction',
   'sci-light': 'light-reflection-and-refraction',
-  'sci-electric': 'electricity-and-magnetic-effects',
+  'sci-electric': 'electricity',
+  'sci-magnetic': 'magnetic-effects-of-electric-current',
+  'sci-eye': 'human-eye-and-the-colourful-world',
   'sci-environment': 'our-environment',
   'sci-carbon': 'carbon-and-its-compounds',
   'sci-heredity': 'heredity',
