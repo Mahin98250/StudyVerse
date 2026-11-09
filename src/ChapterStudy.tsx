@@ -4,7 +4,8 @@ import {
   ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, Circle,
   ExternalLink, Lightbulb, NotebookPen, RotateCcw, Sparkles, Target, Trophy
 } from 'lucide-react'
-import { getChapter } from './academicContent'
+import { getChapter, type AcademicChapter } from './academicContent'
+import { getExternalNotes } from './externalNotes'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
 
@@ -254,6 +255,22 @@ export default function ChapterStudy() {
         <textarea value={noteDraft} onChange={event => setNoteDraft(event.target.value)} rows={5} placeholder="What do you want to remember from this chapter?" />
         <div className="chapter-notes-footer"><span>{noteDraft.length} characters</span><button className="chapter-button chapter-button-secondary" onClick={() => void saveNotes()} disabled={saving}>Save notes <Check size={15} /></button></div>
       </div>
+    </section>
+
+    <section className="chapter-external-notes">
+      <div className="chapter-external-heading">
+        <div><span className="chapter-eyebrow">GO DEEPER · FREE RESOURCES</span><h2>Want another explanation?</h2><p>Explore additional chapter notes from free learning websites. Use them as a second explanation, then check every topic against the official CBSE syllabus linked above.</p></div>
+        <span className="chapter-free-pill">FREE TO READ</span>
+      </div>
+      <div className="chapter-resource-grid">
+        {getExternalNotes(activeChapter).map(resource => <a className="chapter-resource-card" href={resource.url} target="_blank" rel="noopener noreferrer" key={resource.url}>
+          <span className="chapter-resource-provider">{resource.provider}</span>
+          <b>{resource.title}</b>
+          <span className="chapter-resource-description">{resource.description}</span>
+          <span className="chapter-resource-open">Open resource <ExternalLink size={13}/></span>
+        </a>)}
+      </div>
+      <p className="chapter-resource-disclaimer">StudyVerse does not own or verify third-party content. Free access, sign-in requirements and syllabus coverage can change. Some external notes may include topics outside the current CBSE scope.</p>
     </section>
 
     <div className="chapter-next-step">
