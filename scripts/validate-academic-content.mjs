@@ -1,3 +1,4 @@
+/* global URL, console, process */
 import { readFileSync } from 'node:fs'
 
 const read = path => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8')
