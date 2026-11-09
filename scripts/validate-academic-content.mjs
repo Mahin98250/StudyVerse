@@ -5,6 +5,7 @@ const read = path => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'
 const academic = read('src/academicContent.ts')
 const curriculum = read('src/curriculum.ts')
 const exam = read('src/ExamCentre.tsx')
+const visuals = read('src/ChapterVisual.tsx')
 const resources = read('src/externalNotes.ts')
 
 const matches = [...academic.matchAll(/id: '([^']+)',\n\s+curriculumItemId: '([^']+)'/g)]
@@ -16,6 +17,7 @@ for (let i = 0; i < matches.length; i++) {
   const [chapterId, curriculumId] = [matches[i][1], matches[i][2]]
   if (ids.has(chapterId)) failures.push(`Duplicate chapter id: ${chapterId}`)
   ids.add(chapterId)
+  if (!visuals.includes(`case '${chapterId}'`)) failures.push(`${chapterId}: missing concept diagram or explicit visual coverage decision`)
   if (curriculumIds.has(curriculumId)) failures.push(`Duplicate curriculum mapping: ${curriculumId}`)
   curriculumIds.add(curriculumId)
   const block = academic.slice(matches[i].index, matches[i + 1]?.index ?? academic.indexOf('export const RESOURCE_BY_TOPIC'))
