@@ -49,7 +49,7 @@ for (const id of ['sci-heredity','sci-periodic','sci-evolution','sci-motor']) {
 if (!exam.includes("ITEMS.filter(item => item.status === 'board')")) failures.push('Mock exams must only draw from board-scope curriculum items')
 for (const field of ['match:', 'access:', 'syllabus:']) if (!resources.includes(field)) failures.push(`External resource quality metadata missing: ${field}`)
 
-const masteryMatches = [...mastery.matchAll(/^  '([^']+)': \{/gm)]
+const masteryMatches = [...mastery.matchAll(/^\s{2}'([^']+)': \{/gm)]
 for (let i = 0; i < masteryMatches.length; i++) {
   const chapterId = masteryMatches[i][1]
   const block = mastery.slice(masteryMatches[i].index, masteryMatches[i + 1]?.index ?? mastery.indexOf('\n}\n\nexport function getMasteryPack'))
