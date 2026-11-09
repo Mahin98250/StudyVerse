@@ -34,7 +34,7 @@ for (let i = 0; i < matches.length; i++) {
   if (!block.includes('sourceUrl:') || !block.includes('sourceLabel:')) failures.push(`${chapterId}: missing source attribution`)
 }
 
-const mappedEntries = [...curriculum.matchAll(/add\\('([^']+)','[^']+','([^']+)'/g)].map(match => ({ subject: match[1], id: match[2] }))
+const mappedEntries = [...curriculum.matchAll(/add\('([^']+)','[^']+','([^']+)'/g)].map(match => ({ subject: match[1], id: match[2] }))
 const mappedCurriculum = mappedEntries.filter(entry => ['mathematics', 'science'].includes(entry.subject)).map(entry => entry.id)
 const allCurriculumIds = new Set(mappedEntries.map(entry => entry.id))
 for (const id of mappedCurriculum) if (!curriculumIds.has(id)) failures.push(`Curriculum item has no Math/Science study guide: ${id}`)
@@ -66,6 +66,24 @@ for (let i = 0; i < masteryMatches.length; i++) {
   if (mistakes < 4) failures.push(`${chapterId}: mastery notes need at least 4 common-mistake checks`)
   if (blueprints < 2) failures.push(`${chapterId}: mastery notes need board-answer blueprints`)
 }
+
+const practiceStart = mastery.indexOf('const PRACTICE_QUESTION_BANK')
+const practiceEnd = mastery.indexOf('\n}\nexport function getMasteryPack', practiceStart)
+const practiceBank = mastery.slice(practiceStart, practiceEnd)
+const practiceKeys = new Set([...practiceBank.matchAll(/^\s{2}'([^']+)': \[/gm)].map(match => match[1]))
+for (let i = 0; i < masteryMatches.length; i++) {
+  const chapterId = masteryMatches[i][1]
+  const block = mastery.slice(masteryMatches[i].index, masteryMatches[i + 1]?.index ?? mastery.indexOf('\n}\n\nexport interface MasteryPracticeQuestion'))
+  if (block.includes('curriculumItemId:') && !practiceKeys.has(chapterId)) failures.push(`${chapterId}: supplementary subject guide needs its own knowledge check`)
+}
+for (const key of practiceKeys) {
+  const start = practiceBank.indexOf(`'${key}': [`)
+  const next = [...practiceKeys].map(item => practiceBank.indexOf(`'${item}': [`)).filter(index => index > start).sort((a, b) => a - b)[0] ?? practiceBank.length
+  const block = practiceBank.slice(start, next)
+  const questionCount = (block.match(/\{id:'[^']+'/g) ?? []).length
+  if (questionCount < 3) failures.push(`${key}: expected at least 3 chapter knowledge-check questions`)
+}
+
 if (!/ChapterMastery/.test(read('src/ChapterStudy.tsx'))) failures.push('Chapter mastery notes are not connected to the chapter reading page')
 if (!/getMasteryPack/.test(read('src/LearningHub.tsx')) || !read('src/App.tsx').includes('mastery/:topicId')) failures.push('Supplementary subject mastery pages are not connected to the learning hub and route table')
 
