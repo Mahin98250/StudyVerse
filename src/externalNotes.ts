@@ -49,7 +49,7 @@ const scienceSlugs: Record<string, string[]> = {
   'our-environment': ['our-environment']
 }
 
-const formativeOnly = new Set(['evolution','motor-electromagnetic-induction-generator','periodic-classification-of-elements'])
+const formativeOnly = new Set(['heredity','evolution','motor-electromagnetic-induction-generator','periodic-classification-of-elements'])
 const relatedMath = new Set(['trigonometric-identities','heights-and-distances'])
 
 export function getExternalNotes(chapter: { id: string; title: string; subjectId: string }): ExternalNoteResource[] {
