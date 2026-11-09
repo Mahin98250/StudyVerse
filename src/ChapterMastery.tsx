@@ -1,7 +1,40 @@
 import { useState } from 'react'
-import { ArrowDown, ArrowRight, BookmarkCheck, CheckCircle2, ClipboardList, Lightbulb, Sparkles } from 'lucide-react'
+import { ArrowDown, ArrowRight, BookmarkCheck, CheckCircle2, ClipboardList, ExternalLink, Lightbulb, Sparkles } from 'lucide-react'
 import { getMasteryPack } from './chapterMasteryContent'
 import './chapter-mastery.css'
+
+const BOARD_RESOURCES: Record<string, { label: string; paper: string; markingScheme: string; note: string }> = {
+  Mathematics: {
+    label: 'Mathematics Standard · Code 041',
+    paper: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/MathsStandard-SQP.pdf',
+    markingScheme: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/MathsStandard-MS.pdf',
+    note: 'This is the Standard Mathematics sample paper. Confirm whether your school has registered you for Basic or Standard Mathematics.'
+  },
+  Science: {
+    label: 'Science · Code 086',
+    paper: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/Science-SQP.pdf',
+    markingScheme: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/Science-MS.pdf',
+    note: 'Use the marking scheme to compare the key points and steps expected in written answers.'
+  },
+  'Social Science': {
+    label: 'Social Science · Code 087',
+    paper: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/SocialScience-SQP.pdf',
+    markingScheme: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/SocialScience-MS.pdf',
+    note: 'Practise source-based, case-based and map questions along with descriptive answers.'
+  },
+  English: {
+    label: 'English Language & Literature · Code 184',
+    paper: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/EnglishL-SQP.pdf',
+    markingScheme: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/EnglishL-MS.pdf',
+    note: 'The linked sample paper is for English Language & Literature. Confirm the course with your school.'
+  },
+  Gujarati: {
+    label: 'Gujarati · Code 010',
+    paper: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/Gujarati-SQP.pdf',
+    markingScheme: 'https://cbseacademic.nic.in/web_material/SQP/ClassX_2026_27/Gujarati-MS.pdf',
+    note: 'Official Class X sample paper and marking scheme. Match literature preparation to the exact textbook prescribed by your school.'
+  }
+}
 
 export default function ChapterMastery({ chapterId }: { chapterId: string }) {
   const pack = getMasteryPack(chapterId)
@@ -13,6 +46,7 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
     { id: 'formula-desk', label: 'Formula & fact desk' },
     { id: 'mistakes', label: 'Avoid these mistakes' },
     { id: 'answer-blueprints', label: 'Board answer method' },
+    { id: 'board-resources', label: 'Official sample paper' },
     { id: 'mastery-check', label: 'Mastery checklist' }
   ]
 
@@ -90,8 +124,22 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
           </div>
         </section>
 
+        {BOARD_RESOURCES[pack.subject] && <section id="board-resources" className="mastery-section">
+          <div className="mastery-section-heading"><div><span>05 / EXAM PATTERN</span><h3>Official CBSE sample paper</h3><p>Practise with the current session's official paper and marking scheme. Use the marking scheme to understand what a complete answer needs.</p></div><ExternalLink size={22}/></div>
+          <article className="mastery-resource-card">
+            <span>CBSE · ACADEMIC SESSION 2026–27</span>
+            <b>{BOARD_RESOURCES[pack.subject].label}</b>
+            <small>{BOARD_RESOURCES[pack.subject].note}</small>
+            <div className="mastery-resource-actions">
+              <a className="mastery-resource-link" href={BOARD_RESOURCES[pack.subject].paper} target="_blank" rel="noreferrer">Open sample paper <ExternalLink size={13}/></a>
+              <a className="mastery-resource-link" href={BOARD_RESOURCES[pack.subject].markingScheme} target="_blank" rel="noreferrer">Open marking scheme <ExternalLink size={13}/></a>
+            </div>
+          </article>
+          <p className="mastery-resource-note">These are official CBSE assessment resources, not a guarantee of exact questions in the board examination. Check the paper/course code and current school instructions before practising.</p>
+        </section>}
+
         <section id="mastery-check" className="mastery-section">
-          <div className="mastery-section-heading"><div><span>05 / CHECK YOURSELF</span><h3>Ready to move on?</h3><p>Tick each statement only when you can do it without looking at the notes.</p></div><b>{checked.length}/{pack.finalChecklist.length} mastered</b></div>
+          <div className="mastery-section-heading"><div><span>06 / CHECK YOURSELF</span><h3>Ready to move on?</h3><p>Tick each statement only when you can do it without looking at the notes.</p></div><b>{checked.length}/{pack.finalChecklist.length} mastered</b></div>
           <div className="mastery-checklist">
             {pack.finalChecklist.map((item, index) => <label key={item} className={checked.includes(item) ? 'is-checked' : ''}>
               <input type="checkbox" checked={checked.includes(item)} onChange={() => toggleItem(item)}/>
