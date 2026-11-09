@@ -50,7 +50,7 @@ function PracticeCentre(){
     const score=record?.practiceSummary?.bestScore
     const count=record?.practiceSummary?.attempts??0
     return <article className="practice-chapter" key={chapter.id}>
-     <div className="practice-chapter-top"><span>{chapter.subjectId==='mathematics'?'MATHEMATICS':'SCIENCE'}</span>{record?.completed?<b className="practice-done"><CheckCircle2 size={13}/> Completed</b>:count>0?<b className="practice-attempted">{count} {count===1?'attempt':'attempts'}</b>:<b className="practice-new">Not started</b>}</div>
+     <div className="practice-chapter-top"><span>{chapter.subjectId==='mathematics'?'MATHEMATICS':'SCIENCE'}</span>{chapter.chapterLabel.toLowerCase().includes('formative only')&&<b className="practice-attempted">FORMATIVE ONLY</b>}{record?.completed?<b className="practice-done"><CheckCircle2 size={13}/> Completed</b>:count>0?<b className="practice-attempted">{count} {count===1?'attempt':'attempts'}</b>:<b className="practice-new">Not started</b>}</div>
      <h3>{chapter.title}</h3><p>{chapter.chapterLabel} · {chapter.questions.length} questions</p>
      <div className="practice-chapter-bottom">{score!==undefined?<span><Trophy size={14}/> Best score <b>{score}%</b></span>:<span><BookMarked size={14}/> Original StudyVerse questions</span>}<Link to={'/study/'+chapter.id}>Open chapter <ArrowRight size={14}/></Link></div>
     </article>
