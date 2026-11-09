@@ -270,6 +270,8 @@ export default function ChapterStudy() {
           <span className="chapter-resource-provider">{resource.provider}</span>
           <b>{resource.title}</b>
           <span className="chapter-resource-description">{resource.description}</span>
+          <span className="chapter-resource-quality"><i className={resource.match==='exact'?'quality-exact':resource.match==='related'?'quality-related':'quality-library'}/>{resource.match==='exact'?'Chapter match':resource.match==='related'?'Related topic':'Subject library'} · {resource.access==='free-no-login'?'Free, no login':'Free; PDF may need sign-in'}</span>
+          {resource.syllabus!=='current-chapter'&&<span className="chapter-resource-warning">{resource.syllabus==='formative-only'?'Formative-only topic: not for board-paper scoring.':'Check current CBSE scope before treating this as a separate chapter.'}</span>}
           <span className="chapter-resource-open">Open resource <ExternalLink size={13}/></span>
         </a>)}
       </div>
