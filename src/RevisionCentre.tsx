@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, ArrowRight, Brain, Check, Clock3, RotateCcw, Sparkles } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ACADEMIC_CHAPTERS } from './academicContent'
 import { db, type RevisionCard } from './core'
 import './revision-centre.css'
@@ -35,6 +35,9 @@ export default function RevisionCentre() {
   const [subject, setSubject] = useState<'all' | 'mathematics' | 'science'>('all')
   const [mode, setMode] = useState<'due' | 'all'>('due')
   const [message, setMessage] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const chapterFilter = searchParams.get('chapter')
+  const selectedChapter = ACADEMIC_CHAPTERS.find(chapter => chapter.id === chapterFilter)
 
   useEffect(() => {
     let live = true
@@ -53,12 +56,12 @@ export default function RevisionCentre() {
   const filtered = useMemo(() => {
     const now = Date.now()
     return cards.filter(card =>
-      (subject === 'all' || card.subjectId === subject) &&
+      (subject === 'all' || card.subjectId === subject) && (!chapterFilter || card.chapterId === chapterFilter) &&
       (mode === 'all' || new Date(card.dueAt).getTime() <= now)
     ).sort((a, b) => new Date(a.dueAt).getTime() - new Date(b.dueAt).getTime())
-  }, [cards, subject, mode])
+  }, [cards, subject, mode, chapterFilter])
 
-  const dueCount = cards.filter(card => new Date(card.dueAt).getTime() <= Date.now()).length
+  const dueCount = cards.filter(card => (!chapterFilter || card.chapterId === chapterFilter) && (subject === 'all' || card.subjectId === subject) && new Date(card.dueAt).getTime() <= Date.now()).length
   const reviewedCount = cards.filter(card => card.repetitions > 0).length
 
   useEffect(() => {
@@ -91,7 +94,7 @@ export default function RevisionCentre() {
   if (loading) return <div className="revision-loading">Preparing your revision deck…</div>
 
   return <div className="revision-page">
-    <div className="revision-heading"><div><span className="eyebrow">SMART REVISION · CLASS X</span><h1>Make it <em>stick.</em></h1><p>Short active-recall sessions. Review what is due, rate honestly, and let the schedule bring it back.</p></div><div className="revision-mark"><Brain size={25}/><span>LOCAL<br/>REVIEW</span></div></div>
+    <div className="revision-heading"><div><span className="eyebrow">SMART REVISION · CLASS X</span><h1>Make it <em>stick.</em></h1><p>Short active-recall sessions. Review what is due, rate honestly, and let the schedule bring it back.</p>{selectedChapter&&<button className="revision-clear-filter" onClick={()=>setSearchParams({})}>Chapter focus: {selectedChapter.title} · Clear</button>}</div><div className="revision-mark"><Brain size={25}/><span>LOCAL<br/>REVIEW</span></div></div>
     <div className="revision-stats">
       <div><span>DUE NOW</span><b>{dueCount}</b><small>Cards ready to revisit</small></div>
       <div><span>IN YOUR DECK</span><b>{cards.length}</b><small>Across {ACADEMIC_CHAPTERS.length} chapter guides</small></div>
