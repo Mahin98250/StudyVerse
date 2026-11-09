@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowRight, BookmarkCheck, CheckCircle2, ClipboardList, ExternalLink, Lightbulb, Sparkles } from 'lucide-react'
 import { getMasteryPack } from './chapterMasteryContent'
 import './chapter-mastery.css'
@@ -39,6 +39,16 @@ const BOARD_RESOURCES: Record<string, { label: string; paper: string; markingSch
 export default function ChapterMastery({ chapterId }: { chapterId: string }) {
   const pack = getMasteryPack(chapterId)
   const [checked, setChecked] = useState<string[]>([])
+  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [quizSubmitted, setQuizSubmitted] = useState(false)
+  useEffect(() => {
+    setChecked([])
+    setAnswers({})
+    setQuizSubmitted(false)
+  }, [chapterId])
+  const questions = pack?.practiceQuestions ?? []
+  const answeredCount = questions.filter(question => answers[question.id]).length
+  const quizScore = questions.filter(question => answers[question.id] === question.answer).length
   if (!pack) return null
 
   const sections = [
@@ -47,6 +57,7 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
     { id: 'mistakes', label: 'Avoid these mistakes' },
     { id: 'answer-blueprints', label: 'Board answer method' },
     { id: 'board-resources', label: 'Official sample paper' },
+    { id: 'practice-check', label: 'Knowledge check' },
     { id: 'mastery-check', label: 'Mastery checklist' }
   ]
 
@@ -138,8 +149,42 @@ export default function ChapterMastery({ chapterId }: { chapterId: string }) {
           <p className="mastery-resource-note">These are official CBSE assessment resources, not a guarantee of exact questions in the board examination. Check the paper/course code and current school instructions before practising.</p>
         </section>}
 
+        {questions.length > 0 && <section id="practice-check" className="mastery-section">
+          <div className="mastery-section-heading"><div><span>06 / RETRIEVE & APPLY</span><h3>Chapter knowledge check</h3><p>Answer without looking back at the notes. Feedback explains why each answer is correct.</p></div><b>{answeredCount}/{questions.length} answered</b></div>
+          <div className="mastery-question-list">
+            {questions.map((question, index) => {
+              const selected = answers[question.id]
+              const isCorrect = selected === question.answer
+              return <article className={`mastery-question ${quizSubmitted ? (isCorrect ? 'is-correct' : 'is-wrong') : ''}`} key={question.id}>
+                <div className="mastery-question-heading"><span>QUESTION {index + 1}</span>{quizSubmitted && <b>{isCorrect ? 'CORRECT' : 'REVIEW'}</b>}</div>
+                <h4>{question.prompt}</h4>
+                <div className="mastery-question-options">
+                  {question.choices.map(choice => {
+                    const chosen = selected === choice.id
+                    const right = quizSubmitted && choice.id === question.answer
+                    return <button key={choice.id} type="button" disabled={quizSubmitted}
+                      aria-pressed={chosen}
+                      className={`mastery-question-option ${chosen ? 'is-selected' : ''} ${right ? 'is-answer' : ''}`}
+                      onClick={() => setAnswers(current => ({ ...current, [question.id]: choice.id }))}>
+                      <span>{choice.id.toUpperCase()}</span>{choice.text}
+                    </button>
+                  })}
+                </div>
+                {quizSubmitted && <div className="mastery-question-explanation"><b>{isCorrect ? 'Correct.' : `Correct answer: ${question.choices.find(choice => choice.id === question.answer)?.text}`}</b><p>{question.explanation}</p></div>}
+              </article>
+            })}
+          </div>
+          <div className="mastery-quiz-footer">
+            <span>{quizSubmitted ? `Your score: ${quizScore} / ${questions.length}` : 'Complete every question before checking your answers.'}</span>
+            {!quizSubmitted
+              ? <button type="button" className="mastery-quiz-button" disabled={answeredCount !== questions.length}
+                  onClick={() => setQuizSubmitted(true)}>Check answers <ArrowRight size={14}/></button>
+              : <button type="button" className="mastery-quiz-button is-secondary" onClick={() => { setAnswers({}); setQuizSubmitted(false) }}>Try again <ArrowRight size={14}/></button>}
+          </div>
+        </section>}
+
         <section id="mastery-check" className="mastery-section">
-          <div className="mastery-section-heading"><div><span>06 / CHECK YOURSELF</span><h3>Ready to move on?</h3><p>Tick each statement only when you can do it without looking at the notes.</p></div><b>{checked.length}/{pack.finalChecklist.length} mastered</b></div>
+          <div className="mastery-section-heading"><div><span>07 / CHECK YOURSELF</span><h3>Ready to move on?</h3><p>Tick each statement only when you can do it without looking at the notes.</p></div><b>{checked.length}/{pack.finalChecklist.length} mastered</b></div>
           <div className="mastery-checklist">
             {pack.finalChecklist.map((item, index) => <label key={item} className={checked.includes(item) ? 'is-checked' : ''}>
               <input type="checkbox" checked={checked.includes(item)} onChange={() => toggleItem(item)}/>
