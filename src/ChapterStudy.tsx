@@ -4,7 +4,7 @@ import {
   ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, Circle,
   ExternalLink, Lightbulb, NotebookPen, RotateCcw, Sparkles, Target, Trophy
 } from 'lucide-react'
-import { getChapter, type AcademicChapter } from './academicContent'
+import { getChapter } from './academicContent'
 import { getExternalNotes } from './externalNotes'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
