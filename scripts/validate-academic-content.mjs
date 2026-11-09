@@ -57,10 +57,10 @@ for (let i = 0; i < masteryMatches.length; i++) {
   const block = mastery.slice(masteryMatches[i].index, masteryMatches[i + 1]?.index ?? mastery.indexOf('\n}\n\nexport function getMasteryPack'))
   const curriculumId = block.match(/curriculumItemId: '([^']+)'/)?.[1]
   if (!ids.has(chapterId) && (!curriculumId || !allCurriculumIds.has(curriculumId))) failures.push(`Mastery notes refer to unknown chapter or curriculum item: ${chapterId}`)
-  const lessons = (block.match(/\bid: '/g) ?? []).length
-  const formulas = (block.match(/\{\s*label: '/g) ?? []).length
-  const mistakes = (block.match(/\{\s*mistake: '/g) ?? []).length
-  const blueprints = (block.match(/\{\s*marks: '/g) ?? []).length
+  const lessons = (block.match(/\bid:\s*'/g) ?? []).length
+  const formulas = (block.match(/\{\s*label:\s*'/g) ?? []).length
+  const mistakes = (block.match(/\{\s*mistake:\s*'/g) ?? []).length
+  const blueprints = (block.match(/\{\s*marks:\s*'/g) ?? []).length
   if (lessons < 4) failures.push(`${chapterId}: mastery notes need at least 4 detailed lessons`)
   if (formulas < 2) failures.push(`${chapterId}: mastery notes need a formula/fact desk`)
   if (mistakes < 4) failures.push(`${chapterId}: mastery notes need at least 4 common-mistake checks`)
