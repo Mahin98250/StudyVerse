@@ -6,6 +6,7 @@ import {
 } from 'lucide-react'
 import { getChapter } from './academicContent'
 import { getExternalNotes } from './externalNotes'
+import ChapterVisual from './ChapterVisual'
 import { db, type LearningRecord } from './core'
 import './chapter-study.css'
 
@@ -169,6 +170,8 @@ export default function ChapterStudy() {
         {chapter.learningGoals.map((goal, index) => <div className="chapter-goal" key={goal}><span>{String(index + 1).padStart(2, '0')}</span><p>{goal}</p></div>)}
       </div>
     </section>
+
+    <ChapterVisual chapterId={activeChapter.id} />
 
     <section className="chapter-section-block">
       <div className="chapter-section-heading"><div><span className="chapter-eyebrow">THE LESSON</span><h2>Understand the ideas</h2></div><span>{chapter.sections.length} sections</span></div>
